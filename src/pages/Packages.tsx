@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
-import { Check, Zap, Video, PenTool, BarChart3, Search, Code2 } from "lucide-react";
+import { Check, Zap, Video, PenTool, BarChart3, Search, Code2, ArrowUpRight } from "lucide-react";
 import servicesAds from "@/assets/services-ads.jpg";
 import servicesUgc from "@/assets/services-ugc.jpg";
 import servicesContent from "@/assets/services-content.jpg";
@@ -154,16 +154,19 @@ const Packages = () => (
     <Navbar />
 
     {/* Hero */}
-    <section className="pt-32 pb-16 relative overflow-hidden section-texture">
-      <div className="absolute inset-0 grid-pattern opacity-30" />
-      <div className="floating-orb w-[400px] h-[400px] top-20 right-0" />
+    <section className="pt-32 pb-20 relative overflow-hidden">
+      <div className="absolute inset-0 section-texture" />
+      <div className="absolute inset-0 grid-pattern opacity-15" />
+      <div className="floating-orb w-[500px] h-[500px] top-20 right-0" />
       <div className="container relative z-10">
         <ScrollReveal>
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-center mb-4">
-            Growth Packages <span className="text-gradient">Built for Scale</span>
+          <p className="label-mono text-primary text-center mb-4">Our Services</p>
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-center mb-6 leading-[1.1]">
+            Growth Packages{" "}
+            <span className="text-gradient">Built for Scale</span>
           </h1>
-          <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-4">
-            Every service is powered by AI to deliver better results at lower costs. Choose what you need, or let us build a custom growth roadmap.
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto text-lg">
+            Every service is powered by AI to deliver better results at lower costs.
           </p>
         </ScrollReveal>
       </div>
@@ -172,51 +175,51 @@ const Packages = () => (
     {/* Service Categories */}
     {categories.map((cat, ci) => (
       <section key={ci} className={`py-20 relative overflow-hidden ${ci % 2 === 0 ? 'section-texture' : 'section-texture-alt'}`}>
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <div className="mb-12">
-              <span className="text-primary text-sm font-semibold uppercase tracking-widest">
-                {ci === 0 ? '01' : ci === 1 ? '02' : '03'} — {cat.subtitle}
+            <div className="mb-14">
+              <span className="label-mono text-primary">
+                {String(ci + 1).padStart(2, '0')} — {cat.subtitle}
               </span>
-              <h2 className="font-display text-3xl md:text-4xl font-bold mt-2">{cat.category}</h2>
+              <h2 className="font-display text-3xl md:text-5xl font-bold mt-3">{cat.category}</h2>
             </div>
           </ScrollReveal>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {cat.services.map((svc, si) => (
               <ScrollReveal key={si} delay={si * 0.1}>
-                <div className="glass rounded-2xl overflow-hidden card-hover-lift">
+                <div className="glass rounded-3xl overflow-hidden card-hover-lift border-shimmer">
                   <div className={`grid ${svc.image ? 'lg:grid-cols-5' : 'lg:grid-cols-1'} gap-0`}>
                     {/* Image */}
                     {svc.image && (
                       <div className="lg:col-span-2 relative h-64 lg:h-auto">
                         <img src={svc.image} alt={svc.name} className="absolute inset-0 w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/80 hidden lg:block" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/60 hidden lg:block" />
                         <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent lg:hidden" />
                       </div>
                     )}
 
                     {/* Content */}
-                    <div className={`${svc.image ? 'lg:col-span-3' : ''} p-8 md:p-10`}>
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                          <svc.icon className="text-primary" size={20} />
+                    <div className={`${svc.image ? 'lg:col-span-3' : ''} p-8 md:p-12`}>
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                          <svc.icon className="text-primary" size={22} />
                         </div>
                         <div>
                           <h3 className="font-display text-xl md:text-2xl font-bold">{svc.name}</h3>
-                          <span className="text-primary text-xs font-semibold uppercase tracking-wider">{svc.tagline}</span>
+                          <span className="label-mono text-primary/60">{svc.tagline}</span>
                         </div>
                       </div>
 
-                      <p className="text-muted-foreground mb-6 italic">"{svc.pitch}"</p>
+                      <p className="text-muted-foreground mb-8 text-sm italic leading-relaxed">"{svc.pitch}"</p>
 
-                      <div className="grid md:grid-cols-2 gap-6 mb-6">
+                      <div className="grid md:grid-cols-2 gap-8 mb-8">
                         <div>
-                          <h4 className="text-sm font-semibold text-primary mb-3">What AI Does</h4>
-                          <ul className="space-y-2">
+                          <h4 className="label-mono text-primary/70 mb-4">What AI Does</h4>
+                          <ul className="space-y-3">
                             {svc.aiDoes.map((item) => (
-                              <li key={item} className="flex items-start gap-2 text-sm text-secondary-foreground">
+                              <li key={item} className="flex items-start gap-3 text-sm text-secondary-foreground/80">
                                 <Check size={14} className="text-primary shrink-0 mt-0.5" />
                                 {item}
                               </li>
@@ -224,10 +227,10 @@ const Packages = () => (
                           </ul>
                         </div>
                         <div>
-                          <h4 className="text-sm font-semibold text-primary mb-3">Deliverables</h4>
-                          <ul className="space-y-2">
+                          <h4 className="label-mono text-primary/70 mb-4">Deliverables</h4>
+                          <ul className="space-y-3">
                             {svc.deliverables.map((item) => (
-                              <li key={item} className="flex items-start gap-2 text-sm text-secondary-foreground">
+                              <li key={item} className="flex items-start gap-3 text-sm text-secondary-foreground/80">
                                 <Check size={14} className="text-primary shrink-0 mt-0.5" />
                                 {item}
                               </li>
@@ -236,12 +239,15 @@ const Packages = () => (
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                      <div className="flex items-center justify-between pt-6 border-t border-border/30">
                         <div>
-                          <span className="text-xs text-muted-foreground">Starting at</span>
-                          <p className="font-display text-2xl font-bold text-primary">{svc.pricing}</p>
+                          <span className="label-mono text-muted-foreground/50">Starting at</span>
+                          <p className="font-display text-2xl font-bold text-primary mt-1">{svc.pricing}</p>
                         </div>
-                        <Button className="font-semibold glow-accent">Get Started</Button>
+                        <Button className="font-semibold rounded-full glow-accent gap-2 group">
+                          Get Started
+                          <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -255,19 +261,21 @@ const Packages = () => (
 
     {/* Discovery CTA */}
     <ScrollReveal>
-      <section className="py-16">
+      <section className="py-20">
         <div className="container">
-          <div className="glass-strong rounded-2xl p-12 text-center max-w-3xl mx-auto relative overflow-hidden">
-            <div className="floating-orb w-[300px] h-[300px] -top-20 -right-20" />
+          <div className="glass-strong rounded-3xl p-12 md:p-16 text-center max-w-3xl mx-auto relative overflow-hidden border-shimmer">
+            <div className="floating-orb w-[400px] h-[400px] -top-40 -right-40" />
             <div className="relative z-10">
-              <h3 className="font-display text-2xl md:text-3xl font-bold mb-3">
+              <p className="label-mono text-primary mb-4">Custom Solutions</p>
+              <h3 className="font-display text-3xl md:text-4xl font-bold mb-4">
                 Not sure what your brand needs?
               </h3>
-              <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">
+              <p className="text-muted-foreground mb-8 max-w-md mx-auto">
                 Book a free discovery call and we'll design a tailored growth roadmap for your business.
               </p>
-              <Button size="lg" className="font-semibold px-8 glow-accent-strong">
+              <Button size="lg" className="font-semibold px-10 py-7 rounded-full glow-accent-strong gap-2 group">
                 Book a Free Discovery Call
+                <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Button>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ChevronDown, Star, Target, Zap, BarChart3, Eye, Shield, Cpu, ArrowRight } from "lucide-react";
+import { ChevronDown, Star, Target, Zap, BarChart3, Eye, Shield, Cpu, ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
@@ -33,6 +33,7 @@ const services = [
     image: servicesAds,
     items: ["Paid Media (Meta, Google, LinkedIn)", "AI Performance Ads Optimization", "AI UGC Ad Creation", "ROAS & CPL Tracking"],
     desc: "AI-driven ad ecosystems that optimize themselves for lower costs and higher leads.",
+    label: "01",
   },
   {
     title: "Social Media Marketing",
@@ -40,6 +41,7 @@ const services = [
     image: servicesContent,
     items: ["AI Content Engine (Reels, Carousels, Hooks)", "Competitor Intelligence Reports", "Creative Direction & Positioning", "Community Building"],
     desc: "We don't post content. We engineer relevance.",
+    label: "02",
   },
   {
     title: "Web/App Development",
@@ -47,6 +49,7 @@ const services = [
     image: servicesSystems,
     items: ["High-converting Websites", "Landing Pages & Funnels", "Custom CRM & Automation", "AI Chatbot Integration"],
     desc: "Ads bring traffic. Systems convert it.",
+    label: "03",
   },
 ];
 
@@ -73,68 +76,93 @@ const Index = () => {
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background layers */}
         <div className="absolute inset-0">
-          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
         </div>
-        <div className="absolute inset-0 grid-pattern opacity-30" />
-        <div className="container relative z-10 text-center pt-20">
+        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="floating-orb w-[500px] h-[500px] top-1/4 -left-40 animate-float" />
+        <div className="floating-orb w-[400px] h-[400px] bottom-1/4 -right-40 animate-float" style={{ animationDelay: '3s' }} />
+        
+        <div className="container relative z-10 pt-20">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-5xl mx-auto"
           >
-            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 max-w-4xl mx-auto">
-              We Build Growth Engines —{" "}
-              <span className="text-gradient">Not Just Campaigns.</span>
+            <div className="flex items-center gap-3 justify-center mb-8">
+              <span className="label-mono text-primary flex items-center gap-2">
+                <Sparkles size={12} />
+                AI-Powered Growth Partner
+              </span>
+            </div>
+            
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8 text-center">
+              We Build Growth{" "}
+              <br className="hidden md:block" />
+              Engines —{" "}
+              <span className="text-gradient">Not Just{" "}
+              <br className="hidden md:block" />
+              Campaigns.</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+            
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 text-center leading-relaxed">
               People-led strategy. AI-driven execution. We scale brands through intelligent systems, performance marketing, and data that actually moves revenue.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-              <Button size="lg" className="text-base font-semibold px-8 py-6 glow-accent">
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Button size="lg" className="text-base font-semibold px-10 py-7 rounded-full glow-accent-strong group gap-2">
                 Book a Free Discovery Call
+                <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Button>
-              <Button size="lg" variant="outline" className="text-base font-semibold px-8 py-6" asChild>
+              <Button size="lg" variant="outline" className="text-base font-semibold px-10 py-7 rounded-full border-border/50 hover:border-primary/30" asChild>
                 <Link to="/case-studies">View Case Studies</Link>
               </Button>
             </div>
-            <p className="text-xs text-muted-foreground max-w-lg mx-auto">
+            
+            <p className="text-center text-xs text-muted-foreground/60 max-w-lg mx-auto label-mono leading-relaxed">
               Backed by marketers who've executed campaigns for Indigo, Urban Company, Royal Enfield, M3M, Grab, LT Foods & Aha OTT.
             </p>
           </motion.div>
         </div>
+        
         <motion.div
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
         >
-          <ChevronDown className="text-muted-foreground" size={28} />
+          <ChevronDown className="text-muted-foreground/40" size={24} />
         </motion.div>
       </section>
 
       {/* Credibility Strip */}
-      <section className="py-6 border-y border-border/50 glass-light">
-        <div className="container text-center">
-          <p className="text-sm text-muted-foreground">
-            Trusted by brands, institutions, and high-growth businesses across India.
+      <section className="py-5 relative">
+        <div className="divider-glow" />
+        <div className="container text-center py-3">
+          <p className="label-mono text-muted-foreground/50">
+            Trusted by brands, institutions, and high-growth businesses across India
           </p>
         </div>
+        <div className="divider-glow" />
       </section>
 
-      {/* Clients */}
-      <section className="py-24 relative overflow-hidden section-texture">
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+      {/* Clients — Marquee style */}
+      <section className="py-28 relative overflow-hidden section-texture">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-16">
-              Brands & Institutions We've Worked With
+            <p className="label-mono text-primary text-center mb-4">Our Clients</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">
+              Brands We've Scaled
             </h2>
           </ScrollReveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {clients.map((c, i) => (
-              <ScrollReveal key={c} delay={i * 0.03}>
-                <div className="glass rounded-lg p-4 text-center text-sm font-medium text-secondary-foreground hover:bg-primary/10 hover:text-primary hover:glow-accent transition-all duration-300 cursor-default card-hover-lift">
+              <ScrollReveal key={c} delay={i * 0.02}>
+                <div className="glass rounded-xl p-5 text-center text-sm font-medium text-secondary-foreground/80 hover:text-primary hover:border-primary/20 transition-all duration-500 cursor-default card-hover-lift border-shimmer">
                   {c}
                 </div>
               </ScrollReveal>
@@ -144,30 +172,36 @@ const Index = () => {
       </section>
 
       {/* Services */}
-      <section className="py-24 relative overflow-hidden section-texture-alt">
-        <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="floating-orb w-[400px] h-[400px] -top-40 -left-40" />
+      <section className="py-28 relative overflow-hidden section-texture-alt">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
+        <div className="floating-orb w-[500px] h-[500px] -top-60 -left-60" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-4">How We Scale Brands</h2>
-            <p className="text-muted-foreground text-center mb-16 max-w-xl mx-auto">We operate across three core pillars of growth.</p>
+            <p className="label-mono text-primary text-center mb-4">What We Do</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-6">How We Scale Brands</h2>
+            <p className="text-muted-foreground text-center mb-20 max-w-xl mx-auto">Three core pillars. One unified growth system.</p>
           </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             {services.map((s, i) => (
-              <ScrollReveal key={s.title} delay={i * 0.1}>
-                <div className="group glass rounded-xl overflow-hidden hover:border-primary/40 hover:glow-accent transition-all duration-500 h-full card-hover-lift">
-                  <div className="relative h-48 overflow-hidden">
-                    <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
-                    <s.icon className="absolute bottom-4 left-6 text-primary" size={28} />
+              <ScrollReveal key={s.title} delay={i * 0.12}>
+                <div className="group glass rounded-2xl overflow-hidden hover:border-primary/20 transition-all duration-700 h-full card-hover-lift border-shimmer">
+                  <div className="relative h-56 overflow-hidden">
+                    <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                    <div className="absolute bottom-5 left-6 flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl glass-strong flex items-center justify-center">
+                        <s.icon className="text-primary" size={20} />
+                      </div>
+                      <span className="label-mono text-muted-foreground/60">{s.label}</span>
+                    </div>
                   </div>
-                  <div className="p-6">
+                  <div className="p-7">
                     <h3 className="font-display text-xl font-bold mb-3">{s.title}</h3>
-                    <p className="text-muted-foreground text-sm mb-4">{s.desc}</p>
-                    <ul className="space-y-2">
+                    <p className="text-muted-foreground text-sm mb-5 leading-relaxed">{s.desc}</p>
+                    <ul className="space-y-2.5">
                       {s.items.map((item) => (
-                        <li key={item} className="text-sm text-secondary-foreground flex items-start gap-2">
-                          <span className="text-primary mt-1">•</span> {item}
+                        <li key={item} className="text-sm text-secondary-foreground/70 flex items-start gap-2.5">
+                          <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" /> {item}
                         </li>
                       ))}
                     </ul>
@@ -180,70 +214,65 @@ const Index = () => {
       </section>
 
       {/* Case Studies */}
-      <section className="py-24 relative overflow-hidden section-texture">
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+      <section className="py-28 relative overflow-hidden section-texture">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-16">Featured Case Studies</h2>
+            <p className="label-mono text-primary text-center mb-4">Proven Results</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Featured Case Studies</h2>
           </ScrollReveal>
 
+          {/* VIVO */}
           <ScrollReveal>
-            <div className="glass rounded-2xl p-8 md:p-12 mb-12">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                  <span className="text-primary text-sm font-semibold uppercase tracking-wider">VIVO — 2024</span>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold mt-2 mb-4">Custom Promotional Campaign Platform</h3>
-                  <p className="text-muted-foreground mb-6">Built a custom campaign website enabling users to submit purchases and claim rewards effortlessly in J&K.</p>
+            <div className="glass rounded-3xl overflow-hidden mb-8 border-shimmer">
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="p-10 md:p-14 flex flex-col justify-center">
+                  <span className="label-mono text-primary mb-4 block">VIVO — 2024</span>
+                  <h3 className="font-display text-3xl md:text-4xl font-bold mb-5 leading-tight">Custom Promotional Campaign Platform</h3>
+                  <p className="text-muted-foreground mb-8 leading-relaxed">Built a custom campaign website enabling users to submit purchases and claim rewards effortlessly in J&K.</p>
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="glass rounded-lg p-4">
-                      <div className="text-primary font-display text-3xl font-bold">+<CountUp end={73} suffix="%" /></div>
-                      <p className="text-xs text-muted-foreground mt-1">Sales Growth</p>
+                    <div className="glass rounded-xl p-5">
+                      <div className="text-primary font-display text-4xl font-bold">+<CountUp end={73} suffix="%" /></div>
+                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">Sales Growth</p>
                     </div>
-                    <div className="glass rounded-lg p-4">
-                      <div className="text-primary font-display text-3xl font-bold">High</div>
-                      <p className="text-xs text-muted-foreground mt-1">Campaign Engagement</p>
+                    <div className="glass rounded-xl p-5">
+                      <div className="text-primary font-display text-4xl font-bold">High</div>
+                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">Engagement</p>
                     </div>
                   </div>
                 </div>
-                <div className="relative rounded-xl aspect-video overflow-hidden border border-border">
-                  <img src={servicesAds} alt="VIVO Campaign" className="w-full h-full object-cover opacity-60" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full glass flex items-center justify-center">
-                      <div className="w-0 h-0 border-l-[20px] border-l-primary border-y-[12px] border-y-transparent ml-1" />
-                    </div>
-                  </div>
+                <div className="relative h-72 md:h-auto overflow-hidden">
+                  <img src={servicesAds} alt="VIVO Campaign" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-card/40" />
                 </div>
               </div>
             </div>
           </ScrollReveal>
 
+          {/* Pushti */}
           <ScrollReveal>
-            <div className="glass rounded-2xl p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="md:order-2">
-                  <span className="text-primary text-sm font-semibold uppercase tracking-wider">Pushti Turf & Farms — 2025</span>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold mt-2 mb-4">Meta Ads + WhatsApp Funnel</h3>
-                  <p className="text-muted-foreground mb-6">High-performance Meta Ads integrated with WhatsApp funnel automation for massive launch turnout.</p>
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="glass rounded-lg p-4">
-                      <div className="text-primary font-display text-2xl font-bold"><CountUp end={1} suffix="M+" /></div>
-                      <p className="text-xs text-muted-foreground mt-1">Reach</p>
-                    </div>
-                    <div className="glass rounded-lg p-4">
-                      <div className="text-primary font-display text-2xl font-bold"><CountUp end={1000} suffix="+" /></div>
-                      <p className="text-xs text-muted-foreground mt-1">Leads</p>
-                    </div>
-                    <div className="glass rounded-lg p-4">
-                      <div className="text-primary font-display text-2xl font-bold">~<CountUp end={700} suffix="%" /></div>
-                      <p className="text-xs text-muted-foreground mt-1">ROAS</p>
-                    </div>
-                  </div>
+            <div className="glass rounded-3xl overflow-hidden border-shimmer">
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative h-72 md:h-auto overflow-hidden md:order-1">
+                  <img src={servicesContent} alt="Pushti Campaign" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/40" />
                 </div>
-                <div className="relative rounded-xl aspect-video overflow-hidden border border-border md:order-1">
-                  <img src={servicesContent} alt="Pushti Campaign" className="w-full h-full object-cover opacity-60" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full glass flex items-center justify-center">
-                      <div className="w-0 h-0 border-l-[20px] border-l-primary border-y-[12px] border-y-transparent ml-1" />
+                <div className="p-10 md:p-14 flex flex-col justify-center md:order-2">
+                  <span className="label-mono text-primary mb-4 block">Pushti Turf & Farms — 2025</span>
+                  <h3 className="font-display text-3xl md:text-4xl font-bold mb-5 leading-tight">Meta Ads + WhatsApp Funnel</h3>
+                  <p className="text-muted-foreground mb-8 leading-relaxed">High-performance Meta Ads integrated with WhatsApp funnel automation for massive launch turnout.</p>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="glass rounded-xl p-4">
+                      <div className="text-primary font-display text-2xl md:text-3xl font-bold"><CountUp end={1} suffix="M+" /></div>
+                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">Reach</p>
+                    </div>
+                    <div className="glass rounded-xl p-4">
+                      <div className="text-primary font-display text-2xl md:text-3xl font-bold"><CountUp end={1000} suffix="+" /></div>
+                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">Leads</p>
+                    </div>
+                    <div className="glass rounded-xl p-4">
+                      <div className="text-primary font-display text-2xl md:text-3xl font-bold">~<CountUp end={700} suffix="%" /></div>
+                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">ROAS</p>
                     </div>
                   </div>
                 </div>
@@ -252,50 +281,55 @@ const Index = () => {
           </ScrollReveal>
 
           <div className="text-center mt-16">
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/case-studies" className="gap-2">View All Case Studies <ArrowRight size={16} /></Link>
+            <Button variant="outline" size="lg" className="rounded-full border-border/50 hover:border-primary/30 gap-2 group" asChild>
+              <Link to="/case-studies">
+                View All Case Studies
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* How We Work */}
-      <section className="py-24 relative overflow-hidden section-texture-alt">
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+      <section className="py-28 relative overflow-hidden section-texture-alt">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-16">Our 3-Step Growth Framework</h2>
+            <p className="label-mono text-primary text-center mb-4">Our Process</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Our 3-Step Growth Framework</h2>
           </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               { step: "01", title: "Discovery & Strategy", desc: "We analyze your market, competitors, audience psychology, and growth bottlenecks. Then we design a system tailored to your business." },
               { step: "02", title: "Implementation", desc: "Campaigns go live. Assets are deployed. Funnels are optimized. Every component works together." },
               { step: "03", title: "Optimization & Scale", desc: "AI insights + human judgment = continuous improvement. We scale what performs and eliminate inefficiencies." },
             ].map((s, i) => (
               <ScrollReveal key={s.step} delay={i * 0.15}>
-                <div className="text-center glass rounded-2xl p-8 card-hover-lift">
-                  <div className="text-primary font-display text-5xl font-bold mb-4">{s.step}</div>
-                  <h3 className="font-display text-xl font-bold mb-3">{s.title}</h3>
-                  <p className="text-muted-foreground text-sm">{s.desc}</p>
+                <div className="text-center glass rounded-2xl p-10 card-hover-lift border-shimmer h-full">
+                  <div className="text-primary/30 font-display text-7xl font-bold mb-6">{s.step}</div>
+                  <h3 className="font-display text-xl font-bold mb-4">{s.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
           </div>
           <ScrollReveal>
-            <p className="text-center text-muted-foreground mt-12 text-sm italic">Growth is engineered — not hoped for.</p>
+            <p className="text-center text-muted-foreground/50 mt-16 text-sm italic font-display">Growth is engineered — not hoped for.</p>
           </ScrollReveal>
         </div>
       </section>
 
       {/* Why Us */}
-      <section className="py-24 relative overflow-hidden section-texture">
-        <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="floating-orb w-[300px] h-[300px] bottom-0 right-0" />
+      <section className="py-28 relative overflow-hidden section-texture">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
+        <div className="floating-orb w-[400px] h-[400px] bottom-0 right-0" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-16">Why Brands Choose DigitalEditz</h2>
+            <p className="label-mono text-primary text-center mb-4">Why Us</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Why Brands Choose DigitalEditz</h2>
           </ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { icon: Eye, text: "People-led thinking, not automated guesswork" },
               { icon: Zap, text: "AI-assisted speed & precision" },
@@ -305,9 +339,11 @@ const Index = () => {
               { icon: Target, text: "Data that connects directly to revenue" },
             ].map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="flex items-start gap-4 p-6 rounded-xl glass hover:border-primary/30 transition-colors card-hover-lift">
-                  <item.icon className="text-primary shrink-0 mt-0.5" size={22} />
-                  <p className="text-sm font-medium text-secondary-foreground">{item.text}</p>
+                <div className="flex items-start gap-5 p-7 rounded-2xl glass hover:border-primary/20 transition-all duration-500 card-hover-lift border-shimmer">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <item.icon className="text-primary" size={18} />
+                  </div>
+                  <p className="text-sm font-medium text-secondary-foreground leading-relaxed">{item.text}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -316,25 +352,26 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 relative overflow-hidden section-texture-alt">
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+      <section className="py-28 relative overflow-hidden section-texture-alt">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-16">What Our Clients Say</h2>
+            <p className="label-mono text-primary text-center mb-4">Testimonials</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">What Our Clients Say</h2>
           </ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {testimonials.map((t, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="glass rounded-xl p-6 h-full flex flex-col card-hover-lift">
-                  <div className="flex gap-0.5 mb-4">
+                <div className="glass rounded-2xl p-7 h-full flex flex-col card-hover-lift border-shimmer">
+                  <div className="flex gap-1 mb-5">
                     {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} size={14} className="fill-primary text-primary" />
+                      <Star key={j} size={12} className="fill-primary text-primary" />
                     ))}
                   </div>
-                  <p className="text-sm text-secondary-foreground mb-4 flex-1">"{t.text}"</p>
-                  <div>
+                  <p className="text-sm text-secondary-foreground/80 mb-6 flex-1 leading-relaxed italic">"{t.text}"</p>
+                  <div className="pt-4 border-t border-border/30">
                     <p className="text-sm font-semibold">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.company}</p>
+                    <p className="text-xs text-muted-foreground/60 label-mono mt-1">{t.company}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -344,18 +381,19 @@ const Index = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 relative overflow-hidden section-texture">
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+      <section className="py-28 relative overflow-hidden section-texture">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
         <div className="container max-w-3xl relative z-10">
           <ScrollReveal>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+            <p className="label-mono text-primary text-center mb-4">FAQ</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Frequently Asked Questions</h2>
           </ScrollReveal>
           <ScrollReveal>
             <Accordion type="single" collapsible className="space-y-3">
               {faqs.map((f, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="glass rounded-xl px-6">
-                  <AccordionTrigger className="text-sm font-semibold hover:no-underline">{f.q}</AccordionTrigger>
-                  <AccordionContent className="text-sm text-muted-foreground">{f.a}</AccordionContent>
+                <AccordionItem key={i} value={`faq-${i}`} className="glass rounded-2xl px-7 border-shimmer border-none">
+                  <AccordionTrigger className="text-sm font-semibold hover:no-underline py-6">{f.q}</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-6">{f.a}</AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
+import caseStudiesHero from "@/assets/case-studies-hero.jpg";
 import servicesAds from "@/assets/services-ads.jpg";
 import servicesContent from "@/assets/services-content.jpg";
 import servicesSystems from "@/assets/services-systems.jpg";
@@ -83,67 +84,77 @@ const caseStudies = [
 const CaseStudies = () => (
   <div className="min-h-screen bg-background">
     <Navbar />
-    <section className="pt-32 pb-24 relative overflow-hidden">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
-      <div className="floating-orb w-[400px] h-[400px] top-20 -left-40" />
+    
+    {/* Hero */}
+    <section className="pt-32 pb-20 relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={caseStudiesHero} alt="" className="w-full h-full object-cover opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background" />
+      </div>
+      <div className="absolute inset-0 grid-pattern opacity-15" />
+      <div className="floating-orb w-[500px] h-[500px] top-20 -left-40" />
       <div className="container relative z-10">
         <ScrollReveal>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-center mb-4">
-            Real Results. <span className="text-gradient">Measurable Growth.</span>
+          <p className="label-mono text-primary text-center mb-4">Case Studies</p>
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-center mb-6 leading-[1.1]">
+            Real Results.{" "}
+            <span className="text-gradient">Measurable Growth.</span>
           </h1>
-          <p className="text-muted-foreground text-center max-w-xl mx-auto mb-20">
+          <p className="text-muted-foreground text-center max-w-xl mx-auto text-lg">
             Every number here is earned, not estimated.
           </p>
         </ScrollReveal>
+      </div>
+    </section>
 
-        <div className="space-y-16">
-          {caseStudies.map((cs, i) => (
-            <ScrollReveal key={i}>
-              <div className="glass rounded-2xl overflow-hidden">
-                <div className={`grid md:grid-cols-5 gap-0 ${i % 2 === 1 ? 'direction-rtl' : ''}`}>
-                  {/* Image side */}
-                  <div className={`md:col-span-2 relative h-64 md:h-auto ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-                    <img src={cs.image} alt={cs.title} className="absolute inset-0 w-full h-full object-cover" />
-                    <div className={`absolute inset-0 ${i % 2 === 1 ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-transparent to-card/80 hidden md:block`} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent md:hidden" />
+    {/* Case Studies */}
+    <section className="pb-28">
+      <div className="container space-y-8">
+        {caseStudies.map((cs, i) => (
+          <ScrollReveal key={i}>
+            <div className="glass rounded-3xl overflow-hidden border-shimmer">
+              <div className="grid md:grid-cols-5 gap-0">
+                {/* Image side */}
+                <div className={`md:col-span-2 relative h-64 md:h-auto ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+                  <img src={cs.image} alt={cs.title} className="absolute inset-0 w-full h-full object-cover" />
+                  <div className={`absolute inset-0 ${i % 2 === 1 ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-transparent to-card/60 hidden md:block`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent md:hidden" />
+                </div>
+
+                {/* Content side */}
+                <div className={`md:col-span-3 p-8 md:p-12 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
+                  <span className="label-mono text-primary">{cs.tag}</span>
+                  <h2 className="font-display text-2xl md:text-3xl font-bold mt-3 mb-7">{cs.title}</h2>
+                  <div className="grid sm:grid-cols-3 gap-6 mb-8">
+                    {[
+                      { label: "Problem", text: cs.problem },
+                      { label: "Strategy", text: cs.strategy },
+                      { label: "Execution", text: cs.execution },
+                    ].map((item) => (
+                      <div key={item.label}>
+                        <h4 className="label-mono text-primary/70 mb-2">{item.label}</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+                      </div>
+                    ))}
                   </div>
-
-                  {/* Content side */}
-                  <div className={`md:col-span-3 p-8 md:p-12 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
-                    <span className="text-primary text-sm font-semibold uppercase tracking-wider">{cs.tag}</span>
-                    <h2 className="font-display text-2xl md:text-3xl font-bold mt-2 mb-6">{cs.title}</h2>
-                    <div className="grid sm:grid-cols-3 gap-4 mb-8">
-                      <div>
-                        <h4 className="font-display font-semibold text-sm text-primary mb-2">Problem</h4>
-                        <p className="text-sm text-muted-foreground">{cs.problem}</p>
-                      </div>
-                      <div>
-                        <h4 className="font-display font-semibold text-sm text-primary mb-2">Strategy</h4>
-                        <p className="text-sm text-muted-foreground">{cs.strategy}</p>
-                      </div>
-                      <div>
-                        <h4 className="font-display font-semibold text-sm text-primary mb-2">Execution</h4>
-                        <p className="text-sm text-muted-foreground">{cs.execution}</p>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap gap-4">
-                      {cs.kpis.map((kpi, j) => (
-                        <div key={j} className="glass rounded-xl px-6 py-4">
-                          <div className="text-primary font-display text-3xl font-bold">
-                            {kpi.prefix || ""}{kpi.value > 0 ? <CountUp end={kpi.value} suffix={kpi.suffix} /> : kpi.suffix}
-                          </div>
-                          <p className="text-xs text-muted-foreground mt-1">{kpi.label}</p>
+                  <div className="flex flex-wrap gap-4">
+                    {cs.kpis.map((kpi, j) => (
+                      <div key={j} className="glass rounded-xl px-6 py-4 border-shimmer">
+                        <div className="text-primary font-display text-3xl font-bold">
+                          {kpi.prefix || ""}{kpi.value > 0 ? <CountUp end={kpi.value} suffix={kpi.suffix} /> : kpi.suffix}
                         </div>
-                      ))}
-                    </div>
+                        <p className="text-xs text-muted-foreground/60 mt-1 label-mono">{kpi.label}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
+            </div>
+          </ScrollReveal>
+        ))}
       </div>
     </section>
+
     <CTASection />
     <Footer />
   </div>
