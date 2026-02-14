@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ChevronDown, Star, Target, Zap, BarChart3, Eye, Shield, Cpu, ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
+import { ChevronDown, Target, Zap, BarChart3, Eye, Shield, Cpu, ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
 import CTASection from "@/components/CTASection";
+import ClientMarquee from "@/components/ClientMarquee";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import {
   Accordion,
   AccordionContent,
@@ -17,14 +19,6 @@ import heroBg from "@/assets/hero-bg.jpg";
 import servicesAds from "@/assets/services-ads.jpg";
 import servicesContent from "@/assets/services-content.jpg";
 import servicesSystems from "@/assets/services-systems.jpg";
-
-const clients = [
-  "VIVO", "MOS P&D Usman Majid", "SKAUST", "Kapahi Properties",
-  "Vishwa Guru Bharat Trust", "Muscle Matrix Gym", "Aditya Astro",
-  "Kashmir Ply Co.", "Kashi Tours", "Zivara Mart", "Tukra Industries",
-  "K.K Collections", "Khalis Oil", "Ceefle Ventures", "Noor",
-  "Shivika Infra", "SS Consultants", "Ar. Naveen Vij",
-];
 
 const services = [
   {
@@ -53,13 +47,6 @@ const services = [
   },
 ];
 
-const testimonials = [
-  { name: "Business Owner", company: "Pushti Turf", text: "DigitalEditz transformed our launch campaign into a record-breaking event. The ROI exceeded expectations.", rating: 5 },
-  { name: "Real Estate Client", company: "Kapahi Properties", text: "Their WhatsApp funnel strategy changed how we generate leads.", rating: 5 },
-  { name: "Brand Director", company: "Kashmir Ply Co", text: "Professional, data-driven, and creative. Highly recommended.", rating: 5 },
-  { name: "Campaign Manager", company: "Government Project", text: "Exceptional digital strategy and execution. Engagement numbers were unprecedented.", rating: 5 },
-];
-
 const faqs = [
   { q: "How do you use AI in campaigns?", a: "AI assists in creative testing, budget optimization, audience expansion, data analysis, and performance forecasting. Final strategic decisions are always human-led." },
   { q: "What industries do you work with?", a: "Real estate, retail, government institutions, political campaigns, service businesses, gyms, e-commerce, and growing brands." },
@@ -76,7 +63,6 @@ const Index = () => {
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background layers */}
         <div className="absolute inset-0">
           <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
@@ -85,7 +71,7 @@ const Index = () => {
         <div className="absolute inset-0 grid-pattern opacity-20" />
         <div className="floating-orb w-[500px] h-[500px] top-1/4 -left-40 animate-float" />
         <div className="floating-orb w-[400px] h-[400px] bottom-1/4 -right-40 animate-float" style={{ animationDelay: '3s' }} />
-        
+
         <div className="container relative z-10 pt-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -99,7 +85,7 @@ const Index = () => {
                 AI-Powered Growth Partner
               </span>
             </div>
-            
+
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8 text-center">
               We Build Growth{" "}
               <br className="hidden md:block" />
@@ -108,11 +94,11 @@ const Index = () => {
               <br className="hidden md:block" />
               Campaigns.</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 text-center leading-relaxed">
               People-led strategy. AI-driven execution. We scale brands through intelligent systems, performance marketing, and data that actually moves revenue.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button size="lg" className="text-base font-semibold px-10 py-7 rounded-full glow-accent-strong group gap-2">
                 Book a Free Discovery Call
@@ -122,13 +108,13 @@ const Index = () => {
                 <Link to="/case-studies">View Case Studies</Link>
               </Button>
             </div>
-            
+
             <p className="text-center text-xs text-muted-foreground/60 max-w-lg mx-auto label-mono leading-relaxed">
               Backed by marketers who've executed campaigns for Indigo, Urban Company, Royal Enfield, M3M, Grab, LT Foods & Aha OTT.
             </p>
           </motion.div>
         </div>
-        
+
         <motion.div
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
           animate={{ y: [0, 8, 0] }}
@@ -149,27 +135,8 @@ const Index = () => {
         <div className="divider-glow" />
       </section>
 
-      {/* Clients — Marquee style */}
-      <section className="py-28 relative overflow-hidden section-texture">
-        <div className="absolute inset-0 grid-pattern opacity-15" />
-        <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">Our Clients</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">
-              Brands We've Scaled
-            </h2>
-          </ScrollReveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {clients.map((c, i) => (
-              <ScrollReveal key={c} delay={i * 0.02}>
-                <div className="glass rounded-xl p-5 text-center text-sm font-medium text-secondary-foreground/80 hover:text-primary hover:border-primary/20 transition-all duration-500 cursor-default card-hover-lift border-shimmer">
-                  {c}
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Clients Marquee */}
+      <ClientMarquee />
 
       {/* Services */}
       <section className="py-28 relative overflow-hidden section-texture-alt">
@@ -222,7 +189,6 @@ const Index = () => {
             <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Featured Case Studies</h2>
           </ScrollReveal>
 
-          {/* VIVO */}
           <ScrollReveal>
             <div className="glass rounded-3xl overflow-hidden mb-8 border-shimmer">
               <div className="grid md:grid-cols-2 gap-0">
@@ -249,7 +215,6 @@ const Index = () => {
             </div>
           </ScrollReveal>
 
-          {/* Pushti */}
           <ScrollReveal>
             <div className="glass rounded-3xl overflow-hidden border-shimmer">
               <div className="grid md:grid-cols-2 gap-0">
@@ -352,33 +317,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-28 relative overflow-hidden section-texture-alt">
-        <div className="absolute inset-0 grid-pattern opacity-15" />
-        <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">Testimonials</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">What Our Clients Say</h2>
-          </ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {testimonials.map((t, i) => (
-              <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="glass rounded-2xl p-7 h-full flex flex-col card-hover-lift border-shimmer">
-                  <div className="flex gap-1 mb-5">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} size={12} className="fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-secondary-foreground/80 mb-6 flex-1 leading-relaxed italic">"{t.text}"</p>
-                  <div className="pt-4 border-t border-border/30">
-                    <p className="text-sm font-semibold">{t.name}</p>
-                    <p className="text-xs text-muted-foreground/60 label-mono mt-1">{t.company}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       {/* FAQ */}
       <section className="py-28 relative overflow-hidden section-texture">
