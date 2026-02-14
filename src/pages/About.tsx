@@ -4,6 +4,7 @@ import CTASection from "@/components/CTASection";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Check } from "lucide-react";
 import aboutHero from "@/assets/about-hero.jpg";
+import ClientMarquee from "@/components/ClientMarquee";
 
 const About = () => (
   <div className="min-h-screen bg-background">
@@ -70,6 +71,7 @@ const About = () => (
       </div>
     </section>
 
+                 <ClientMarquee />
     <CTASection />
     <Footer />
   </div>

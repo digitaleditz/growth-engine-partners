@@ -90,18 +90,18 @@ const CaseStudies = () => (
     <Navbar />
     
     {/* Hero */}
-    <section className="pt-32 pb-20 relative overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img src={caseStudiesHero} alt="" className="w-full h-full object-cover opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background" />
       </div>
       <div className="absolute inset-0 grid-pattern opacity-15" />
       <div className="floating-orb w-[500px] h-[500px] top-20 -left-40" />
-      <div className="container relative z-10">
+      <div className="container relative z-10 pt-20">
         <ScrollReveal>
           <p className="label-mono text-primary text-center mb-4">Case Studies</p>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-center mb-6 leading-[1.1]">
-            Real Results.{" "}
+            Real Results.{" "} <br />
             <span className="text-gradient">Measurable Growth.</span>
           </h1>
           <p className="text-muted-foreground text-center max-w-xl mx-auto text-lg">

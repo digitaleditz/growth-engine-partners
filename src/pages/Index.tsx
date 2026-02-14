@@ -1,6 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ChevronDown, Target, Zap, BarChart3, Eye, Shield, Cpu, ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
+import {
+  ChevronDown,
+  Target,
+  Zap,
+  BarChart3,
+  Eye,
+  Shield,
+  Cpu,
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
@@ -15,17 +26,25 @@ import {
 } from "@/components/ui/accordion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import heroBg from "@/assets/hero-bg.jpg";
+
+import heroVideo from "@/assets/hero-video.mp4";
 import servicesAds from "@/assets/services-ads.jpg";
 import servicesContent from "@/assets/services-content.jpg";
 import servicesSystems from "@/assets/services-systems.jpg";
+
+import { useEffect, useRef } from "react";
 
 const services = [
   {
     title: "Performance Marketing",
     icon: Target,
     image: servicesAds,
-    items: ["Paid Media (Meta, Google, LinkedIn)", "AI Performance Ads Optimization", "AI UGC Ad Creation", "ROAS & CPL Tracking"],
+    items: [
+      "Paid Media (Meta, Google, LinkedIn)",
+      "AI Performance Ads Optimization",
+      "AI UGC Ad Creation",
+      "ROAS & CPL Tracking",
+    ],
     desc: "AI-driven ad ecosystems that optimize themselves for lower costs and higher leads.",
     label: "01",
   },
@@ -33,7 +52,12 @@ const services = [
     title: "Social Media Marketing",
     icon: Zap,
     image: servicesContent,
-    items: ["AI Content Engine (Reels, Carousels, Hooks)", "Competitor Intelligence Reports", "Creative Direction & Positioning", "Community Building"],
+    items: [
+      "AI Content Engine (Reels, Carousels, Hooks)",
+      "Competitor Intelligence Reports",
+      "Creative Direction & Positioning",
+      "Community Building",
+    ],
     desc: "We don't post content. We engineer relevance.",
     label: "02",
   },
@@ -41,22 +65,69 @@ const services = [
     title: "Web/App Development",
     icon: Cpu,
     image: servicesSystems,
-    items: ["High-converting Websites", "Landing Pages & Funnels", "Custom CRM & Automation", "AI Chatbot Integration"],
+    items: [
+      "High-converting Websites",
+      "Landing Pages & Funnels",
+      "Custom CRM & Automation",
+      "AI Chatbot Integration",
+    ],
     desc: "Ads bring traffic. Systems convert it.",
     label: "03",
   },
 ];
 
 const faqs = [
-  { q: "How do you use AI in campaigns?", a: "AI assists in creative testing, budget optimization, audience expansion, data analysis, and performance forecasting. Final strategic decisions are always human-led." },
-  { q: "What industries do you work with?", a: "Real estate, retail, government institutions, political campaigns, service businesses, gyms, e-commerce, and growing brands." },
-  { q: "What is your minimum engagement?", a: "We typically work with businesses ready to invest in consistent growth, not one-time experiments." },
-  { q: "Do you offer custom software solutions?", a: "Yes. From websites to CRMs and automation dashboards, we build scalable digital systems." },
-  { q: "What makes you different from other agencies?", a: "We build systems that scale, not campaigns that expire." },
-  { q: "Do you work with startups?", a: "Yes, if they are ready to commit to a systematic growth approach and have a clear product-market direction." },
+  {
+    q: "How do you use AI in campaigns?",
+    a: "AI assists in creative testing, budget optimization, audience expansion, data analysis, and performance forecasting. Final strategic decisions are always human-led.",
+  },
+  {
+    q: "What industries do you work with?",
+    a: "Real estate, retail, government institutions, political campaigns, service businesses, gyms, e-commerce, and growing brands.",
+  },
+  {
+    q: "What is your minimum engagement?",
+    a: "We typically work with businesses ready to invest in consistent growth, not one-time experiments.",
+  },
+  {
+    q: "Do you offer custom software solutions?",
+    a: "Yes. From websites to CRMs and automation dashboards, we build scalable digital systems.",
+  },
+  {
+    q: "What makes you different from other agencies?",
+    a: "We build systems that scale, not campaigns that expire.",
+  },
+  {
+    q: "Do you work with startups?",
+    a: "Yes, if they are ready to commit to a systematic growth approach and have a clear product-market direction.",
+  },
 ];
 
 const Index = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const attemptPlay = () => {
+      video.play().catch(() => {});
+    };
+
+    attemptPlay();
+
+    const handleScroll = () => {
+      attemptPlay();
+      window.removeEventListener("scroll", handleScroll);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -64,13 +135,26 @@ const Index = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
+          <video
+            ref={videoRef}
+            src={heroVideo}
+            muted
+            loop
+            playsInline
+            autoPlay
+            preload="auto"
+            className="w-full h-full object-cover brightness-75"
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
         </div>
+
         <div className="absolute inset-0 grid-pattern opacity-20" />
         <div className="floating-orb w-[500px] h-[500px] top-1/4 -left-40 animate-float" />
-        <div className="floating-orb w-[400px] h-[400px] bottom-1/4 -right-40 animate-float" style={{ animationDelay: '3s' }} />
+        <div
+          className="floating-orb w-[400px] h-[400px] bottom-1/4 -right-40 animate-float"
+          style={{ animationDelay: "3s" }}
+        />
 
         <div className="container relative z-10 pt-20">
           <motion.div
@@ -87,30 +171,45 @@ const Index = () => {
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8 text-center">
-              We Build Growth{" "}
-              <br className="hidden md:block" />
-              Engines / {" "}
-              <span className="text-gradient">Not Just{" "}
-              <br className="hidden md:block" />
-              Campaigns.</span>
+              We Build Growth <br className="hidden md:block" />
+              Engines /{" "}
+              <span className="text-gradient">
+                Not Just <br className="hidden md:block" />
+                Campaigns.
+              </span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 text-center leading-relaxed">
-              People-led strategy. AI-driven execution. We scale brands through intelligent systems, performance marketing, and data that actually moves revenue.
+              People-led strategy. AI-driven execution. We scale brands through
+              intelligent systems, performance marketing, and data that actually
+              moves revenue.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button size="lg" className="text-base font-semibold px-10 py-7 rounded-full glow-accent-strong group gap-2">
+              <Button
+                size="lg"
+                className="text-base font-semibold px-10 py-7 rounded-full glow-accent-strong group gap-2"
+              >
                 Book a Free Discovery Call
-                <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
               </Button>
-              <Button size="lg" variant="outline" className="text-base font-semibold px-10 py-7 rounded-full border-border/50 hover:border-primary/30" asChild>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base font-semibold px-10 py-7 rounded-full border-border/50 hover:border-primary/30"
+                asChild
+              >
                 <Link to="/case-studies">View Case Studies</Link>
               </Button>
             </div>
 
             <p className="text-center text-xs text-muted-foreground/60 max-w-lg mx-auto label-mono leading-relaxed">
-              Backed by marketers who've executed campaigns for Indigo, Urban Company, Royal Enfield, M3M and more...
+              Backed by marketers who've executed campaigns for Indigo, Urban
+              Company, Royal Enfield, M3M and more...
             </p>
           </motion.div>
         </div>
@@ -124,20 +223,7 @@ const Index = () => {
         </motion.div>
       </section>
 
-      {/* Credibility Strip */}
-      <section className="py-5 relative">
-        <div className="divider-glow" />
-        <div className="container text-center py-3">
-          <p className="label-mono text-muted-foreground/50">
-            Trusted by brands, institutions, and high-growth businesses across India
-          </p>
-        </div>
-        <div className="divider-glow" />
-      </section>
-
-      {/* Clients Marquee */}
       <ClientMarquee />
-
       {/* Services */}
       <section className="py-28 relative overflow-hidden section-texture-alt">
         <div className="absolute inset-0 grid-pattern opacity-15" />
@@ -315,31 +401,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Testimonials */}
       <TestimonialsSection />
-
-      {/* FAQ */}
-      <section className="py-28 relative overflow-hidden section-texture">
-        <div className="absolute inset-0 grid-pattern opacity-15" />
-        <div className="container max-w-3xl relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">FAQ</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Frequently Asked Questions</h2>
-          </ScrollReveal>
-          <ScrollReveal>
-            <Accordion type="single" collapsible className="space-y-3">
-              {faqs.map((f, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="glass rounded-2xl px-7 border-shimmer border-none">
-                  <AccordionTrigger className="text-sm font-semibold hover:no-underline py-6">{f.q}</AccordionTrigger>
-                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-6">{f.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </ScrollReveal>
-        </div>
-      </section>
-
       <CTASection />
       <Footer />
     </div>

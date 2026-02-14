@@ -3,11 +3,15 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
-import { Check, Zap, Video, PenTool, BarChart3, Search, Code2, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
+
+import { Check, Zap, Eye,Video, PenTool, BarChart3, Search, Code2, ArrowUpRight, Shield, Cpu, Target } from "lucide-react";
 import servicesAds from "@/assets/services-ads.jpg";
 import servicesUgc from "@/assets/services-ugc.jpg";
 import servicesContent from "@/assets/services-content.jpg";
 import servicesSystems from "@/assets/services-systems.jpg";
+import caseStudiesHero from "@/assets/case-studies-hero.jpg";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
 const categories = [
   {
@@ -31,7 +35,7 @@ const categories = [
           "Weekly AI-based optimization report",
           "ROAS / CPL improvement tracking",
         ],
-        pricing: "₹15k – ₹50k+/month",
+        pricing: "+ $500",
       },
       {
         icon: Video,
@@ -50,7 +54,7 @@ const categories = [
           "Reels + Ads versions",
           "Hook testing set (3–5 hooks/video)",
         ],
-        pricing: "₹25k – ₹1L/month",
+        pricing: "+ $350",
       },
     ],
   },
@@ -76,7 +80,7 @@ const categories = [
           "5 ad creatives",
           "Posting calendar",
         ],
-        pricing: "₹12k – ₹50k/month",
+        pricing: "+ $200",
       },
       {
         icon: Search,
@@ -95,7 +99,7 @@ const categories = [
           "Content ideas",
           "Ad suggestions",
         ],
-        pricing: "₹10k – ₹40k/report",
+        pricing: "+ $119",
       },
     ],
   },
@@ -123,7 +127,7 @@ const categories = [
           "Admin dashboard",
           "Payment & API integrations",
         ],
-        pricing: "₹25k – ₹2.5L+",
+        pricing: "+ $250",
       },
       {
         icon: BarChart3,
@@ -143,7 +147,7 @@ const categories = [
           "Conversion-focused layouts",
           "Before/after metrics",
         ],
-        pricing: "₹30k – ₹80k/project",
+        pricing: "+ $149",
       },
     ],
   },
@@ -154,7 +158,11 @@ const Packages = () => (
     <Navbar />
 
     {/* Hero */}
-    <section className="pt-32 pb-20 relative overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={caseStudiesHero} alt="" className="w-full h-full object-cover opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background" />
+      </div>
       <div className="absolute inset-0 section-texture" />
       <div className="absolute inset-0 grid-pattern opacity-15" />
       <div className="floating-orb w-[500px] h-[500px] top-20 right-0" />
@@ -162,7 +170,7 @@ const Packages = () => (
         <ScrollReveal>
           <p className="label-mono text-primary text-center mb-4">Our Services</p>
           <h1 className="font-display text-5xl md:text-7xl font-bold text-center mb-6 leading-[1.1]">
-            Growth Packages{" "}
+            Growth Packages{" "} <br />
             <span className="text-gradient">Built for Scale</span>
           </h1>
           <p className="text-muted-foreground text-center max-w-2xl mx-auto text-lg">
@@ -174,7 +182,7 @@ const Packages = () => (
 
     {/* Service Categories */}
     {categories.map((cat, ci) => (
-      <section key={ci} className={`py-20 relative overflow-hidden ${ci % 2 === 0 ? 'section-texture' : 'section-texture-alt'}`}>
+      <section key={ci} className={`py-10 relative overflow-hidden ${ci % 2 === 0 ? 'section-texture' : 'section-texture-alt'}`}>
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="container relative z-10">
           <ScrollReveal>
@@ -258,7 +266,6 @@ const Packages = () => (
         </div>
       </section>
     ))}
-
     {/* Discovery CTA */}
     <ScrollReveal>
       <section className="py-20">
@@ -282,8 +289,42 @@ const Packages = () => (
         </div>
       </section>
     </ScrollReveal>
+     {/* Why Us */}
+      <section className="py-28 relative overflow-hidden section-texture">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
+        <div className="floating-orb w-[400px] h-[400px] bottom-0 right-0" />
+        <div className="container relative z-10">
+          <ScrollReveal>
+            <p className="label-mono text-primary text-center mb-4">Why Us</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Why Brands Choose DigitalEditz</h2>
+          </ScrollReveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { icon: Eye, text: "People-led thinking, not automated guesswork" },
+              { icon: Zap, text: "AI-assisted speed & precision" },
+              { icon: BarChart3, text: "Transparent performance reporting" },
+              { icon: Shield, text: "Institutional & enterprise experience" },
+              { icon: Cpu, text: "Systems-first approach to growth" },
+              { icon: Target, text: "Data that connects directly to revenue" },
+            ].map((item, i) => (
+              <ScrollReveal key={i} delay={i * 0.08}>
+                <div className="flex items-start gap-5 p-7 rounded-2xl glass hover:border-primary/20 transition-all duration-500 card-hover-lift border-shimmer">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <item.icon className="text-primary" size={18} />
+                  </div>
+                  <p className="text-sm font-medium text-secondary-foreground leading-relaxed">{item.text}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+          {/* Testimonials */}
+      <TestimonialsSection />
+    
 
     {/* <CTASection /> */}
+    <CTASection />
     <Footer />
   </div>
 );
