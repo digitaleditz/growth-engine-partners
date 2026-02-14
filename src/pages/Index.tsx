@@ -30,6 +30,9 @@ import Footer from "@/components/Footer";
 import heroVideo from "@/assets/hero-video.mp4";
 import servicesAds from "@/assets/services-ads.jpg";
 import servicesContent from "@/assets/services-content.jpg";
+
+import vivocase from "@/assets/clients/vivo_1.png";
+import pushticase from "@/assets/clients/pushti_1.png";
 import servicesSystems from "@/assets/services-systems.jpg";
 
 import { useEffect, useRef } from "react";
@@ -294,7 +297,7 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="relative h-72 md:h-auto overflow-hidden">
-                  <img src={servicesAds} alt="VIVO Campaign" className="w-full h-full object-cover" />
+                  <img src={vivocase} alt="VIVO Campaign" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-l from-transparent to-card/40" />
                 </div>
               </div>
@@ -305,7 +308,7 @@ const Index = () => {
             <div className="glass rounded-3xl overflow-hidden border-shimmer">
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative h-72 md:h-auto overflow-hidden md:order-1">
-                  <img src={servicesContent} alt="Pushti Campaign" className="w-full h-full object-cover" />
+                  <img src={pushticase} alt="Pushti Campaign" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/40" />
                 </div>
                 <div className="p-10 md:p-14 flex flex-col justify-center md:order-2">
