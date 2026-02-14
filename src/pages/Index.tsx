@@ -89,7 +89,7 @@ const Index = () => {
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8 text-center">
               We Build Growth{" "}
               <br className="hidden md:block" />
-              Engines —{" "}
+              Engines / {" "}
               <span className="text-gradient">Not Just{" "}
               <br className="hidden md:block" />
               Campaigns.</span>
@@ -110,7 +110,7 @@ const Index = () => {
             </div>
 
             <p className="text-center text-xs text-muted-foreground/60 max-w-lg mx-auto label-mono leading-relaxed">
-              Backed by marketers who've executed campaigns for Indigo, Urban Company, Royal Enfield, M3M, Grab, LT Foods & Aha OTT.
+              Backed by marketers who've executed campaigns for Indigo, Urban Company, Royal Enfield, M3M and more...
             </p>
           </motion.div>
         </div>

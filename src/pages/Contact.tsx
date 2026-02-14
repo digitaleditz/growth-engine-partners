@@ -91,7 +91,7 @@ const Contact = () => (
         </div>
       </div>
     </section>
-    <CTASection />
+    {/* <CTASection /> */}
     <Footer />
   </div>
 );

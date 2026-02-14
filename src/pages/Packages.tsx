@@ -283,7 +283,7 @@ const Packages = () => (
       </section>
     </ScrollReveal>
 
-    <CTASection />
+    {/* <CTASection /> */}
     <Footer />
   </div>
 );

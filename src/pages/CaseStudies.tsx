@@ -8,6 +8,10 @@ import servicesAds from "@/assets/services-ads.jpg";
 import servicesContent from "@/assets/services-content.jpg";
 import servicesSystems from "@/assets/services-systems.jpg";
 import servicesUgc from "@/assets/services-ugc.jpg";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { ChevronDown, Target, Zap, BarChart3, Eye, Shield, Cpu, ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
+
+
 
 const caseStudies = [
   {
@@ -154,6 +158,39 @@ const CaseStudies = () => (
         ))}
       </div>
     </section>
+    {/* Why Us */}
+      <section className="py-28 relative overflow-hidden section-texture">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
+        <div className="floating-orb w-[400px] h-[400px] bottom-0 right-0" />
+        <div className="container relative z-10">
+          <ScrollReveal>
+            <p className="label-mono text-primary text-center mb-4">Why Us</p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Why Brands Choose DigitalEditz</h2>
+          </ScrollReveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { icon: Eye, text: "People-led thinking, not automated guesswork" },
+              { icon: Zap, text: "AI-assisted speed & precision" },
+              { icon: BarChart3, text: "Transparent performance reporting" },
+              { icon: Shield, text: "Institutional & enterprise experience" },
+              { icon: Cpu, text: "Systems-first approach to growth" },
+              { icon: Target, text: "Data that connects directly to revenue" },
+            ].map((item, i) => (
+              <ScrollReveal key={i} delay={i * 0.08}>
+                <div className="flex items-start gap-5 p-7 rounded-2xl glass hover:border-primary/20 transition-all duration-500 card-hover-lift border-shimmer">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <item.icon className="text-primary" size={18} />
+                  </div>
+                  <p className="text-sm font-medium text-secondary-foreground leading-relaxed">{item.text}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+         {/* Testimonials */}
+      <TestimonialsSection />
 
     <CTASection />
     <Footer />
