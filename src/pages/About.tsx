@@ -39,7 +39,7 @@ const About = () => (
             <p>
               Our marketers have hands-on experience executing campaigns for{" "}
               <span className="text-primary font-medium">Indigo, Urban Company, Royal Enfield, M3M, Grab, LT Foods, and Aha OTT</span>{" "}
-              — bringing enterprise-level thinking to every project.
+              , bringing enterprise-level thinking to every project.
             </p>
           </div>
         </ScrollReveal>

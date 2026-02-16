@@ -280,10 +280,24 @@ const Packages = () => (
               <p className="text-muted-foreground mb-8 max-w-md mx-auto">
                 Book a free discovery call and we'll design a tailored growth roadmap for your business.
               </p>
-              <Button size="lg" className="font-semibold px-10 py-7 rounded-full glow-accent-strong gap-2 group">
-                Book a Free Discovery Call
-                <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </Button>
+              <div className="flex justify-center">
+  <a
+    href="https://calendly.com/digitaleditz01/free-discovery-call"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Button
+      size="lg"
+      className="font-semibold px-10 py-7 rounded-full glow-accent-strong gap-2 group"
+    >
+      Book a Free Discovery Call
+      <ArrowUpRight
+        size={16}
+        className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+      />
+    </Button>
+  </a>
+</div>
             </div>
           </div>
         </div>

@@ -63,10 +63,17 @@ const Navbar = () => {
               )}
             </Link>
           ))}
+          <a
+            href="https://calendly.com/digitaleditz01/free-discovery-call"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4"
+          >
           <Button size="sm" className="ml-4 font-semibold rounded-full glow-accent gap-1.5 group">
             Book a Call
             <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Button>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -100,7 +107,13 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="pt-3">
-              <Button className="w-full font-semibold rounded-full glow-accent">Book a Call</Button>
+              <a
+            href="https://calendly.com/digitaleditz01/free-discovery-call"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4"
+          >
+              <Button className="w-full font-semibold rounded-full glow-accent">Book a Call</Button></a>
             </div>
           </motion.div>
         )}
