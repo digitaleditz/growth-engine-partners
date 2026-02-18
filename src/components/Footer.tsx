@@ -21,8 +21,30 @@ const Footer = () => (
           </p>
         </div>
 
+
+        {/* explore tools */}
+        <div className="md:col-span-2">
+          <h4 className="label-mono text-muted-foreground mb-6">Products</h4>
+          <div className="space-y-3">
+            {[
+              { label: "Linkedin Analyzer", path: "https://linkedinanalyzer.digitaleditz.com/",
+               },{ label: "Instagram Insights", path: "https://iginsights.digitaleditz.com/",
+               }
+            ].map((l) => (
+              <Link
+                key={l.label}
+                to={l.path}
+                className="group flex items-center gap-1.5 text-sm text-secondary-foreground hover:text-primary transition-colors"
+              >
+                {l.label}
+                <ArrowUpRight size={12} className="opacity-0 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all" />
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* Navigate */}
-        <div className="md:col-span-3">
+        <div className="md:col-span-2">
           <h4 className="label-mono text-muted-foreground mb-6">Navigate</h4>
           <div className="space-y-3">
             {[
@@ -45,7 +67,7 @@ const Footer = () => (
         </div>
 
         {/* Contact */}
-        <div className="md:col-span-4">
+        <div className="md:col-span-2">
           <h4 className="label-mono text-muted-foreground mb-6">Get in Touch</h4>
           <div className="space-y-3 text-sm">
             <a href="#" className="flex items-center gap-3 text-secondary-foreground hover:text-primary transition-colors">
