@@ -88,45 +88,53 @@ serve(async (req) => {
     const packageText = packageName && packageName !== "Custom / Other" ? packageName : "Not specified";
 
     const emailHtml = `
-    <div style="background-color:#0a0a0f;padding:40px 20px;font-family:'Segoe UI',Arial,sans-serif;">
-      <div style="max-width:560px;margin:0 auto;background:linear-gradient(135deg,#111118 0%,#0d0d14 100%);border-radius:24px;border:1px solid rgba(59,194,248,0.15);overflow:hidden;">
-        <div style="padding:40px 36px 20px;">
-          <div style="text-align:center;margin-bottom:32px;">
-            <h1 style="color:#3bc2f8;font-size:24px;font-weight:700;margin:0 0 4px;">DigitalEditz</h1>
-            <p style="color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin:0;">AI-Powered Growth Partner</p>
-          </div>
-          <div style="width:40px;height:2px;background:linear-gradient(90deg,#3bc2f8,transparent);margin:0 auto 32px;"></div>
-          <h2 style="color:#ffffff;font-size:20px;font-weight:600;margin:0 0 16px;">Hi ${name},</h2>
-          <p style="color:rgba(255,255,255,0.7);font-size:15px;line-height:1.7;margin:0 0 24px;">
-            Thank you for reaching out to <strong style="color:#ffffff;">DigitalEditz</strong>. We've received your query and our growth strategists will get back to you within <strong style="color:#3bc2f8;">24 hours</strong>.
+    <!DOCTYPE html>
+    <html lang="en">
+    <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    </head>
+    <body style="margin:0;padding:0;background-color:#ffffff;font-family:'Segoe UI',Arial,sans-serif;">
+    <div style="background-color:#ffffff;padding:40px 20px;">
+      <div style="max-width:560px;margin:0 auto;background-color:#ffffff;border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;">
+        <div style="background-color:#0f172a;padding:28px 36px;text-align:center;">
+          <h1 style="color:#3bc2f8;font-size:22px;font-weight:700;margin:0 0 4px;">DigitalEditz</h1>
+          <p style="color:#94a3b8;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin:0;">AI-Powered Growth Partner</p>
+        </div>
+        <div style="padding:36px 36px 20px;">
+          <h2 style="color:#1e293b;font-size:20px;font-weight:600;margin:0 0 16px;">Hi ${name},</h2>
+          <p style="color:#475569;font-size:15px;line-height:1.7;margin:0 0 24px;">
+            Thank you for reaching out to <strong style="color:#1e293b;">DigitalEditz</strong>. We've received your query and our growth strategists will get back to you within <strong style="color:#0284c7;">24 hours</strong>.
           </p>
-          <div style="background:rgba(59,194,248,0.06);border:1px solid rgba(59,194,248,0.12);border-radius:16px;padding:24px;margin-bottom:24px;">
-            <p style="color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 16px;">Your Inquiry Summary</p>
+          <div style="background-color:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:24px;margin-bottom:24px;">
+            <p style="color:#64748b;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 16px;font-weight:600;">Your Inquiry Summary</p>
             <table style="width:100%;border-collapse:collapse;">
               <tr>
-                <td style="color:rgba(255,255,255,0.5);font-size:13px;padding:6px 0;width:100px;">Service</td>
-                <td style="color:#ffffff;font-size:13px;padding:6px 0;">${serviceText}</td>
+                <td style="color:#64748b;font-size:13px;padding:6px 0;width:100px;">Service</td>
+                <td style="color:#1e293b;font-size:13px;padding:6px 0;font-weight:500;">${serviceText}</td>
               </tr>
               <tr>
-                <td style="color:rgba(255,255,255,0.5);font-size:13px;padding:6px 0;">Package</td>
-                <td style="color:#ffffff;font-size:13px;padding:6px 0;">${packageText}</td>
+                <td style="color:#64748b;font-size:13px;padding:6px 0;">Package</td>
+                <td style="color:#1e293b;font-size:13px;padding:6px 0;font-weight:500;">${packageText}</td>
               </tr>
-              ${businessName ? `<tr><td style="color:rgba(255,255,255,0.5);font-size:13px;padding:6px 0;">Business</td><td style="color:#ffffff;font-size:13px;padding:6px 0;">${businessName}</td></tr>` : ""}
+              ${businessName ? `<tr><td style="color:#64748b;font-size:13px;padding:6px 0;">Business</td><td style="color:#1e293b;font-size:13px;padding:6px 0;font-weight:500;">${businessName}</td></tr>` : ""}
             </table>
           </div>
-          <p style="color:rgba(255,255,255,0.5);font-size:13px;line-height:1.6;margin:0 0 28px;">
+          <p style="color:#64748b;font-size:13px;line-height:1.6;margin:0 0 28px;">
             In the meantime, feel free to reach us directly on
-            <a href="https://wa.me/919149958270" style="color:#3bc2f8;text-decoration:none;"> WhatsApp</a>
+            <a href="https://wa.me/919149958270" style="color:#0284c7;text-decoration:underline;"> WhatsApp</a>
             for a quicker response.
           </p>
         </div>
-        <div style="background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.06);padding:20px 36px;text-align:center;">
-          <p style="color:rgba(255,255,255,0.3);font-size:12px;margin:0;">
+        <div style="background-color:#f8fafc;border-top:1px solid #e5e7eb;padding:20px 36px;text-align:center;">
+          <p style="color:#94a3b8;font-size:12px;margin:0;">
             © ${new Date().getFullYear()} DigitalEditz · Gurugram, India
           </p>
         </div>
       </div>
-    </div>`;
+    </div>
+    </body>
+    </html>`;
 
     // Send to customer
     const customerEmailRes = await fetch("https://api.resend.com/emails", {
