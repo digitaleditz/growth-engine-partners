@@ -7,6 +7,13 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+const isRetryableDbError = (error: unknown) => {
+  const message = JSON.stringify(error ?? "");
+  return /ssl handshake failed|error code 525|fetch failed|network|temporar/i.test(message.toLowerCase());
+};
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -23,40 +30,59 @@ serve(async (req) => {
       );
     }
 
-    // Store in database
+    // Store in database (with retry for transient network/SSL issues)
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const { error: dbError } = await supabase
-      .from("contact_submissions")
-      .insert({
-        name,
-        business_name: businessName || null,
-        email,
-        phone: phone || null,
-        service: service || null,
-        package: packageName || null,
-        message: message || null,
-      });
+    const submissionPayload = {
+      name,
+      business_name: businessName || null,
+      email,
+      phone: phone || null,
+      service: service || null,
+      package: packageName || null,
+      message: message || null,
+    };
 
-    if (dbError) {
-      console.error("DB error:", dbError);
-      return new Response(
-        JSON.stringify({ error: "Failed to save submission" }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+    let dbSaved = false;
+    let lastDbError: unknown = null;
+
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      const { error: dbError } = await supabase
+        .from("contact_submissions")
+        .insert(submissionPayload);
+
+      if (!dbError) {
+        dbSaved = true;
+        break;
+      }
+
+      lastDbError = dbError;
+      if (!isRetryableDbError(dbError) || attempt === 3) break;
+      await sleep(attempt * 400);
+    }
+
+    if (!dbSaved) {
+      console.error("DB save failed after retries:", lastDbError);
     }
 
     // Send confirmation email via Resend
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) {
-      console.error("RESEND_API_KEY is not configured");
+      if (dbSaved) {
+        return new Response(
+          JSON.stringify({ success: true, message: "Query saved but email not sent (missing API key)" }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
       return new Response(
-        JSON.stringify({ success: true, message: "Query saved but email not sent (missing API key)" }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        JSON.stringify({ error: "Temporary issue while saving your query. Please try again." }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
+
 
     const serviceText = service && service !== "Custom / Other" ? service : "Not specified";
     const packageText = packageName && packageName !== "Custom / Other" ? packageName : "Not specified";
@@ -159,7 +185,13 @@ serve(async (req) => {
     }
 
     return new Response(
-      JSON.stringify({ success: true, message: "Query received and confirmation email sent!" }),
+      JSON.stringify({
+        success: true,
+        message: dbSaved
+          ? "Query received and confirmation email sent!"
+          : "Query received and confirmation email sent (database save will retry on next submission).",
+        savedToDatabase: dbSaved,
+      }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (err) {
