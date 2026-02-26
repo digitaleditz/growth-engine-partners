@@ -5,7 +5,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
-import { Check, Zap, Eye,Video, PenTool, BarChart3, Search, Code2, ArrowUpRight, Shield, Cpu, Target } from "lucide-react";
+import { Check, Zap, Eye, Video, PenTool, BarChart3, Search, Code2, ArrowUpRight, Shield, Cpu, Target } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import servicesAds from "@/assets/services-ads.jpg";
 import servicesUgc from "@/assets/services-ugc.jpg";
 import servicesContent from "@/assets/services-content.jpg";
@@ -153,7 +154,10 @@ const categories = [
   },
 ];
 
-const Packages = () => (
+const Packages = () => {
+  const navigate = useNavigate();
+
+  return (
   <div className="min-h-screen bg-background">
     <Navbar />
 
@@ -252,7 +256,7 @@ const Packages = () => (
                           <span className="label-mono text-muted-foreground/50">Starting at</span>
                           <p className="font-display text-2xl font-bold text-primary mt-1">{svc.pricing}</p>
                         </div>
-                        <Button className="font-semibold rounded-full glow-accent gap-2 group">
+                        <Button className="font-semibold rounded-full glow-accent gap-2 group" onClick={() => navigate(`/contact?package=${encodeURIComponent(svc.name)}`)}>
                           Get Started
                           <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                         </Button>
@@ -341,6 +345,7 @@ const Packages = () => (
     <CTASection />
     <Footer />
   </div>
-);
+  );
+};
 
 export default Packages;
