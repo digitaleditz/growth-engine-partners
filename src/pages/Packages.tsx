@@ -69,14 +69,7 @@ const Packages = () => {
         <div className="floating-orb w-[500px] h-[500px] top-20 right-0" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">Our Services</p>
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-center mb-6 leading-[1.1]">
-              Predictable Lead Generation <br />
-              <span className="text-gradient">Systems for High-Ticket Businesses</span>
-            </h1>
-            <p className="text-muted-foreground text-center max-w-2xl mx-auto text-lg">
-              We help businesses build predictable pipelines using ads, funnels, automation, and conversion-focused systems.
-            </p>
+            <p className="label-mono text-primary text-center">Our Services</p>
           </ScrollReveal>
         </div>
       </section>
