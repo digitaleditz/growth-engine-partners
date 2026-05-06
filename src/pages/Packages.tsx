@@ -69,7 +69,14 @@ const Packages = () => {
         <div className="floating-orb w-[500px] h-[500px] top-20 right-0" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <p className="label-mono text-primary text-center">Our Services</p>
+            <p className="label-mono text-primary text-center mb-4">Our Services</p>
+            <span className="label-mono text-primary block text-center">01 — Flagship Offer</span>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-center mt-3 leading-[1.1]">
+              Our <span className="text-gradient">Growth System</span>
+            </h1>
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto text-lg mt-5">
+              A complete lead generation and conversion system designed for businesses that want predictable growth — not random marketing.
+            </p>
           </ScrollReveal>
         </div>
       </section>
@@ -78,15 +85,6 @@ const Packages = () => {
       <section className="py-10 relative overflow-hidden section-texture">
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="container relative z-10">
-          <ScrollReveal>
-            <div className="mb-14 text-center max-w-3xl mx-auto">
-              <span className="label-mono text-primary">01 — Flagship Offer</span>
-              <h2 className="font-display text-3xl md:text-5xl font-bold mt-3">Our Growth System</h2>
-              <p className="text-muted-foreground mt-5 text-lg">
-                A complete lead generation and conversion system designed for businesses that want predictable growth — not random marketing.
-              </p>
-            </div>
-          </ScrollReveal>
 
           <ScrollReveal>
             <div className="glass rounded-3xl overflow-hidden border-shimmer card-hover-lift max-w-5xl mx-auto">
