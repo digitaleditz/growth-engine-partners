@@ -76,9 +76,6 @@ const Footer = () => (
             <a href="mailto:info@digitaleditz.com" className="flex items-center gap-3 text-secondary-foreground hover:text-primary transition-colors">
               <Mail size={14} className="text-primary/60 shrink-0" /> info@digitaleditz.com
             </a>
-            <a href="tel:+919149958270" className="flex items-center gap-3 text-secondary-foreground hover:text-primary transition-colors">
-              <Phone size={14} className="text-primary/60 shrink-0" /> +91 9149958270
-            </a>
             <a href="https://wa.me/919149958270" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-secondary-foreground hover:text-primary transition-colors">
               <MessageCircle size={14} className="text-primary/60 shrink-0" /> WhatsApp Us
             </a>
