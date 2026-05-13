@@ -181,7 +181,7 @@ const Contact = () => {
                     {[
                       { icon: MapPin, label: "Gurugram, India", href: "#" },
                       { icon: Mail, label: "info@digitaleditz.com", href: "mailto:info@digitaleditz.com" },
-                      { icon: MessageCircle, label: "WhatsApp Us", href: "https://wa.me/919149958270" },
+                      { icon: MessageCircle, label: "WhatsApp Us", href: "https://wa.me/917065206690" },
                     ].map((item) => (
                       <a
                         key={item.label}
@@ -206,7 +206,7 @@ const Contact = () => {
                     <h4 className="font-display text-xl font-bold mb-3">Prefer a quick chat?</h4>
                     <p className="text-sm text-muted-foreground mb-5 leading-relaxed">Message us directly on WhatsApp for a faster response.</p>
                     <Button variant="outline" className="rounded-full gap-2 border-border/50 hover:border-primary/30 group" asChild>
-                      <a href="https://wa.me/919149958270" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/917065206690" target="_blank" rel="noopener noreferrer">
                         <MessageCircle size={16} />
                         Open WhatsApp
                         <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
