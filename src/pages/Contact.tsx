@@ -181,8 +181,6 @@ const Contact = () => {
                     {[
                       { icon: MapPin, label: "Gurugram, India", href: "#" },
                       { icon: Mail, label: "info@digitaleditz.com", href: "mailto:info@digitaleditz.com" },
-                      { icon: Phone, label: "+91 9149958270", href: "tel:+919149958270" },
-                      
                       { icon: MessageCircle, label: "WhatsApp Us", href: "https://wa.me/919149958270" },
                     ].map((item) => (
                       <a
