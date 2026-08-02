@@ -3,7 +3,6 @@ import { Download } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import pdfAsset from "@/assets/pastwork2526.pdf.asset.json";
 
 const PastWork2526 = () => {
   useEffect(() => {
@@ -30,7 +29,7 @@ const PastWork2526 = () => {
               pastwork2526
             </h1>
           </div>
-          <a href={pdfAsset.url} download="pastwork2526.pdf" target="_blank" rel="noopener noreferrer">
+          <a href="/pastwork2526.pdf" download="pastwork2526.pdf" target="_blank" rel="noopener noreferrer">
             <Button className="rounded-full font-semibold gap-2 glow-accent">
               <Download size={16} />
               Download pastwork2526.pdf
@@ -40,13 +39,13 @@ const PastWork2526 = () => {
 
         <div className="rounded-2xl overflow-hidden border border-border/50 glass-strong">
           <object
-            data={pdfAsset.url}
+            data="/pastwork2526.pdf"
             type="application/pdf"
             className="w-full h-[80vh] min-h-[520px]"
             aria-label="pastwork2526 PDF"
           >
             <iframe
-              src={pdfAsset.url}
+              src="/pastwork2526.pdf"
               title="pastwork2526"
               className="w-full h-[80vh] min-h-[520px]"
             />
@@ -56,7 +55,7 @@ const PastWork2526 = () => {
         <p className="text-sm text-muted-foreground mt-4">
           Trouble viewing?{" "}
           <a
-            href={pdfAsset.url}
+            href="/pastwork2526.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary underline"
