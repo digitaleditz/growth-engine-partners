@@ -3,16 +3,16 @@ import { Download } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import pdfAsset from "@/assets/pastwork-2526.pdf.asset.json";
+import pdfAsset from "@/assets/pastwork2526.pdf.asset.json";
 
 const PastWork2526 = () => {
   useEffect(() => {
-    document.title = "Past Work 2025-26 | DigitalEditz";
+    document.title = "pastwork2526 | DigitalEditz";
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
       meta.setAttribute(
         "content",
-        "View DigitalEditz past work portfolio for 2025-26 — campaigns, growth systems and results delivered for leading brands."
+        "View pastwork2526 — DigitalEditz portfolio of campaigns, growth systems and results delivered for leading brands."
       );
     }
   }, []);
@@ -27,13 +27,13 @@ const PastWork2526 = () => {
               Portfolio / 2025-26
             </p>
             <h1 className="font-display text-3xl md:text-5xl font-bold tracking-tight">
-              Past Work
+              pastwork2526
             </h1>
           </div>
-          <a href={pdfAsset.url} download target="_blank" rel="noopener noreferrer">
+          <a href={pdfAsset.url} download="pastwork2526.pdf" target="_blank" rel="noopener noreferrer">
             <Button className="rounded-full font-semibold gap-2 glow-accent">
               <Download size={16} />
-              Download PDF
+              Download pastwork2526.pdf
             </Button>
           </a>
         </div>
@@ -43,11 +43,11 @@ const PastWork2526 = () => {
             data={pdfAsset.url}
             type="application/pdf"
             className="w-full h-[80vh] min-h-[520px]"
-            aria-label="DigitalEditz Past Work 2025-26 PDF"
+            aria-label="pastwork2526 PDF"
           >
             <iframe
               src={pdfAsset.url}
-              title="DigitalEditz Past Work 2025-26"
+              title="pastwork2526"
               className="w-full h-[80vh] min-h-[520px]"
             />
           </object>
@@ -61,7 +61,7 @@ const PastWork2526 = () => {
             rel="noopener noreferrer"
             className="text-primary underline"
           >
-            Open the PDF in a new tab
+            Open pastwork2526.pdf in a new tab
           </a>
           .
         </p>
