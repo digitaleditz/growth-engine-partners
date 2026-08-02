@@ -11,6 +11,7 @@ import CaseStudies from "./pages/CaseStudies";
 import Packages from "./pages/Packages";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import PastWork2526 from "./pages/PastWork2526";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import LoaderScreen from "./components/LoaderScreen";
