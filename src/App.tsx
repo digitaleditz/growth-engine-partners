@@ -11,6 +11,7 @@ import CaseStudies from "./pages/CaseStudies";
 import Packages from "./pages/Packages";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import PastWork2526 from "./pages/PastWork2526";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import LoaderScreen from "./components/LoaderScreen";
@@ -36,7 +37,9 @@ const App = () => {
             <Route path="/packages" element={<Packages />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/pastwork/2526" element={<PastWork2526 />} />
             <Route path="*" element={<NotFound />} />
+
           </Routes>
         </BrowserRouter>
         <Analytics />
