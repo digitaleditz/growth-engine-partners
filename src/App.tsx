@@ -37,7 +37,9 @@ const App = () => {
             <Route path="/packages" element={<Packages />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/pastwork/2526" element={<PastWork2526 />} />
             <Route path="*" element={<NotFound />} />
+
           </Routes>
         </BrowserRouter>
         <Analytics />
