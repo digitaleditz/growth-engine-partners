@@ -1,58 +1,32 @@
+# DigitalEditz Positioning, Services and Organic Visibility Update
 
+## Goal
+Position DigitalEditz as the partner that builds a business's complete digital foundation and connected growth system. Preserve the current premium black/cyan identity, typography, navigation behavior and animation language while adding enough structured, useful content for prospects and search engines.
 
-# DigitalEditz — AI-Powered Growth Partner Agency Website
+## Services / Offer Page
+- Replace the current single-package narrative with the supplied hero, connected-system positioning and customer-journey diagrams.
+- Add six clearly numbered capabilities: brand, digital infrastructure, content, paid acquisition, demand/conversion, and automation/analytics.
+- Keep **The Digital Brand & Growth System** as the flagship integrated engagement, with clear scope language rather than implying every component is included.
+- Add the supplied five-step process, Build/Grow/Scale delivery models, individual-service directory, supported industries, historical performance indicators with disclaimer, case-studies CTA, differentiators, flexible engagement models, strategy assessment and final CTA.
+- Remove package pricing from the current flagship card. Mention “Starting from $1,000/month” only in the Flexible Engagement Models section, with scope and ad-spend qualifications.
+- Use restrained full-width sections, crisp borders and system-flow layouts rather than a page of repetitive floating cards. Keep CTAs wired to the existing contact, Calendly and case-study routes.
 
-## Brand Identity
-- **Name:** DigitalEditz
-- **Tagline:** "Beyond Marketing, Your Growth Partner"
-- **Theme:** Premium black + space gray with #3bc2f8 blue accent, bold minimal design
-- **Typography:** Clean sans-serif, strong whitespace, premium spacing
+## Blog and Search Visibility
+- Add a `/blog` index and three substantial evergreen articles based only on DigitalEditz’s genuine capabilities: connected digital growth systems, choosing between individual services and an integrated engagement, and aligning brand/web/content/acquisition/CRM.
+- Give articles descriptive titles, summaries, author/date/read-time context, semantic headings, internal links and a discovery-call CTA. Do not invent research, client results or statistics.
+- Add Blog to desktop/mobile navigation and footer navigation.
+- Add route-aware page titles, descriptions, canonical URLs, Open Graph/Twitter metadata and appropriate JSON-LD for the organization, service page, blog index and articles.
+- Update the sitemap with Services, Blog and article URLs; normalize URLs to the canonical non-`www` domain. Keep robots crawl access intact.
 
----
+## Site-Wide Positioning
+- Update homepage service/positioning copy where it currently frames DigitalEditz primarily as an AI/performance-marketing company, without restructuring the homepage.
+- Update shared final CTA copy and footer positioning to the supplied brand-and-growth-system language.
+- Preserve all existing Case Studies, About, Contact, PDF and navigation functionality.
 
-## Pages & Structure
-
-### 1. Homepage
-- **Hero Section** — Full-screen dark cinematic background with headline "We Build Growth Engines — Not Just Campaigns", two CTAs (Book a Free Discovery Call + View Case Studies), smooth scroll indicator
-- **Credibility Strip** — Dark gradient bar showcasing experience with Indigo, Urban Company, Royal Enfield, M3M, Grab, LT Foods, Aha OTT
-- **Clients Logo Grid** — 18+ brand logos with hover glow animation
-- **Services Section** — 3 expandable pillars: Customer Acquisition Systems, Brand & Content Engines, Digital Assets & Growth Infrastructure
-- **Featured Case Studies** — Split-screen alternating layout for VIVO and Pushti Turf with animated KPI counters and video preview blocks
-- **How We Work** — Animated 3-step flow: Discovery → Implementation → Optimization & Scale
-- **Why DigitalEditz** — 6-point differentiator section
-- **Testimonials** — 4-6 minimal review cards with star ratings
-- **FAQ Accordion** — 6 common questions with expand/collapse
-- **Final CTA** — Large bold section with blue accent glow and discovery call button
-- **Footer** — Navigation, contact details, WhatsApp button, social icons, copyright
-
-### 2. Case Studies Page
-- Detailed case study sections for 6 clients: VIVO, Pushti Turf & Farms, Kashmir Ply Co, District Jammu Govt, Usman Majid, Kapahi Properties
-- Each with Problem → Strategy → Execution → KPIs → Before/After metrics
-- Animated bold numbers and visual metric highlights
-
-### 3. Packages Page
-- 3 tiered pricing cards: Starter (₹25K/mo), Scale Accelerator (₹60K/mo), Enterprise (Custom)
-- Each with feature list and ideal-for description
-- CTA section for custom growth roadmap consultation
-
-### 4. About Page
-- Agency story and positioning
-- Enterprise experience credentials
-- "We work best with" qualifier section
-
-### 5. Contact Page
-- Contact form with business details
-- Location, email, phone, WhatsApp link
-- Schedule Discovery Call CTA
-
----
-
-## Design & Interactions
-- Fade-up scroll reveal animations on all sections
-- Animated KPI counters (counting up on scroll)
-- Hover lift effects on cards and service pillars
-- Blue accent used sparingly: CTAs, underlines, hover states, data highlights
-- Smooth scrolling throughout
-- Responsive design for all screen sizes
-- Dark/premium aesthetic — feels like a 2026 AI growth company
+## Technical Approach
+- Keep React Router and the existing component/design-token architecture.
+- Create reusable SEO and editorial blog components/data rather than duplicating metadata and article layouts.
+- Use existing Button, ScrollReveal, Navbar, Footer and CountUp components; add only focused presentational components needed by the Services and Blog pages.
+- Maintain a single H1 per page, semantic sections/lists, keyboard-accessible links, responsive wrapping for long system flows and reduced-motion-friendly behavior.
+- Verify build health, route rendering, metadata, links, mobile layout and the full Services page in the browser.
 
