@@ -422,18 +422,29 @@ const Packages = () => {
           <div className="grid md:grid-cols-3 gap-5 mt-14">
             {models.map((m, i) => (
               <ScrollReveal key={m.tag} delay={i * 0.08}>
-                <div className="h-full glass rounded-3xl p-8 border-shimmer card-hover-lift flex flex-col">
-                  <span className="label-mono text-primary">{m.tag}</span>
-                  <h3 className="font-display text-2xl font-bold mt-3">{m.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mt-4">{m.desc}</p>
-                  <ul className="space-y-2.5 mt-6">
-                    {m.points.map((p) => (
-                      <li key={p} className="flex items-start gap-2.5 text-sm text-secondary-foreground/85">
-                        <Check size={14} className="text-primary shrink-0 mt-1" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="h-full glass rounded-3xl border-shimmer card-hover-lift flex flex-col overflow-hidden">
+                  <div className="relative h-32 overflow-hidden">
+                    <img
+                      src={modelImages[i]}
+                      alt=""
+                      loading="lazy"
+                      className="w-full h-full object-cover opacity-40 transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                    <span className="label-mono text-primary absolute bottom-4 left-8">{m.tag}</span>
+                  </div>
+                  <div className="p-8 pt-6 flex flex-col flex-1">
+                    <h3 className="font-display text-2xl font-bold">{m.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-4">{m.desc}</p>
+                    <ul className="space-y-2.5 mt-6">
+                      {m.points.map((p) => (
+                        <li key={p} className="flex items-start gap-2.5 text-sm text-secondary-foreground/85">
+                          <Check size={14} className="text-primary shrink-0 mt-1" />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
