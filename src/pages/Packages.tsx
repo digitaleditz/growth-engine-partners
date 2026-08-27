@@ -116,6 +116,9 @@ const models = [
   },
 ];
 
+const modelImages = [servicesSystems, servicesContent, servicesAds];
+
+
 const directory = [
   "Brand identity & logo design",
   "Brand positioning & messaging",
