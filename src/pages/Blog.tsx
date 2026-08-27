@@ -5,8 +5,17 @@ import CTASection from "@/components/CTASection";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
 import Seo, { SITE_URL } from "@/components/Seo";
-import { ArrowUpRight, Clock, BookOpen } from "lucide-react";
+import { ArrowUpRight, Clock } from "lucide-react";
 import { blogPosts, formatPostDate } from "@/data/blogPosts";
+import coverConnected from "@/assets/blog-connected-system.jpg";
+import coverChoose from "@/assets/blog-choose-engagement.jpg";
+import coverAlignment from "@/assets/blog-alignment.jpg";
+
+const covers: Record<string, string> = {
+  "connected-digital-growth-system": coverConnected,
+  "individual-services-vs-integrated-engagement": coverChoose,
+  "aligning-brand-website-content-acquisition-crm": coverAlignment,
+};
 
 const [latest, ...others] = blogPosts
   .slice()
@@ -52,8 +61,15 @@ const Blog = () => (
             <div className="surface surface-hover overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="relative min-h-[260px] lg:min-h-full bg-gradient-to-br from-primary/15 via-transparent to-transparent flex items-center justify-center p-10">
-                  <div className="absolute inset-0 dot-grid opacity-30" />
-                  <BookOpen className="relative text-primary/40" size={96} strokeWidth={1} />
+                  <img
+                    src={covers[latest.slug]}
+                    alt=""
+                    width={1280}
+                    height={800}
+                    className="absolute inset-0 h-full w-full object-cover opacity-70"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-background via-background/40 to-transparent" />
+                  <div className="absolute inset-0 dot-grid opacity-20" />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <span className="eyebrow w-fit mb-5">Latest article</span>
@@ -90,7 +106,19 @@ const Blog = () => (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {others.map((post, i) => (
             <ScrollReveal key={post.slug} delay={i * 0.08}>
-              <article className="h-full surface surface-hover p-8 flex flex-col">
+              <article className="h-full surface surface-hover overflow-hidden flex flex-col">
+                <div className="relative h-40 overflow-hidden">
+                  <img
+                    src={covers[post.slug]}
+                    alt=""
+                    loading="lazy"
+                    width={1280}
+                    height={800}
+                    className="h-full w-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                </div>
+                <div className="p-8 flex flex-col flex-1">
                 <span className="eyebrow w-fit mb-5">{post.category}</span>
                 <h2 className="font-display text-2xl font-bold leading-snug">
                   <Link to={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
@@ -117,6 +145,7 @@ const Blog = () => (
                     className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                   />
                 </Link>
+                </div>
               </article>
             </ScrollReveal>
           ))}
