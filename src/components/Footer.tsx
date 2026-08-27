@@ -14,7 +14,7 @@ const Footer = () => (
             Digital<span className="text-primary">Editz</span>
           </h3>
           <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-6">
-            Beyond Marketing, Your Growth Partner. People-led thinking. AI-driven execution.
+            We build the complete digital brand and growth system behind modern businesses. People-led thinking. AI-driven execution.
           </p>
           <p className="label-mono text-muted-foreground/60">
             Backed by experience across Indigo, Urban Company, Royal Enfield & more
@@ -51,6 +51,7 @@ const Footer = () => (
               { label: "Home", path: "/" },
               { label: "Case Studies", path: "/case-studies" },
               { label: "Services", path: "/packages" },
+              { label: "Blog", path: "/blog" },
               { label: "About", path: "/about" },
               { label: "Contact", path: "/contact" },
             ].map((l) => (
