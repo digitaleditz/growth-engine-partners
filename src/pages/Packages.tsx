@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import ScrollReveal from "@/components/ScrollReveal";
 import Seo, { SITE_URL } from "@/components/Seo";
+import PageHero from "@/components/PageHero";
+import SectionHeading from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -185,58 +187,55 @@ const Packages = () => {
       />
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative min-h-[78vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={caseStudiesHero} alt="" className="w-full h-full object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 to-background" />
-        </div>
-        <div className="absolute inset-0 section-texture" />
-        <div className="absolute inset-0 grid-pattern opacity-15" />
-        <div className="floating-orb w-[500px] h-[500px] top-20 right-0" />
-        <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">Our Services</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-center mt-3 leading-[1.1] max-w-4xl mx-auto">
-              We build the complete{" "}
-              <span className="text-gradient">digital system</span> behind modern businesses
-            </h1>
-            <p className="text-muted-foreground text-center max-w-2xl mx-auto text-lg mt-6">
-              Brand, website, content, acquisition, conversion and automation — designed as
-              one connected system instead of disconnected services.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-              <a
-                href="https://calendly.com/digitaleditz01/free-discovery-call"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button size="lg" className="font-semibold rounded-full glow-accent-strong gap-2 group px-8">
-                  Book a Free Discovery Call
-                  <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </Button>
-              </a>
-              <Button
-                size="lg"
-                variant="outline"
-                className="font-semibold rounded-full border-border/50 hover:border-primary/30 px-8"
-                asChild
-              >
-                <Link to="/case-studies">See our work</Link>
+      <PageHero
+        eyebrow="Our Services"
+        title={
+          <>
+            We build the complete{" "}
+            <span className="text-gradient">digital system</span> behind modern businesses
+          </>
+        }
+        description="Brand, website, content, acquisition, conversion and automation — designed as one connected system instead of disconnected services."
+        image={caseStudiesHero}
+        imageAlt="DigitalEditz digital growth system"
+        stats={[
+          { value: indicators[0].value, label: indicators[0].label },
+          { value: indicators[1].value, label: indicators[1].label },
+          { value: indicators[2].value, label: indicators[2].label },
+          { value: "6", label: "Connected Layers" },
+        ]}
+        actions={
+          <>
+            <a
+              href="https://calendly.com/digitaleditz01/free-discovery-call"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="lg" className="font-semibold rounded-full glow-accent-strong gap-2 group px-8">
+                Book a Free Discovery Call
+                <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Button>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+            </a>
+            <Button
+              size="lg"
+              variant="outline"
+              className="font-semibold rounded-full border-border/50 hover:border-primary/30 px-8"
+              asChild
+            >
+              <Link to="/case-studies">See our work</Link>
+            </Button>
+          </>
+        }
+      />
 
       {/* Connected system positioning */}
-      <section className="py-24 relative overflow-hidden section-texture">
-        <div className="absolute inset-0 grid-pattern opacity-10" />
+      <section className="section-pad relative overflow-hidden">
+        <div className="floating-orb w-[460px] h-[460px] top-0 right-0" />
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-14 items-start">
             <ScrollReveal>
-              <p className="label-mono text-primary mb-4">The Approach</p>
-              <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.1]">
+              <span className="eyebrow">The Approach</span>
+              <h2 className="display-lg mt-5">
                 Marketing rarely fails in one place. It fails in the gaps.
               </h2>
             </ScrollReveal>
@@ -261,7 +260,7 @@ const Packages = () => {
 
           {/* Customer journey flow */}
           <ScrollReveal delay={0.15}>
-            <div className="mt-16 glass rounded-3xl p-8 md:p-10 border-shimmer">
+            <div className="mt-16 surface p-8 md:p-10">
               <h3 className="label-mono text-primary/70 mb-6">The Customer Journey We Build</h3>
               <div className="flex flex-wrap items-center gap-3 md:gap-2">
                 {journey.map((step, i) => (
@@ -283,25 +282,29 @@ const Packages = () => {
         </div>
       </section>
 
+      <div className="container">
+        <div className="hairline" />
+      </div>
+
       {/* The growth stack diagram */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="section-pad relative overflow-hidden">
         <div className="floating-orb w-[460px] h-[460px] top-10 right-0" />
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5">
               <ScrollReveal>
-                <p className="label-mono text-primary mb-4">The Growth Stack</p>
-                <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.1]">
+                <span className="eyebrow">The Growth Stack</span>
+                <h2 className="display-lg mt-5">
                   Every layer feeds the next
                 </h2>
-                <p className="text-muted-foreground mt-6 leading-relaxed">
+                <p className="body-lg mt-6">
                   This is the order we build in. Each layer produces a specific business
                   outcome, and each one makes the layer beneath it cheaper and more effective
                   to run.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.12}>
-                <div className="mt-8 rounded-3xl overflow-hidden border border-border/40 relative">
+                <div className="mt-8 surface overflow-hidden relative">
                   <img
                     src={systemDiagram}
                     alt="Connected nodes representing an integrated digital growth system"
@@ -321,36 +324,35 @@ const Packages = () => {
         </div>
       </section>
 
-
+      <div className="container">
+        <div className="hairline" />
+      </div>
 
       {/* Capabilities */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="section-pad relative overflow-hidden">
         <div className="floating-orb w-[420px] h-[420px] top-1/3 left-0" />
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary mb-4">Capabilities</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold max-w-2xl leading-[1.1]">
-              Six layers that make up the system
-            </h2>
-          </ScrollReveal>
+          <SectionHeading
+            eyebrow="Capabilities"
+            title="Six layers that make up the system"
+            align="left"
+          />
 
-          <div className="mt-14 border-t border-border/30">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {capabilities.map((c, i) => (
               <ScrollReveal key={c.n} delay={i * 0.05}>
-                <div className="grid md:grid-cols-12 gap-6 py-10 border-b border-border/30">
-                  <div className="md:col-span-1">
-                    <span className="label-mono text-primary/60">{c.n}</span>
-                  </div>
-                  <div className="md:col-span-4 flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                      <c.icon className="text-primary" size={18} />
+                <div className="surface surface-hover h-full p-7 flex flex-col">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="icon-tile">
+                      <c.icon size={18} />
                     </div>
-                    <h3 className="font-display text-2xl font-bold leading-tight">{c.title}</h3>
+                    <span className="label-mono text-primary/50">{c.n}</span>
                   </div>
-                  <div className="md:col-span-4 text-muted-foreground text-sm leading-relaxed">
+                  <h3 className="font-display text-xl font-bold leading-tight">{c.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mt-3">
                     {c.desc}
-                  </div>
-                  <ul className="md:col-span-3 space-y-2">
+                  </p>
+                  <ul className="space-y-2 mt-5 pt-5 border-t border-border/30">
                     {c.points.map((p) => (
                       <li key={p} className="flex items-start gap-2.5 text-sm text-secondary-foreground/85">
                         <Check size={14} className="text-primary shrink-0 mt-1" />
@@ -366,11 +368,11 @@ const Packages = () => {
       </section>
 
       {/* Flagship engagement */}
-      <section className="py-24 relative overflow-hidden section-texture">
+      <section className="section-pad relative overflow-hidden section-texture">
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="container relative z-10">
           <ScrollReveal>
-            <div className="glass rounded-3xl overflow-hidden border-shimmer max-w-5xl mx-auto">
+            <div className="surface overflow-hidden max-w-5xl mx-auto">
               <div className="relative h-44 md:h-56 overflow-hidden">
                 <img
                   src={systemDiagram}
@@ -384,11 +386,11 @@ const Packages = () => {
               </div>
               <div className="p-8 md:p-14 pt-8 md:pt-10">
 
-                <p className="label-mono text-primary mb-4">Flagship Engagement</p>
-                <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.1]">
+                <span className="eyebrow">Flagship Engagement</span>
+                <h2 className="display-lg mt-5">
                   The Digital Brand & Growth System
                 </h2>
-                <p className="text-muted-foreground text-base md:text-lg leading-relaxed mt-6 max-w-3xl">
+                <p className="body-lg mt-6 max-w-3xl">
                   Our integrated engagement, where the capabilities above are delivered as one
                   connected build and managed together. Scope is defined per business after
                   discovery — not every component is required by every company.
@@ -437,23 +439,17 @@ const Packages = () => {
       </section>
 
       {/* Process */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="section-pad relative overflow-hidden">
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary mb-4">How We Work</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold max-w-2xl leading-[1.1]">
-              A five-step path from audit to scale
-            </h2>
-          </ScrollReveal>
-          <div
-            aria-hidden
-            className="hidden md:block h-px mt-14 bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+          <SectionHeading
+            eyebrow="How We Work"
+            title="A five-step path from audit to scale"
+            align="left"
           />
-          <div className="grid md:grid-cols-5 gap-4 mt-6 md:mt-8">
-            
+          <div className="grid md:grid-cols-5 gap-4">
             {process.map((s, i) => (
               <ScrollReveal key={s.n} delay={i * 0.07}>
-                <div className="h-full p-7 rounded-2xl glass border-shimmer card-hover-lift">
+                <div className="h-full surface surface-hover p-7">
                   <span className="label-mono text-primary/60">{s.n}</span>
                   <h3 className="font-display text-xl font-bold mt-4 leading-tight">{s.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mt-3">{s.desc}</p>
@@ -464,25 +460,25 @@ const Packages = () => {
         </div>
       </section>
 
+      <div className="container">
+        <div className="hairline" />
+      </div>
+
       {/* Delivery models */}
-      <section className="py-24 relative overflow-hidden section-texture">
+      <section className="section-pad relative overflow-hidden section-texture">
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="floating-orb w-[400px] h-[400px] bottom-0 right-0" />
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary mb-4">Delivery Models</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold max-w-2xl leading-[1.1]">
-              Build, Grow, Scale
-            </h2>
-            <p className="text-muted-foreground mt-5 max-w-2xl">
-              Where you start depends on what already works. Most businesses move through
-              these stages rather than buying all of them at once.
-            </p>
-          </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-5 mt-14">
+          <SectionHeading
+            eyebrow="Delivery Models"
+            title="Build, Grow, Scale"
+            description="Where you start depends on what already works. Most businesses move through these stages rather than buying all of them at once."
+            align="left"
+          />
+          <div className="grid md:grid-cols-3 gap-5">
             {models.map((m, i) => (
               <ScrollReveal key={m.tag} delay={i * 0.08}>
-                <div className="h-full glass rounded-3xl border-shimmer card-hover-lift flex flex-col overflow-hidden">
+                <div className="h-full surface surface-hover flex flex-col overflow-hidden">
                   <div className="relative h-32 overflow-hidden">
                     <img
                       src={modelImages[i]}
@@ -513,18 +509,15 @@ const Packages = () => {
       </section>
 
       {/* Individual services directory */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="section-pad-sm relative overflow-hidden">
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary mb-4">Individual Services</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold max-w-2xl leading-[1.1]">
-              Need one capability, not the whole system?
-            </h2>
-            <p className="text-muted-foreground mt-5 max-w-2xl">
-              When the rest of your setup already works, we take on individual mandates too.
-            </p>
-          </ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-12">
+          <SectionHeading
+            eyebrow="Individual Services"
+            title="Need one capability, not the whole system?"
+            description="When the rest of your setup already works, we take on individual mandates too."
+            align="left"
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {directory.map((s, i) => (
               <ScrollReveal key={s} delay={i * 0.02}>
                 <div className="px-5 py-4 rounded-xl border border-border/40 bg-card/30 text-sm text-secondary-foreground/85">
@@ -536,17 +529,20 @@ const Packages = () => {
         </div>
       </section>
 
+      <div className="container">
+        <div className="hairline" />
+      </div>
+
       {/* Industries */}
-      <section className="py-20 relative overflow-hidden section-texture">
+      <section className="section-pad-sm relative overflow-hidden section-texture">
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary mb-4">Industries</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold max-w-2xl leading-tight">
-              Sectors we work across
-            </h2>
-          </ScrollReveal>
-          <div className="flex flex-wrap gap-3 mt-10">
+          <SectionHeading
+            eyebrow="Industries"
+            title="Sectors we work across"
+            align="left"
+          />
+          <div className="flex flex-wrap gap-3">
             {industries.map((ind) => (
               <span
                 key={ind}
@@ -560,18 +556,17 @@ const Packages = () => {
       </section>
 
       {/* Performance indicators */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="section-pad relative overflow-hidden">
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary mb-4">Performance Indicators</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold max-w-2xl leading-[1.1]">
-              Results from past engagements
-            </h2>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mt-12 max-w-4xl">
+          <SectionHeading
+            eyebrow="Performance Indicators"
+            title="Results from past engagements"
+            align="left"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-4xl">
             {indicators.map((m, i) => (
               <ScrollReveal key={m.label} delay={i * 0.08}>
-                <div className="rounded-2xl border border-primary/15 bg-primary/5 p-7 text-center">
+                <div className="surface p-7 text-center">
                   <p className="font-display text-4xl md:text-5xl font-bold text-gradient leading-none">
                     {m.value}
                   </p>
@@ -583,7 +578,7 @@ const Packages = () => {
             ))}
           </div>
           <ScrollReveal>
-            <p className="text-xs text-muted-foreground/60 mt-6 max-w-2xl leading-relaxed">
+            <p className="text-xs text-muted-foreground/60 mt-8 max-w-2xl leading-relaxed">
               Figures reflect outcomes from specific past engagements and depend on industry,
               offer, budget and market conditions. They are indicative, not a guarantee of
               future results.
@@ -600,21 +595,19 @@ const Packages = () => {
       </section>
 
       {/* Differentiators */}
-      <section className="py-24 relative overflow-hidden section-texture">
+      <section className="section-pad relative overflow-hidden section-texture">
         <div className="absolute inset-0 grid-pattern opacity-15" />
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">Why Us</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-16">
-              Why Brands Choose DigitalEditz
-            </h2>
-          </ScrollReveal>
+          <SectionHeading
+            eyebrow="Why Us"
+            title="Why Brands Choose DigitalEditz"
+          />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {differentiators.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="flex items-start gap-5 p-7 rounded-2xl glass hover:border-primary/20 transition-all duration-500 card-hover-lift border-shimmer">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <item.icon className="text-primary" size={18} />
+                <div className="flex items-start gap-5 p-7 surface surface-hover">
+                  <div className="icon-tile">
+                    <item.icon size={18} />
                   </div>
                   <p className="text-sm font-medium text-secondary-foreground leading-relaxed">
                     {item.text}
@@ -627,12 +620,12 @@ const Packages = () => {
       </section>
 
       {/* Engagement models */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="section-pad relative overflow-hidden">
         <div className="container relative z-10">
           <ScrollReveal>
-            <div className="glass rounded-3xl p-8 md:p-12 border-shimmer max-w-4xl mx-auto">
-              <p className="label-mono text-primary mb-4">Flexible Engagement Models</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight">
+            <div className="surface p-8 md:p-12 max-w-4xl mx-auto">
+              <span className="eyebrow">Flexible Engagement Models</span>
+              <h2 className="display-md mt-5">
                 Project, retainer or integrated partnership
               </h2>
               <div className="grid sm:grid-cols-3 gap-5 mt-10">
@@ -664,13 +657,13 @@ const Packages = () => {
 
       {/* Strategy assessment */}
       <ScrollReveal>
-        <section className="py-20">
+        <section className="section-pad-sm">
           <div className="container">
             <div className="glass-strong rounded-3xl p-12 md:p-16 text-center max-w-3xl mx-auto relative overflow-hidden border-shimmer">
               <div className="floating-orb w-[400px] h-[400px] -top-40 -right-40" />
               <div className="relative z-10">
-                <p className="label-mono text-primary mb-4">Strategy Assessment</p>
-                <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                <span className="eyebrow">Strategy Assessment</span>
+                <h2 className="display-md mt-5 mb-6">
                   Every business has different growth bottlenecks.
                 </h2>
                 <p className="text-muted-foreground mb-3 max-w-xl mx-auto">
