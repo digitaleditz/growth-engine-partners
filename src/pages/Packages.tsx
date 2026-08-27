@@ -280,6 +280,46 @@ const Packages = () => {
         </div>
       </section>
 
+      {/* The growth stack diagram */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="floating-orb w-[460px] h-[460px] top-10 right-0" />
+        <div className="container relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5">
+              <ScrollReveal>
+                <p className="label-mono text-primary mb-4">The Growth Stack</p>
+                <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.1]">
+                  Every layer feeds the next
+                </h2>
+                <p className="text-muted-foreground mt-6 leading-relaxed">
+                  This is the order we build in. Each layer produces a specific business
+                  outcome, and each one makes the layer beneath it cheaper and more effective
+                  to run.
+                </p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.12}>
+                <div className="mt-8 rounded-3xl overflow-hidden border border-border/40 relative">
+                  <img
+                    src={systemDiagram}
+                    alt="Connected nodes representing an integrated digital growth system"
+                    loading="lazy"
+                    width={1280}
+                    height={960}
+                    className="w-full h-56 md:h-72 object-cover opacity-70"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                </div>
+              </ScrollReveal>
+            </div>
+            <div className="lg:col-span-7">
+              <SystemStack />
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
       {/* Capabilities */}
       <section className="py-24 relative overflow-hidden">
         <div className="floating-orb w-[420px] h-[420px] top-1/3 left-0" />
