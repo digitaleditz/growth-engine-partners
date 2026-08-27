@@ -8,6 +8,15 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowUpRight, Check, Clock, List, Share2 } from "lucide-react";
 import { blogPosts, formatPostDate, getPostBySlug } from "@/data/blogPosts";
 import NotFound from "./NotFound";
+import coverConnected from "@/assets/blog-connected-system.jpg";
+import coverChoose from "@/assets/blog-choose-engagement.jpg";
+import coverAlignment from "@/assets/blog-alignment.jpg";
+
+const covers: Record<string, string> = {
+  "connected-digital-growth-system": coverConnected,
+  "individual-services-vs-integrated-engagement": coverChoose,
+  "aligning-brand-website-content-acquisition-crm": coverAlignment,
+};
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -77,7 +86,19 @@ const BlogPost = () => {
             </ScrollReveal>
           </div>
           <div className="container relative z-10 mt-14">
-            <div className="hairline" />
+            <ScrollReveal>
+              <div className="relative overflow-hidden rounded-2xl border border-border/50 aspect-[21/9]">
+                <img
+                  src={covers[post.slug]}
+                  alt=""
+                  width={1280}
+                  height={800}
+                  className="h-full w-full object-cover opacity-80"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              </div>
+            </ScrollReveal>
+            <div className="hairline mt-14" />
           </div>
         </header>
 
