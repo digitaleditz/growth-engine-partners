@@ -126,7 +126,7 @@ const About = () => (
               <span className="text-primary font-medium">
                 Indigo, Urban Company, Royal Enfield, M3M, Grab, LT Foods, and Aha OTT
               </span>
-              . We bring that same rigor and infrastructure-first approach to every brand we partner with — from paid acquisition to automation systems.
+              . We bring that same rigor and infrastructure-first approach to every brand we partner with, from paid acquisition to automation systems.
             </p>
             <div className="mt-10 surface p-8">
               <p className="label-mono text-primary mb-6">We Work Best With Businesses That</p>
@@ -185,7 +185,7 @@ const About = () => (
         <SectionHeading
           eyebrow="How We Work"
           title="A repeatable process built for scale"
-          description="No guesswork — every engagement follows the same disciplined path from diagnosis to compounding results."
+          description="No guesswork: every engagement follows the same disciplined path from diagnosis to compounding results."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((item, i) => (
@@ -244,7 +244,7 @@ const About = () => (
               </div>
             </div>
             <p className="body-lg max-w-md">
-              We work with brands globally, but our roots — and our team — are based out of Gurugram, India.
+              We work with brands globally, but our roots, and our team, are based out of Gurugram, India.
             </p>
           </div>
         </ScrollReveal>

@@ -180,8 +180,8 @@ const Index = () => {
 
               <p className="body-lg mt-7 max-w-xl">
                 People-led strategy. AI-driven execution. We build the complete
-                digital foundation — brand, website, content, acquisition and
-                automation — as one connected growth system.
+                digital foundation, brand, website, content, acquisition and
+                automation, as one connected growth system.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
@@ -321,7 +321,7 @@ const Index = () => {
             <div className="glass rounded-3xl overflow-hidden mb-8 border-shimmer">
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="p-10 md:p-14 flex flex-col justify-center">
-                  <span className="label-mono text-primary mb-4 block">VIVO — 2024</span>
+                  <span className="label-mono text-primary mb-4 block">VIVO / 2024</span>
                   <h3 className="font-display text-3xl md:text-4xl font-bold mb-5 leading-tight">Custom Promotional Campaign Platform</h3>
                   <p className="text-muted-foreground mb-8 leading-relaxed">Built a custom campaign website enabling users to submit purchases and claim rewards effortlessly in J&K.</p>
                   <div className="grid grid-cols-2 gap-4">
@@ -361,7 +361,7 @@ const Index = () => {
                   />
                 </div>
                 <div className="p-10 md:p-14 flex flex-col justify-center md:order-2">
-                  <span className="label-mono text-primary mb-4 block">Pushti Turf & Farms — 2025</span>
+                  <span className="label-mono text-primary mb-4 block">Pushti Turf & Farms / 2025</span>
                   <h3 className="font-display text-3xl md:text-4xl font-bold mb-5 leading-tight">Meta Ads + WhatsApp Funnel</h3>
                   <p className="text-muted-foreground mb-8 leading-relaxed">High-performance Meta Ads integrated with WhatsApp funnel automation for massive launch turnout.</p>
                   <div className="grid grid-cols-3 gap-3">
@@ -424,7 +424,7 @@ const Index = () => {
             ))}
           </div>
           <ScrollReveal>
-            <p className="text-center text-muted-foreground/50 mt-16 text-sm italic font-display">Growth is engineered — not hoped for.</p>
+            <p className="text-center text-muted-foreground/50 mt-16 text-sm italic font-display">Growth is engineered, not hoped for.</p>
           </ScrollReveal>
         </div>
       </section>

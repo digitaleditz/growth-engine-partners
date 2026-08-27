@@ -29,7 +29,7 @@ import {
 
 const caseStudies = [
   {
-    tag: "VIVO — 2024",
+    tag: "VIVO / 2024",
     title: "Custom Promotional Campaign Platform",
     problem: "Reward campaign required seamless digital submission process.",
     strategy: "Developed a custom promotional website optimized for speed, mobile experience, and easy user submission.",
@@ -42,7 +42,7 @@ const caseStudies = [
     ],
   },
   {
-    tag: "Pushti Turf & Farms — 2025",
+    tag: "Pushti Turf & Farms / 2025",
     title: "Meta Ads + WhatsApp Funnel Launch",
     problem: "Needed massive awareness and turnout in limited time.",
     strategy: "Localized Meta Ads + WhatsApp integration.",
@@ -57,7 +57,7 @@ const caseStudies = [
     ],
   },
   {
-    tag: "Kashmir Ply Co — 2025",
+    tag: "Kashmir Ply Co / 2025",
     title: "Lead Generation & Brand Awareness",
     problem: "Needed consistent verified leads and stronger brand recall.",
     strategy: "Performance marketing campaigns focused on local targeting and verified lead generation.",
@@ -67,7 +67,7 @@ const caseStudies = [
     kpis: [{ label: "Lead Growth", value: 10, suffix: "X" }],
   },
   {
-    tag: "District Jammu Govt — 2025",
+    tag: "District Jammu Govt / 2025",
     title: "Government Digital Campaigns",
     problem: "Public engagement with government initiatives was low.",
     strategy: "Creative campaigns for Jal Shakti, JAKEDA & Tourism departments.",
@@ -77,7 +77,7 @@ const caseStudies = [
     kpis: [{ label: "Engagement Increase", value: 84, suffix: "%", prefix: "+" }],
   },
   {
-    tag: "Usman Majid — 2024",
+    tag: "Usman Majid / 2024",
     title: "Full Digital Political Campaign",
     problem: "Limited digital presence in a competitive political landscape.",
     strategy: "Full digital campaign management with social media dominance strategy.",
@@ -87,7 +87,7 @@ const caseStudies = [
     kpis: [{ label: "Reach & Engagement", value: 230, suffix: "%", prefix: "+" }],
   },
   {
-    tag: "Kapahi Properties — 2023",
+    tag: "Kapahi Properties / 2023",
     title: "Real Estate Lead Generation",
     problem: "High cost per lead through traditional marketing channels.",
     strategy: "Landing page + listing WebApp + Meta Ads integration.",
@@ -120,7 +120,7 @@ const CaseStudies = () => (
           <span className="text-gradient">Measurable Growth.</span>
         </>
       }
-      description="Every number here is earned, not estimated — a look at the campaigns, platforms and systems behind our clients' growth."
+      description="Every number here is earned, not estimated, a look at the campaigns, platforms and systems behind our clients' growth."
       image={caseStudiesHero}
       imageAlt="Case studies"
       stats={[
@@ -147,7 +147,7 @@ const CaseStudies = () => (
       </div>
     </section>
 
-    {/* Featured case study — magazine style */}
+    {/* Featured case study: magazine style */}
     <section className="section-pad-sm relative">
       <div className="container">
         <SectionHeading eyebrow="Featured Work" title="Our flagship result" align="left" />

@@ -56,7 +56,7 @@ const capabilities = [
     n: "02",
     icon: LayoutTemplate,
     title: "Digital Infrastructure",
-    desc: "Websites, landing pages and the technical base your marketing runs on — fast, structured and measurable.",
+    desc: "Websites, landing pages and the technical base your marketing runs on, fast, structured and measurable.",
     points: ["Website design & build", "Landing pages", "Technical SEO base", "Tracking setup"],
   },
   {
@@ -93,7 +93,7 @@ const process = [
   { n: "01", title: "Discovery & Audit", desc: "We map your current brand, website, content, channels and follow-up to find what actually blocks growth." },
   { n: "02", title: "Strategy & Roadmap", desc: "A sequenced plan: which layer is built first, what it must achieve, and how success is measured." },
   { n: "03", title: "Build & Launch", desc: "Brand, website, content and campaign infrastructure built to work together from day one." },
-  { n: "04", title: "Optimize", desc: "Weekly review of creative, pages, funnels and follow-up — improving the system rather than chasing tactics." },
+  { n: "04", title: "Optimize", desc: "Weekly review of creative, pages, funnels and follow-up, improving the system rather than chasing tactics." },
   { n: "05", title: "Scale", desc: "Once results are explainable and repeatable, we expand spend, channels and content deliberately." },
 ];
 
@@ -173,7 +173,7 @@ const Packages = () => {
     <div className="min-h-screen bg-background">
       <Seo
         title="Brand, Website, Content & Growth Services | DigitalEditz"
-        description="DigitalEditz builds the complete digital foundation and growth system behind modern businesses — brand, website, content, paid acquisition, conversion and automation."
+        description="DigitalEditz builds the complete digital foundation and growth system behind modern businesses, brand, website, content, paid acquisition, conversion and automation."
         path="/packages"
         jsonLd={{
           "@context": "https://schema.org",
@@ -195,7 +195,7 @@ const Packages = () => {
             <span className="text-gradient">digital system</span> behind modern businesses
           </>
         }
-        description="Brand, website, content, acquisition, conversion and automation — designed as one connected system instead of disconnected services."
+        description="Brand, website, content, acquisition, conversion and automation, designed as one connected system instead of disconnected services."
         image={caseStudiesHero}
         imageAlt="DigitalEditz digital growth system"
         stats={[
@@ -242,7 +242,7 @@ const Packages = () => {
             <ScrollReveal delay={0.1}>
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  Most businesses buy marketing in pieces — a brand from one place, a website
+                  Most businesses buy marketing in pieces, a brand from one place, a website
                   from another, content and ads from somewhere else. Each piece works on its
                   own terms, but nothing compounds.
                 </p>
@@ -252,7 +252,7 @@ const Packages = () => {
                   every decision has evidence behind it.
                 </p>
                 <p className="text-secondary-foreground/85">
-                  Performance marketing is one component of that system — not the whole company.
+                  Performance marketing is one component of that system, not the whole company.
                 </p>
               </div>
             </ScrollReveal>
@@ -393,7 +393,7 @@ const Packages = () => {
                 <p className="body-lg mt-6 max-w-3xl">
                   Our integrated engagement, where the capabilities above are delivered as one
                   connected build and managed together. Scope is defined per business after
-                  discovery — not every component is required by every company.
+                  discovery, not every component is required by every company.
                 </p>
 
                 <div className="grid sm:grid-cols-2 gap-x-10 gap-y-3 mt-10">
@@ -630,7 +630,7 @@ const Packages = () => {
               </h2>
               <div className="grid sm:grid-cols-3 gap-5 mt-10">
                 {[
-                  { t: "Project", d: "A defined build — brand, website or campaign launch — with a fixed scope and timeline." },
+                  { t: "Project", d: "A defined build: brand, website or campaign launch, with a fixed scope and timeline." },
                   { t: "Retainer", d: "Ongoing execution of one or more capabilities with monthly reporting." },
                   { t: "Integrated Partnership", d: "The full growth system, managed together across every layer." },
                 ].map((e) => (
@@ -645,7 +645,7 @@ const Packages = () => {
                   Starting from $1,000/month
                 </p>
                 <p className="text-xs text-muted-foreground/70 mt-3 max-w-2xl leading-relaxed">
-                  Actual investment depends on the scope agreed after discovery — the number of
+                  Actual investment depends on the scope agreed after discovery, the number of
                   layers involved, delivery pace and level of ongoing management. Advertising
                   spend and third-party tooling are billed separately.
                 </p>

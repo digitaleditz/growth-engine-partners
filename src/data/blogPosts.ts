@@ -25,7 +25,7 @@ export const blogPosts: BlogPost[] = [
     metaTitle:
       "What a Connected Digital Growth System Looks Like | DigitalEditz",
     summary:
-      "Most businesses buy marketing in pieces — a website here, ads there, content somewhere else. Here is how the pieces connect into one system that compounds.",
+      "Most businesses buy marketing in pieces, a website here, ads there, content somewhere else. Here is how the pieces connect into one system that compounds.",
     category: "Growth Systems",
     date: "2026-06-10",
     readTime: "8 min read",
@@ -52,12 +52,12 @@ export const blogPosts: BlogPost[] = [
           "A system is easier to reason about when you separate the layers and define what each one owes the next.",
         ],
         bullets: [
-          "Brand — positioning, message and identity that make the offer understandable in one line",
-          "Digital infrastructure — website, landing pages, tracking and the technical base everything else runs on",
-          "Content — the assets that build familiarity and answer real buying questions",
-          "Acquisition — paid and organic distribution pointed at pages that are built to convert",
-          "Demand and conversion — offers, forms, follow-up and the path from interest to conversation",
-          "Automation and analytics — CRM, routing, reporting and the feedback loop that improves the rest",
+          "Brand: positioning, message and identity that make the offer understandable in one line",
+          "Digital infrastructure: website, landing pages, tracking and the technical base everything else runs on",
+          "Content: the assets that build familiarity and answer real buying questions",
+          "Acquisition: paid and organic distribution pointed at pages that are built to convert",
+          "Demand and conversion: offers, forms, follow-up and the path from interest to conversation",
+          "Automation and analytics: CRM, routing, reporting and the feedback loop that improves the rest",
         ],
       },
       {
@@ -75,7 +75,7 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     closing:
-      "If you are unsure which layer is holding the rest back, a discovery call is the fastest way to find out — we map the current setup before recommending anything.",
+      "If you are unsure which layer is holding the rest back, a discovery call is the fastest way to find out, we map the current setup before recommending anything.",
   },
   {
     slug: "individual-services-vs-integrated-engagement",
@@ -100,7 +100,7 @@ export const blogPosts: BlogPost[] = [
           "Positioning and offer are clear and the team agrees on them",
           "There is already a page or funnel that converts at a known rate",
           "Enquiries are tracked and followed up consistently",
-          "The gap is genuinely narrow — a rebuild, a channel launch, a creative refresh",
+          "The gap is genuinely narrow: a rebuild, a channel launch, a creative refresh",
         ],
       },
       {
@@ -124,7 +124,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Scope, sequence and pace",
         paragraphs: [
-          "Integrated does not mean everything at once. A sensible engagement establishes the foundation, then grows distribution, then scales what proves out — with scope agreed per phase rather than assumed. That keeps investment proportionate to what has been validated.",
+          "Integrated does not mean everything at once. A sensible engagement establishes the foundation, then grows distribution, then scales what proves out, with scope agreed per phase rather than assumed. That keeps investment proportionate to what has been validated.",
         ],
       },
     ],

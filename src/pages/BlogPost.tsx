@@ -202,7 +202,7 @@ const BlogPost = () => {
                   </p>
                   <div className="flex gap-3">
                     <a
-                      href={`https://wa.me/?text=${encodeURIComponent(`${post.title} — ${url}`)}`}
+                      href={`https://wa.me/?text=${encodeURIComponent(`${post.title}, ${url}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="icon-tile hover:border-primary/40 transition-colors"

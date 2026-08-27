@@ -11,7 +11,7 @@ const PastWork2526 = () => {
     if (meta) {
       meta.setAttribute(
         "content",
-        "View pastwork2526 — DigitalEditz portfolio of campaigns, growth systems and results delivered for leading brands."
+        "View pastwork2526, DigitalEditz portfolio of campaigns, growth systems and results delivered for leading brands."
       );
     }
   }, []);
