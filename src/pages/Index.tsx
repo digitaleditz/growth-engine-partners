@@ -335,9 +335,14 @@ const Index = () => {
                     </div>
                   </div>
                 </div>
-                <div className="relative h-72 md:h-auto overflow-hidden">
-                  <img src={vivocase} alt="VIVO Campaign" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-card/40" />
+                <div className="relative h-72 md:h-auto overflow-hidden bg-gradient-to-br from-primary/10 via-card to-card">
+                  <div className="absolute inset-0 dot-grid opacity-20" />
+                  <img
+                    src={vivocase}
+                    alt="VIVO Campaign"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-contain p-6"
+                  />
                 </div>
               </div>
             </div>
@@ -346,9 +351,14 @@ const Index = () => {
           <ScrollReveal>
             <div className="glass rounded-3xl overflow-hidden border-shimmer">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-72 md:h-auto overflow-hidden md:order-1">
-                  <img src={pushticase} alt="Pushti Campaign" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/40" />
+                <div className="relative h-72 md:h-auto overflow-hidden md:order-1 bg-gradient-to-br from-primary/10 via-card to-card">
+                  <div className="absolute inset-0 dot-grid opacity-20" />
+                  <img
+                    src={pushticase}
+                    alt="Pushti Campaign"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-contain p-6"
+                  />
                 </div>
                 <div className="p-10 md:p-14 flex flex-col justify-center md:order-2">
                   <span className="label-mono text-primary mb-4 block">Pushti Turf & Farms — 2025</span>
