@@ -341,7 +341,7 @@ const Index = () => {
                     src={vivocase}
                     alt="VIVO Campaign"
                     loading="lazy"
-                    className="absolute inset-0 w-full h-full object-contain p-6"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                 </div>
               </div>
@@ -357,7 +357,7 @@ const Index = () => {
                     src={pushticase}
                     alt="Pushti Campaign"
                     loading="lazy"
-                    className="absolute inset-0 w-full h-full object-contain p-6"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                 </div>
                 <div className="p-10 md:p-14 flex flex-col justify-center md:order-2">

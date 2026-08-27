@@ -208,13 +208,13 @@ const CaseStudies = () => (
           {rest.map((cs, i) => (
             <ScrollReveal key={cs.tag} delay={i * 0.08}>
               <div className="surface surface-hover h-full overflow-hidden flex flex-col">
-                <div className="relative aspect-[16/10] bg-gradient-to-br from-primary/10 via-card to-card border-b border-border/50">
+                <div className="relative aspect-[4/3] bg-gradient-to-br from-primary/10 via-card to-card border-b border-border/50">
                   <div className="absolute inset-0 dot-grid opacity-20" />
                   <img
                     src={cs.image}
                     alt={cs.title}
                     loading="lazy"
-                    className="absolute inset-0 w-full h-full object-contain p-5"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                   <div className="absolute top-4 left-4 icon-tile">
                     <cs.icon size={18} />
