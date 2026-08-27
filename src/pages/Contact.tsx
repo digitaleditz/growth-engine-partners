@@ -3,10 +3,23 @@ import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import PageHero from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MessageCircle, MapPin, ArrowUpRight, Send, CheckCircle2, Loader2 } from "lucide-react";
+import {
+  Mail,
+  MessageCircle,
+  MapPin,
+  ArrowUpRight,
+  Send,
+  CheckCircle2,
+  Loader2,
+  Clock,
+  FileText,
+  PhoneCall,
+  Rocket,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
@@ -25,6 +38,51 @@ const PACKAGE_OPTIONS = [
   "AI-Powered Digital Systems Development",
   "AI Website CRO",
   "Custom / Other",
+];
+
+const contactCards = [
+  {
+    icon: Mail,
+    label: "Email Us",
+    value: "info@digitaleditz.com",
+    href: "mailto:info@digitaleditz.com",
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    value: "+91 70652 06690",
+    href: "https://wa.me/917065206690",
+  },
+  {
+    icon: MapPin,
+    label: "Headquarters",
+    value: "Gurugram, India",
+    href: undefined,
+  },
+  {
+    icon: Clock,
+    label: "Response Time",
+    value: "Within 24 hours",
+    href: undefined,
+  },
+];
+
+const nextSteps = [
+  {
+    icon: FileText,
+    title: "Share your details",
+    description: "Fill out the form with your goals, business, and current challenges.",
+  },
+  {
+    icon: PhoneCall,
+    title: "We review & reach out",
+    description: "Our team reviews your submission and schedules a discovery call within 24 hours.",
+  },
+  {
+    icon: Rocket,
+    title: "We map your strategy",
+    description: "We recommend a tailored growth system built around your scale and goals.",
+  },
 ];
 
 const Contact = () => {
@@ -90,35 +148,36 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <section className="pt-32 pb-28 relative overflow-hidden">
-        <div className="absolute inset-0 section-texture" />
-        <div className="absolute inset-0 grid-pattern opacity-15" />
-        <div className="floating-orb w-[500px] h-[500px] top-20 -right-40" />
-        <div className="floating-orb w-[300px] h-[300px] bottom-20 -left-20" />
-        <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">Get in Touch</p>
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-center mb-6 leading-[1.1]">
-              Let's Talk <span className="text-gradient">Growth.</span>
-            </h1>
-            <p className="text-muted-foreground text-center max-w-xl mx-auto mb-20 text-lg">
-              Tell us about your business, your goals, and your current challenges. We'll recommend a strategy tailored to your scale.
-            </p>
-          </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+      <PageHero
+        eyebrow="Contact"
+        title={
+          <>
+            Let's Talk <span className="text-gradient">Growth.</span>
+          </>
+        }
+        description="Tell us about your business, your goals, and your current challenges. We'll recommend a strategy tailored to your scale."
+        align="center"
+      />
+
+      <section className="section-pad-sm relative overflow-hidden">
+        <div className="absolute inset-0 section-texture" />
+        <div className="container relative z-10">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 max-w-6xl mx-auto">
             <ScrollReveal>
               {submitted ? (
-                <div className="glass-strong rounded-3xl p-8 md:p-10 border-shimmer flex flex-col items-center justify-center min-h-[420px] text-center">
+                <div className="surface p-8 md:p-10 flex flex-col items-center justify-center min-h-[480px] text-center">
                   <CheckCircle2 size={56} className="text-primary mb-6" />
-                  <h3 className="font-display text-2xl font-bold mb-3">Query Received!</h3>
-                  <p className="text-muted-foreground leading-relaxed max-w-sm">
+                  <h3 className="display-md">Query Received!</h3>
+                  <p className="text-muted-foreground leading-relaxed max-w-sm mt-3">
                     Thank you for reaching out. Our team will contact you within 24 hours. A confirmation has been sent to <span className="text-primary">{form.email}</span>.
                   </p>
                 </div>
               ) : (
-                <form className="glass-strong rounded-3xl p-8 md:p-10 space-y-5 border-shimmer" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-2 gap-4">
+                <form className="surface p-8 md:p-10 space-y-5" onSubmit={handleSubmit}>
+                  <span className="eyebrow">Discovery Call</span>
+                  <h2 className="display-md mt-4 mb-2">Tell us about your business</h2>
+                  <div className="grid grid-cols-2 gap-4 pt-2">
                     <Input name="name" placeholder="Your Name *" value={form.name} onChange={handleChange} className="bg-background/50 border-border/50 rounded-xl h-12 focus:border-primary/50" required />
                     <Input name="businessName" placeholder="Business Name" value={form.businessName} onChange={handleChange} className="bg-background/50 border-border/50 rounded-xl h-12 focus:border-primary/50" />
                   </div>
@@ -174,37 +233,41 @@ const Contact = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={0.15}>
-              <div className="space-y-8">
-                <div>
-                  <p className="label-mono text-primary mb-6">Contact Information</p>
-                  <div className="space-y-5 text-sm">
-                    {[
-                      { icon: MapPin, label: "Gurugram, India", href: "#" },
-                      { icon: Mail, label: "info@digitaleditz.com", href: "mailto:info@digitaleditz.com" },
-                      { icon: MessageCircle, label: "WhatsApp Us", href: "https://wa.me/917065206690" },
-                    ].map((item) => (
-                      <a
+              <div className="space-y-6">
+                <span className="eyebrow">Contact Information</span>
+                <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                  {contactCards.map((item) => {
+                    const Wrapper: any = item.href ? "a" : "div";
+                    return (
+                      <Wrapper
                         key={item.label}
                         href={item.href}
-                        target={item.href.startsWith("http") ? "_blank" : undefined}
-                        rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="group flex items-center gap-4 text-secondary-foreground hover:text-primary transition-all duration-300"
+                        target={item.href?.startsWith("http") ? "_blank" : undefined}
+                        rel={item.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="surface surface-hover p-6 flex flex-col gap-4 group"
                       >
-                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary/20 transition-colors">
-                          <item.icon size={16} className="text-primary" />
+                        <div className="icon-tile">
+                          <item.icon size={18} />
                         </div>
-                        {item.label}
-                      </a>
-                    ))}
-                  </div>
+                        <div>
+                          <p className="label-mono text-muted-foreground mb-1">{item.label}</p>
+                          <p className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
+                            {item.value}
+                          </p>
+                        </div>
+                      </Wrapper>
+                    );
+                  })}
                 </div>
 
-                <div className="glass-strong rounded-2xl p-8 relative overflow-hidden border-shimmer">
+                <div className="surface p-8 relative overflow-hidden">
                   <div className="floating-orb w-[200px] h-[200px] -bottom-16 -right-16" />
                   <div className="relative z-10">
                     <p className="label-mono text-primary mb-3">Quick Chat</p>
-                    <h4 className="font-display text-xl font-bold mb-3">Prefer a quick chat?</h4>
-                    <p className="text-sm text-muted-foreground mb-5 leading-relaxed">Message us directly on WhatsApp for a faster response.</p>
+                    <h4 className="display-md">Prefer a quick chat?</h4>
+                    <p className="text-sm text-muted-foreground mb-5 mt-3 leading-relaxed">
+                      Message us directly on WhatsApp for a faster response.
+                    </p>
                     <Button variant="outline" className="rounded-full gap-2 border-border/50 hover:border-primary/30 group" asChild>
                       <a href="https://wa.me/917065206690" target="_blank" rel="noopener noreferrer">
                         <MessageCircle size={16} />
@@ -219,6 +282,30 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* What happens next */}
+      <section className="section-pad relative overflow-hidden">
+        <div className="container relative z-10">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="eyebrow">What Happens Next</span>
+            <h2 className="display-lg mt-5">From message to strategy in three steps</h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {nextSteps.map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 0.08}>
+                <div className="surface surface-hover p-7 h-full text-center">
+                  <div className="icon-tile mx-auto mb-5">
+                    <item.icon size={20} />
+                  </div>
+                  <h3 className="font-display text-lg font-bold">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{item.description}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
