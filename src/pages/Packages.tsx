@@ -24,6 +24,11 @@ import {
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import caseStudiesHero from "@/assets/case-studies-hero.jpg";
+import systemDiagram from "@/assets/services-system-diagram.jpg";
+import servicesSystems from "@/assets/services-systems.jpg";
+import servicesContent from "@/assets/services-content.jpg";
+import servicesAds from "@/assets/services-ads.jpg";
+import SystemStack from "@/components/SystemStack";
 import TestimonialsSection from "@/components/TestimonialsSection";
 
 const journey = [
