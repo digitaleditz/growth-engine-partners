@@ -382,7 +382,7 @@ const Packages = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
               </div>
-              <div className="p-8 md:p-14 pt-0 md:pt-0 -mt-6">
+              <div className="p-8 md:p-14 pt-8 md:pt-10">
 
                 <p className="label-mono text-primary mb-4">Flagship Engagement</p>
                 <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.1]">
