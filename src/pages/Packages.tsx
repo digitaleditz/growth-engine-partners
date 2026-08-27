@@ -24,6 +24,11 @@ import {
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import caseStudiesHero from "@/assets/case-studies-hero.jpg";
+import systemDiagram from "@/assets/services-system-diagram.jpg";
+import servicesSystems from "@/assets/services-systems.jpg";
+import servicesContent from "@/assets/services-content.jpg";
+import servicesAds from "@/assets/services-ads.jpg";
+import SystemStack from "@/components/SystemStack";
 import TestimonialsSection from "@/components/TestimonialsSection";
 
 const journey = [
@@ -110,6 +115,9 @@ const models = [
     points: ["Multi-channel expansion", "Creative testing at volume", "Automation & lifecycle", "Attribution dashboards"],
   },
 ];
+
+const modelImages = [servicesSystems, servicesContent, servicesAds];
+
 
 const directory = [
   "Brand identity & logo design",
@@ -275,6 +283,46 @@ const Packages = () => {
         </div>
       </section>
 
+      {/* The growth stack diagram */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="floating-orb w-[460px] h-[460px] top-10 right-0" />
+        <div className="container relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5">
+              <ScrollReveal>
+                <p className="label-mono text-primary mb-4">The Growth Stack</p>
+                <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.1]">
+                  Every layer feeds the next
+                </h2>
+                <p className="text-muted-foreground mt-6 leading-relaxed">
+                  This is the order we build in. Each layer produces a specific business
+                  outcome, and each one makes the layer beneath it cheaper and more effective
+                  to run.
+                </p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.12}>
+                <div className="mt-8 rounded-3xl overflow-hidden border border-border/40 relative">
+                  <img
+                    src={systemDiagram}
+                    alt="Connected nodes representing an integrated digital growth system"
+                    loading="lazy"
+                    width={1280}
+                    height={960}
+                    className="w-full h-56 md:h-72 object-cover opacity-70"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                </div>
+              </ScrollReveal>
+            </div>
+            <div className="lg:col-span-7">
+              <SystemStack />
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
       {/* Capabilities */}
       <section className="py-24 relative overflow-hidden">
         <div className="floating-orb w-[420px] h-[420px] top-1/3 left-0" />
@@ -323,7 +371,19 @@ const Packages = () => {
         <div className="container relative z-10">
           <ScrollReveal>
             <div className="glass rounded-3xl overflow-hidden border-shimmer max-w-5xl mx-auto">
-              <div className="p-8 md:p-14">
+              <div className="relative h-44 md:h-56 overflow-hidden">
+                <img
+                  src={systemDiagram}
+                  alt="Layered diagram of a connected digital growth system"
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                  className="w-full h-full object-cover opacity-55"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+              </div>
+              <div className="p-8 md:p-14 pt-8 md:pt-10">
+
                 <p className="label-mono text-primary mb-4">Flagship Engagement</p>
                 <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.1]">
                   The Digital Brand & Growth System
@@ -385,7 +445,12 @@ const Packages = () => {
               A five-step path from audit to scale
             </h2>
           </ScrollReveal>
-          <div className="grid md:grid-cols-5 gap-4 mt-14">
+          <div
+            aria-hidden
+            className="hidden md:block h-px mt-14 bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+          />
+          <div className="grid md:grid-cols-5 gap-4 mt-6 md:mt-8">
+            
             {process.map((s, i) => (
               <ScrollReveal key={s.n} delay={i * 0.07}>
                 <div className="h-full p-7 rounded-2xl glass border-shimmer card-hover-lift">
@@ -417,18 +482,29 @@ const Packages = () => {
           <div className="grid md:grid-cols-3 gap-5 mt-14">
             {models.map((m, i) => (
               <ScrollReveal key={m.tag} delay={i * 0.08}>
-                <div className="h-full glass rounded-3xl p-8 border-shimmer card-hover-lift flex flex-col">
-                  <span className="label-mono text-primary">{m.tag}</span>
-                  <h3 className="font-display text-2xl font-bold mt-3">{m.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mt-4">{m.desc}</p>
-                  <ul className="space-y-2.5 mt-6">
-                    {m.points.map((p) => (
-                      <li key={p} className="flex items-start gap-2.5 text-sm text-secondary-foreground/85">
-                        <Check size={14} className="text-primary shrink-0 mt-1" />
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="h-full glass rounded-3xl border-shimmer card-hover-lift flex flex-col overflow-hidden">
+                  <div className="relative h-32 overflow-hidden">
+                    <img
+                      src={modelImages[i]}
+                      alt=""
+                      loading="lazy"
+                      className="w-full h-full object-cover opacity-40 transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+                    <span className="label-mono text-primary absolute bottom-4 left-8">{m.tag}</span>
+                  </div>
+                  <div className="p-8 pt-6 flex flex-col flex-1">
+                    <h3 className="font-display text-2xl font-bold">{m.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-4">{m.desc}</p>
+                    <ul className="space-y-2.5 mt-6">
+                      {m.points.map((p) => (
+                        <li key={p} className="flex items-start gap-2.5 text-sm text-secondary-foreground/85">
+                          <Check size={14} className="text-primary shrink-0 mt-1" />
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
