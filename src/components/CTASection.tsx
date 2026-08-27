@@ -4,16 +4,16 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowUpRight } from "lucide-react";
 
 const CTASection = () => (
-  <section className="py-32 relative overflow-hidden">
+  <section className="section-pad relative overflow-hidden">
     {/* Background effects */}
-    <div className="absolute inset-0 section-texture" />
+    <div className="absolute inset-0 mesh-bg" />
     <div className="floating-orb w-[600px] h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-    <div className="absolute inset-0 grid-pattern opacity-30" />
+    <div className="absolute inset-0 dot-grid opacity-25" />
     
     <div className="container relative z-10 text-center">
       <ScrollReveal>
-        <p className="label-mono text-primary mb-6">Ready to Scale?</p>
-        <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-3xl mx-auto leading-[1.1]">
+        <span className="eyebrow mb-6">Ready to Scale?</span>
+        <h2 className="display-xl mt-6 mb-6 max-w-3xl mx-auto">
           Let's Build Your{" "}
           <span className="text-gradient">Growth Engine.</span>
         </h2>

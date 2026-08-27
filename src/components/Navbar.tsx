@@ -30,8 +30,8 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-background/70 backdrop-blur-2xl border-b border-border/50 py-3"
-          : "bg-transparent py-5"
+          ? "bg-background/80 backdrop-blur-2xl border-b border-border/40 py-3"
+          : "bg-transparent py-6"
       )}
     >
       <div className="container flex items-center justify-between">
@@ -42,7 +42,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-1 rounded-full px-2 py-1.5 glass">
           {navLinks.map((l) => (
             <Link
               key={l.path}

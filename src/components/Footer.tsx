@@ -6,7 +6,8 @@ const Footer = () => (
     {/* Top glow */}
     <div className="divider-glow absolute top-0 left-0 right-0" />
     
-    <div className="container py-20 relative z-10">
+    <div className="absolute inset-0 mesh-bg opacity-50" />
+    <div className="container py-20 md:py-24 relative z-10">
       <div className="grid md:grid-cols-12 gap-12 md:gap-8">
         {/* Brand */}
         <div className="md:col-span-5">
@@ -19,6 +20,17 @@ const Footer = () => (
           <p className="label-mono text-muted-foreground/60">
             Backed by experience across Indigo, Urban Company, Royal Enfield & more
           </p>
+          <div className="hairline mt-8 max-w-sm" />
+          <div className="mt-6 flex flex-wrap gap-3">
+            {["Brand", "Web", "Content", "Ads", "Automation"].map((tag) => (
+              <span
+                key={tag}
+                className="label-mono rounded-full border border-border/60 px-3 py-1.5 text-muted-foreground"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
 
