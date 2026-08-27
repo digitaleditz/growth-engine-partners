@@ -328,7 +328,19 @@ const Packages = () => {
         <div className="container relative z-10">
           <ScrollReveal>
             <div className="glass rounded-3xl overflow-hidden border-shimmer max-w-5xl mx-auto">
-              <div className="p-8 md:p-14">
+              <div className="relative h-44 md:h-56 overflow-hidden">
+                <img
+                  src={systemDiagram}
+                  alt="Layered diagram of a connected digital growth system"
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                  className="w-full h-full object-cover opacity-55"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+              </div>
+              <div className="p-8 md:p-14 pt-0 md:pt-0 -mt-6">
+
                 <p className="label-mono text-primary mb-4">Flagship Engagement</p>
                 <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.1]">
                   The Digital Brand & Growth System
