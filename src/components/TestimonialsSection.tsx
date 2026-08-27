@@ -5,7 +5,7 @@ import ScrollReveal from "./ScrollReveal";
 const col1 = [
   { name: "Business Owner", company: "Pushti Turf", text: "DigitalEditz transformed our launch campaign into a record-breaking event. The ROI exceeded every expectation we had. Absolutely world-class execution." },
   { name: "Campaign Manager", company: "Government Project", text: "Exceptional digital strategy and execution. Engagement numbers were unprecedented across every platform." },
-  { name: "CEO", company: "Ceefle Ventures", text: "They don't just run ads — they build systems. Our lead pipeline has never been more predictable or profitable." },
+  { name: "CEO", company: "Ceefle Ventures", text: "They don't just run ads, they build systems. Our lead pipeline has never been more predictable or profitable." },
   { name: "Director", company: "Tukra Industries", text: "The team's strategic approach to our digital presence resulted in measurable growth within weeks." },
   { name: "Founder", company: "Zivara Mart", text: "From zero online presence to consistent daily orders. DigitalEditz made it happen." },
 ];
@@ -49,7 +49,7 @@ const TestimonialsSection = () => (
         <div className="absolute bottom-0 left-0 right-0 h-24 z-10 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
         <div className="grid md:grid-cols-2 gap-5 h-full">
-          {/* Column 1 — scrolls up */}
+          {/* Column 1: scrolls up */}
           <div className="relative overflow-hidden">
             <motion.div
               className="flex flex-col gap-5"
@@ -62,7 +62,7 @@ const TestimonialsSection = () => (
             </motion.div>
           </div>
 
-          {/* Column 2 — scrolls down */}
+          {/* Column 2: scrolls down */}
           <div className="relative overflow-hidden hidden md:block">
             <motion.div
               className="flex flex-col gap-5"

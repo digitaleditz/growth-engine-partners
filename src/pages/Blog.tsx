@@ -25,7 +25,7 @@ const Blog = () => (
   <div className="min-h-screen bg-background">
     <Seo
       title="Insights on Brand, Web, Content & Growth Systems | DigitalEditz"
-      description="Practical articles on building connected digital growth systems — brand, website, content, acquisition, conversion and analytics working as one."
+      description="Practical articles on building connected digital growth systems, brand, website, content, acquisition, conversion and analytics working as one."
       path="/blog"
       jsonLd={{
         "@context": "https://schema.org",
@@ -50,7 +50,7 @@ const Blog = () => (
           <span className="text-gradient">connected growth systems</span>
         </>
       }
-      description="How brand, digital infrastructure, content, acquisition, conversion and analytics fit together — written from the work we do, not from theory."
+      description="How brand, digital infrastructure, content, acquisition, conversion and analytics fit together, written from the work we do, not from theory."
     />
 
     {/* Featured latest post */}
