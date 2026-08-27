@@ -211,17 +211,17 @@
   /* Editorial display scale */
   .display-xl {
     @apply font-display font-bold leading-[0.95];
-    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    font-size: clamp(2.35rem, 5vw, 4.25rem);
     letter-spacing: -0.04em;
   }
   .display-lg {
     @apply font-display font-bold leading-[1.02];
-    font-size: clamp(2.1rem, 5vw, 3.6rem);
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
     letter-spacing: -0.035em;
   }
   .display-md {
     @apply font-display font-semibold leading-[1.1];
-    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    font-size: clamp(1.25rem, 1.8vw, 1.6rem);
     letter-spacing: -0.025em;
   }
   .body-lg {

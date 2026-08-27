@@ -174,8 +174,7 @@ const Index = () => {
               </span>
 
               <h1 className="display-xl mt-7">
-                We Build Growth Engines
-                <br className="hidden sm:block" />{" "}
+                We Build Growth Engines{" "}
                 <span className="text-gradient">Not Just Campaigns.</span>
               </h1>
 
