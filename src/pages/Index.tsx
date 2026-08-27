@@ -11,9 +11,11 @@ import {
   ArrowRight,
   ArrowUpRight,
   Sparkles,
+  Check,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
+import SectionHeading from "@/components/SectionHeading";
 import CountUp from "@/components/CountUp";
 import CTASection from "@/components/CTASection";
 import ClientMarquee from "@/components/ClientMarquee";
@@ -253,36 +255,48 @@ const Index = () => {
 
       <ClientMarquee />
       {/* Services */}
-      <section className="py-28 relative overflow-hidden section-texture-alt">
-        <div className="absolute inset-0 grid-pattern opacity-15" />
-        <div className="floating-orb w-[500px] h-[500px] -top-60 -left-60" />
+      <section className="section-pad relative overflow-hidden">
+        <div className="absolute inset-0 mesh-bg opacity-70" />
+        <div className="absolute inset-0 dot-grid opacity-20" />
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">What We Do</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-6">How We Scale Brands</h2>
-            <p className="text-muted-foreground text-center mb-20 max-w-xl mx-auto">Three core pillars. One unified growth system.</p>
-          </ScrollReveal>
+          <SectionHeading
+            eyebrow="What We Do"
+            title="How We Scale Brands"
+            description="Three core pillars. One unified growth system."
+          />
           <div className="grid md:grid-cols-3 gap-5">
             {services.map((s, i) => (
-              <ScrollReveal key={s.title} delay={i * 0.12}>
-                <div className="group glass rounded-2xl overflow-hidden hover:border-primary/20 transition-all duration-700 h-full card-hover-lift border-shimmer">
-                  <div className="relative h-56 overflow-hidden">
-                    <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
-                    <div className="absolute bottom-5 left-6 flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl glass-strong flex items-center justify-center">
-                        <s.icon className="text-primary" size={20} />
-                      </div>
-                      <span className="label-mono text-muted-foreground/60">{s.label}</span>
-                    </div>
+              <ScrollReveal key={s.title} delay={i * 0.1}>
+                <div className="group surface surface-hover h-full flex flex-col">
+                  <div className="relative h-52 overflow-hidden">
+                    <img
+                      src={s.image}
+                      alt={s.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                    <span className="absolute top-5 right-6 label-mono text-muted-foreground/60">
+                      {s.label}
+                    </span>
                   </div>
-                  <div className="p-7">
-                    <h3 className="font-display text-xl font-bold mb-3">{s.title}</h3>
-                    <p className="text-muted-foreground text-sm mb-5 leading-relaxed">{s.desc}</p>
-                    <ul className="space-y-2.5">
+                  <div className="p-7 -mt-9 relative">
+                    <div className="icon-tile mb-5">
+                      <s.icon size={20} />
+                    </div>
+                    <h3 className="display-md">{s.title}</h3>
+                    <p className="text-muted-foreground text-sm mt-3 mb-6 leading-relaxed">
+                      {s.desc}
+                    </p>
+                    <div className="hairline mb-5" />
+                    <ul className="space-y-3">
                       {s.items.map((item) => (
-                        <li key={item} className="text-sm text-secondary-foreground/70 flex items-start gap-2.5">
-                          <span className="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" /> {item}
+                        <li
+                          key={item}
+                          className="text-sm text-secondary-foreground/80 flex items-start gap-3"
+                        >
+                          <Check size={14} className="text-primary mt-0.5 shrink-0" />
+                          {item}
                         </li>
                       ))}
                     </ul>
@@ -295,13 +309,14 @@ const Index = () => {
       </section>
 
       {/* Case Studies */}
-      <section className="py-28 relative overflow-hidden section-texture">
-        <div className="absolute inset-0 grid-pattern opacity-15" />
+      <section className="section-pad relative overflow-hidden section-texture">
+        <div className="absolute inset-0 dot-grid opacity-20" />
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">Proven Results</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Featured Case Studies</h2>
-          </ScrollReveal>
+          <SectionHeading
+            eyebrow="Proven Results"
+            title="Featured Case Studies"
+            description="Real systems, real pipelines, real revenue outcomes."
+          />
 
           <ScrollReveal>
             <div className="glass rounded-3xl overflow-hidden mb-8 border-shimmer">
@@ -371,13 +386,14 @@ const Index = () => {
       </section>
 
       {/* How We Work */}
-      <section className="py-28 relative overflow-hidden section-texture-alt">
-        <div className="absolute inset-0 grid-pattern opacity-15" />
+      <section className="section-pad relative overflow-hidden section-texture-alt">
+        <div className="absolute inset-0 dot-grid opacity-20" />
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">Our Process</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Our 3-Step Growth Framework</h2>
-          </ScrollReveal>
+          <SectionHeading
+            eyebrow="Our Process"
+            title="Our 3-Step Growth Framework"
+            description="A repeatable path from diagnosis to scale."
+          />
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { step: "01", title: "Discovery & Strategy", desc: "We analyze your market, competitors, audience psychology, and growth bottlenecks. Then we design a system tailored to your business." },
@@ -385,9 +401,14 @@ const Index = () => {
               { step: "03", title: "Optimization & Scale", desc: "AI insights + human judgment = continuous improvement. We scale what performs and eliminate inefficiencies." },
             ].map((s, i) => (
               <ScrollReveal key={s.step} delay={i * 0.15}>
-                <div className="text-center glass rounded-2xl p-10 card-hover-lift border-shimmer h-full">
-                  <div className="text-primary/30 font-display text-7xl font-bold mb-6">{s.step}</div>
-                  <h3 className="font-display text-xl font-bold mb-4">{s.title}</h3>
+                <div className="surface surface-hover p-9 h-full">
+                  <div className="flex items-center justify-between mb-7">
+                    <span className="font-display text-5xl font-bold text-primary/25">{s.step}</span>
+                    <div className="icon-tile">
+                      <ArrowRight size={18} />
+                    </div>
+                  </div>
+                  <h3 className="display-md mb-4">{s.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
                 </div>
               </ScrollReveal>
@@ -400,14 +421,15 @@ const Index = () => {
       </section>
 
       {/* Why Us */}
-      <section className="py-28 relative overflow-hidden section-texture">
-        <div className="absolute inset-0 grid-pattern opacity-15" />
+      <section className="section-pad relative overflow-hidden section-texture">
+        <div className="absolute inset-0 dot-grid opacity-20" />
         <div className="floating-orb w-[400px] h-[400px] bottom-0 right-0" />
         <div className="container relative z-10">
-          <ScrollReveal>
-            <p className="label-mono text-primary text-center mb-4">Why Us</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-center mb-20">Why Brands Choose DigitalEditz</h2>
-          </ScrollReveal>
+          <SectionHeading
+            eyebrow="Why Us"
+            title="Why Brands Choose DigitalEditz"
+            description="Strategy led by people. Execution accelerated by AI."
+          />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { icon: Eye, text: "People-led thinking, not automated guesswork" },
@@ -418,9 +440,9 @@ const Index = () => {
               { icon: Target, text: "Data that connects directly to revenue" },
             ].map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="flex items-start gap-5 p-7 rounded-2xl glass hover:border-primary/20 transition-all duration-500 card-hover-lift border-shimmer">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <item.icon className="text-primary" size={18} />
+                <div className="flex items-start gap-5 p-7 surface surface-hover h-full">
+                  <div className="icon-tile">
+                    <item.icon size={18} />
                   </div>
                   <p className="text-sm font-medium text-secondary-foreground leading-relaxed">{item.text}</p>
                 </div>

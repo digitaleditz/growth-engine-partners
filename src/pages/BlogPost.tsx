@@ -5,7 +5,7 @@ import CTASection from "@/components/CTASection";
 import ScrollReveal from "@/components/ScrollReveal";
 import Seo, { SITE_URL } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, Clock, List, Share2 } from "lucide-react";
 import { blogPosts, formatPostDate, getPostBySlug } from "@/data/blogPosts";
 import NotFound from "./NotFound";
 
@@ -15,7 +15,7 @@ const BlogPost = () => {
 
   if (!post) return <NotFound />;
 
-  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
   const url = `${SITE_URL}/blog/${post.slug}`;
 
   return (
@@ -50,8 +50,10 @@ const BlogPost = () => {
       <Navbar />
 
       <article>
-        <header className="relative pt-40 pb-16 overflow-hidden section-texture">
-          <div className="absolute inset-0 grid-pattern opacity-15" />
+        {/* Hero band */}
+        <header className="relative pt-36 pb-16 md:pt-44 md:pb-20 overflow-hidden">
+          <div className="absolute inset-0 mesh-bg" />
+          <div className="absolute inset-0 dot-grid opacity-[0.3]" />
           <div className="floating-orb w-[450px] h-[450px] -top-20 right-0" />
           <div className="container relative z-10 max-w-3xl">
             <ScrollReveal>
@@ -61,104 +63,157 @@ const BlogPost = () => {
               >
                 <ArrowLeft size={14} /> All insights
               </Link>
-              <p className="label-mono text-primary mb-4">{post.category}</p>
-              <h1 className="font-display text-3xl md:text-5xl font-bold leading-[1.15]">
-                {post.title}
-              </h1>
-              <div className="flex flex-wrap items-center gap-3 mt-6 label-mono text-muted-foreground/60 text-[10px]">
+              <span className="eyebrow mb-5">{post.category}</span>
+              <h1 className="display-lg mt-6">{post.title}</h1>
+              <div className="flex flex-wrap items-center gap-3 mt-7 label-mono text-muted-foreground/60 text-[10px]">
                 <span>{post.author}</span>
                 <span>•</span>
                 <time dateTime={post.date}>{formatPostDate(post.date)}</time>
                 <span>•</span>
-                <span>{post.readTime}</span>
+                <span className="inline-flex items-center gap-1">
+                  <Clock size={11} /> {post.readTime}
+                </span>
               </div>
             </ScrollReveal>
           </div>
+          <div className="container relative z-10 mt-14">
+            <div className="hairline" />
+          </div>
         </header>
 
-        <div className="container max-w-3xl pb-8">
-          <ScrollReveal>
-            <p className="text-lg text-secondary-foreground/85 leading-relaxed border-l-2 border-primary/40 pl-6">
-              {post.intro}
-            </p>
-          </ScrollReveal>
-
-          <div className="mt-14 space-y-14">
-            {post.sections.map((section) => (
-              <ScrollReveal key={section.heading}>
-                <section>
-                  <h2 className="font-display text-2xl md:text-3xl font-bold mb-5 leading-snug">
-                    {section.heading}
-                  </h2>
-                  <div className="space-y-5">
-                    {section.paragraphs.map((p) => (
-                      <p key={p} className="text-muted-foreground leading-relaxed">
-                        {p}
-                      </p>
-                    ))}
-                  </div>
-                  {section.bullets && (
-                    <ul className="mt-6 space-y-3">
-                      {section.bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="flex items-start gap-3 text-sm text-secondary-foreground/85"
-                        >
-                          <Check size={16} className="text-primary shrink-0 mt-0.5" />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </section>
+        <div className="container">
+          <div className="grid lg:grid-cols-[1fr_260px] gap-12 max-w-5xl mx-auto">
+            {/* Prose column */}
+            <div className="max-w-3xl">
+              <ScrollReveal>
+                <p className="text-lg text-secondary-foreground/85 leading-relaxed border-l-2 border-primary/40 pl-6">
+                  {post.intro}
+                </p>
               </ScrollReveal>
-            ))}
-          </div>
 
-          <ScrollReveal>
-            <div className="glass rounded-3xl p-8 md:p-10 mt-16 border-shimmer">
-              <p className="label-mono text-primary mb-4">Next step</p>
-              <p className="text-secondary-foreground/85 leading-relaxed mb-8">
-                {post.closing}
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://calendly.com/digitaleditz01/free-discovery-call"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className="font-semibold rounded-full glow-accent gap-2 group">
-                    Book a Free Discovery Call
-                    <ArrowUpRight
-                      size={14}
-                      className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </Button>
-                </a>
-                <Button
-                  variant="outline"
-                  className="font-semibold rounded-full border-border/50 hover:border-primary/30"
-                  asChild
-                >
-                  <Link to="/packages">Explore our services</Link>
-                </Button>
+              <div className="mt-14 space-y-14">
+                {post.sections.map((section) => (
+                  <ScrollReveal key={section.heading}>
+                    <section id={section.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-")}>
+                      <h2 className="font-display text-2xl md:text-3xl font-bold mb-5 leading-snug">
+                        {section.heading}
+                      </h2>
+                      <div className="space-y-5">
+                        {section.paragraphs.map((p) => (
+                          <p key={p} className="text-muted-foreground leading-relaxed">
+                            {p}
+                          </p>
+                        ))}
+                      </div>
+                      {section.bullets && (
+                        <ul className="mt-6 space-y-3">
+                          {section.bullets.map((b) => (
+                            <li
+                              key={b}
+                              className="flex items-start gap-3 text-sm text-secondary-foreground/85"
+                            >
+                              <Check size={16} className="text-primary shrink-0 mt-0.5" />
+                              {b}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </section>
+                  </ScrollReveal>
+                ))}
               </div>
+
+              <ScrollReveal>
+                <div className="surface p-8 md:p-10 mt-16">
+                  <p className="label-mono text-primary mb-4">Next step</p>
+                  <p className="text-secondary-foreground/85 leading-relaxed mb-8">
+                    {post.closing}
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <a
+                      href="https://calendly.com/digitaleditz01/free-discovery-call"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button className="font-semibold rounded-full glow-accent gap-2 group">
+                        Book a Free Discovery Call
+                        <ArrowUpRight
+                          size={14}
+                          className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                        />
+                      </Button>
+                    </a>
+                    <Button
+                      variant="outline"
+                      className="font-semibold rounded-full border-border/50 hover:border-primary/30"
+                      asChild
+                    >
+                      <Link to="/packages">Explore our services</Link>
+                    </Button>
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+
+            {/* Side rail */}
+            <aside className="hidden lg:block">
+              <div className="sticky top-28 space-y-6">
+                <div className="surface p-6">
+                  <p className="label-mono text-muted-foreground mb-4 inline-flex items-center gap-2">
+                    <List size={12} /> In this article
+                  </p>
+                  <ul className="space-y-3">
+                    {post.sections.map((s) => (
+                      <li key={s.heading}>
+                        <a
+                          href={`#${s.heading.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                          className="text-sm text-muted-foreground hover:text-primary transition-colors leading-snug block"
+                        >
+                          {s.heading}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="surface p-6">
+                  <p className="label-mono text-muted-foreground mb-4 inline-flex items-center gap-2">
+                    <Share2 size={12} /> Share
+                  </p>
+                  <div className="flex gap-3">
+                    <a
+                      href={`https://wa.me/?text=${encodeURIComponent(`${post.title} — ${url}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="icon-tile hover:border-primary/40 transition-colors"
+                      aria-label="Share on WhatsApp"
+                    >
+                      <Share2 size={16} />
+                    </a>
+                    <Link to="/blog" className="icon-tile hover:border-primary/40 transition-colors" aria-label="Back to blog">
+                      <ArrowLeft size={16} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
 
           {related.length > 0 && (
             <ScrollReveal>
-              <div className="mt-20">
-                <h2 className="label-mono text-muted-foreground mb-6">Keep reading</h2>
-                <div className="grid sm:grid-cols-2 gap-5">
+              <div className="mt-20 mb-8 max-w-5xl mx-auto">
+                <p className="eyebrow mb-6">Keep reading</p>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {related.map((r) => (
                     <Link
                       key={r.slug}
                       to={`/blog/${r.slug}`}
-                      className="glass rounded-2xl p-6 card-hover-lift block"
+                      className="surface surface-hover p-6 block"
                     >
                       <p className="label-mono text-primary/70 mb-3">{r.category}</p>
                       <p className="font-display text-lg font-bold leading-snug">{r.title}</p>
+                      <div className="flex items-center gap-2 mt-4 label-mono text-muted-foreground/60 text-[10px]">
+                        <Clock size={11} /> {r.readTime}
+                      </div>
                     </Link>
                   ))}
                 </div>
