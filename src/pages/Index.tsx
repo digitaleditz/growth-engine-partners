@@ -136,7 +136,7 @@ const Index = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <video
             ref={videoRef}
@@ -146,91 +146,110 @@ const Index = () => {
             playsInline
             autoPlay
             preload="auto"
-            className="w-full h-full object-cover brightness-75"
+            className="w-full h-full object-cover brightness-[0.55]"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/30" />
         </div>
 
-        <div className="absolute inset-0 grid-pattern opacity-20" />
-        <div className="floating-orb w-[500px] h-[500px] top-1/4 -left-40 animate-float" />
+        <div className="absolute inset-0 dot-grid opacity-30" />
+        <div className="floating-orb w-[520px] h-[520px] top-1/4 -left-40 animate-float" />
         <div
-          className="floating-orb w-[400px] h-[400px] bottom-1/4 -right-40 animate-float"
+          className="floating-orb w-[420px] h-[420px] bottom-0 -right-40 animate-float"
           style={{ animationDelay: "3s" }}
         />
 
-        <div className="container relative z-10 pt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-5xl mx-auto"
-          >
-            <div className="flex items-center gap-3 justify-center mb-8">
-              <span className="label-mono text-primary flex items-center gap-2">
+        <div className="container relative z-10 pt-32 pb-20">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-end">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="eyebrow">
                 <Sparkles size={12} />
-                Brand & Growth Systems Partner
+                Brand &amp; Growth Systems Partner
               </span>
-            </div>
 
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8 text-center">
-              We Build Growth <br className="hidden md:block" />
-              Engines /{" "}
-              <span className="text-gradient">
-                Not Just <br className="hidden md:block" />
-                Campaigns.
-              </span>
-            </h1>
+              <h1 className="display-xl mt-7">
+                We Build Growth Engines
+                <br className="hidden sm:block" />{" "}
+                <span className="text-gradient">Not Just Campaigns.</span>
+              </h1>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 text-center leading-relaxed">
-              People-led strategy. AI-driven execution. We build the complete
-              digital foundation — brand, website, content, acquisition and
-              automation — as one connected growth system.
-            </p>
+              <p className="body-lg mt-7 max-w-xl">
+                People-led strategy. AI-driven execution. We build the complete
+                digital foundation — brand, website, content, acquisition and
+                automation — as one connected growth system.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a
-            href="https://calendly.com/digitaleditz01/free-discovery-call"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-4"
-          >
-              <Button
-                size="lg"
-                className="text-base font-semibold px-10 py-7 rounded-full glow-accent-strong group gap-2"
-              >
-                Book a Free Discovery Call
-                <ArrowUpRight
-                  size={16}
-                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
-              </Button>
-              </a>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-base font-semibold px-10 py-7 rounded-full border-border/50 hover:border-primary/30"
-                asChild
-              >
-                <Link to="/case-studies">View Case Studies</Link>
-              </Button>
-            </div>
+              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://calendly.com/digitaleditz01/free-discovery-call"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto text-base font-semibold px-9 py-7 rounded-full glow-accent-strong group gap-2"
+                  >
+                    Book a Free Discovery Call
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </Button>
+                </a>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-base font-semibold px-9 py-7 rounded-full border-border/60 hover:border-primary/40"
+                  asChild
+                >
+                  <Link to="/case-studies">View Case Studies</Link>
+                </Button>
+              </div>
 
-            <p className="text-center text-xs text-muted-foreground/60 max-w-lg mx-auto label-mono leading-relaxed">
-              Backed by marketers who've executed campaigns for Indigo, Urban
-              Company, Royal Enfield, M3M and more...
-            </p>
-          </motion.div>
+              <p className="mt-10 text-muted-foreground/60 max-w-md label-mono leading-relaxed">
+                Backed by marketers who've executed campaigns for Indigo, Urban
+                Company, Royal Enfield, M3M and more
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-2 gap-3"
+            >
+              {[
+                { value: "700%", label: "Peak ROAS Delivered" },
+                { value: "1000+", label: "Qualified Leads Generated" },
+                { value: "1M+", label: "Campaign Reach" },
+                { value: "3X", label: "Average Lead Growth" },
+              ].map((s) => (
+                <div key={s.label} className="surface surface-hover p-6">
+                  <p className="font-display text-3xl md:text-4xl font-bold text-primary">
+                    {s.value}
+                  </p>
+                  <p className="label-mono text-muted-foreground mt-2 leading-relaxed">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
         <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
         >
           <ChevronDown className="text-muted-foreground/40" size={24} />
         </motion.div>
       </section>
+
 
       <ClientMarquee />
       {/* Services */}
