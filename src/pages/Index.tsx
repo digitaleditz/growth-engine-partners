@@ -169,7 +169,7 @@ const Index = () => {
             <div className="flex items-center gap-3 justify-center mb-8">
               <span className="label-mono text-primary flex items-center gap-2">
                 <Sparkles size={12} />
-                AI-Powered Growth Partner
+                Brand & Growth Systems Partner
               </span>
             </div>
 
@@ -183,9 +183,9 @@ const Index = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 text-center leading-relaxed">
-              People-led strategy. AI-driven execution. We scale brands through
-              intelligent systems, performance marketing, and data that actually
-              moves revenue.
+              People-led strategy. AI-driven execution. We build the complete
+              digital foundation — brand, website, content, acquisition and
+              automation — as one connected growth system.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
