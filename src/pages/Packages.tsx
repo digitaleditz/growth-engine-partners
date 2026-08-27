@@ -390,7 +390,12 @@ const Packages = () => {
               A five-step path from audit to scale
             </h2>
           </ScrollReveal>
-          <div className="grid md:grid-cols-5 gap-4 mt-14">
+          <div
+            aria-hidden
+            className="hidden md:block h-px mt-14 bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+          />
+          <div className="grid md:grid-cols-5 gap-4 mt-6 md:mt-8">
+            <div aria-hidden className="hidden" />
             {process.map((s, i) => (
               <ScrollReveal key={s.n} delay={i * 0.07}>
                 <div className="h-full p-7 rounded-2xl glass border-shimmer card-hover-lift">
