@@ -154,13 +154,13 @@ const CaseStudies = () => (
         <ScrollReveal>
           <div className="surface overflow-hidden">
             <div className="grid lg:grid-cols-2 gap-0">
-              <div className="relative min-h-[320px] lg:min-h-full">
+              <div className="relative min-h-[320px] lg:min-h-full bg-gradient-to-br from-primary/10 via-card to-card">
+                <div className="absolute inset-0 dot-grid opacity-20" />
                 <img
                   src={featured.image}
                   alt={featured.title}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-contain p-6 md:p-10"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-background/20" />
               </div>
               <div className="p-8 md:p-14 flex flex-col justify-center">
                 <div className="flex items-center gap-3 mb-5">
@@ -208,13 +208,20 @@ const CaseStudies = () => (
           {rest.map((cs, i) => (
             <ScrollReveal key={cs.tag} delay={i * 0.08}>
               <div className="surface surface-hover h-full overflow-hidden flex flex-col">
-                <div className="relative h-52">
-                  <img src={cs.image} alt={cs.title} className="absolute inset-0 w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
+                <div className="relative aspect-[4/3] bg-gradient-to-br from-primary/10 via-card to-card border-b border-border/50">
+                  <div className="absolute inset-0 dot-grid opacity-20" />
+                  <img
+                    src={cs.image}
+                    alt={cs.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                  />
                   <div className="absolute top-4 left-4 icon-tile">
                     <cs.icon size={18} />
                   </div>
-                  <span className="absolute bottom-4 left-4 label-mono text-primary">{cs.tag}</span>
+                  <span className="absolute bottom-4 left-4 label-mono text-primary bg-background/70 backdrop-blur px-2 py-1 rounded">
+                    {cs.tag}
+                  </span>
                 </div>
                 <div className="p-7 md:p-8 flex-1 flex flex-col">
                   <h3 className="font-display text-xl font-bold leading-snug">{cs.title}</h3>
