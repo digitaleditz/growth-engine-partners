@@ -56,13 +56,13 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 400;
     letter-spacing: -0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-weight: 700;
     letter-spacing: -0.03em;
   }
@@ -196,5 +196,91 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* ── Modern layout primitives ─────────────────────────── */
+  .section-pad {
+    @apply py-24 md:py-32;
+  }
+  .section-pad-sm {
+    @apply py-16 md:py-24;
+  }
+
+  /* Editorial display scale */
+  .display-xl {
+    @apply font-display font-bold leading-[0.95];
+    font-size: clamp(2.35rem, 5vw, 4.25rem);
+    letter-spacing: -0.04em;
+  }
+  .display-lg {
+    @apply font-display font-bold leading-[1.02];
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
+    letter-spacing: -0.035em;
+  }
+  .display-md {
+    @apply font-display font-semibold leading-[1.1];
+    font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+    letter-spacing: -0.025em;
+  }
+  .body-lg {
+    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
+  }
+
+  /* Eyebrow chip */
+  .eyebrow {
+    @apply label-mono inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-primary;
+    background: hsl(199 93% 60% / 0.08);
+    border: 1px solid hsl(199 93% 60% / 0.18);
+  }
+
+  /* Bento surface */
+  .surface {
+    @apply rounded-[1.75rem] relative overflow-hidden;
+    background: linear-gradient(150deg, hsl(240 5% 9% / 0.75) 0%, hsl(240 6% 5% / 0.6) 100%);
+    border: 1px solid hsl(0 0% 100% / 0.07);
+    backdrop-filter: blur(28px) saturate(1.2);
+    -webkit-backdrop-filter: blur(28px) saturate(1.2);
+  }
+  .surface-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+  .surface-hover:hover {
+    border-color: hsl(199 93% 60% / 0.28);
+    transform: translateY(-4px);
+    box-shadow: 0 30px 90px -30px hsl(199 93% 60% / 0.18), 0 10px 30px -12px hsl(0 0% 0% / 0.5);
+  }
+
+  /* Mesh gradient backdrop */
+  .mesh-bg {
+    background-image:
+      radial-gradient(ellipse 60% 50% at 15% 0%, hsl(199 93% 60% / 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 45% at 85% 20%, hsl(226 80% 58% / 0.09) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 50% at 50% 100%, hsl(199 93% 60% / 0.05) 0%, transparent 60%);
+  }
+
+  /* Hairline rule */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, hsl(0 0% 100% / 0.10), hsl(0 0% 100% / 0.02) 70%, transparent);
+  }
+
+  /* Icon tile */
+  .icon-tile {
+    @apply w-11 h-11 rounded-2xl flex items-center justify-center text-primary shrink-0;
+    background: linear-gradient(150deg, hsl(199 93% 60% / 0.16), hsl(199 93% 60% / 0.04));
+    border: 1px solid hsl(199 93% 60% / 0.2);
+  }
+
+  /* Dotted texture */
+  .dot-grid {
+    background-image: radial-gradient(hsl(0 0% 100% / 0.08) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
 }
