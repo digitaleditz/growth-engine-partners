@@ -82,7 +82,7 @@ const BlogPost = () => {
             <ScrollReveal>
               <div className="relative overflow-hidden rounded-2xl border border-border/50 aspect-[21/9]">
                 <img
-                  src={covers[post.slug]}
+                  src={getCover(post.slug)}
                   alt=""
                   width={1280}
                   height={800}

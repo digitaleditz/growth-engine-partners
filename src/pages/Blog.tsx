@@ -55,7 +55,7 @@ const Blog = () => (
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="relative min-h-[260px] lg:min-h-full bg-gradient-to-br from-primary/15 via-transparent to-transparent flex items-center justify-center p-10">
                   <img
-                    src={covers[latest.slug]}
+                    src={getCover(latest.slug)}
                     alt=""
                     width={1280}
                     height={800}
@@ -102,7 +102,7 @@ const Blog = () => (
               <article className="h-full surface surface-hover overflow-hidden flex flex-col">
                 <div className="relative h-40 overflow-hidden">
                   <img
-                    src={covers[post.slug]}
+                    src={getCover(post.slug)}
                     alt=""
                     loading="lazy"
                     width={1280}
