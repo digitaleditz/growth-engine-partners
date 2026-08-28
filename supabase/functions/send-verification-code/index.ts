@@ -103,10 +103,26 @@ serve(async (req) => {
       body: JSON.stringify({
         from: "DigitalEditz <info@digitaleditz.com>",
         to: [cleanEmail],
-        subject: `${code} is your DigitalEditz verification code`,
+        reply_to: "info@digitaleditz.com",
+        subject: "Your DigitalEditz verification code",
         html: codeEmailHtml(code),
+        // Plain-text alternative significantly improves spam scoring
+        text: [
+          `Your DigitalEditz verification code is ${code}.`,
+          "",
+          "It expires in 10 minutes. Enter it on the contact form to submit your enquiry.",
+          "If you did not request this, you can ignore this email.",
+          "",
+          "DigitalEditz, Gurugram, India",
+          "info@digitaleditz.com",
+        ].join("\n"),
+        headers: {
+          // Prevents Gmail from threading/collapsing repeated codes
+          "X-Entity-Ref-ID": crypto.randomUUID(),
+        },
       }),
     });
+
 
     if (!res.ok) {
       console.error("Resend verification email error:", res.status, await res.text());
