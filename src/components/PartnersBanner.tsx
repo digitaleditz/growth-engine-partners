@@ -38,7 +38,7 @@ const PartnersBanner = () => (
                 >
                   {p.customIcon ?? (
                     <img
-                      src={`https://cdn.simpleicons.org/${p.icon}/${p.color}`}
+                      src={`https://cdn.simpleicons.org/${p.icon!}/${p.color}`}
                       alt={`${p.name} logo`}
                       width={18}
                       height={18}
