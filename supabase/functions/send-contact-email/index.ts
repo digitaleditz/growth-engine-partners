@@ -20,14 +20,45 @@ serve(async (req) => {
   }
 
   try {
-    const { name, businessName, email, phone, service, packageName, message } =
-      await req.json();
+    const {
+      name,
+      businessName,
+      email,
+      phone,
+      service,
+      packageName,
+      message,
+      code,
+      honeypot,
+    } = await req.json();
+
+    const jsonRes = (body: unknown, status = 200) =>
+      new Response(JSON.stringify(body), {
+        status,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+
+    // Silent bot trap: hidden field must stay empty
+    if (typeof honeypot === "string" && honeypot.trim() !== "") {
+      return jsonRes({ success: true, message: "Query received" }, 200);
+    }
 
     if (!name || !email) {
-      return new Response(
-        JSON.stringify({ error: "Name and email are required" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+      return jsonRes({ error: "Name and email are required" }, 400);
+    }
+
+    const cleanEmail = String(email).trim().toLowerCase();
+    if (
+      cleanEmail.length > 255 ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(cleanEmail) ||
+      String(name).trim().length > 100 ||
+      String(message ?? "").length > 2000
+    ) {
+      return jsonRes({ error: "Please check the details you entered." }, 400);
+    }
+
+    if (!code || !/^\d{6}$/.test(String(code).trim())) {
+      return jsonRes({ error: "A valid 6-digit verification code is required." }, 400);
     }
 
     // Store in database (with retry for transient network/SSL issues)
@@ -35,15 +66,61 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
+    // Verify the emailed code
+    const { data: codeRow } = await supabase
+      .from("email_verification_codes")
+      .select("id, code, attempts, expires_at, consumed_at")
+      .eq("email", cleanEmail)
+      .is("consumed_at", null)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (!codeRow) {
+      return jsonRes({ error: "Please request a new verification code." }, 400);
+    }
+    if (new Date(codeRow.expires_at).getTime() < Date.now()) {
+      return jsonRes({ error: "That code has expired. Please request a new one." }, 400);
+    }
+    if ((codeRow.attempts ?? 0) >= 5) {
+      return jsonRes({ error: "Too many incorrect attempts. Please request a new code." }, 429);
+    }
+    if (codeRow.code !== String(code).trim()) {
+      await supabase
+        .from("email_verification_codes")
+        .update({ attempts: (codeRow.attempts ?? 0) + 1 })
+        .eq("id", codeRow.id);
+      return jsonRes({ error: "Incorrect verification code." }, 400);
+    }
+
+    await supabase
+      .from("email_verification_codes")
+      .update({ consumed_at: new Date().toISOString() })
+      .eq("id", codeRow.id);
+
+    // Rate limit: max 3 submissions per email per hour
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+    const { count: recentCount } = await supabase
+      .from("contact_submissions")
+      .select("id", { count: "exact", head: true })
+      .eq("email", cleanEmail)
+      .gte("created_at", oneHourAgo);
+
+    if ((recentCount ?? 0) >= 3) {
+      return jsonRes({ error: "You've already submitted a few enquiries. We'll be in touch soon." }, 429);
+    }
+
     const submissionPayload = {
       name,
       business_name: businessName || null,
-      email,
+      email: cleanEmail,
       phone: phone || null,
       service: service || null,
       package: packageName || null,
       message: message || null,
+      verified_email: true,
     };
+
 
     let dbSaved = false;
     let lastDbError: unknown = null;
@@ -122,7 +199,7 @@ serve(async (req) => {
           </div>
           <p style="color:#64748b;font-size:13px;line-height:1.6;margin:0 0 28px;">
             In the meantime, feel free to reach us directly on
-            <a href="https://wa.me/919149958270" style="color:#0284c7;text-decoration:underline;"> WhatsApp</a>
+            <a href="https://wa.me/917065206690" style="color:#0284c7;text-decoration:underline;"> WhatsApp</a>
             for a quicker response.
           </p>
         </div>
