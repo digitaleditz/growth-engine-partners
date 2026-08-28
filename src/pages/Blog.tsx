@@ -7,15 +7,8 @@ import PageHero from "@/components/PageHero";
 import Seo, { SITE_URL } from "@/components/Seo";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { blogPosts, formatPostDate } from "@/data/blogPosts";
-import coverConnected from "@/assets/blog-connected-system.jpg";
-import coverChoose from "@/assets/blog-choose-engagement.jpg";
-import coverAlignment from "@/assets/blog-alignment.jpg";
+import { getCover } from "@/data/blogCovers";
 
-const covers: Record<string, string> = {
-  "connected-digital-growth-system": coverConnected,
-  "individual-services-vs-integrated-engagement": coverChoose,
-  "aligning-brand-website-content-acquisition-crm": coverAlignment,
-};
 
 const [latest, ...others] = blogPosts
   .slice()
