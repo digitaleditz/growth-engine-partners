@@ -7,15 +7,8 @@ import PageHero from "@/components/PageHero";
 import Seo, { SITE_URL } from "@/components/Seo";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { blogPosts, formatPostDate } from "@/data/blogPosts";
-import coverConnected from "@/assets/blog-connected-system.jpg";
-import coverChoose from "@/assets/blog-choose-engagement.jpg";
-import coverAlignment from "@/assets/blog-alignment.jpg";
+import { getCover } from "@/data/blogCovers";
 
-const covers: Record<string, string> = {
-  "connected-digital-growth-system": coverConnected,
-  "individual-services-vs-integrated-engagement": coverChoose,
-  "aligning-brand-website-content-acquisition-crm": coverAlignment,
-};
 
 const [latest, ...others] = blogPosts
   .slice()
@@ -62,7 +55,7 @@ const Blog = () => (
               <div className="grid lg:grid-cols-2 gap-0">
                 <div className="relative min-h-[260px] lg:min-h-full bg-gradient-to-br from-primary/15 via-transparent to-transparent flex items-center justify-center p-10">
                   <img
-                    src={covers[latest.slug]}
+                    src={getCover(latest.slug)}
                     alt=""
                     width={1280}
                     height={800}
@@ -109,7 +102,7 @@ const Blog = () => (
               <article className="h-full surface surface-hover overflow-hidden flex flex-col">
                 <div className="relative h-40 overflow-hidden">
                   <img
-                    src={covers[post.slug]}
+                    src={getCover(post.slug)}
                     alt=""
                     loading="lazy"
                     width={1280}

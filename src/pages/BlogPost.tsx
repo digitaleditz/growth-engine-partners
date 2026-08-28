@@ -8,15 +8,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowUpRight, Check, Clock, List, Share2 } from "lucide-react";
 import { blogPosts, formatPostDate, getPostBySlug } from "@/data/blogPosts";
 import NotFound from "./NotFound";
-import coverConnected from "@/assets/blog-connected-system.jpg";
-import coverChoose from "@/assets/blog-choose-engagement.jpg";
-import coverAlignment from "@/assets/blog-alignment.jpg";
+import { getCover } from "@/data/blogCovers";
 
-const covers: Record<string, string> = {
-  "connected-digital-growth-system": coverConnected,
-  "individual-services-vs-integrated-engagement": coverChoose,
-  "aligning-brand-website-content-acquisition-crm": coverAlignment,
-};
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -89,7 +82,7 @@ const BlogPost = () => {
             <ScrollReveal>
               <div className="relative overflow-hidden rounded-2xl border border-border/50 aspect-[21/9]">
                 <img
-                  src={covers[post.slug]}
+                  src={getCover(post.slug)}
                   alt=""
                   width={1280}
                   height={800}

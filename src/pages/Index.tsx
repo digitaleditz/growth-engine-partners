@@ -19,6 +19,7 @@ import SectionHeading from "@/components/SectionHeading";
 import CountUp from "@/components/CountUp";
 import CTASection from "@/components/CTASection";
 import ClientMarquee from "@/components/ClientMarquee";
+import PartnersBanner from "@/components/PartnersBanner";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import {
   Accordion,
@@ -253,6 +254,7 @@ const Index = () => {
 
 
       <ClientMarquee />
+      <PartnersBanner />
       {/* Services */}
       <section className="section-pad relative overflow-hidden">
         <div className="absolute inset-0 mesh-bg opacity-70" />
