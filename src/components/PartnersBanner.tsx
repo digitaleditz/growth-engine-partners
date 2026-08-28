@@ -1,14 +1,14 @@
 import ScrollReveal from "@/components/ScrollReveal";
 
 const platforms = [
-  "Google Ads",
-  "Meta Ads",
-  "LinkedIn Ads",
-  "YouTube",
-  "WhatsApp Business",
-  "Google Analytics 4",
-  "Shopify",
-  "HubSpot",
+  { name: "Google Ads", icon: "googleads", color: "4285F4" },
+  { name: "Meta Ads", icon: "meta", color: "0866FF" },
+  { name: "LinkedIn Ads", icon: "linkedin", color: "0A66C2" },
+  { name: "YouTube", icon: "youtube", color: "FF0000" },
+  { name: "WhatsApp Business", icon: "whatsapp", color: "25D366" },
+  { name: "Google Analytics 4", icon: "googleanalytics", color: "E37400" },
+  { name: "Shopify", icon: "shopify", color: "95BF47" },
+  { name: "HubSpot", icon: "hubspot", color: "FF7A59" },
 ];
 
 const PartnersBanner = () => (
@@ -27,10 +27,18 @@ const PartnersBanner = () => (
             <div className="flex flex-wrap gap-3">
               {platforms.map((p) => (
                 <span
-                  key={p}
-                  className="rounded-full border border-border/40 bg-secondary/30 px-5 py-2.5 text-sm font-medium text-secondary-foreground/80 hover:text-primary hover:border-primary/30 transition-colors"
+                  key={p.name}
+                  className="inline-flex items-center gap-2.5 rounded-full border border-border/40 bg-secondary/30 px-5 py-2.5 text-sm font-medium text-secondary-foreground/80 hover:text-foreground hover:border-primary/30 hover:bg-secondary/50 transition-colors"
                 >
-                  {p}
+                  <img
+                    src={`https://cdn.simpleicons.org/${p.icon}/${p.color}`}
+                    alt={`${p.name} logo`}
+                    width={18}
+                    height={18}
+                    loading="lazy"
+                    className="h-[18px] w-[18px] object-contain"
+                  />
+                  {p.name}
                 </span>
               ))}
             </div>
