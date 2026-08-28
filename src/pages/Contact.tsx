@@ -206,8 +206,52 @@ const Contact = () => {
                     Thank you for reaching out. Our team will contact you within 24 hours. A confirmation has been sent to <span className="text-primary">{form.email}</span>.
                   </p>
                 </div>
-              ) : (
+              ) : step === "verify" ? (
                 <form className="surface p-8 md:p-10 space-y-5" onSubmit={handleSubmit}>
+                  <span className="eyebrow">Verify Email</span>
+                  <h2 className="display-md mt-4 mb-2">Enter your verification code</h2>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    We sent a 6-digit code to <span className="text-primary">{form.email}</span>. Enter it below to send your enquiry. The code expires in 10 minutes.
+                  </p>
+                  <Input
+                    name="code"
+                    inputMode="numeric"
+                    maxLength={6}
+                    placeholder="6-digit code"
+                    value={code}
+                    onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                    className="bg-background/50 border-border/50 rounded-xl h-14 text-center text-xl tracking-[0.5em] focus:border-primary/50"
+                    required
+                  />
+                  <Button className="w-full font-semibold rounded-full glow-accent py-6 gap-2 group" size="lg" disabled={submitting}>
+                    {submitting ? (
+                      <>
+                        <Loader2 size={16} className="animate-spin" />
+                        Verifying...
+                      </>
+                    ) : (
+                      <>
+                        Verify & Submit
+                        <Send size={16} className="transition-transform group-hover:translate-x-0.5" />
+                      </>
+                    )}
+                  </Button>
+                  <div className="flex items-center justify-between gap-4 text-xs">
+                    <button type="button" onClick={() => setStep("details")} className="text-muted-foreground hover:text-foreground transition-colors">
+                      Edit details
+                    </button>
+                    <button
+                      type="button"
+                      onClick={sendCode}
+                      disabled={sendingCode}
+                      className="text-primary hover:opacity-80 transition-opacity disabled:opacity-50"
+                    >
+                      {sendingCode ? "Sending..." : "Resend code"}
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <form className="surface p-8 md:p-10 space-y-5" onSubmit={sendCode}>
                   <span className="eyebrow">Discovery Call</span>
                   <h2 className="display-md mt-4 mb-2">Tell us about your business</h2>
                   <div className="grid grid-cols-2 gap-4 pt-2">
@@ -216,6 +260,18 @@ const Contact = () => {
                   </div>
                   <Input name="email" placeholder="Email Address *" type="email" value={form.email} onChange={handleChange} className="bg-background/50 border-border/50 rounded-xl h-12 focus:border-primary/50" required />
                   <Input name="phone" placeholder="Phone Number" type="tel" value={form.phone} onChange={handleChange} className="bg-background/50 border-border/50 rounded-xl h-12 focus:border-primary/50" />
+
+                  {/* Bot trap: hidden from real users */}
+                  <div className="absolute w-0 h-0 overflow-hidden opacity-0 pointer-events-none" aria-hidden="true">
+                    <input
+                      type="text"
+                      name="company_website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
 
                   {/* Service Selection */}
                   <div>
@@ -248,21 +304,25 @@ const Contact = () => {
                   </div>
 
                   <Textarea name="message" placeholder="Tell us about your goals and challenges..." value={form.message} onChange={handleChange} className="bg-background/50 border-border/50 rounded-xl min-h-[120px] focus:border-primary/50" />
-                  <Button className="w-full font-semibold rounded-full glow-accent py-6 gap-2 group" size="lg" disabled={submitting}>
-                    {submitting ? (
+                  <Button className="w-full font-semibold rounded-full glow-accent py-6 gap-2 group" size="lg" disabled={sendingCode}>
+                    {sendingCode ? (
                       <>
                         <Loader2 size={16} className="animate-spin" />
-                        Submitting...
+                        Sending code...
                       </>
                     ) : (
                       <>
-                        Schedule Discovery Call
+                        Send Verification Code
                         <Send size={16} className="transition-transform group-hover:translate-x-0.5" />
                       </>
                     )}
                   </Button>
+                  <p className="text-xs text-muted-foreground text-center">
+                    We'll email you a 6-digit code to confirm your address before submitting.
+                  </p>
                 </form>
               )}
+
             </ScrollReveal>
 
             <ScrollReveal delay={0.15}>
