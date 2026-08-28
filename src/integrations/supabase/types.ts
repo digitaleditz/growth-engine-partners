@@ -25,6 +25,7 @@ export type Database = {
           package: string | null
           phone: string | null
           service: string | null
+          verified_email: boolean
         }
         Insert: {
           business_name?: string | null
@@ -36,6 +37,7 @@ export type Database = {
           package?: string | null
           phone?: string | null
           service?: string | null
+          verified_email?: boolean
         }
         Update: {
           business_name?: string | null
@@ -47,6 +49,37 @@ export type Database = {
           package?: string | null
           phone?: string | null
           service?: string | null
+          verified_email?: boolean
+        }
+        Relationships: []
+      }
+      email_verification_codes: {
+        Row: {
+          attempts: number
+          code: string
+          consumed_at: string | null
+          created_at: string
+          email: string
+          expires_at: string
+          id: string
+        }
+        Insert: {
+          attempts?: number
+          code: string
+          consumed_at?: string | null
+          created_at?: string
+          email: string
+          expires_at: string
+          id?: string
+        }
+        Update: {
+          attempts?: number
+          code?: string
+          consumed_at?: string | null
+          created_at?: string
+          email?: string
+          expires_at?: string
+          id?: string
         }
         Relationships: []
       }
