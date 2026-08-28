@@ -199,7 +199,7 @@ serve(async (req) => {
           </div>
           <p style="color:#64748b;font-size:13px;line-height:1.6;margin:0 0 28px;">
             In the meantime, feel free to reach us directly on
-            <a href="https://wa.me/919149958270" style="color:#0284c7;text-decoration:underline;"> WhatsApp</a>
+            <a href="https://wa.me/917065206690" style="color:#0284c7;text-decoration:underline;"> WhatsApp</a>
             for a quicker response.
           </p>
         </div>
