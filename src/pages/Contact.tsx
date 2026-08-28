@@ -96,6 +96,10 @@ const Contact = () => {
     packageName: "Custom / Other",
     message: "",
   });
+  const [honeypot, setHoneypot] = useState("");
+  const [code, setCode] = useState("");
+  const [step, setStep] = useState<"details" | "verify">("details");
+  const [sendingCode, setSendingCode] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -115,15 +119,38 @@ const Contact = () => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const sendCode = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim()) {
       toast({ title: "Please fill in your name and email.", variant: "destructive" });
       return;
     }
+    if (honeypot.trim() !== "") return;
+    setSendingCode(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("send-verification-code", {
+        body: { email: form.email.trim() },
+      });
+      if (error || (data as any)?.error) throw new Error((data as any)?.error || "failed");
+      setStep("verify");
+      toast({ title: `Verification code sent to ${form.email.trim()}` });
+    } catch (err) {
+      console.error(err);
+      toast({ title: "Could not send the code. Please check your email and try again.", variant: "destructive" });
+    } finally {
+      setSendingCode(false);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!/^\d{6}$/.test(code.trim())) {
+      toast({ title: "Enter the 6-digit code from your email.", variant: "destructive" });
+      return;
+    }
     setSubmitting(true);
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
         body: {
           name: form.name.trim(),
           businessName: form.businessName.trim(),
@@ -132,18 +159,24 @@ const Contact = () => {
           service: form.service,
           packageName: form.packageName,
           message: form.message.trim(),
+          code: code.trim(),
+          honeypot,
         },
       });
-      if (error) throw error;
+      if (error || (data as any)?.error) throw new Error((data as any)?.error || "failed");
       setSubmitted(true);
       toast({ title: "Query received! Our team will contact you soon." });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      toast({ title: "Something went wrong. Please try again.", variant: "destructive" });
+      toast({
+        title: err?.message && err.message !== "failed" ? err.message : "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setSubmitting(false);
     }
   };
+
 
   return (
     <div className="min-h-screen bg-background">
