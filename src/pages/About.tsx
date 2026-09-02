@@ -124,7 +124,7 @@ const About = () => (
             <p className="body-lg mt-6">
               Our marketers have hands-on experience executing campaigns for{" "}
               <span className="text-primary font-medium">
-                Indigo, Urban Company, Royal Enfield, M3M, Grab, LT Foods, and Aha OTT
+                Indigo, Urban Company, Royal Enfield, M3M, and LT Foods
               </span>
               . We bring that same rigor and infrastructure-first approach to every brand we partner with, from paid acquisition to automation systems.
             </p>
