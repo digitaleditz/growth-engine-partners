@@ -425,3 +425,13 @@
     box-shadow: 0 24px 60px -24px hsl(199 88% 42% / 0.2), 0 8px 20px -10px hsl(240 10% 20% / 0.12);
   }
 }
+
+@layer utilities {
+  html.light .hero-video {
+    filter: brightness(1.02) contrast(0.95);
+    opacity: 0.5;
+  }
+  html.light .hero-veil {
+    opacity: 0.75;
+  }
+}
