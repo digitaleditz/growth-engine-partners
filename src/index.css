@@ -210,10 +210,10 @@
 @layer utilities {
   /* ── Modern layout primitives ─────────────────────────── */
   .section-pad {
-    @apply py-24 md:py-32;
+    @apply py-16 sm:py-24 md:py-32;
   }
   .section-pad-sm {
-    @apply py-16 md:py-24;
+    @apply py-12 sm:py-16 md:py-24;
   }
 
   /* Editorial display scale */
