@@ -318,11 +318,12 @@
    dark defaults above with the same blue accent identity.     */
 @layer base {
   html.light {
-    --background: 0 0% 100%;
-    --foreground: 240 8% 8%;
+    /* Softly tinted canvas so white surfaces read as elevated cards */
+    --background: 220 30% 97%;
+    --foreground: 225 15% 10%;
 
-    --card: 240 20% 99%;
-    --card-foreground: 240 8% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 225 15% 10%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 240 8% 8%;
