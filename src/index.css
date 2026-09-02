@@ -452,11 +452,16 @@
 }
 
 @layer utilities {
+  /* Media reads far too washed out on a light canvas: keep it visible */
   html.light .hero-video {
-    filter: brightness(1.02) contrast(0.95);
+    filter: brightness(0.98) contrast(1.05) saturate(1.05);
+    opacity: 0.85;
+  }
+  html.light .hero-media {
+    filter: contrast(1.05) saturate(1.05);
     opacity: 0.5;
   }
   html.light .hero-veil {
-    opacity: 0.75;
+    opacity: 0.55;
   }
 }
