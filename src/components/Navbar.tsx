@@ -75,12 +75,20 @@ const Navbar = () => {
             <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Button>
           </a>
+          <ThemeToggle className="ml-2 h-9 w-9 min-h-9 min-w-9" />
         </div>
 
-        {/* Mobile toggle */}
-        <button className="md:hidden text-foreground p-2" onClick={() => setOpen(!open)}>
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        {/* Mobile toggles */}
+        <div className="md:hidden flex items-center gap-1">
+          <ThemeToggle />
+          <button
+            className="text-foreground p-2"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
