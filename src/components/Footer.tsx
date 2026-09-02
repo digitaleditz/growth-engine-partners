@@ -102,6 +102,16 @@ const Footer = () => (
         <p className="text-xs text-muted-foreground/40">People-led strategy. AI-driven execution.</p>
       </div>
     </div>
+
+    {/* Oversized brand wordmark */}
+    <div className="relative z-10 w-full px-4 pb-6 pt-2 overflow-hidden select-none">
+      <h2
+        aria-hidden="true"
+        className="footer-wordmark font-display font-bold leading-none text-center tracking-[-0.04em] whitespace-nowrap"
+      >
+        DigitalEditz
+      </h2>
+    </div>
   </footer>
 );
 
