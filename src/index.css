@@ -464,4 +464,23 @@
   html.light .hero-veil {
     opacity: 0.7;
   }
+
+  /* Form controls need a visible edge on white surfaces */
+  html.light input,
+  html.light textarea,
+  html.light select,
+  html.light [role="combobox"] {
+    background-color: hsl(220 30% 98%);
+    border-color: hsl(220 15% 84%);
+  }
+  html.light input:focus,
+  html.light textarea:focus,
+  html.light select:focus {
+    background-color: hsl(0 0% 100%);
+    border-color: hsl(199 88% 42% / 0.5);
+  }
+  html.light input::placeholder,
+  html.light textarea::placeholder {
+    color: hsl(225 10% 50%);
+  }
 }
