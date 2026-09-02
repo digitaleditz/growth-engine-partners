@@ -21,7 +21,7 @@ const PartnersBanner = () => (
   <section className="pb-20 relative">
     <div className="container">
       <ScrollReveal>
-        <div className="surface p-8 md:p-10 relative overflow-hidden">
+        <div className="surface p-6 sm:p-8 md:p-10 relative overflow-hidden">
           <div className="absolute inset-0 dot-grid opacity-[0.15]" />
           <div className="relative z-10 grid lg:grid-cols-[280px_1fr] gap-8 lg:gap-12 items-center">
             <div>

@@ -96,7 +96,7 @@ const BlogPost = () => {
         </header>
 
         <div className="container">
-          <div className="grid lg:grid-cols-[1fr_260px] gap-12 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-[1fr_260px] gap-8 lg:gap-12 max-w-5xl mx-auto">
             {/* Prose column */}
             <div className="max-w-3xl">
               <ScrollReveal>
@@ -138,7 +138,7 @@ const BlogPost = () => {
               </div>
 
               <ScrollReveal>
-                <div className="surface p-8 md:p-10 mt-16">
+                <div className="surface p-6 sm:p-8 md:p-10 mt-16">
                   <p className="label-mono text-primary mb-4">Next step</p>
                   <p className="text-secondary-foreground/85 leading-relaxed mb-8">
                     {post.closing}

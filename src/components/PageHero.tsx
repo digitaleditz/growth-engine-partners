@@ -26,7 +26,7 @@ const PageHero = ({
   const centered = align === "center";
 
   return (
-    <section className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
+    <section className="relative overflow-hidden pt-28 pb-14 sm:pt-36 sm:pb-20 md:pt-44 md:pb-28">
       {/* Backdrop */}
       <div className="absolute inset-0 mesh-bg" />
       <div className="absolute inset-0 dot-grid opacity-[0.35]" />
@@ -45,7 +45,7 @@ const PageHero = ({
 
       <div className="container relative z-10">
         <div
-          className={`grid gap-12 items-end ${
+          className={`grid gap-8 md:gap-12 items-end ${
             centered ? "max-w-3xl mx-auto text-center" : "lg:grid-cols-[1.15fr_0.85fr]"
           }`}
         >
