@@ -154,7 +154,7 @@ const industries = [
 const indicators = [
   { value: "3X", label: "Lead Growth" },
   { value: "700%", label: "ROAS" },
-  { value: "1000+", label: "Leads Generated" },
+  { value: "100000+", label: "Leads Generated" },
 ];
 
 const differentiators = [
