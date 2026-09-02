@@ -79,6 +79,25 @@
     background: hsl(199 93% 60% / 0.3);
     color: hsl(0 0% 100%);
   }
+
+  /* Mobile: prevent sideways scroll and lighten expensive effects */
+  html,
+  body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .floating-orb {
+      opacity: 0.5;
+      filter: blur(60px);
+    }
+    img,
+    video,
+    svg {
+      max-width: 100%;
+    }
+  }
 }
 
 @layer utilities {
