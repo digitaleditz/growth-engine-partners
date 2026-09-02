@@ -312,3 +312,116 @@
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
 }
+
+/* ── Light theme ──────────────────────────────────────────
+   Applied when <html> carries the .light class. Overrides the
+   dark defaults above with the same blue accent identity.     */
+@layer base {
+  html.light {
+    --background: 0 0% 100%;
+    --foreground: 240 8% 8%;
+
+    --card: 240 20% 99%;
+    --card-foreground: 240 8% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 8% 8%;
+
+    --primary: 199 88% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 12% 96%;
+    --secondary-foreground: 240 8% 20%;
+
+    --muted: 240 12% 95%;
+    --muted-foreground: 240 5% 40%;
+
+    --accent: 199 88% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 240 8% 89%;
+    --input: 240 8% 88%;
+    --ring: 199 88% 42%;
+
+    --sidebar-background: 240 20% 98%;
+    --sidebar-foreground: 240 8% 15%;
+    --sidebar-primary: 199 88% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 12% 95%;
+    --sidebar-accent-foreground: 240 8% 15%;
+    --sidebar-border: 240 8% 89%;
+    --sidebar-ring: 199 88% 42%;
+  }
+
+  html.light ::selection {
+    background: hsl(199 88% 42% / 0.2);
+    color: hsl(240 8% 8%);
+  }
+}
+
+@layer utilities {
+  html.light .glass {
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.85) 0%, hsl(240 20% 98% / 0.7) 100%);
+    border: 1px solid hsl(240 8% 20% / 0.08);
+  }
+  html.light .glass-strong {
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.94) 0%, hsl(240 20% 98% / 0.85) 100%);
+    border: 1px solid hsl(240 8% 20% / 0.1);
+  }
+  html.light .glass-light {
+    background: hsl(0 0% 100% / 0.6);
+    border: 1px solid hsl(240 8% 20% / 0.06);
+  }
+  html.light .surface {
+    background: linear-gradient(150deg, hsl(0 0% 100% / 0.92) 0%, hsl(240 20% 98% / 0.82) 100%);
+    border: 1px solid hsl(240 8% 20% / 0.09);
+    box-shadow: 0 1px 2px hsl(240 10% 20% / 0.04), inset 0 1px 0 0 hsl(0 0% 100% / 0.6);
+  }
+  html.light .surface-hover:hover {
+    border-color: hsl(199 88% 42% / 0.32);
+    box-shadow: 0 24px 60px -30px hsl(199 88% 42% / 0.28), 0 8px 20px -12px hsl(240 10% 20% / 0.12);
+  }
+  html.light .hairline {
+    background: linear-gradient(90deg, hsl(240 8% 20% / 0.14), hsl(240 8% 20% / 0.04) 70%, transparent);
+  }
+  html.light .dot-grid {
+    background-image: radial-gradient(hsl(240 8% 20% / 0.1) 1px, transparent 1px);
+  }
+  html.light .grid-pattern {
+    background-image:
+      linear-gradient(hsl(240 8% 20% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(240 8% 20% / 0.05) 1px, transparent 1px);
+  }
+  html.light .mesh-bg {
+    background-image:
+      radial-gradient(ellipse 60% 50% at 15% 0%, hsl(199 88% 42% / 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 45% at 85% 20%, hsl(226 80% 58% / 0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 50% at 50% 100%, hsl(199 88% 42% / 0.06) 0%, transparent 60%);
+  }
+  html.light .floating-orb {
+    background: radial-gradient(circle, hsl(199 88% 42% / 0.14) 0%, hsl(199 88% 42% / 0) 70%);
+  }
+  html.light .text-gradient {
+    background-image: linear-gradient(135deg, hsl(199 88% 40%) 0%, hsl(220 81% 50%) 50%, hsl(210 77% 30%) 100%);
+  }
+  html.light .eyebrow {
+    background: hsl(199 88% 42% / 0.08);
+    border: 1px solid hsl(199 88% 42% / 0.22);
+  }
+  html.light .icon-tile {
+    background: linear-gradient(150deg, hsl(199 88% 42% / 0.14), hsl(199 88% 42% / 0.04));
+    border: 1px solid hsl(199 88% 42% / 0.22);
+  }
+  html.light .glow-accent {
+    box-shadow: 0 0 20px hsl(199 88% 42% / 0.18), 0 6px 20px -8px hsl(199 88% 42% / 0.3);
+  }
+  html.light .glow-accent-strong {
+    box-shadow: 0 0 28px hsl(199 88% 42% / 0.22), 0 10px 30px -10px hsl(199 88% 42% / 0.35);
+  }
+  html.light .divider-glow {
+    background: linear-gradient(90deg, transparent 0%, hsl(199 88% 42% / 0.35) 50%, transparent 100%);
+  }
+  html.light .card-hover-lift:hover {
+    box-shadow: 0 24px 60px -24px hsl(199 88% 42% / 0.2), 0 8px 20px -10px hsl(240 10% 20% / 0.12);
+  }
+}
