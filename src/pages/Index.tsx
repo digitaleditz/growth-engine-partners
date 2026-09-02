@@ -149,7 +149,7 @@ const Index = () => {
             playsInline
             autoPlay
             preload="auto"
-            className="w-full h-full object-cover brightness-[0.55]"
+            className="w-full h-full object-cover brightness-[0.55] opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/30" />
