@@ -196,10 +196,10 @@ const Contact = () => {
       <section className="section-pad-sm relative overflow-hidden">
         <div className="absolute inset-0 section-texture" />
         <div className="container relative z-10">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-10 max-w-6xl mx-auto">
             <ScrollReveal>
               {submitted ? (
-                <div className="surface p-8 md:p-10 flex flex-col items-center justify-center min-h-[480px] text-center">
+                <div className="surface p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center min-h-[480px] text-center">
                   <CheckCircle2 size={56} className="text-primary mb-6" />
                   <h3 className="display-md">Query Received!</h3>
                   <p className="text-muted-foreground leading-relaxed max-w-sm mt-3">
@@ -207,7 +207,7 @@ const Contact = () => {
                   </p>
                 </div>
               ) : step === "verify" ? (
-                <form className="surface p-8 md:p-10 space-y-5" onSubmit={handleSubmit}>
+                <form className="surface p-6 sm:p-8 md:p-10 space-y-5" onSubmit={handleSubmit}>
                   <span className="eyebrow">Verify Email</span>
                   <h2 className="display-md mt-4 mb-2">Enter your verification code</h2>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -251,7 +251,7 @@ const Contact = () => {
                   </div>
                 </form>
               ) : (
-                <form className="surface p-8 md:p-10 space-y-5" onSubmit={sendCode}>
+                <form className="surface p-6 sm:p-8 md:p-10 space-y-5" onSubmit={sendCode}>
                   <span className="eyebrow">Discovery Call</span>
                   <h2 className="display-md mt-4 mb-2">Tell us about your business</h2>
                   <div className="grid grid-cols-2 gap-4 pt-2">

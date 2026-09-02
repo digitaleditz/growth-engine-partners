@@ -193,7 +193,7 @@ const Index = () => {
                 >
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto text-base font-semibold px-9 py-7 rounded-full glow-accent-strong group gap-2"
+                    className="w-full sm:w-auto text-base font-semibold px-7 sm:px-9 py-6 sm:py-7 rounded-full glow-accent-strong group gap-2"
                   >
                     Book a Free Discovery Call
                     <ArrowUpRight
@@ -205,7 +205,7 @@ const Index = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-base font-semibold px-9 py-7 rounded-full border-border/60 hover:border-primary/40"
+                  className="text-base font-semibold px-7 sm:px-9 py-6 sm:py-7 rounded-full border-border/60 hover:border-primary/40"
                   asChild
                 >
                   <Link to="/case-studies">View Case Studies</Link>
@@ -226,7 +226,7 @@ const Index = () => {
             >
               {[
                 { value: "700%", label: "Peak ROAS Delivered" },
-                { value: "1000+", label: "Qualified Leads Generated" },
+                { value: "100000+", label: "Qualified Leads Generated" },
                 { value: "1M+", label: "Campaign Reach" },
                 { value: "3X", label: "Average Lead Growth" },
               ].map((s) => (
@@ -322,7 +322,7 @@ const Index = () => {
           <ScrollReveal>
             <div className="glass rounded-3xl overflow-hidden mb-8 border-shimmer">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-10 md:p-14 flex flex-col justify-center">
+                <div className="p-6 sm:p-10 md:p-14 flex flex-col justify-center">
                   <span className="label-mono text-primary mb-4 block">VIVO / 2024</span>
                   <h3 className="font-display text-3xl md:text-4xl font-bold mb-5 leading-tight">Custom Promotional Campaign Platform</h3>
                   <p className="text-muted-foreground mb-8 leading-relaxed">Built a custom campaign website enabling users to submit purchases and claim rewards effortlessly in J&K.</p>
@@ -362,7 +362,7 @@ const Index = () => {
                     className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                 </div>
-                <div className="p-10 md:p-14 flex flex-col justify-center md:order-2">
+                <div className="p-6 sm:p-10 md:p-14 flex flex-col justify-center md:order-2">
                   <span className="label-mono text-primary mb-4 block">Pushti Turf & Farms / 2025</span>
                   <h3 className="font-display text-3xl md:text-4xl font-bold mb-5 leading-tight">Meta Ads + WhatsApp Funnel</h3>
                   <p className="text-muted-foreground mb-8 leading-relaxed">High-performance Meta Ads integrated with WhatsApp funnel automation for massive launch turnout.</p>

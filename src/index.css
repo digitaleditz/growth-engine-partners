@@ -79,6 +79,25 @@
     background: hsl(199 93% 60% / 0.3);
     color: hsl(0 0% 100%);
   }
+
+  /* Mobile: prevent sideways scroll and lighten expensive effects */
+  html,
+  body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .floating-orb {
+      opacity: 0.5;
+      filter: blur(60px);
+    }
+    img,
+    video,
+    svg {
+      max-width: 100%;
+    }
+  }
 }
 
 @layer utilities {
@@ -210,10 +229,10 @@
 @layer utilities {
   /* ── Modern layout primitives ─────────────────────────── */
   .section-pad {
-    @apply py-24 md:py-32;
+    @apply py-16 sm:py-24 md:py-32;
   }
   .section-pad-sm {
-    @apply py-16 md:py-24;
+    @apply py-12 sm:py-16 md:py-24;
   }
 
   /* Editorial display scale */

@@ -233,7 +233,7 @@ const About = () => (
     <section className="section-pad-sm relative overflow-hidden">
       <div className="container relative z-10">
         <ScrollReveal>
-          <div className="surface p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center gap-8 justify-between">
+          <div className="surface p-6 sm:p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center gap-8 justify-between">
             <div className="flex items-center gap-5">
               <div className="icon-tile w-14 h-14 rounded-2xl">
                 <MapPin size={22} />

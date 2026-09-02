@@ -154,7 +154,7 @@ const industries = [
 const indicators = [
   { value: "3X", label: "Lead Growth" },
   { value: "700%", label: "ROAS" },
-  { value: "1000+", label: "Leads Generated" },
+  { value: "100000+", label: "Leads Generated" },
 ];
 
 const differentiators = [
@@ -260,7 +260,7 @@ const Packages = () => {
 
           {/* Customer journey flow */}
           <ScrollReveal delay={0.15}>
-            <div className="mt-16 surface p-8 md:p-10">
+            <div className="mt-16 surface p-6 sm:p-8 md:p-10">
               <h3 className="label-mono text-primary/70 mb-6">The Customer Journey We Build</h3>
               <div className="flex flex-wrap items-center gap-3 md:gap-2">
                 {journey.map((step, i) => (
@@ -290,7 +290,7 @@ const Packages = () => {
       <section className="section-pad relative overflow-hidden">
         <div className="floating-orb w-[460px] h-[460px] top-10 right-0" />
         <div className="container relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5">
               <ScrollReveal>
                 <span className="eyebrow">The Growth Stack</span>
@@ -623,7 +623,7 @@ const Packages = () => {
       <section className="section-pad relative overflow-hidden">
         <div className="container relative z-10">
           <ScrollReveal>
-            <div className="surface p-8 md:p-12 max-w-4xl mx-auto">
+            <div className="surface p-6 sm:p-8 md:p-12 max-w-4xl mx-auto">
               <span className="eyebrow">Flexible Engagement Models</span>
               <h2 className="display-md mt-5">
                 Project, retainer or integrated partnership
@@ -659,7 +659,7 @@ const Packages = () => {
       <ScrollReveal>
         <section className="section-pad-sm">
           <div className="container">
-            <div className="glass-strong rounded-3xl p-12 md:p-16 text-center max-w-3xl mx-auto relative overflow-hidden border-shimmer">
+            <div className="glass-strong rounded-3xl p-7 sm:p-12 md:p-16 text-center max-w-3xl mx-auto relative overflow-hidden border-shimmer">
               <div className="floating-orb w-[400px] h-[400px] -top-40 -right-40" />
               <div className="relative z-10">
                 <span className="eyebrow">Strategy Assessment</span>
@@ -687,7 +687,7 @@ const Packages = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Button size="lg" className="font-semibold px-10 py-7 rounded-full glow-accent-strong gap-2 group">
+                    <Button size="lg" className="font-semibold px-7 sm:px-10 py-6 sm:py-7 rounded-full glow-accent-strong gap-2 group">
                       Book a Free Discovery Call
                       <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </Button>

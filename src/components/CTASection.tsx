@@ -20,19 +20,19 @@ const CTASection = () => (
         <p className="text-muted-foreground mb-12 max-w-md mx-auto text-lg">
           If you're serious about scaling, we should talk.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
           <a
             href="https://calendly.com/digitaleditz01/free-discovery-call"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-4"
           >
-          <Button size="lg" className="text-base font-semibold px-10 py-7 rounded-full glow-accent-strong group gap-2">
+          <Button size="lg" className="text-base font-semibold px-7 sm:px-10 py-6 sm:py-7 rounded-full glow-accent-strong group gap-2">
             Book a Free Discovery Call
             <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Button>
           </a>
-          <Button size="lg" variant="outline" className="text-base font-semibold px-10 py-7 rounded-full border-border/50 hover:border-primary/30" asChild>
+          <Button size="lg" variant="outline" className="text-base font-semibold px-7 sm:px-10 py-6 sm:py-7 rounded-full border-border/50 hover:border-primary/30" asChild>
             <Link to="/contact">Contact Us</Link>
           </Button>
         </div>

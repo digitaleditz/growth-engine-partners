@@ -103,7 +103,7 @@ const rest = caseStudies.filter((c) => !c.featured);
 
 const glanceMetrics = [
   { value: "700%", label: "Peak ROAS" },
-  { value: "1000+", label: "Leads Generated" },
+  { value: "100000+", label: "Leads Generated" },
   { value: "3X", label: "Lead Growth" },
   { value: "230%", label: "Reach & Engagement" },
 ];
@@ -125,7 +125,7 @@ const CaseStudies = () => (
       imageAlt="Case studies"
       stats={[
         { value: "700%", label: "Peak ROAS" },
-        { value: "1000+", label: "Leads Generated" },
+        { value: "100000+", label: "Leads Generated" },
         { value: "3X", label: "Lead Growth" },
         { value: "6+", label: "Sectors Served" },
       ]}

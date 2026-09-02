@@ -53,7 +53,7 @@ const Blog = () => (
           <Link to={`/blog/${latest.slug}`} className="block group">
             <div className="surface surface-hover overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
-                <div className="relative min-h-[260px] lg:min-h-full bg-gradient-to-br from-primary/15 via-transparent to-transparent flex items-center justify-center p-10">
+                <div className="relative min-h-[260px] lg:min-h-full bg-gradient-to-br from-primary/15 via-transparent to-transparent flex items-center justify-center p-6 sm:p-10">
                   <img
                     src={getCover(latest.slug)}
                     alt=""
@@ -64,7 +64,7 @@ const Blog = () => (
                   <div className="absolute inset-0 bg-gradient-to-tr from-background via-background/40 to-transparent" />
                   <div className="absolute inset-0 dot-grid opacity-20" />
                 </div>
-                <div className="p-8 md:p-12 flex flex-col justify-center">
+                <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center">
                   <span className="eyebrow w-fit mb-5">Latest article</span>
                   <p className="label-mono text-primary/70 mb-3">{latest.category}</p>
                   <h2 className="display-md group-hover:text-primary transition-colors">
