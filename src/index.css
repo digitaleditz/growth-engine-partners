@@ -318,11 +318,12 @@
    dark defaults above with the same blue accent identity.     */
 @layer base {
   html.light {
-    --background: 0 0% 100%;
-    --foreground: 240 8% 8%;
+    /* Softly tinted canvas so white surfaces read as elevated cards */
+    --background: 220 30% 97%;
+    --foreground: 225 15% 10%;
 
-    --card: 240 20% 99%;
-    --card-foreground: 240 8% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 225 15% 10%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 240 8% 8%;
@@ -330,17 +331,17 @@
     --primary: 199 88% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 12% 96%;
-    --secondary-foreground: 240 8% 20%;
+    --secondary: 220 20% 95%;
+    --secondary-foreground: 225 15% 22%;
 
-    --muted: 240 12% 95%;
-    --muted-foreground: 240 5% 40%;
+    --muted: 220 20% 94%;
+    --muted-foreground: 225 10% 38%;
 
     --accent: 199 88% 42%;
     --accent-foreground: 0 0% 100%;
 
-    --border: 240 8% 89%;
-    --input: 240 8% 88%;
+    --border: 220 15% 87%;
+    --input: 220 15% 86%;
     --ring: 199 88% 42%;
 
     --sidebar-background: 240 20% 98%;
@@ -361,31 +362,55 @@
 
 @layer utilities {
   html.light .glass {
-    background: linear-gradient(135deg, hsl(0 0% 100% / 0.85) 0%, hsl(240 20% 98% / 0.7) 100%);
-    border: 1px solid hsl(240 8% 20% / 0.08);
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.9) 0%, hsl(220 30% 98% / 0.78) 100%);
+    border: 1px solid hsl(225 15% 20% / 0.09);
+    box-shadow: 0 1px 2px hsl(225 20% 20% / 0.05);
   }
   html.light .glass-strong {
-    background: linear-gradient(135deg, hsl(0 0% 100% / 0.94) 0%, hsl(240 20% 98% / 0.85) 100%);
-    border: 1px solid hsl(240 8% 20% / 0.1);
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.96) 0%, hsl(220 30% 98% / 0.9) 100%);
+    border: 1px solid hsl(225 15% 20% / 0.1);
+    box-shadow: 0 10px 30px -18px hsl(225 25% 20% / 0.16);
   }
   html.light .glass-light {
-    background: hsl(0 0% 100% / 0.6);
-    border: 1px solid hsl(240 8% 20% / 0.06);
+    background: hsl(0 0% 100% / 0.7);
+    border: 1px solid hsl(225 15% 20% / 0.07);
   }
   html.light .surface {
-    background: linear-gradient(150deg, hsl(0 0% 100% / 0.92) 0%, hsl(240 20% 98% / 0.82) 100%);
-    border: 1px solid hsl(240 8% 20% / 0.09);
-    box-shadow: 0 1px 2px hsl(240 10% 20% / 0.04), inset 0 1px 0 0 hsl(0 0% 100% / 0.6);
+    background: linear-gradient(150deg, hsl(0 0% 100%) 0%, hsl(220 40% 99%) 100%);
+    border: 1px solid hsl(225 15% 20% / 0.08);
+    box-shadow:
+      0 1px 2px hsl(225 25% 20% / 0.05),
+      0 12px 30px -22px hsl(225 25% 20% / 0.18),
+      inset 0 1px 0 0 hsl(0 0% 100%);
   }
   html.light .surface-hover:hover {
-    border-color: hsl(199 88% 42% / 0.32);
-    box-shadow: 0 24px 60px -30px hsl(199 88% 42% / 0.28), 0 8px 20px -12px hsl(240 10% 20% / 0.12);
+    border-color: hsl(199 88% 42% / 0.34);
+    box-shadow:
+      0 26px 60px -28px hsl(199 88% 42% / 0.3),
+      0 10px 24px -14px hsl(225 25% 20% / 0.16);
   }
   html.light .hairline {
-    background: linear-gradient(90deg, hsl(240 8% 20% / 0.14), hsl(240 8% 20% / 0.04) 70%, transparent);
+    background: linear-gradient(90deg, hsl(225 15% 20% / 0.16), hsl(225 15% 20% / 0.05) 70%, transparent);
   }
   html.light .dot-grid {
-    background-image: radial-gradient(hsl(240 8% 20% / 0.1) 1px, transparent 1px);
+    background-image: radial-gradient(hsl(225 15% 20% / 0.11) 1px, transparent 1px);
+  }
+  html.light .section-texture {
+    background-image: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(199 88% 42% / 0.09) 0%, transparent 60%);
+  }
+  html.light .section-texture-alt {
+    background-image:
+      radial-gradient(ellipse 60% 40% at 80% 50%, hsl(199 88% 42% / 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, hsl(265 70% 55% / 0.05) 0%, transparent 45%);
+  }
+  html.light .noise-overlay::before {
+    opacity: 0.5;
+  }
+  html.light .border-shimmer::before {
+    background: linear-gradient(135deg, hsl(199 88% 42% / 0.35), transparent 40%, transparent 60%, hsl(265 70% 55% / 0.22));
+  }
+  html.light .label-mono {
+    letter-spacing: 0.14em;
   }
   html.light .grid-pattern {
     background-image:
@@ -427,11 +452,37 @@
 }
 
 @layer utilities {
+  /* Media reads far too washed out on a light canvas: keep it visible */
   html.light .hero-video {
-    filter: brightness(1.02) contrast(0.95);
-    opacity: 0.5;
+    filter: brightness(0.98) contrast(1.05) saturate(1.05);
+    opacity: 0.85;
+  }
+  html.light .hero-media {
+    filter: contrast(1.04) saturate(1.02);
+    opacity: 0.26;
+    mask-image: linear-gradient(to bottom, #000 0%, hsl(0 0% 0% / 0.35) 65%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, hsl(0 0% 0% / 0.35) 65%, transparent 95%);
   }
   html.light .hero-veil {
-    opacity: 0.75;
+    opacity: 0.7;
+  }
+
+  /* Form controls need a visible edge on white surfaces */
+  html.light input,
+  html.light textarea,
+  html.light select,
+  html.light [role="combobox"] {
+    background-color: hsl(220 30% 98%);
+    border-color: hsl(220 15% 84%);
+  }
+  html.light input:focus,
+  html.light textarea:focus,
+  html.light select:focus {
+    background-color: hsl(0 0% 100%);
+    border-color: hsl(199 88% 42% / 0.5);
+  }
+  html.light input::placeholder,
+  html.light textarea::placeholder {
+    color: hsl(225 10% 50%);
   }
 }

@@ -35,10 +35,10 @@ const PageHero = ({
           <img
             src={image}
             alt={imageAlt}
-            className="w-full h-full object-cover opacity-[0.18]"
+            className="hero-media w-full h-full object-cover opacity-[0.18]"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
+          <div className="hero-veil absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
         </div>
       )}
       <div className="floating-orb w-[520px] h-[520px] -top-40 -left-40 animate-float" />
