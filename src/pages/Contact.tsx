@@ -50,7 +50,7 @@ const contactCards = [
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: "+91 70652 06690",
+    value: "Chat with us",
     href: "https://wa.me/917065206690",
   },
   {
