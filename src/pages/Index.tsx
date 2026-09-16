@@ -176,9 +176,9 @@ const Index = () => {
               </span>
 
               <h1 className="display-xl mt-7">
-                Reach the Right People. At the Right Time.{" "}
+                Reach the Right People.{" "}
                 <span className="text-gradient">
-                  Through the Right Digital Channels.
+                  At the Right Time.
                 </span>
               </h1>
 
