@@ -18,7 +18,7 @@ const CTASection = () => (
           <span className="text-gradient">Growth Engine.</span>
         </h2>
         <p className="text-muted-foreground mb-12 max-w-md mx-auto text-lg">
-          If you're serious about scaling, we should talk.
+          If you're serious about building a system that compounds revenue, we should talk.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
           <a
