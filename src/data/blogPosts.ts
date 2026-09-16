@@ -190,7 +190,7 @@ export const blogPosts: BlogPost[] = [
     title: "How to Grow a Real Estate Brand With Performance Marketing",
     metaTitle: "Real Estate Performance Marketing: Grow Your Brand | DigitalEditz",
     summary:
-      "A simple, proven way for builders, developers and brokers to turn paid ads into a steady flow of site visits and bookings.",
+      "A simple, proven way for builders, developers and brokers to turn acquisition and follow up into a steady flow of site visits and bookings.",
     category: "Real Estate",
     date: "2026-07-22",
     readTime: "8 min read",
@@ -252,7 +252,7 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Google Ads for Real Estate Leads: A Practical Guide | DigitalEditz",
     summary:
       "Search ads reach buyers who are already looking. Here is how to structure Google Ads for property enquiries that actually convert.",
-    category: "Google Ads",
+    category: "Acquisition Systems",
     date: "2026-07-29",
     readTime: "8 min read",
     author: "DigitalEditz Team",
@@ -306,7 +306,7 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Meta Ads for Real Estate: Leads, Creative and Targeting | DigitalEditz",
     summary:
       "Facebook and Instagram create demand instead of waiting for it. Here is how to use Meta ads for property enquiries without drowning in junk leads.",
-    category: "Meta Ads",
+    category: "Paid Acquisition",
     date: "2026-08-05",
     readTime: "8 min read",
     author: "DigitalEditz Team",
