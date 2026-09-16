@@ -319,7 +319,7 @@ const Index = () => {
           <SectionHeading
             eyebrow="Proven Results"
             title="Featured Case Studies"
-            description="Real systems, real pipelines, real revenue outcomes."
+            description="Right audience, right channel, measurable business outcomes."
           />
 
           <ScrollReveal>
@@ -406,7 +406,7 @@ const Index = () => {
           <SectionHeading
             eyebrow="Our Process"
             title="Our 3-Step Growth Framework"
-            description="A repeatable path from diagnosis to scale."
+            description="From the right audience to distribution, conversion and revenue."
           />
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -442,7 +442,7 @@ const Index = () => {
           <SectionHeading
             eyebrow="Why Us"
             title="Why Brands Choose DigitalEditz"
-            description="Strategy led by people. Execution accelerated by AI."
+            description="We are judged on revenue and pipeline, not on impressions."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
