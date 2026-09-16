@@ -101,7 +101,7 @@ const faqs = [
     a: "Yes. From websites to CRMs and automation dashboards, we build scalable digital systems.",
   },
   {
-    q: "What makes you different from other agencies?",
+    q: "What makes you different from other growth partners?",
     a: "We build systems that scale, not campaigns that expire.",
   },
   {
@@ -216,7 +216,7 @@ const Index = () => {
               </div>
 
               <p className="mt-10 text-muted-foreground/60 max-w-md label-mono leading-relaxed">
-                Backed by marketers who've executed campaigns for Indigo, Urban
+                Backed by operators who've built growth systems for Indigo, Urban
                 Company, Royal Enfield, M3M and more
               </p>
             </motion.div>

@@ -22,7 +22,7 @@ const Footer = () => (
           </p>
           <div className="hairline mt-8 max-w-sm" />
           <div className="mt-6 flex flex-wrap gap-3">
-            {["Brand", "Web", "Content", "Ads", "Automation"].map((tag) => (
+            {["Brand", "Web", "Content", "Growth Systems", "Automation"].map((tag) => (
               <span
                 key={tag}
                 className="label-mono rounded-full border border-border/60 px-3 py-1.5 text-muted-foreground"
