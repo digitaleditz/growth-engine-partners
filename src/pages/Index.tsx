@@ -42,45 +42,46 @@ import { useEffect, useRef } from "react";
 
 const services = [
   {
-    title: "Performance Marketing",
+    title: "Audience Reach & Acquisition",
     icon: Target,
     image: servicesAds,
     items: [
-      "Paid Media (Meta, Google, LinkedIn)",
-      "AI Performance Ads Optimization",
-      "AI UGC Ad Creation",
-      "ROAS & CPL Tracking",
+      "Audience research & channel planning",
+      "Paid distribution across Meta, Google, LinkedIn",
+      "Message and creative testing",
+      "Cost per acquisition & revenue tracking",
     ],
-    desc: "AI-driven ad ecosystems that optimize themselves for lower costs and higher leads.",
+    desc: "We get your offer in front of the right people, at the moment they are ready to act.",
     label: "01",
   },
   {
-    title: "Social Media Marketing",
+    title: "Content & Demand Creation",
     icon: Zap,
     image: servicesContent,
     items: [
-      "AI Content Engine (Reels, Carousels, Hooks)",
-      "Competitor Intelligence Reports",
-      "Creative Direction & Positioning",
-      "Community Building",
+      "Content engine (reels, carousels, hooks)",
+      "Market and competitor intelligence",
+      "Brand positioning & messaging",
+      "Community and organic distribution",
     ],
-    desc: "We don't post content. We engineer relevance.",
+    desc: "Content that builds demand and trust, so buying decisions happen sooner.",
     label: "02",
   },
   {
-    title: "Web/App Development",
+    title: "Conversion & Revenue Systems",
     icon: Cpu,
     image: servicesSystems,
     items: [
-      "High-converting Websites",
-      "Landing Pages & Funnels",
-      "Custom CRM & Automation",
-      "AI Chatbot Integration",
+      "Websites and landing pages that convert",
+      "Funnels and follow-up journeys",
+      "CRM, automation and WhatsApp workflows",
+      "AI assistants and response systems",
     ],
-    desc: "Ads bring traffic. Systems convert it.",
+    desc: "Attention becomes revenue only when the system behind it converts and follows up.",
     label: "03",
   },
 ];
+
 
 const faqs = [
   {
@@ -171,18 +172,20 @@ const Index = () => {
             >
               <span className="eyebrow">
                 <Sparkles size={12} />
-                Brand &amp; Growth Systems Partner
+                Growth &amp; Revenue Systems Partner
               </span>
 
               <h1 className="display-xl mt-7">
-                We Build Growth Engines{" "}
-                <span className="text-gradient">Not Just Campaigns.</span>
+                Reach the Right People. At the Right Time.{" "}
+                <span className="text-gradient">
+                  Through the Right Digital Channels.
+                </span>
               </h1>
 
               <p className="body-lg mt-7 max-w-xl">
-                People-led strategy. AI-driven execution. We build the complete
-                digital foundation, brand, website, content, acquisition and
-                automation, as one connected growth system.
+                We build the strategy, content, distribution and acquisition
+                systems that help businesses reach their target audience, create
+                demand and turn digital attention into measurable revenue.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
@@ -262,8 +265,8 @@ const Index = () => {
         <div className="container relative z-10">
           <SectionHeading
             eyebrow="What We Do"
-            title="How We Scale Brands"
-            description="Three core pillars. One unified growth system."
+            title="Reach, Demand and Revenue Systems"
+            description="Right audience, right message, right channel. Three capabilities working as one growth system."
           />
           <div className="grid md:grid-cols-3 gap-5">
             {services.map((s, i) => (
@@ -316,7 +319,7 @@ const Index = () => {
           <SectionHeading
             eyebrow="Proven Results"
             title="Featured Case Studies"
-            description="Real systems, real pipelines, real revenue outcomes."
+            description="Right audience, right channel, measurable business outcomes."
           />
 
           <ScrollReveal>
@@ -403,7 +406,7 @@ const Index = () => {
           <SectionHeading
             eyebrow="Our Process"
             title="Our 3-Step Growth Framework"
-            description="A repeatable path from diagnosis to scale."
+            description="From the right audience to distribution, conversion and revenue."
           />
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -439,7 +442,7 @@ const Index = () => {
           <SectionHeading
             eyebrow="Why Us"
             title="Why Brands Choose DigitalEditz"
-            description="Strategy led by people. Execution accelerated by AI."
+            description="We are judged on revenue and pipeline, not on impressions."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
