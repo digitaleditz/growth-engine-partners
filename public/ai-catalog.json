@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "name": "DigitalEditz",
+  "description": "Growth and revenue systems partner helping businesses reach the right audience, build distribution, and turn digital attention into measurable revenue.",
+  "homepage": "https://www.digitaleditz.com",
+  "contact": {
+    "email": "info@digitaleditz.com"
+  },
+  "resources": [
+    {
+      "type": "page",
+      "title": "Home",
+      "url": "https://www.digitaleditz.com/"
+    },
+    {
+      "type": "page",
+      "title": "Services",
+      "url": "https://www.digitaleditz.com/packages"
+    },
+    {
+      "type": "page",
+      "title": "Case Studies",
+      "url": "https://www.digitaleditz.com/case-studies"
+    },
+    {
+      "type": "page",
+      "title": "About",
+      "url": "https://www.digitaleditz.com/about"
+    },
+    {
+      "type": "page",
+      "title": "Blog",
+      "url": "https://www.digitaleditz.com/blog"
+    },
+    {
+      "type": "page",
+      "title": "Contact",
+      "url": "https://www.digitaleditz.com/contact"
+    },
+    {
+      "type": "document",
+      "title": "Past Work 2025-26",
+      "url": "https://www.digitaleditz.com/pastwork2526.pdf",
+      "format": "application/pdf"
+    },
+    {
+      "type": "sitemap",
+      "title": "Sitemap",
+      "url": "https://www.digitaleditz.com/sitemap.xml"
+    }
+  ]
+}

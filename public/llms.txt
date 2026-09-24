@@ -1,0 +1,18 @@
+# DigitalEditz
+
+> DigitalEditz is a growth and revenue systems partner that helps businesses reach the right people, build distribution, and turn digital attention into measurable revenue.
+
+DigitalEditz builds the strategy, content, distribution, and acquisition systems behind modern businesses: brand, websites, content, paid acquisition, conversion, CRM, and automation. Based in Gurugram, India.
+
+## Pages
+
+- [Home](/): Growth and revenue systems partner overview.
+- [Services](/packages): Growth system management and service capabilities.
+- [Case Studies](/case-studies): Client results and growth systems in action.
+- [About](/about): Who we are and how we work.
+- [Blog](/blog): Insights on growth, marketing, and revenue systems.
+- [Contact](/contact): Book a discovery call or get in touch.
+
+## Optional
+
+- [Past Work 2025-26](/pastwork/2526): Portfolio PDF of past client work.
