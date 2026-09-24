@@ -31,12 +31,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 import heroVideo from "@/assets/hero-video.mp4";
-import servicesAds from "@/assets/services-ads.jpg";
-import servicesContent from "@/assets/services-content.jpg";
+import servicesAds from "@/assets/services-ads.webp";
+import servicesContent from "@/assets/services-content.webp";
 
 import vivocase from "@/assets/clients/vivo_1.png";
 import pushticase from "@/assets/clients/pushti_1.png";
-import servicesSystems from "@/assets/services-systems.jpg";
+import servicesSystems from "@/assets/services-systems.webp";
 
 import { useEffect, useRef } from "react";
 
