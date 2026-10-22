@@ -51,7 +51,7 @@ const contactCards = [
     icon: MessageCircle,
     label: "WhatsApp",
     value: "Chat with us",
-    href: "https://wa.me/917065206690",
+    href: "https://wa.me/918920524078",
   },
   {
     icon: MapPin,
@@ -362,7 +362,7 @@ const Contact = () => {
                       Message us directly on WhatsApp for a faster response.
                     </p>
                     <Button variant="outline" className="rounded-full gap-2 border-border/50 hover:border-primary/30 group" asChild>
-                      <a href="https://wa.me/917065206690" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/918920524078" target="_blank" rel="noopener noreferrer">
                         <MessageCircle size={16} />
                         Open WhatsApp
                         <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
