@@ -521,7 +521,7 @@ const Packages = () => {
               <ScrollReveal key={p.name} delay={i * 0.08}>
                 <div
                   className={`h-full surface surface-hover flex flex-col p-8 relative ${
-                    p.featured ? "border border-primary/40 glow-accent" : ""
+                    p.featured ? "border border-primary/40 glow-accent !overflow-visible" : ""
                   }`}
                 >
                   {p.featured && (
