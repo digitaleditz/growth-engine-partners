@@ -1,3 +1,6 @@
+html, body { background: #000000 !important; color: #ffffff; }
+html, body { background: #000000; background: var(--bg, #000000); color: #ffffff; color: var(--text, #ffffff); }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

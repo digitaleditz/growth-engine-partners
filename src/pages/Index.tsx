@@ -32,7 +32,6 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-import heroVideo from "@/assets/hero-video.mp4";
 import servicesAds from "@/assets/services-ads.webp";
 import servicesContent from "@/assets/services-content.webp";
 
@@ -259,27 +258,22 @@ const Index = () => {
 
       {/* Hero */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
+        {/* Hero video background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <video
             ref={videoRef}
-            src={heroVideo}
+            src="/hero-bg.mp4"
             muted
             loop
             playsInline
             autoPlay
             preload="auto"
-            className="hero-video w-full h-full object-cover brightness-[0.50] opacity-50"
+            className="w-full h-full object-cover"
           />
-          <div className="hero-veil absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
-          <div className="hero-veil absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/30" />
+          {/* Directional contrast scrim so text is 100% visible and razor-sharp */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/35 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-black/25 to-black/50 pointer-events-none" />
         </div>
-
-        <div className="absolute inset-0 dot-grid opacity-30" />
-        <div className="floating-orb w-[520px] h-[520px] top-1/4 -left-40 animate-float" />
-        <div
-          className="floating-orb w-[420px] h-[420px] bottom-0 -right-40 animate-float"
-          style={{ animationDelay: "3s" }}
-        />
 
         <div className="container relative z-10 pt-32 pb-20">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-end">
@@ -288,19 +282,19 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="eyebrow">
-                <Sparkles size={12} />
+              <span className="eyebrow bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-lg">
+                <Sparkles size={12} className="text-primary" />
                 Growth &amp; Revenue Systems Partner
               </span>
 
-              <h1 className="display-xl mt-7">
+              <h1 className="display-xl mt-7 text-white [text-shadow:0_4px_24px_rgba(0,0,0,0.95)]">
                 Reach the Right People.{" "}
-                <span className="text-gradient">
+                <span className="text-gradient [text-shadow:0_4px_24px_rgba(0,0,0,0.85)]">
                   At the Right Time.
                 </span>
               </h1>
 
-              <p className="body-lg mt-7 max-w-xl">
+              <p className="body-lg mt-7 max-w-xl text-slate-100/90 [text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">
                 We build the strategy, content, distribution and acquisition
                 systems that help businesses reach their target audience, create
                 demand and turn digital attention into measurable revenue.
@@ -314,7 +308,7 @@ const Index = () => {
                 >
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto text-base font-semibold px-7 sm:px-9 py-6 sm:py-7 rounded-full glow-accent-strong group gap-2"
+                    className="w-full sm:w-auto text-base font-semibold px-7 sm:px-9 py-6 sm:py-7 rounded-full glow-accent-strong group gap-2 shadow-2xl"
                   >
                     Book a Free Discovery Call
                     <ArrowUpRight
@@ -326,14 +320,14 @@ const Index = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-base font-semibold px-7 sm:px-9 py-6 sm:py-7 rounded-full border-border/60 hover:border-primary/40"
+                  className="text-base font-semibold px-7 sm:px-9 py-6 sm:py-7 rounded-full border-border/80 bg-black/40 backdrop-blur-md hover:border-primary/40 hover:bg-black/60 text-white"
                   asChild
                 >
                   <Link to="/case-studies">View Case Studies</Link>
                 </Button>
               </div>
 
-              <p className="mt-10 text-muted-foreground/60 max-w-md label-mono leading-relaxed">
+              <p className="mt-10 text-slate-300/80 max-w-md label-mono leading-relaxed [text-shadow:0_2px_8px_rgba(0,0,0,0.9)]">
                 Backed by operators who've built growth systems for Indigo, Urban
                 Company, Royal Enfield, M3M and more
               </p>
@@ -351,7 +345,7 @@ const Index = () => {
                 { value: "1M+", label: "Campaign Reach" },
                 { value: "3X", label: "Average Lead Growth" },
               ].map((s) => (
-                <div key={s.label} className="surface surface-hover p-6">
+                <div key={s.label} className="surface surface-hover p-6 bg-card/85 backdrop-blur-md border border-border/80 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
                   <p className="font-display text-3xl md:text-4xl font-bold text-primary">
                     {s.value}
                   </p>
