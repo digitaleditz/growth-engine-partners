@@ -231,7 +231,7 @@ const Index = () => {
             >
               {[
                 { value: "700%", label: "Peak ROAS Delivered" },
-                { value: "100000+", label: "Qualified Leads Generated" },
+                { value: "100k+", label: "Qualified Leads Generated" },
                 { value: "1M+", label: "Campaign Reach" },
                 { value: "3X", label: "Average Lead Growth" },
               ].map((s) => (
