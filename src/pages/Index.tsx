@@ -8,6 +8,8 @@ import {
   Eye,
   Shield,
   Cpu,
+  Clapperboard,
+  Users,
   ArrowRight,
   ArrowUpRight,
   Sparkles,
@@ -36,48 +38,48 @@ import servicesContent from "@/assets/services-content.webp";
 
 import vivocase from "@/assets/clients/vivo_1.png";
 import pushticase from "@/assets/clients/pushti_1.png";
-import servicesSystems from "@/assets/services-systems.webp";
+import servicesUgc from "@/assets/services-ugc.webp";
 
 import { useEffect, useRef } from "react";
 
 const services = [
   {
-    title: "Audience Reach & Acquisition",
-    icon: Target,
-    image: servicesAds,
+    title: "Content Creation",
+    icon: Clapperboard,
+    image: servicesUgc,
     items: [
-      "Audience research & channel planning",
-      "Paid distribution across Meta, Google, LinkedIn",
-      "Message and creative testing",
-      "Cost per acquisition & revenue tracking",
+      "Reels & short-form video",
+      "UGC & creator content",
+      "Brand visuals & carousels",
+      "AI-assisted production at scale",
     ],
-    desc: "We get your offer in front of the right people, at the moment they are ready to act.",
+    desc: "Scroll stoppers at scale with machine assisted momentum and smart AI automation. Create Reels, UGC, and visuals built to grab attention and keep it.",
     label: "01",
   },
   {
-    title: "Content & Demand Creation",
-    icon: Zap,
+    title: "Social Management",
+    icon: Users,
     image: servicesContent,
     items: [
-      "Content engine (reels, carousels, hooks)",
-      "Market and competitor intelligence",
-      "Brand positioning & messaging",
-      "Community and organic distribution",
+      "Content calendars & publishing",
+      "Community management & replies",
+      "Dynamic creative testing",
+      "Chatbot funnels & predictive audiences",
     ],
-    desc: "Content that builds demand and trust, so buying decisions happen sooner.",
+    desc: "Always on, always on brand. We plan, post, and reply so your community never goes quiet. We use dynamic creatives & chatbot funnels to reach predictive audiences.",
     label: "02",
   },
   {
-    title: "Conversion & Revenue Systems",
-    icon: Cpu,
-    image: servicesSystems,
+    title: "Paid Media",
+    icon: Target,
+    image: servicesAds,
     items: [
-      "Websites and landing pages that convert",
-      "Funnels and follow-up journeys",
-      "CRM, automation and WhatsApp workflows",
-      "AI assistants and response systems",
+      "Meta, Google, TikTok, YouTube & LinkedIn",
+      "ROAS, CPA & LTV optimization",
+      "Landing pages & funnels",
+      "CRO & full-funnel reporting",
     ],
-    desc: "Attention becomes revenue only when the system behind it converts and follows up.",
+    desc: "Every dollar with a job. Meta, Google Ads, TikTok, YouTube, LinkedIn optimized for ROAS, lower CPA and higher LTV. Full stack performance marketing including landing pages, funnels, and CRO.",
     label: "03",
   },
 ];
@@ -265,8 +267,8 @@ const Index = () => {
         <div className="container relative z-10">
           <SectionHeading
             eyebrow="What We Do"
-            title="Reach, Demand and Revenue Systems"
-            description="Right audience, right message, right channel. Three capabilities working as one growth system."
+            title="Content, Social and Paid Media"
+            description="Three capabilities, one growth system: create the attention, run the community, and turn spend into revenue."
           />
           <div className="grid md:grid-cols-3 gap-5">
             {services.map((s, i) => (
