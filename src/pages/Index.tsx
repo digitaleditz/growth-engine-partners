@@ -382,8 +382,8 @@ const Index = () => {
           <div className="reelmark-heading">
             <p className="eyebrow">Creative that moves business</p>
             <h2 className="font-display font-bold leading-[1.02] tracking-tight text-[clamp(1.8rem,4vw,3.25rem)]">
-              Captivate Crowds{" "}
-              <span className="text-gradient">With Scroll-Stopping Content.</span>
+              Captivate Crowds With{" "}
+              <span className="font-display font-bold leading-[1.02] tracking-tight text-[clamp(1.8rem,4vw,3.25rem)]">Scroll-Stopping Content.</span>
             </h2>
           </div>
         </div>
