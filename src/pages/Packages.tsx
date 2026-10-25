@@ -170,7 +170,7 @@ const plans = [
   {
     name: "Starter",
     audience: "For solo founders and new brands getting their first presence online.",
-    price: "₹499",
+    price: "$499",
     per: "/month",
     featured: false,
     cta: "Get Started",
@@ -186,7 +186,7 @@ const plans = [
   {
     name: "Essential",
     audience: "For small businesses building consistency across two platforms.",
-    price: "₹1,199",
+    price: "$1,199",
     per: "/month",
     featured: false,
     cta: "Start Growing",
@@ -202,7 +202,7 @@ const plans = [
   {
     name: "Growth",
     audience: "For brands ready to pair content engine with paid reach.",
-    price: "₹1,799",
+    price: "$1,799",
     per: "/month",
     featured: true,
     cta: "Scale Up",
@@ -778,10 +778,10 @@ const Packages = () => {
               </div>
               <div className="pt-8 mt-8 border-t border-border/30">
                 <p className="font-display text-2xl md:text-3xl font-bold text-primary">
-                  Plans from ₹499/month
+                  Plans from $499/month
                 </p>
                 <p className="text-xs text-muted-foreground/70 mt-3 max-w-2xl leading-relaxed">
-                  Monthly plans start from ₹499 and scale with scope. Larger engagements are
+                  Monthly plans start from $499 and scale with scope. Larger engagements are
                   scoped after discovery, based on the layers involved, delivery pace and level
                   of ongoing management. Advertising spend and third-party tooling are billed
                   separately.
