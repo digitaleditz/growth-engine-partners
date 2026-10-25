@@ -383,7 +383,7 @@ const Index = () => {
             <p className="eyebrow">Creative that moves business</p>
             <h2 className="font-display font-bold leading-[1.02] tracking-tight text-[clamp(1.8rem,4vw,3.25rem)]">
               Captivate Crowds With{" "}
-              <span className="font-display font-bold leading-[1.02] tracking-tight text-[clamp(1.8rem,4vw,3.25rem)]">Scroll-Stopping Content.</span>
+              <span className="text-gradient">Scroll-Stopping Content.</span>
             </h2>
           </div>
         </div>
@@ -416,7 +416,6 @@ const Index = () => {
                         <video
                           src={film.src}
                           muted
-                          defaultMuted
                           loop
                           autoPlay
                           playsInline
