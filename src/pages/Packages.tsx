@@ -166,6 +166,73 @@ const differentiators = [
   { icon: Target, text: "Scope agreed per phase, so investment follows results" },
 ];
 
+const plans = [
+  {
+    name: "Starter",
+    audience: "For solo founders and new brands getting their first presence online.",
+    price: "₹499",
+    per: "/month",
+    featured: false,
+    cta: "Get Started",
+    points: [
+      "1 social platform managed",
+      "6 static posts or creatives monthly",
+      "Captions & hashtag research",
+      "Profile setup & optimization",
+      "Monthly performance summary",
+      "WhatsApp support",
+    ],
+  },
+  {
+    name: "Essential",
+    audience: "For small businesses building consistency across two platforms.",
+    price: "₹1,199",
+    per: "/month",
+    featured: false,
+    cta: "Start Growing",
+    points: [
+      "2 social platforms managed",
+      "12 posts & creatives monthly",
+      "Reels & short-form video included",
+      "Content calendar & scheduling",
+      "Community replies during business hours",
+      "Monthly report & WhatsApp support",
+    ],
+  },
+  {
+    name: "Growth",
+    audience: "For brands ready to pair content engine with paid reach.",
+    price: "₹1,799",
+    per: "/month",
+    featured: true,
+    cta: "Scale Up",
+    points: [
+      "3 platforms: content + paid boosts",
+      "16 creatives monthly, incl. 8 reels",
+      "Dynamic creative testing",
+      "Chatbot funnel setup",
+      "Bi-weekly reports & strategy calls",
+      "Priority support",
+    ],
+  },
+  {
+    name: "Custom",
+    audience: "The full Digital Brand & Growth System, managed together.",
+    price: "Custom",
+    per: "pricing",
+    featured: false,
+    cta: "Contact Us",
+    points: [
+      "Brand, website & landing pages",
+      "Full content & social management",
+      "Paid media across all channels",
+      "Funnels, CRM & automation",
+      "Dashboards & revenue reporting",
+      "Dedicated growth team",
+    ],
+  },
+];
+
 const Packages = () => {
   const navigate = useNavigate();
 
@@ -434,6 +501,75 @@ const Packages = () => {
                 </div>
               </div>
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Pricing & Plans */}
+      <section className="section-pad relative overflow-hidden">
+        <div className="absolute inset-0 dot-grid opacity-20" />
+        <div className="floating-orb w-[420px] h-[420px] top-10 left-1/3" />
+        <div className="container relative z-10">
+          <SectionHeading
+            eyebrow="Pricing & Plans"
+            title="Simple, transparent plans for every stage"
+            description="No long-term contracts. No hidden setup fees. Month-to-month flexibility, with bigger engagements scoped after discovery."
+            align="left"
+          />
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            {plans.map((p, i) => (
+              <ScrollReveal key={p.name} delay={i * 0.08}>
+                <div
+                  className={`h-full surface surface-hover flex flex-col p-8 relative ${
+                    p.featured ? "border border-primary/40 glow-accent" : ""
+                  }`}
+                >
+                  {p.featured && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-primary-foreground text-xs font-semibold label-mono tracking-wide whitespace-nowrap">
+                      Most Popular
+                    </span>
+                  )}
+                  <h3 className="font-display text-2xl font-bold">{p.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mt-3 min-h-[3rem]">
+                    {p.audience}
+                  </p>
+                  <div className="flex items-end gap-2 mt-6">
+                    <span className="font-display text-4xl font-bold text-primary">{p.price}</span>
+                    <span className="label-mono text-muted-foreground pb-1.5">{p.per}</span>
+                  </div>
+                  <div className="hairline my-6" />
+                  <p className="label-mono text-muted-foreground/70 mb-4">What is included:</p>
+                  <ul className="space-y-2.5 flex-1">
+                    {p.points.map((pt) => (
+                      <li key={pt} className="flex items-start gap-2.5 text-sm text-secondary-foreground/85">
+                        <Check size={14} className="text-primary shrink-0 mt-1" />
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button
+                    variant={p.featured ? "default" : "outline"}
+                    className="mt-8 w-full font-semibold rounded-full gap-2 group"
+                    onClick={() =>
+                      navigate(`/contact?package=${encodeURIComponent(p.name)}`)
+                    }
+                  >
+                    {p.cta}
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </Button>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+          <ScrollReveal>
+            <p className="text-xs text-muted-foreground/60 mt-8 max-w-2xl leading-relaxed">
+              Plan prices cover management and production fees. Advertising spend and
+              third-party tooling are billed separately. Final scope is confirmed before
+              we start, so you only pay for what your business needs.
+            </p>
           </ScrollReveal>
         </div>
       </section>
