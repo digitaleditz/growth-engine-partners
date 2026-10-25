@@ -404,22 +404,25 @@ const Index = () => {
                   { src: "/realestatevideo.mp4", title: "Real Estate" },
                   { src: "/skincarevideo.mp4", title: "Skincare" },
                 ].map((film, index) => (
-                  <div
-                    className={`reelmark-card reelmark-card-${index}`}
-                    key={film.src}
-                  >
-                    <video
-                      src={film.src}
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                      preload="auto"
-                      controls={false}
-                      disablePictureInPicture
-                      aria-label={film.title}
-                    />
-                  </div>
+                 <div
+  className={`reelmark-card reelmark-card-${index}`}
+  key={`${set}-${film.src}`}
+>
+  <video
+    src={film.src}
+    muted={true}
+    defaultMuted={true}
+    loop
+    autoPlay
+    playsInline
+    preload="auto"
+    controls={false}
+    disablePictureInPicture
+    disableRemotePlayback
+    webkit-playsinline="true"
+    aria-label={film.title}
+  />
+</div>
                 ))}
               </div>
             ))}
