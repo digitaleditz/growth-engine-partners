@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,34 +7,24 @@
   :root {
     --background: 240 5% 3%;
     --foreground: 0 0% 95%;
-
     --card: 240 5% 6%;
     --card-foreground: 0 0% 95%;
-
     --popover: 240 5% 6%;
     --popover-foreground: 0 0% 95%;
-
     --primary: 199 93% 60%;
     --primary-foreground: 240 5% 3%;
-
     --secondary: 240 4% 10%;
     --secondary-foreground: 0 0% 82%;
-
     --muted: 240 4% 13%;
     --muted-foreground: 240 5% 48%;
-
     --accent: 199 93% 60%;
     --accent-foreground: 240 5% 3%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 240 4% 12%;
     --input: 240 4% 14%;
     --ring: 199 93% 60%;
-
     --radius: 0.75rem;
-
     --sidebar-background: 240 5% 4%;
     --sidebar-foreground: 0 0% 90%;
     --sidebar-primary: 199 93% 60%;
@@ -43,9 +34,7 @@
     --sidebar-border: 240 4% 12%;
     --sidebar-ring: 199 93% 60%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -80,7 +69,6 @@
     color: hsl(0 0% 100%);
   }
 
-  /* Mobile: prevent sideways scroll and lighten expensive effects */
   html,
   body {
     overflow-x: hidden;
@@ -92,6 +80,7 @@
       opacity: 0.5;
       filter: blur(60px);
     }
+
     img,
     video,
     svg {
@@ -101,13 +90,16 @@
 }
 
 @layer utilities {
-  /* Text gradient */
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(199 93% 60%) 0%, hsl(220, 81%, 58%) 50%, hsl(210, 77%, 26%) 100%);
+    background-image: linear-gradient(
+      135deg,
+      hsl(199 93% 60%) 0%,
+      hsl(220 81% 58%) 50%,
+      hsl(210 77% 26%) 100%
+    );
   }
 
-  /* Glow effects */
   .glow-accent {
     box-shadow:
       0 0 20px hsl(199 93% 60% / 0.2),
@@ -123,16 +115,23 @@
       inset 0 1px 0 hsl(0 0% 100% / 0.15);
   }
 
-  /* Glassmorphism */
   .glass {
-    background: linear-gradient(135deg, hsl(240 5% 8% / 0.6) 0%, hsl(240 5% 5% / 0.4) 100%);
+    background: linear-gradient(
+      135deg,
+      hsl(240 5% 8% / 0.6) 0%,
+      hsl(240 5% 5% / 0.4) 100%
+    );
     backdrop-filter: blur(24px) saturate(1.2);
     -webkit-backdrop-filter: blur(24px) saturate(1.2);
     border: 1px solid hsl(0 0% 100% / 0.06);
   }
 
   .glass-strong {
-    background: linear-gradient(135deg, hsl(240 5% 10% / 0.7) 0%, hsl(240 5% 6% / 0.6) 100%);
+    background: linear-gradient(
+      135deg,
+      hsl(240 5% 10% / 0.7) 0%,
+      hsl(240 5% 6% / 0.6) 100%
+    );
     backdrop-filter: blur(40px) saturate(1.3);
     -webkit-backdrop-filter: blur(40px) saturate(1.3);
     border: 1px solid hsl(0 0% 100% / 0.08);
@@ -145,19 +144,28 @@
     border: 1px solid hsl(0 0% 100% / 0.04);
   }
 
-  /* Section backgrounds */
   .section-texture {
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% -20%, hsl(199 93% 60% / 0.06) 0%, transparent 60%);
+    background-image: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      hsl(199 93% 60% / 0.06) 0%,
+      transparent 60%
+    );
   }
 
   .section-texture-alt {
     background-image:
-      radial-gradient(ellipse 60% 40% at 80% 50%, hsl(199 93% 60% / 0.04) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 40% at 20% 80%, hsl(280 70% 60% / 0.02) 0%, transparent 40%);
+      radial-gradient(
+        ellipse 60% 40% at 80% 50%,
+        hsl(199 93% 60% / 0.04) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 20% 80%,
+        hsl(280 70% 60% / 0.02) 0%,
+        transparent 40%
+      );
   }
 
-  /* Grid pattern */
   .grid-pattern {
     background-image:
       linear-gradient(hsl(0 0% 100% / 0.02) 1px, transparent 1px),
@@ -165,7 +173,6 @@
     background-size: 80px 80px;
   }
 
-  /* Noise texture overlay */
   .noise-overlay::before {
     content: '';
     position: absolute;
@@ -175,18 +182,21 @@
     z-index: 1;
   }
 
-  /* Floating orb */
   .floating-orb {
     @apply absolute rounded-full;
-    background: radial-gradient(circle, hsl(199 93% 60% / 0.15) 0%, hsl(199 93% 60% / 0) 70%);
+    background: radial-gradient(
+      circle,
+      hsl(199 93% 60% / 0.15) 0%,
+      hsl(199 93% 60% / 0) 70%
+    );
     filter: blur(80px);
     pointer-events: none;
   }
 
-  /* Card hover */
   .card-hover-lift {
     @apply transition-all duration-700 ease-out;
   }
+
   .card-hover-lift:hover {
     transform: translateY(-6px);
     box-shadow:
@@ -194,13 +204,16 @@
       0 8px 24px -8px hsl(0 0% 0% / 0.4);
   }
 
-  /* Divider line with glow */
   .divider-glow {
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, hsl(199 93% 60% / 0.3) 50%, transparent 100%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(199 93% 60% / 0.3) 50%,
+      transparent 100%
+    );
   }
 
-  /* Premium label */
   .label-mono {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
@@ -208,142 +221,177 @@
     text-transform: uppercase;
   }
 
-  /* Shimmer border */
   .border-shimmer {
     position: relative;
   }
+
   .border-shimmer::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, hsl(199 93% 60% / 0.3), transparent 40%, transparent 60%, hsl(280 70% 60% / 0.2));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    background: linear-gradient(
+      135deg,
+      hsl(199 93% 60% / 0.3),
+      transparent 40%,
+      transparent 60%,
+      hsl(280 70% 60% / 0.2)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
   }
-}
 
-@layer utilities {
-  /* ── Modern layout primitives ─────────────────────────── */
   .section-pad {
     @apply py-16 sm:py-24 md:py-32;
   }
+
   .section-pad-sm {
     @apply py-12 sm:py-16 md:py-24;
   }
 
-  /* Editorial display scale */
   .display-xl {
     @apply font-display font-bold leading-[0.95];
     font-size: clamp(2.35rem, 5vw, 4.25rem);
     letter-spacing: -0.04em;
   }
+
   .display-lg {
     @apply font-display font-bold leading-[1.02];
     font-size: clamp(1.9rem, 3.6vw, 3rem);
     letter-spacing: -0.035em;
   }
+
   .display-md {
     @apply font-display font-semibold leading-[1.1];
     font-size: clamp(1.25rem, 1.8vw, 1.6rem);
     letter-spacing: -0.025em;
   }
+
   .body-lg {
     @apply text-base md:text-lg text-muted-foreground leading-relaxed;
   }
 
-  /* Eyebrow chip */
   .eyebrow {
     @apply label-mono inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-primary;
     background: hsl(199 93% 60% / 0.08);
     border: 1px solid hsl(199 93% 60% / 0.18);
   }
 
-  /* Bento surface */
   .surface {
     @apply rounded-[1.75rem] relative overflow-hidden;
-    background: linear-gradient(150deg, hsl(240 5% 9% / 0.75) 0%, hsl(240 6% 5% / 0.6) 100%);
+    background: linear-gradient(
+      150deg,
+      hsl(240 5% 9% / 0.75) 0%,
+      hsl(240 6% 5% / 0.6) 100%
+    );
     border: 1px solid hsl(0 0% 100% / 0.07);
     backdrop-filter: blur(28px) saturate(1.2);
     -webkit-backdrop-filter: blur(28px) saturate(1.2);
     box-shadow: inset 0 1px 0 0 hsl(0 0% 100% / 0.05);
   }
+
   .surface-hover {
     @apply transition-all duration-500 ease-out;
   }
+
   .surface-hover:hover {
     border-color: hsl(199 93% 60% / 0.28);
     transform: translateY(-4px);
-    box-shadow: 0 30px 90px -30px hsl(199 93% 60% / 0.18), 0 10px 30px -12px hsl(0 0% 0% / 0.5);
+    box-shadow:
+      0 30px 90px -30px hsl(199 93% 60% / 0.18),
+      0 10px 30px -12px hsl(0 0% 0% / 0.5);
   }
 
-  /* Mesh gradient backdrop */
   .mesh-bg {
     background-image:
-      radial-gradient(ellipse 60% 50% at 15% 0%, hsl(199 93% 60% / 0.10) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 45% at 85% 20%, hsl(226 80% 58% / 0.09) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 50% at 50% 100%, hsl(199 93% 60% / 0.05) 0%, transparent 60%);
+      radial-gradient(
+        ellipse 60% 50% at 15% 0%,
+        hsl(199 93% 60% / 0.10) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 50% 45% at 85% 20%,
+        hsl(226 80% 58% / 0.09) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 50% 100%,
+        hsl(199 93% 60% / 0.05) 0%,
+        transparent 60%
+      );
   }
 
-  /* Hairline rule */
   .hairline {
     height: 1px;
-    background: linear-gradient(90deg, hsl(0 0% 100% / 0.10), hsl(0 0% 100% / 0.02) 70%, transparent);
+    background: linear-gradient(
+      90deg,
+      hsl(0 0% 100% / 0.10),
+      hsl(0 0% 100% / 0.02) 70%,
+      transparent
+    );
   }
 
-  /* Icon tile */
   .icon-tile {
     @apply w-11 h-11 rounded-2xl flex items-center justify-center text-primary shrink-0;
-    background: linear-gradient(150deg, hsl(199 93% 60% / 0.16), hsl(199 93% 60% / 0.04));
+    background: linear-gradient(
+      150deg,
+      hsl(199 93% 60% / 0.16),
+      hsl(199 93% 60% / 0.04)
+    );
     border: 1px solid hsl(199 93% 60% / 0.2);
   }
 
-  /* Dotted texture */
   .dot-grid {
-    background-image: radial-gradient(hsl(0 0% 100% / 0.08) 1px, transparent 1px);
+    background-image: radial-gradient(
+      hsl(0 0% 100% / 0.08) 1px,
+      transparent 1px
+    );
     background-size: 26px 26px;
   }
 
   .marquee-mask {
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
   }
 }
 
-/* ── Light theme ──────────────────────────────────────────
-   Applied when <html> carries the .light class. Overrides the
-   dark defaults above with the same blue accent identity.     */
+/* Light theme */
 @layer base {
   html.light {
-    /* Softly tinted canvas so white surfaces read as elevated cards */
     --background: 220 30% 97%;
     --foreground: 225 15% 10%;
-
     --card: 0 0% 100%;
     --card-foreground: 225 15% 10%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 240 8% 8%;
-
     --primary: 199 88% 42%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 220 20% 95%;
     --secondary-foreground: 225 15% 22%;
-
     --muted: 220 20% 94%;
     --muted-foreground: 225 10% 38%;
-
     --accent: 199 88% 42%;
     --accent-foreground: 0 0% 100%;
-
     --border: 220 15% 87%;
     --input: 220 15% 86%;
     --ring: 199 88% 42%;
-
     --sidebar-background: 240 20% 98%;
     --sidebar-foreground: 240 8% 15%;
     --sidebar-primary: 199 88% 42%;
@@ -362,112 +410,215 @@
 
 @layer utilities {
   html.light .glass {
-    background: linear-gradient(135deg, hsl(0 0% 100% / 0.9) 0%, hsl(220 30% 98% / 0.78) 100%);
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 100% / 0.9) 0%,
+      hsl(220 30% 98% / 0.78) 100%
+    );
     border: 1px solid hsl(225 15% 20% / 0.09);
     box-shadow: 0 1px 2px hsl(225 20% 20% / 0.05);
   }
+
   html.light .glass-strong {
-    background: linear-gradient(135deg, hsl(0 0% 100% / 0.96) 0%, hsl(220 30% 98% / 0.9) 100%);
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 100% / 0.96) 0%,
+      hsl(220 30% 98% / 0.9) 100%
+    );
     border: 1px solid hsl(225 15% 20% / 0.1);
     box-shadow: 0 10px 30px -18px hsl(225 25% 20% / 0.16);
   }
+
   html.light .glass-light {
     background: hsl(0 0% 100% / 0.7);
     border: 1px solid hsl(225 15% 20% / 0.07);
   }
+
   html.light .surface {
-    background: linear-gradient(150deg, hsl(0 0% 100%) 0%, hsl(220 40% 99%) 100%);
+    background: linear-gradient(
+      150deg,
+      hsl(0 0% 100%) 0%,
+      hsl(220 40% 99%) 100%
+    );
     border: 1px solid hsl(225 15% 20% / 0.08);
     box-shadow:
       0 1px 2px hsl(225 25% 20% / 0.05),
       0 12px 30px -22px hsl(225 25% 20% / 0.18),
       inset 0 1px 0 0 hsl(0 0% 100%);
   }
+
   html.light .surface-hover:hover {
     border-color: hsl(199 88% 42% / 0.34);
     box-shadow:
       0 26px 60px -28px hsl(199 88% 42% / 0.3),
       0 10px 24px -14px hsl(225 25% 20% / 0.16);
   }
+
   html.light .hairline {
-    background: linear-gradient(90deg, hsl(225 15% 20% / 0.16), hsl(225 15% 20% / 0.05) 70%, transparent);
+    background: linear-gradient(
+      90deg,
+      hsl(225 15% 20% / 0.16),
+      hsl(225 15% 20% / 0.05) 70%,
+      transparent
+    );
   }
+
   html.light .dot-grid {
-    background-image: radial-gradient(hsl(225 15% 20% / 0.11) 1px, transparent 1px);
+    background-image: radial-gradient(
+      hsl(225 15% 20% / 0.11) 1px,
+      transparent 1px
+    );
   }
+
   html.light .section-texture {
-    background-image: radial-gradient(ellipse 80% 50% at 50% -20%, hsl(199 88% 42% / 0.09) 0%, transparent 60%);
+    background-image: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      hsl(199 88% 42% / 0.09) 0%,
+      transparent 60%
+    );
   }
+
   html.light .section-texture-alt {
     background-image:
-      radial-gradient(ellipse 60% 40% at 80% 50%, hsl(199 88% 42% / 0.08) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 40% at 20% 80%, hsl(265 70% 55% / 0.05) 0%, transparent 45%);
+      radial-gradient(
+        ellipse 60% 40% at 80% 50%,
+        hsl(199 88% 42% / 0.08) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 20% 80%,
+        hsl(265 70% 55% / 0.05) 0%,
+        transparent 45%
+      );
   }
+
   html.light .noise-overlay::before {
     opacity: 0.5;
   }
+
   html.light .border-shimmer::before {
-    background: linear-gradient(135deg, hsl(199 88% 42% / 0.35), transparent 40%, transparent 60%, hsl(265 70% 55% / 0.22));
+    background: linear-gradient(
+      135deg,
+      hsl(199 88% 42% / 0.35),
+      transparent 40%,
+      transparent 60%,
+      hsl(265 70% 55% / 0.22)
+    );
   }
+
   html.light .label-mono {
     letter-spacing: 0.14em;
   }
+
   html.light .grid-pattern {
     background-image:
       linear-gradient(hsl(240 8% 20% / 0.05) 1px, transparent 1px),
       linear-gradient(90deg, hsl(240 8% 20% / 0.05) 1px, transparent 1px);
   }
+
   html.light .mesh-bg {
     background-image:
-      radial-gradient(ellipse 60% 50% at 15% 0%, hsl(199 88% 42% / 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 45% at 85% 20%, hsl(226 80% 58% / 0.1) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 50% at 50% 100%, hsl(199 88% 42% / 0.06) 0%, transparent 60%);
+      radial-gradient(
+        ellipse 60% 50% at 15% 0%,
+        hsl(199 88% 42% / 0.12) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 50% 45% at 85% 20%,
+        hsl(226 80% 58% / 0.1) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 50% 100%,
+        hsl(199 88% 42% / 0.06) 0%,
+        transparent 60%
+      );
   }
+
   html.light .floating-orb {
-    background: radial-gradient(circle, hsl(199 88% 42% / 0.14) 0%, hsl(199 88% 42% / 0) 70%);
+    background: radial-gradient(
+      circle,
+      hsl(199 88% 42% / 0.14) 0%,
+      hsl(199 88% 42% / 0) 70%
+    );
   }
+
   html.light .text-gradient {
-    background-image: linear-gradient(135deg, hsl(199 88% 40%) 0%, hsl(220 81% 50%) 50%, hsl(210 77% 30%) 100%);
+    background-image: linear-gradient(
+      135deg,
+      hsl(199 88% 40%) 0%,
+      hsl(220 81% 50%) 50%,
+      hsl(210 77% 30%) 100%
+    );
   }
+
   html.light .eyebrow {
     background: hsl(199 88% 42% / 0.08);
     border: 1px solid hsl(199 88% 42% / 0.22);
   }
+
   html.light .icon-tile {
-    background: linear-gradient(150deg, hsl(199 88% 42% / 0.14), hsl(199 88% 42% / 0.04));
+    background: linear-gradient(
+      150deg,
+      hsl(199 88% 42% / 0.14),
+      hsl(199 88% 42% / 0.04)
+    );
     border: 1px solid hsl(199 88% 42% / 0.22);
   }
-  html.light .glow-accent {
-    box-shadow: 0 0 20px hsl(199 88% 42% / 0.18), 0 6px 20px -8px hsl(199 88% 42% / 0.3);
-  }
-  html.light .glow-accent-strong {
-    box-shadow: 0 0 28px hsl(199 88% 42% / 0.22), 0 10px 30px -10px hsl(199 88% 42% / 0.35);
-  }
-  html.light .divider-glow {
-    background: linear-gradient(90deg, transparent 0%, hsl(199 88% 42% / 0.35) 50%, transparent 100%);
-  }
-  html.light .card-hover-lift:hover {
-    box-shadow: 0 24px 60px -24px hsl(199 88% 42% / 0.2), 0 8px 20px -10px hsl(240 10% 20% / 0.12);
-  }
-}
 
-@layer utilities {
-  /* Media reads far too washed out on a light canvas: keep it visible */
+  html.light .glow-accent {
+    box-shadow:
+      0 0 20px hsl(199 88% 42% / 0.18),
+      0 6px 20px -8px hsl(199 88% 42% / 0.3);
+  }
+
+  html.light .glow-accent-strong {
+    box-shadow:
+      0 0 28px hsl(199 88% 42% / 0.22),
+      0 10px 30px -10px hsl(199 88% 42% / 0.35);
+  }
+
+  html.light .divider-glow {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(199 88% 42% / 0.35) 50%,
+      transparent 100%
+    );
+  }
+
+  html.light .card-hover-lift:hover {
+    box-shadow:
+      0 24px 60px -24px hsl(199 88% 42% / 0.2),
+      0 8px 20px -10px hsl(240 10% 20% / 0.12);
+  }
+
   html.light .hero-video {
     filter: brightness(0.98) contrast(1.05) saturate(1.05);
     opacity: 0.85;
   }
+
   html.light .hero-media {
     filter: contrast(1.04) saturate(1.02);
     opacity: 0.26;
-    mask-image: linear-gradient(to bottom, #000 0%, hsl(0 0% 0% / 0.35) 65%, transparent 95%);
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, hsl(0 0% 0% / 0.35) 65%, transparent 95%);
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      hsl(0 0% 0% / 0.35) 65%,
+      transparent 95%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      hsl(0 0% 0% / 0.35) 65%,
+      transparent 95%
+    );
   }
+
   html.light .hero-veil {
     opacity: 0.7;
   }
 
-  /* Form controls need a visible edge on white surfaces */
   html.light input,
   html.light textarea,
   html.light select,
@@ -475,22 +626,28 @@
     background-color: hsl(220 30% 98%);
     border-color: hsl(220 15% 84%);
   }
+
   html.light input:focus,
   html.light textarea:focus,
   html.light select:focus {
     background-color: hsl(0 0% 100%);
     border-color: hsl(199 88% 42% / 0.5);
   }
+
   html.light input::placeholder,
   html.light textarea::placeholder {
     color: hsl(225 10% 50%);
   }
 }
 
-/* Oversized footer brand wordmark */
+/* Footer wordmark */
 .footer-wordmark {
   font-size: clamp(3.5rem, 19vw, 16rem);
-  background: linear-gradient(180deg, hsl(0 0% 95%) 0%, hsl(199 93% 60%) 100%);
+  background: linear-gradient(
+    180deg,
+    hsl(0 0% 95%) 0%,
+    hsl(199 93% 60%) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -499,24 +656,27 @@
 }
 
 html.light .footer-wordmark {
-  background: linear-gradient(180deg, hsl(225 30% 18%) 0%, hsl(199 90% 45%) 100%);
+  background: linear-gradient(
+    180deg,
+    hsl(225 30% 18%) 0%,
+    hsl(199 90% 45%) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   opacity: 0.08;
 }
-  
 
-/* DigitalEditz — curved, continuously moving video carousel */
+/* DigitalEditz — curved brand film carousel */
 .reelmark-section {
   position: relative;
   overflow: hidden;
-  padding: 55px 0 70px;
+  padding: 50px 0 65px;
 }
 
 .reelmark-heading {
   max-width: 850px;
-  margin: 0 auto 25px;
+  margin: 0 auto 24px;
   padding: 0 20px;
   text-align: center;
 }
@@ -528,19 +688,27 @@ html.light .footer-wordmark {
 .reelmark-viewport {
   width: 100%;
   overflow: hidden;
-  padding: 45px 0;
+  padding: 38px 0 42px;
   -webkit-mask-image: linear-gradient(
-    90deg, transparent, #000 5%, #000 95%, transparent
+    90deg,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
   );
   mask-image: linear-gradient(
-    90deg, transparent, #000 5%, #000 95%, transparent
+    90deg,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
   );
 }
 
 .reelmark-track {
   display: flex;
-  width: max-content;
   align-items: center;
+  width: max-content;
   animation: reelmark-scroll 24s linear infinite;
   will-change: transform;
 }
@@ -553,8 +721,8 @@ html.light .footer-wordmark {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 16px;
-  padding-right: 16px;
+  gap: 15px;
+  padding-right: 15px;
 }
 
 .reelmark-card {
@@ -562,19 +730,15 @@ html.light .footer-wordmark {
   --card-lift: 0px;
 
   position: relative;
-  flex: 0 0 clamp(180px, 19vw, 250px);
-  height: clamp(270px, 28vw, 340px);
+  flex: 0 0 clamp(175px, 18vw, 235px);
+  height: clamp(260px, 27vw, 330px);
   overflow: hidden;
   border: 1px solid hsl(0 0% 100% / 0.12);
   border-radius: 17px;
   background: #080808;
-
-  transform:
-    translateY(var(--card-lift))
-    scale(var(--card-scale));
-
+  transform: translateY(var(--card-lift)) scale(var(--card-scale));
   transform-origin: center;
-  transition: transform 100ms linear;
+  transition: transform 80ms linear;
   will-change: transform;
 }
 
@@ -582,6 +746,7 @@ html.light .footer-wordmark {
   display: block;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: contain;
   object-position: center;
   background: #080808;
@@ -589,11 +754,11 @@ html.light .footer-wordmark {
 
 .reelmark-card span {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   left: 14px;
   right: 10px;
   bottom: 14px;
-  color: white;
+  color: #fff;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -614,22 +779,32 @@ html.light .footer-wordmark {
 }
 
 @keyframes reelmark-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (max-width: 767px) {
   .reelmark-section {
-    padding: 40px 0 50px;
+    padding: 38px 0 45px;
+  }
+
+  .reelmark-heading {
+    margin-bottom: 18px;
   }
 
   .reelmark-viewport {
-    padding: 35px 0;
+    padding: 30px 0 35px;
   }
 
   .reelmark-card {
-    flex-basis: 180px;
-    height: 265px;
+    flex-basis: 175px;
+    height: 255px;
+    border-radius: 15px;
   }
 
   .reelmark-set {
