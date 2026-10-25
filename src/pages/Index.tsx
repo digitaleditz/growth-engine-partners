@@ -112,6 +112,98 @@ const faqs = [
   },
 ];
 
+
+const brandFilms = [
+  { src: "/realestatevideo.mp4", title: "Real Estate" },
+  { src: "/skincarevideo.mp4", title: "Skincare" },
+  { src: "/burgervideo.mp4", title: "Burger Brand" },
+  { src: "/levorabagvideo.mp4", title: "Le Vora" },
+  { src: "/OATSTRONGvideo.mp4", title: "Oat Strong" },
+  { src: "/perfumevideo.mp4", title: "Fine Fragrance" },
+];
+
+const BrandFilmCarousel = () => {
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    let frameId = 0;
+
+    const updateCardScales = () => {
+      const bounds = viewport.getBoundingClientRect();
+      const centerX = bounds.left + bounds.width / 2;
+      const halfWidth = Math.max(bounds.width / 2, 1);
+
+      viewport.querySelectorAll<HTMLElement>(".reelmark-card").forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenterX = rect.left + rect.width / 2;
+        const distance = Math.min(1, Math.abs(cardCenterX - centerX) / halfWidth);
+
+        // Cards are smallest in the center and smoothly grow toward the edges.
+        const scale = 0.80 + distance * 0.22;
+        const lift = -Math.sin(distance * Math.PI) * 9;
+
+        card.style.setProperty("--card-scale", scale.toFixed(3));
+        card.style.setProperty("--card-lift", `${lift.toFixed(1)}px`);
+      });
+
+      frameId = window.requestAnimationFrame(updateCardScales);
+    };
+
+    frameId = window.requestAnimationFrame(updateCardScales);
+    window.addEventListener("resize", updateCardScales);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("resize", updateCardScales);
+    };
+  }, []);
+
+  return (
+    <section className="reelmark-section" aria-label="Featured brand films">
+      <div className="container relative z-10">
+        <div className="reelmark-heading">
+          <p className="eyebrow">Creative that moves business</p>
+          <h2 className="display-xl">
+            Ideas in Motion.{" "}
+            <span className="text-gradient">Brands in Focus.</span>
+          </h2>
+        </div>
+      </div>
+
+      <div className="reelmark-viewport" ref={viewportRef}>
+        <div className="reelmark-track">
+          {[0, 1].map((copy) => (
+            <div
+              className="reelmark-set"
+              key={copy}
+              aria-hidden={copy === 1}
+            >
+              {brandFilms.map((film) => (
+                <article className="reelmark-card" key={film.src}>
+                  <video
+                    src={film.src}
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                    preload="metadata"
+                    aria-label={film.title}
+                  />
+                  <span>{film.title}</span>
+                </article>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
 const Index = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -260,56 +352,8 @@ const Index = () => {
 
       <ClientMarquee />
       
-      {/* Reelmark-inspired brand film carousel */}
-      <section className="reelmark-section" aria-label="Featured brand films">
-        <div className="container relative z-10">
-          <div className="reelmark-heading">
-            <p className="eyebrow">Creative that moves business</p>
-            <h2 className="display-xl">
-              Ideas in Motion.{" "}
-              <span className="text-gradient">Brands in Focus.</span>
-            </h2>
-          </div>
-        </div>
-
-        <div className="reelmark-viewport">
-          <div className="reelmark-track">
-            {[1, 2].map((set) => (
-              <div
-                className="reelmark-set"
-                key={set}
-                aria-hidden={set === 2}
-              >
-                {[
-                  { src: "/burgervideo.mp4", title: "Burger Brand" },
-                  { src: "/levorabagvideo.mp4", title: "Le Vora" },
-                  { src: "/OATSTRONGvideo.mp4", title: "Oat Strong" },
-                  { src: "/perfumevideo.mp4", title: "Fine Fragrance" },
-                  { src: "/realestatevideo.mp4", title: "Real Estate" },
-                  { src: "/skincarevideo.mp4", title: "Skincare" },
-                ].map((film, index) => (
-                  <div
-                    className={`reelmark-card reelmark-card-${index}`}
-                    key={film.src}
-                  >
-                    <video
-                      src={film.src}
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                      preload="metadata"
-                      aria-label={film.title}
-                    />
-                    <span>{film.title}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <BrandFilmCarousel />
+      
       <PartnersBanner />
       {/* Services */}
       <section className="section-pad relative overflow-hidden">
