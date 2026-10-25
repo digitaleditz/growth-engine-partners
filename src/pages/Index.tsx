@@ -380,11 +380,13 @@ const Index = () => {
       <section ref={reelmarkSectionRef} className="reelmark-section" aria-label="Featured brand films">
         <div className="container relative z-10">
           <div className="reelmark-heading">
-            <p className="eyebrow">Captivate Crowds</p>
-            <h2 className="display-xl">
-              With Scroll-StoppingReels.{" "}
-              <span className="text-gradient">Brands in Focus.</span>
-            </h2>
+            <p className="eyebrow">Creative that moves business</p>
+           <h2 className="font-display font-bold leading-[1.02] tracking-tight text-[clamp(1.8rem,4vw,3.25rem)]">
+  Captivate Crowds{" "}
+  <span className="text-gradient">
+    With Scroll-Stopping Content.
+  </span>
+</h2>
           </div>
         </div>
 
@@ -404,25 +406,22 @@ const Index = () => {
                   { src: "/realestatevideo.mp4", title: "Real Estate" },
                   { src: "/skincarevideo.mp4", title: "Skincare" },
                 ].map((film, index) => (
-                 <div
-  className={`reelmark-card reelmark-card-${index}`}
-  key={`${set}-${film.src}`}
->
-  <video
-    src={film.src}
-    muted={true}
-    defaultMuted={true}
-    loop
-    autoPlay
-    playsInline
-    preload="auto"
-    controls={false}
-    disablePictureInPicture
-    disableRemotePlayback
-    webkit-playsinline="true"
-    aria-label={film.title}
-  />
-</div>
+                  <div
+                    className={`reelmark-card reelmark-card-${index}`}
+                    key={film.src}
+                  >
+                    <video
+                      src={film.src}
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                      preload="auto"
+                      controls={false}
+                      disablePictureInPicture
+                      aria-label={film.title}
+                    />
+                  </div>
                 ))}
               </div>
             ))}
