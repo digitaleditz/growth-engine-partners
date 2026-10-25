@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -57,7 +56,12 @@
     line-height: 1.65;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     letter-spacing: -0.9px;
@@ -95,8 +99,8 @@
     background-image: linear-gradient(
       135deg,
       hsl(199 93% 60%) 0%,
-      hsl(220 81% 58%) 50%,
-      hsl(210 77% 26%) 100%
+      hsl(220, 81%, 58%) 50%,
+      hsl(210, 77%, 26%) 100%
     );
   }
 
@@ -592,7 +596,9 @@
       0 24px 60px -24px hsl(199 88% 42% / 0.2),
       0 8px 20px -10px hsl(240 10% 20% / 0.12);
   }
+}
 
+@layer utilities {
   html.light .hero-video {
     filter: brightness(0.98) contrast(1.05) saturate(1.05);
     opacity: 0.85;
@@ -640,7 +646,7 @@
   }
 }
 
-/* Footer wordmark */
+/* Oversized footer brand wordmark */
 .footer-wordmark {
   font-size: clamp(3.5rem, 19vw, 16rem);
   background: linear-gradient(
@@ -667,7 +673,11 @@ html.light .footer-wordmark {
   opacity: 0.08;
 }
 
-/* DigitalEditz — curved brand film carousel */
+/* =========================================================
+   DIGITAL EDITZ — REELMARK VIDEO CAROUSEL
+   Borderless rounded cards, tighter spacing, curved movement
+   ========================================================= */
+
 .reelmark-section {
   position: relative;
   overflow: hidden;
@@ -688,7 +698,9 @@ html.light .footer-wordmark {
 .reelmark-viewport {
   width: 100%;
   overflow: hidden;
-  padding: 38px 0 42px;
+  padding: 48px 0 50px;
+  perspective: 1200px;
+
   -webkit-mask-image: linear-gradient(
     90deg,
     transparent,
@@ -696,6 +708,7 @@ html.light .footer-wordmark {
     #000 95%,
     transparent
   );
+
   mask-image: linear-gradient(
     90deg,
     transparent,
@@ -713,33 +726,44 @@ html.light .footer-wordmark {
   will-change: transform;
 }
 
-.reelmark-viewport:hover .reelmark-track {
-  animation-play-state: paused;
-}
-
+/* Continuous motion: no pause on hover */
 .reelmark-set {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 15px;
-  padding-right: 15px;
+  gap: 7px;
+  padding-right: 7px;
 }
 
 .reelmark-card {
-  --card-scale: 1;
-  --card-lift: 0px;
+  --card-scale: 0.84;
+  --card-lift: 16px;
+  --card-rotate: 0deg;
 
   position: relative;
   flex: 0 0 clamp(175px, 18vw, 235px);
   height: clamp(260px, 27vw, 330px);
+
   overflow: hidden;
-  border: 1px solid hsl(0 0% 100% / 0.12);
+
+  /* Remove the visible outline around each video */
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  /* Preserve smooth rounded corners */
   border-radius: 17px;
   background: #080808;
-  transform: translateY(var(--card-lift)) scale(var(--card-scale));
+
+  transform:
+    translateY(var(--card-lift))
+    rotateY(var(--card-rotate))
+    scale(var(--card-scale));
+
   transform-origin: center;
-  transition: transform 80ms linear;
+  transition: transform 180ms ease-out;
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 .reelmark-card video {
@@ -747,9 +771,20 @@ html.light .footer-wordmark {
   width: 100%;
   height: 100%;
   max-width: none;
+
+  /* Show the entire video without cropping */
   object-fit: contain;
   object-position: center;
+
   background: #080808;
+
+  /* Prevent browser outlines or borders */
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  /* Round the video itself */
+  border-radius: inherit;
 }
 
 .reelmark-card span {
@@ -758,12 +793,14 @@ html.light .footer-wordmark {
   left: 14px;
   right: 10px;
   bottom: 14px;
+
   color: #fff;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-shadow: 0 1px 8px #000;
+  pointer-events: none;
 }
 
 .reelmark-card::after {
@@ -771,11 +808,14 @@ html.light .footer-wordmark {
   position: absolute;
   inset: 65% 0 0;
   pointer-events: none;
+
   background: linear-gradient(
     to bottom,
     transparent,
     rgb(0 0 0 / 45%)
   );
+
+  border-radius: inherit;
 }
 
 @keyframes reelmark-scroll {
@@ -798,7 +838,7 @@ html.light .footer-wordmark {
   }
 
   .reelmark-viewport {
-    padding: 30px 0 35px;
+    padding: 35px 0 40px;
   }
 
   .reelmark-card {
@@ -808,8 +848,8 @@ html.light .footer-wordmark {
   }
 
   .reelmark-set {
-    gap: 12px;
-    padding-right: 12px;
+    gap: 6px;
+    padding-right: 6px;
   }
 
   .reelmark-track {
