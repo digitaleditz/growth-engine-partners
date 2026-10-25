@@ -131,7 +131,8 @@ const Contact = () => {
       const { data, error } = await supabase.functions.invoke("send-verification-code", {
         body: { email: form.email.trim() },
       });
-      if (error || (data as any)?.error) throw new Error((data as any)?.error || "failed");
+      const resData = data as { error?: string } | null;
+      if (error || resData?.error) throw new Error(resData?.error || "failed");
       setStep("verify");
       toast({ title: `Verification code sent to ${form.email.trim()}` });
     } catch (err) {
@@ -163,13 +164,15 @@ const Contact = () => {
           honeypot,
         },
       });
-      if (error || (data as any)?.error) throw new Error((data as any)?.error || "failed");
+      const resData = data as { error?: string } | null;
+      if (error || resData?.error) throw new Error(resData?.error || "failed");
       setSubmitted(true);
       toast({ title: "Query received! Our team will contact you soon." });
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
+      const errorMessage = err instanceof Error ? err.message : "";
       toast({
-        title: err?.message && err.message !== "failed" ? err.message : "Something went wrong. Please try again.",
+        title: errorMessage && errorMessage !== "failed" ? errorMessage : "Something went wrong. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -330,7 +333,7 @@ const Contact = () => {
                 <span className="eyebrow">Contact Information</span>
                 <div className="grid sm:grid-cols-2 gap-4 pt-2">
                   {contactCards.map((item) => {
-                    const Wrapper: any = item.href ? "a" : "div";
+                    const Wrapper = (item.href ? "a" : "div") as React.ElementType;
                     return (
                       <Wrapper
                         key={item.label}

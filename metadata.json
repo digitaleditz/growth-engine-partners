@@ -1,0 +1,8 @@
+{
+  "name": "DigitalEditz",
+  "description": "Brand, Web & Growth Systems Agency - We build the complete digital foundation and growth system behind modern businesses: brand, website, content, paid acquisition, conversion and automation.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
