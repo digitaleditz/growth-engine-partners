@@ -259,6 +259,57 @@ const Index = () => {
 
 
       <ClientMarquee />
+      
+      {/* Reelmark-inspired brand film carousel */}
+      <section className="reelmark-section" aria-label="Featured brand films">
+        <div className="container relative z-10">
+          <div className="reelmark-heading">
+            <p className="eyebrow">Creative that moves business</p>
+            <h2 className="display-xl">
+              Ideas in Motion.{" "}
+              <span className="text-gradient">Brands in Focus.</span>
+            </h2>
+          </div>
+        </div>
+
+        <div className="reelmark-viewport">
+          <div className="reelmark-track">
+            {[1, 2].map((set) => (
+              <div
+                className="reelmark-set"
+                key={set}
+                aria-hidden={set === 2}
+              >
+                {[
+                  { src: "/burgervideo.mp4", title: "Burger Brand" },
+                  { src: "/levorabagvideo.mp4", title: "Le Vora" },
+                  { src: "/OATSTRONGvideo.mp4", title: "Oat Strong" },
+                  { src: "/perfumevideo.mp4", title: "Fine Fragrance" },
+                  { src: "/realestatevideo.mp4", title: "Real Estate" },
+                  { src: "/skincarevideo.mp4", title: "Skincare" },
+                ].map((film, index) => (
+                  <div
+                    className={`reelmark-card reelmark-card-${index}`}
+                    key={film.src}
+                  >
+                    <video
+                      src={film.src}
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                      preload="metadata"
+                      aria-label={film.title}
+                    />
+                    <span>{film.title}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <PartnersBanner />
       {/* Services */}
       <section className="section-pad relative overflow-hidden">
