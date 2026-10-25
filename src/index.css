@@ -1137,3 +1137,173 @@ html.light .footer-wordmark {
     animation-duration: 60s;
   }
 }
+/* ==========================================
+   REELMARK CAROUSEL — FINAL OVERRIDES
+   ========================================== */
+
+/* More breathing room around the carousel */
+.reelmark-section {
+  width: 100%;
+  padding: 75px 0 90px;
+  overflow: hidden;
+}
+
+/* Keep carousel centered and narrower than the screen */
+.reelmark-viewport {
+  width: 78%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding: 28px 0;
+  overflow: hidden;
+  perspective: none;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+/* Tight spacing and continuous motion */
+.reelmark-set {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 12px;
+  flex-shrink: 0;
+}
+
+.reelmark-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: reelmark-scroll 28s linear infinite;
+  transform-style: flat;
+}
+
+.reelmark-track:hover,
+.reelmark-viewport:hover .reelmark-track {
+  animation-play-state: running !important;
+}
+
+/* Larger, borderless video cards */
+.reelmark-card,
+.reelmark-card:hover,
+.reelmark-card:focus,
+.reelmark-card:focus-visible,
+.reelmark-card:active {
+  position: relative;
+  flex: 0 0 clamp(220px, 18vw, 290px);
+  height: clamp(340px, 29vw, 430px);
+  min-width: 0;
+  overflow: hidden;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 18px;
+  transform: none !important;
+  transition: none !important;
+  filter: none !important;
+}
+
+/* Ensure no border is applied to the video */
+.reelmark-card video,
+.reelmark-card video:hover,
+.reelmark-card video:focus {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: inherit;
+  background: transparent;
+}
+
+/* Hide all video titles/names */
+.reelmark-card span {
+  display: none !important;
+}
+
+/* Remove any card overlay that looks like an edge */
+.reelmark-card::before {
+  content: none !important;
+  display: none !important;
+}
+
+.reelmark-card::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Keep the marquee seamless */
+@keyframes reelmark-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .reelmark-viewport {
+    width: 86%;
+  }
+
+  .reelmark-card,
+  .reelmark-card:hover,
+  .reelmark-card:focus {
+    flex-basis: 230px;
+    height: 345px;
+  }
+
+  .reelmark-set {
+    gap: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .reelmark-section {
+    padding: 48px 0 60px;
+  }
+
+  .reelmark-viewport {
+    width: 92%;
+    padding: 20px 0;
+  }
+
+  .reelmark-card,
+  .reelmark-card:hover,
+  .reelmark-card:focus,
+  .reelmark-card video {
+    flex-basis: 190px;
+    height: 290px;
+    border-radius: 14px;
+  }
+
+  .reelmark-set {
+    gap: 8px;
+    padding-right: 8px;
+  }
+
+  .reelmark-track {
+    animation-duration: 24s;
+  }
+}
