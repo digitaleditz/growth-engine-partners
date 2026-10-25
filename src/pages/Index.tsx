@@ -38,7 +38,7 @@ import servicesContent from "@/assets/services-content.webp";
 
 import vivocase from "@/assets/clients/vivo_1.png";
 import pushticase from "@/assets/clients/pushti_1.png";
-import servicesSystems from "@/assets/services-systems.webp";
+import servicesUgc from "@/assets/services-ugc.webp";
 
 import { useEffect, useRef } from "react";
 
@@ -267,8 +267,8 @@ const Index = () => {
         <div className="container relative z-10">
           <SectionHeading
             eyebrow="What We Do"
-            title="Reach, Demand and Revenue Systems"
-            description="Right audience, right message, right channel. Three capabilities working as one growth system."
+            title="Content, Social and Paid Media"
+            description="Three capabilities, one growth system: create the attention, run the community, and turn spend into revenue."
           />
           <div className="grid md:grid-cols-3 gap-5">
             {services.map((s, i) => (
