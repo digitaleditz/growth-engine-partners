@@ -862,3 +862,36 @@ html.light .footer-wordmark {
     animation-duration: 60s;
   }
 }
+  /* Reelmark carousel — final visual tuning */
+.reelmark-set {
+  gap: 4px;
+  padding-right: 4px;
+}
+
+.reelmark-card {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: 16px;
+  transform:
+    translateY(var(--card-lift, 0px))
+    rotateY(var(--card-rotate, 0deg))
+    scale(var(--card-scale, 1));
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+.reelmark-card video {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: inherit;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .reelmark-set {
+    gap: 4px;
+    padding-right: 4px;
+  }
+}
