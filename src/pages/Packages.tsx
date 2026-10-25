@@ -778,12 +778,13 @@ const Packages = () => {
               </div>
               <div className="pt-8 mt-8 border-t border-border/30">
                 <p className="font-display text-2xl md:text-3xl font-bold text-primary">
-                  Starting from $1,000/month
+                  Plans from ₹499/month
                 </p>
                 <p className="text-xs text-muted-foreground/70 mt-3 max-w-2xl leading-relaxed">
-                  Actual investment depends on the scope agreed after discovery, the number of
-                  layers involved, delivery pace and level of ongoing management. Advertising
-                  spend and third-party tooling are billed separately.
+                  Monthly plans start from ₹499 and scale with scope. Larger engagements are
+                  scoped after discovery, based on the layers involved, delivery pace and level
+                  of ongoing management. Advertising spend and third-party tooling are billed
+                  separately.
                 </p>
               </div>
             </div>
