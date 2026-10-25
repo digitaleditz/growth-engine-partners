@@ -908,3 +908,232 @@ html.light .footer-wordmark {
     animation-duration: 60s;
   }
 }
+
+/* ===== DIGITAL EDITZ — SPACIOUS BRAND FILM CAROUSEL ===== */
+
+.reelmark-section {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 70px 0 90px;
+  overflow: hidden;
+}
+
+.reelmark-heading {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto 42px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.reelmark-heading h2 {
+  margin-top: 16px;
+}
+
+/* Keep the carousel at 75% width, centered */
+.reelmark-viewport {
+  position: relative;
+  width: 76%;
+  max-width: 1350px;
+  margin-inline: auto;
+  padding: 30px 0;
+  overflow: hidden;
+
+  /* Fade both ends */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+/* Continuous movement */
+.reelmark-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: reelmark-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+/* Never pause on hover */
+.reelmark-track:hover,
+.reelmark-viewport:hover .reelmark-track {
+  animation-play-state: running !important;
+}
+
+/* Tight spacing between cards */
+.reelmark-set {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 12px;
+  padding-right: 12px;
+}
+
+/* Borderless cards, rounded corners only */
+.reelmark-card,
+.reelmark-card:hover,
+.reelmark-card:focus,
+.reelmark-card:focus-visible {
+  position: relative;
+  flex: 0 0 clamp(170px, 15vw, 215px);
+  height: clamp(260px, 23vw, 310px);
+  min-width: 0;
+  overflow: hidden;
+
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+
+  border-radius: 16px;
+  transform: none !important;
+  transition: none !important;
+  filter: none !important;
+}
+
+/* Video fills its card without a border */
+.reelmark-card video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: inherit;
+}
+
+/* Card title */
+.reelmark-card span {
+  position: absolute;
+  z-index: 2;
+  left: 12px;
+  right: 10px;
+  bottom: 13px;
+
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 85%);
+  pointer-events: none;
+}
+
+/* Subtle fade behind title */
+.reelmark-card::after {
+  content: "";
+  position: absolute;
+  inset: 65% 0 0;
+  z-index: 1;
+  border: none !important;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(0 0 0 / 42%)
+  );
+  pointer-events: none;
+}
+
+/* Seamless infinite scroll */
+@keyframes reelmark-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .reelmark-section {
+    padding: 60px 0 75px;
+  }
+
+  .reelmark-viewport {
+    width: 84%;
+  }
+
+  .reelmark-heading {
+    margin-bottom: 32px;
+  }
+
+  .reelmark-set {
+    gap: 10px;
+    padding-right: 10px;
+  }
+
+  .reelmark-card,
+  .reelmark-card:hover,
+  .reelmark-card:focus {
+    flex-basis: 185px;
+    height: 275px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .reelmark-section {
+    padding: 48px 0 60px;
+  }
+
+  .reelmark-heading {
+    margin-bottom: 24px;
+    padding-inline: 16px;
+  }
+
+  .reelmark-viewport {
+    width: 92%;
+    padding: 22px 0;
+  }
+
+  .reelmark-set {
+    gap: 8px;
+    padding-right: 8px;
+  }
+
+  .reelmark-card,
+  .reelmark-card:hover,
+  .reelmark-card:focus {
+    flex-basis: 155px;
+    height: 235px;
+    border-radius: 13px;
+  }
+
+  .reelmark-card span {
+    left: 9px;
+    bottom: 10px;
+    font-size: 9px;
+  }
+
+  .reelmark-track {
+    animation-duration: 24s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reelmark-track {
+    animation-duration: 60s;
+  }
+}
