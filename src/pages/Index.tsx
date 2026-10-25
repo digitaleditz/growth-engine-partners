@@ -130,34 +130,41 @@ const BrandFilmCarousel = () => {
     if (!viewport) return;
 
     let frameId = 0;
+    let previousUpdate = 0;
 
-    const updateCardScales = () => {
-      const bounds = viewport.getBoundingClientRect();
-      const centerX = bounds.left + bounds.width / 2;
-      const halfWidth = Math.max(bounds.width / 2, 1);
+    const updateCurve = (time: number) => {
+      // Recalculate while the track moves, so the curved perspective follows each card.
+      if (time - previousUpdate >= 24) {
+        previousUpdate = time;
+        const bounds = viewport.getBoundingClientRect();
+        const center = bounds.left + bounds.width / 2;
+        const halfWidth = Math.max(bounds.width / 2, 1);
 
-      viewport.querySelectorAll<HTMLElement>(".reelmark-card").forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const cardCenterX = rect.left + rect.width / 2;
-        const distance = Math.min(1, Math.abs(cardCenterX - centerX) / halfWidth);
+        viewport.querySelectorAll<HTMLElement>(".reelmark-card").forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.left + rect.width / 2;
+          const distance = Math.min(1, Math.abs(cardCenter - center) / halfWidth);
 
-        // Cards are smallest in the center and smoothly grow toward the edges.
-        const scale = 0.80 + distance * 0.22;
-        const lift = -Math.sin(distance * Math.PI) * 9;
+          // Cards are smaller near the center and grow towards the outer edges.
+          const scale = 0.82 + distance * 0.18;
+          // Gentle bowl-shaped arc: the center sits lower than the edges.
+          const lift = 20 * (1 - distance * distance);
+          // Rotate each card slightly toward the center of the viewport.
+          const direction = cardCenter < center ? -1 : 1;
+          const rotate = direction * distance * 7;
 
-        card.style.setProperty("--card-scale", scale.toFixed(3));
-        card.style.setProperty("--card-lift", `${lift.toFixed(1)}px`);
-      });
+          card.style.setProperty("--card-scale", scale.toFixed(3));
+          card.style.setProperty("--card-lift", `${lift.toFixed(1)}px`);
+          card.style.setProperty("--card-rotate", `${rotate.toFixed(1)}deg`);
+        });
+      }
 
-      frameId = window.requestAnimationFrame(updateCardScales);
+      frameId = window.requestAnimationFrame(updateCurve);
     };
 
-    frameId = window.requestAnimationFrame(updateCardScales);
-    window.addEventListener("resize", updateCardScales);
-
+    frameId = window.requestAnimationFrame(updateCurve);
     return () => {
       window.cancelAnimationFrame(frameId);
-      window.removeEventListener("resize", updateCardScales);
     };
   }, []);
 
@@ -167,8 +174,7 @@ const BrandFilmCarousel = () => {
         <div className="reelmark-heading">
           <p className="eyebrow">Creative that moves business</p>
           <h2 className="display-xl">
-            Ideas in Motion.{" "}
-            <span className="text-gradient">Brands in Focus.</span>
+            Ideas in Motion. <span className="text-gradient">Brands in Focus.</span>
           </h2>
         </div>
       </div>
@@ -176,13 +182,9 @@ const BrandFilmCarousel = () => {
       <div className="reelmark-viewport" ref={viewportRef}>
         <div className="reelmark-track">
           {[0, 1].map((copy) => (
-            <div
-              className="reelmark-set"
-              key={copy}
-              aria-hidden={copy === 1}
-            >
+            <div className="reelmark-set" key={copy} aria-hidden={copy === 1}>
               {brandFilms.map((film) => (
-                <article className="reelmark-card" key={film.src}>
+                <article className="reelmark-card" key={`${copy}-${film.src}`}>
                   <video
                     src={film.src}
                     muted
@@ -202,7 +204,6 @@ const BrandFilmCarousel = () => {
     </section>
   );
 };
-
 
 const Index = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -353,7 +354,7 @@ const Index = () => {
       <ClientMarquee />
       
       <BrandFilmCarousel />
-      
+
       <PartnersBanner />
       {/* Services */}
       <section className="section-pad relative overflow-hidden">
