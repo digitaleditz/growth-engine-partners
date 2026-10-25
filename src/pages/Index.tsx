@@ -1,645 +1,956 @@
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import {
-  ChevronDown,
-  Target,
-  Zap,
-  BarChart3,
-  Eye,
-  Shield,
-  Cpu,
-  Clapperboard,
-  Users,
-  ArrowRight,
-  ArrowUpRight,
-  Sparkles,
-  Check,
-} from "lucide-react";
-import { Link } from "react-router-dom";
-import ScrollReveal from "@/components/ScrollReveal";
-import SectionHeading from "@/components/SectionHeading";
-import CountUp from "@/components/CountUp";
-import CTASection from "@/components/CTASection";
-import ClientMarquee from "@/components/ClientMarquee";
-import PartnersBanner from "@/components/PartnersBanner";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-import heroVideo from "@/assets/hero-video.mp4";
-import servicesAds from "@/assets/services-ads.webp";
-import servicesContent from "@/assets/services-content.webp";
+@layer base {
+  :root {
+    --background: 240 5% 3%;
+    --foreground: 0 0% 95%;
 
-import vivocase from "@/assets/clients/vivo_1.png";
-import pushticase from "@/assets/clients/pushti_1.png";
-import servicesUgc from "@/assets/services-ugc.webp";
+    --card: 240 5% 6%;
+    --card-foreground: 0 0% 95%;
 
-import { useEffect, useRef } from "react";
+    --popover: 240 5% 6%;
+    --popover-foreground: 0 0% 95%;
 
-const services = [
-  {
-    title: "Content Creation",
-    icon: Clapperboard,
-    image: servicesUgc,
-    items: [
-      "Reels & short-form video",
-      "UGC & creator content",
-      "Brand visuals & carousels",
-      "AI-assisted production at scale",
-    ],
-    desc: "Scroll stoppers at scale with machine assisted momentum and smart AI automation. Create Reels, UGC, and visuals built to grab attention and keep it.",
-    label: "01",
-  },
-  {
-    title: "Social Management",
-    icon: Users,
-    image: servicesContent,
-    items: [
-      "Content calendars & publishing",
-      "Community management & replies",
-      "Dynamic creative testing",
-      "Chatbot funnels & predictive audiences",
-    ],
-    desc: "Always on, always on brand. We plan, post, and reply so your community never goes quiet. We use dynamic creatives & chatbot funnels to reach predictive audiences.",
-    label: "02",
-  },
-  {
-    title: "Paid Media",
-    icon: Target,
-    image: servicesAds,
-    items: [
-      "Meta, Google, TikTok, YouTube & LinkedIn",
-      "ROAS, CPA & LTV optimization",
-      "Landing pages & funnels",
-      "CRO & full-funnel reporting",
-    ],
-    desc: "Every dollar with a job. Meta, Google Ads, TikTok, YouTube, LinkedIn optimized for ROAS, lower CPA and higher LTV. Full stack performance marketing including landing pages, funnels, and CRO.",
-    label: "03",
-  },
-];
+    --primary: 199 93% 60%;
+    --primary-foreground: 240 5% 3%;
 
+    --secondary: 240 4% 10%;
+    --secondary-foreground: 0 0% 82%;
 
-const faqs = [
-  {
-    q: "How do you use AI in campaigns?",
-    a: "AI assists in creative testing, budget optimization, audience expansion, data analysis, and performance forecasting. Final strategic decisions are always human-led.",
-  },
-  {
-    q: "What industries do you work with?",
-    a: "Real estate, retail, government institutions, political campaigns, service businesses, gyms, e-commerce, and growing brands.",
-  },
-  {
-    q: "What is your minimum engagement?",
-    a: "We typically work with businesses ready to invest in consistent growth, not one-time experiments.",
-  },
-  {
-    q: "Do you offer custom software solutions?",
-    a: "Yes. From websites to CRMs and automation dashboards, we build scalable digital systems.",
-  },
-  {
-    q: "What makes you different from other growth partners?",
-    a: "We build systems that scale, not campaigns that expire.",
-  },
-  {
-    q: "Do you work with startups?",
-    a: "Yes, if they are ready to commit to a systematic growth approach and have a clear product-market direction.",
-  },
-];
+    --muted: 240 4% 13%;
+    --muted-foreground: 240 5% 48%;
 
-const Index = () => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const reelmarkSectionRef = useRef<HTMLElement | null>(null);
-  const reelmarkViewportRef = useRef<HTMLDivElement | null>(null);
+    --accent: 199 93% 60%;
+    --accent-foreground: 240 5% 3%;
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    const attemptPlay = () => {
-      video.play().catch(() => {});
-    };
+    --border: 240 4% 12%;
+    --input: 240 4% 14%;
+    --ring: 199 93% 60%;
 
-    attemptPlay();
+    --radius: 0.75rem;
 
-    const handleScroll = () => {
-      attemptPlay();
-      window.removeEventListener("scroll", handleScroll);
-    };
+    --sidebar-background: 240 5% 4%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 199 93% 60%;
+    --sidebar-primary-foreground: 240 5% 3%;
+    --sidebar-accent: 240 4% 10%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 240 4% 12%;
+    --sidebar-ring: 199 93% 60%;
+  }
+}
 
-    window.addEventListener("scroll", handleScroll);
+@layer base {
+  * {
+    @apply border-border;
+  }
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  html {
+    scroll-behavior: smooth;
+  }
 
-  // Keep the brand-film videos muted, inline, and playing where supported (including iOS Safari).
-  useEffect(() => {
-    const viewport = reelmarkViewportRef.current;
-    if (!viewport) return;
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.9px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-    const videos = Array.from(viewport.querySelectorAll<HTMLVideoElement>("video"));
-    const cleanups: Array<() => void> = [];
+  p {
+    letter-spacing: -0.4px;
+    line-height: 1.65;
+  }
 
-    const playVideo = (video: HTMLVideoElement) => {
-      video.muted = true;
-      video.defaultMuted = true;
-      video.playsInline = true;
-      video.controls = false;
-      video.setAttribute("muted", "");
-      video.setAttribute("playsinline", "");
-      video.setAttribute("webkit-playsinline", "");
-      video.removeAttribute("controls");
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.9px;
+    text-wrap: balance;
+  }
 
-      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-        const playback = video.play();
-        if (playback && typeof playback.catch === "function") playback.catch(() => {});
-      } else {
-        video.load();
-      }
-    };
+  ::selection {
+    background: hsl(199 93% 60% / 0.3);
+    color: hsl(0 0% 100%);
+  }
 
-    videos.forEach((video) => {
-      const onReady = () => playVideo(video);
-      const onError = () => {
-        // Leave the carousel moving if a file cannot be decoded or loaded.
-      };
-      video.addEventListener("loadeddata", onReady);
-      video.addEventListener("canplay", onReady);
-      video.addEventListener("error", onError);
-      cleanups.push(() => {
-        video.removeEventListener("loadeddata", onReady);
-        video.removeEventListener("canplay", onReady);
-        video.removeEventListener("error", onError);
-      });
-      playVideo(video);
-    });
+  html,
+  body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
 
-    let observer: IntersectionObserver | undefined;
-    if ("IntersectionObserver" in window) {
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target as HTMLVideoElement;
-          if (entry.isIntersecting) {
-            playVideo(video);
-          } else {
-            video.pause();
-          }
-        });
-      }, { threshold: 0.01 });
-      videos.forEach((video) => observer?.observe(video));
+  @media (max-width: 767px) {
+    .floating-orb {
+      opacity: 0.5;
+      filter: blur(60px);
     }
 
-    const retryVisibleVideos = () => {
-      if (document.visibilityState !== "visible") return;
-      videos.forEach((video) => {
-        const rect = video.getBoundingClientRect();
-        if (rect.right > 0 && rect.left < window.innerWidth && rect.bottom > 0 && rect.top < window.innerHeight) {
-          playVideo(video);
-        }
-      });
-    };
+    img,
+    video,
+    svg {
+      max-width: 100%;
+    }
+  }
+}
 
-    window.addEventListener("pageshow", retryVisibleVideos);
-    document.addEventListener("visibilitychange", retryVisibleVideos);
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(199 93% 60%) 0%,
+      hsl(220, 81%, 58%) 50%,
+      hsl(210, 77%, 26%) 100%
+    );
+  }
 
-    return () => {
-      observer?.disconnect();
-      window.removeEventListener("pageshow", retryVisibleVideos);
-      document.removeEventListener("visibilitychange", retryVisibleVideos);
-      cleanups.forEach((cleanup) => cleanup());
-      videos.forEach((video) => video.pause());
-    };
-  }, []);
+  .glow-accent {
+    box-shadow:
+      0 0 20px hsl(199 93% 60% / 0.2),
+      0 0 60px hsl(199 93% 60% / 0.08),
+      inset 0 1px 0 hsl(0 0% 100% / 0.1);
+  }
 
-  // Scroll-driven cinematic zoom for the brand-film carousel.
-  useEffect(() => {
-    const section = reelmarkSectionRef.current;
-    const viewport = reelmarkViewportRef.current;
-    if (!section || !viewport) return;
+  .glow-accent-strong {
+    box-shadow:
+      0 0 30px hsl(199 93% 60% / 0.3),
+      0 0 80px hsl(199 93% 60% / 0.12),
+      0 0 120px hsl(199 93% 60% / 0.05),
+      inset 0 1px 0 hsl(0 0% 100% / 0.15);
+  }
 
-    let frameId = 0;
+  .glass {
+    background: linear-gradient(
+      135deg,
+      hsl(240 5% 8% / 0.6) 0%,
+      hsl(240 5% 5% / 0.4) 100%
+    );
+    backdrop-filter: blur(24px) saturate(1.2);
+    -webkit-backdrop-filter: blur(24px) saturate(1.2);
+    border: 1px solid hsl(0 0% 100% / 0.06);
+  }
 
-    const updateZoom = () => {
-      const rect = section.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      const travel = viewportHeight + rect.height;
-      const progress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / travel));
-      // Subtle zoom as the section scrolls through view.
-      const eased = progress * progress * (3 - 2 * progress);
-      const scale = 0.94 + eased * 0.14;
-      viewport.style.setProperty("--scroll-zoom", scale.toFixed(3));
-      frameId = 0;
-    };
+  .glass-strong {
+    background: linear-gradient(
+      135deg,
+      hsl(240 5% 10% / 0.7) 0%,
+      hsl(240 5% 6% / 0.6) 100%
+    );
+    backdrop-filter: blur(40px) saturate(1.3);
+    -webkit-backdrop-filter: blur(40px) saturate(1.3);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+  }
 
-    const scheduleUpdate = () => {
-      if (!frameId) frameId = window.requestAnimationFrame(updateZoom);
-    };
+  .glass-light {
+    background: hsl(240 5% 6% / 0.3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(0 0% 100% / 0.04);
+  }
 
-    updateZoom();
-    window.addEventListener("scroll", scheduleUpdate, { passive: true });
-    window.addEventListener("resize", scheduleUpdate);
+  .section-texture {
+    background-image: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      hsl(199 93% 60% / 0.06) 0%,
+      transparent 60%
+    );
+  }
 
-    return () => {
-      window.removeEventListener("scroll", scheduleUpdate);
-      window.removeEventListener("resize", scheduleUpdate);
-      if (frameId) window.cancelAnimationFrame(frameId);
-    };
-  }, []);
+  .section-texture-alt {
+    background-image:
+      radial-gradient(
+        ellipse 60% 40% at 80% 50%,
+        hsl(199 93% 60% / 0.04) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 20% 80%,
+        hsl(280 70% 60% / 0.02) 0%,
+        transparent 40%
+      );
+  }
 
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+  .grid-pattern {
+    background-image:
+      linear-gradient(
+        hsl(0 0% 100% / 0.02) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        hsl(0 0% 100% / 0.02) 1px,
+        transparent 1px
+      );
+    background-size: 80px 80px;
+  }
 
-      {/* Hero */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <video
-            ref={videoRef}
-            src={heroVideo}
-            muted
-            loop
-            playsInline
-            autoPlay
-            preload="auto"
-            className="hero-video w-full h-full object-cover brightness-[0.50] opacity-50"
-          />
-          <div className="hero-veil absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
-          <div className="hero-veil absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/30" />
-        </div>
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
 
-        <div className="absolute inset-0 dot-grid opacity-30" />
-        <div className="floating-orb w-[520px] h-[520px] top-1/4 -left-40 animate-float" />
-        <div
-          className="floating-orb w-[420px] h-[420px] bottom-0 -right-40 animate-float"
-          style={{ animationDelay: "3s" }}
-        />
+  .floating-orb {
+    @apply absolute rounded-full;
+    background: radial-gradient(
+      circle,
+      hsl(199 93% 60% / 0.15) 0%,
+      hsl(199 93% 60% / 0) 70%
+    );
+    filter: blur(80px);
+    pointer-events: none;
+  }
 
-        <div className="container relative z-10 pt-32 pb-20">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-end">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <span className="eyebrow">
-                <Sparkles size={12} />
-                Growth &amp; Revenue Systems Partner
-              </span>
+  .card-hover-lift {
+    @apply transition-all duration-700 ease-out;
+  }
 
-              <h1 className="display-xl mt-7">
-                Reach the Right People.{" "}
-                <span className="text-gradient">
-                  At the Right Time.
-                </span>
-              </h1>
+  .card-hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 24px 80px -20px hsl(199 93% 60% / 0.12),
+      0 8px 24px -8px hsl(0 0% 0% / 0.4);
+  }
 
-              <p className="body-lg mt-7 max-w-xl">
-                We build the strategy, content, distribution and acquisition
-                systems that help businesses reach their target audience, create
-                demand and turn digital attention into measurable revenue.
-              </p>
+  .divider-glow {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(199 93% 60% / 0.3) 50%,
+      transparent 100%
+    );
+  }
 
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <a
-                  href="https://calendly.com/digitaleditz01/free-discovery-call"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button
-                    size="lg"
-                    className="w-full sm:w-auto text-base font-semibold px-7 sm:px-9 py-6 sm:py-7 rounded-full glow-accent-strong group gap-2"
-                  >
-                    Book a Free Discovery Call
-                    <ArrowUpRight
-                      size={16}
-                      className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    />
-                  </Button>
-                </a>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-base font-semibold px-7 sm:px-9 py-6 sm:py-7 rounded-full border-border/60 hover:border-primary/40"
-                  asChild
-                >
-                  <Link to="/case-studies">View Case Studies</Link>
-                </Button>
-              </div>
+  .label-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
 
-              <p className="mt-10 text-muted-foreground/60 max-w-md label-mono leading-relaxed">
-                Backed by operators who've built growth systems for Indigo, Urban
-                Company, Royal Enfield, M3M and more
-              </p>
-            </motion.div>
+  .border-shimmer {
+    position: relative;
+  }
 
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="grid grid-cols-2 gap-3"
-            >
-              {[
-                { value: "700%", label: "Peak ROAS Delivered" },
-                { value: "100k+", label: "Qualified Leads Generated" },
-                { value: "1M+", label: "Campaign Reach" },
-                { value: "3X", label: "Average Lead Growth" },
-              ].map((s) => (
-                <div key={s.label} className="surface surface-hover p-6">
-                  <p className="font-display text-3xl md:text-4xl font-bold text-primary">
-                    {s.value}
-                  </p>
-                  <p className="label-mono text-muted-foreground mt-2 leading-relaxed">
-                    {s.label}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
+  .border-shimmer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      hsl(199 93% 60% / 0.3),
+      transparent 40%,
+      transparent 60%,
+      hsl(280 70% 60% / 0.2)
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
 
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-        >
-          <ChevronDown className="text-muted-foreground/40" size={24} />
-        </motion.div>
-      </section>
+@layer utilities {
+  .section-pad {
+    @apply py-16 sm:py-24 md:py-32;
+  }
 
+  .section-pad-sm {
+    @apply py-12 sm:py-16 md:py-24;
+  }
 
-      <ClientMarquee />
-      
-      {/* Reelmark-inspired brand film carousel */}
-      <section ref={reelmarkSectionRef} className="reelmark-section" aria-label="Featured brand films">
-        <div className="container relative z-10">
-          <div className="reelmark-heading">
-            <p className="eyebrow">Creative that moves business</p>
-            <h2 className="display-xl">
-              Ideas in Motion.{" "}
-              <span className="text-gradient">Brands in Focus.</span>
-            </h2>
-          </div>
-        </div>
+  .display-xl {
+    @apply font-display font-bold leading-[0.95];
+    font-size: clamp(2.35rem, 5vw, 4.25rem);
+    letter-spacing: -0.04em;
+  }
 
-        <div ref={reelmarkViewportRef} className="reelmark-viewport">
-          <div className="reelmark-track">
-            {[1, 2].map((set) => (
-              <div
-                className="reelmark-set"
-                key={set}
-                aria-hidden={set === 2}
-              >
-                {[
-                  { src: "/burgervideo.mp4", title: "Burger Brand" },
-                  { src: "/levorabagvideo.mp4", title: "Le Vora" },
-                  { src: "/OATSTRONGvideo.mp4", title: "Oat Strong" },
-                  { src: "/perfumevideo.mp4", title: "Fine Fragrance" },
-                  { src: "/realestatevideo.mp4", title: "Real Estate" },
-                  { src: "/skincarevideo.mp4", title: "Skincare" },
-                ].map((film, index) => (
-                  <div
-                    className={`reelmark-card reelmark-card-${index}`}
-                    key={film.src}
-                  >
-                    <video
-                      src={film.src}
-                      muted
-                      loop
-                      autoPlay
-                      playsInline
-                      preload="auto"
-                      controls={false}
-                      disablePictureInPicture
-                      aria-label={film.title}
-                    />
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+  .display-lg {
+    @apply font-display font-bold leading-[1.02];
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
+    letter-spacing: -0.035em;
+  }
 
-      <PartnersBanner />
-      {/* Services */}
-      <section className="section-pad relative overflow-hidden">
-        <div className="absolute inset-0 mesh-bg opacity-70" />
-        <div className="absolute inset-0 dot-grid opacity-20" />
-        <div className="container relative z-10">
-          <SectionHeading
-            eyebrow="What We Do"
-            title="Content, Social and Paid Media"
-            description="Three capabilities, one growth system: create the attention, run the community, and turn spend into revenue."
-          />
-          <div className="grid md:grid-cols-3 gap-5">
-            {services.map((s, i) => (
-              <ScrollReveal key={s.title} delay={i * 0.1}>
-                <div className="group surface surface-hover h-full flex flex-col">
-                  <div className="relative h-52 overflow-hidden">
-                    <img
-                      src={s.image}
-                      alt={s.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-                    <span className="absolute top-5 right-6 label-mono text-muted-foreground/60">
-                      {s.label}
-                    </span>
-                  </div>
-                  <div className="p-7 -mt-9 relative">
-                    <div className="icon-tile mb-5">
-                      <s.icon size={20} />
-                    </div>
-                    <h3 className="display-md">{s.title}</h3>
-                    <p className="text-muted-foreground text-sm mt-3 mb-6 leading-relaxed">
-                      {s.desc}
-                    </p>
-                    <div className="hairline mb-5" />
-                    <ul className="space-y-3">
-                      {s.items.map((item) => (
-                        <li
-                          key={item}
-                          className="text-sm text-secondary-foreground/80 flex items-start gap-3"
-                        >
-                          <Check size={14} className="text-primary mt-0.5 shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+  .display-md {
+    @apply font-display font-semibold leading-[1.1];
+    font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+    letter-spacing: -0.025em;
+  }
 
-      {/* Case Studies */}
-      <section className="section-pad relative overflow-hidden section-texture">
-        <div className="absolute inset-0 dot-grid opacity-20" />
-        <div className="container relative z-10">
-          <SectionHeading
-            eyebrow="Proven Results"
-            title="Featured Case Studies"
-            description="Right audience, right channel, measurable business outcomes."
-          />
+  .body-lg {
+    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
+  }
 
-          <ScrollReveal>
-            <div className="glass rounded-3xl overflow-hidden mb-8 border-shimmer">
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-6 sm:p-10 md:p-14 flex flex-col justify-center">
-                  <span className="label-mono text-primary mb-4 block">VIVO / 2024</span>
-                  <h3 className="font-display text-3xl md:text-4xl font-bold mb-5 leading-tight">Custom Promotional Campaign Platform</h3>
-                  <p className="text-muted-foreground mb-8 leading-relaxed">Built a custom campaign website enabling users to submit purchases and claim rewards effortlessly in J&K.</p>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="glass rounded-xl p-5">
-                      <div className="text-primary font-display text-4xl font-bold">+<CountUp end={73} suffix="%" /></div>
-                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">Sales Growth</p>
-                    </div>
-                    <div className="glass rounded-xl p-5">
-                      <div className="text-primary font-display text-4xl font-bold">High</div>
-                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">Engagement</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="relative h-72 md:h-auto overflow-hidden bg-gradient-to-br from-primary/10 via-card to-card">
-                  <div className="absolute inset-0 dot-grid opacity-20" />
-                  <img
-                    src={vivocase}
-                    alt="VIVO Campaign"
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                  />
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
+  .eyebrow {
+    @apply label-mono inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-primary;
+    background: hsl(199 93% 60% / 0.08);
+    border: 1px solid hsl(199 93% 60% / 0.18);
+  }
 
-          <ScrollReveal>
-            <div className="glass rounded-3xl overflow-hidden border-shimmer">
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-72 md:h-auto overflow-hidden md:order-1 bg-gradient-to-br from-primary/10 via-card to-card">
-                  <div className="absolute inset-0 dot-grid opacity-20" />
-                  <img
-                    src={pushticase}
-                    alt="Pushti Campaign"
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                  />
-                </div>
-                <div className="p-6 sm:p-10 md:p-14 flex flex-col justify-center md:order-2">
-                  <span className="label-mono text-primary mb-4 block">Pushti Turf & Farms / 2025</span>
-                  <h3 className="font-display text-3xl md:text-4xl font-bold mb-5 leading-tight">Meta Ads + WhatsApp Funnel</h3>
-                  <p className="text-muted-foreground mb-8 leading-relaxed">High-performance Meta Ads integrated with WhatsApp funnel automation for massive launch turnout.</p>
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="glass rounded-xl p-4">
-                      <div className="text-primary font-display text-2xl md:text-3xl font-bold"><CountUp end={1} suffix="M+" /></div>
-                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">Reach</p>
-                    </div>
-                    <div className="glass rounded-xl p-4">
-                      <div className="text-primary font-display text-2xl md:text-3xl font-bold"><CountUp end={1000} suffix="+" /></div>
-                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">Leads</p>
-                    </div>
-                    <div className="glass rounded-xl p-4">
-                      <div className="text-primary font-display text-2xl md:text-3xl font-bold">~<CountUp end={700} suffix="%" /></div>
-                      <p className="text-xs text-muted-foreground/60 mt-2 label-mono">ROAS</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
+  .surface {
+    @apply rounded-[1.75rem] relative overflow-hidden;
+    background: linear-gradient(
+      150deg,
+      hsl(240 5% 9% / 0.75) 0%,
+      hsl(240 6% 5% / 0.6) 100%
+    );
+    border: 1px solid hsl(0 0% 100% / 0.07);
+    backdrop-filter: blur(28px) saturate(1.2);
+    -webkit-backdrop-filter: blur(28px) saturate(1.2);
+    box-shadow: inset 0 1px 0 0 hsl(0 0% 100% / 0.05);
+  }
 
-          <div className="text-center mt-16">
-            <Button variant="outline" size="lg" className="rounded-full border-border/50 hover:border-primary/30 gap-2 group" asChild>
-              <Link to="/case-studies">
-                View All Case Studies
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+  .surface-hover {
+    @apply transition-all duration-500 ease-out;
+  }
 
-      {/* How We Work */}
-      <section className="section-pad relative overflow-hidden section-texture-alt">
-        <div className="absolute inset-0 dot-grid opacity-20" />
-        <div className="container relative z-10">
-          <SectionHeading
-            eyebrow="Our Process"
-            title="Our 3-Step Growth Framework"
-            description="From the right audience to distribution, conversion and revenue."
-          />
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { step: "01", title: "Discovery & Strategy", desc: "We analyze your market, competitors, audience psychology, and growth bottlenecks. Then we design a system tailored to your business." },
-              { step: "02", title: "Implementation", desc: "Campaigns go live. Assets are deployed. Funnels are optimized. Every component works together." },
-              { step: "03", title: "Optimization & Scale", desc: "AI insights + human judgment = continuous improvement. We scale what performs and eliminate inefficiencies." },
-            ].map((s, i) => (
-              <ScrollReveal key={s.step} delay={i * 0.15}>
-                <div className="surface surface-hover p-9 h-full">
-                  <div className="flex items-center justify-between mb-7">
-                    <span className="font-display text-5xl font-bold text-primary/25">{s.step}</span>
-                    <div className="icon-tile">
-                      <ArrowRight size={18} />
-                    </div>
-                  </div>
-                  <h3 className="display-md mb-4">{s.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal>
-            <p className="text-center text-muted-foreground/50 mt-16 text-sm italic font-display">Growth is engineered, not hoped for.</p>
-          </ScrollReveal>
-        </div>
-      </section>
+  .surface-hover:hover {
+    border-color: hsl(199 93% 60% / 0.28);
+    transform: translateY(-4px);
+    box-shadow:
+      0 30px 90px -30px hsl(199 93% 60% / 0.18),
+      0 10px 30px -12px hsl(0 0% 0% / 0.5);
+  }
 
-      {/* Why Us */}
-      <section className="section-pad relative overflow-hidden section-texture">
-        <div className="absolute inset-0 dot-grid opacity-20" />
-        <div className="floating-orb w-[400px] h-[400px] bottom-0 right-0" />
-        <div className="container relative z-10">
-          <SectionHeading
-            eyebrow="Why Us"
-            title="Why Brands Choose DigitalEditz"
-            description="We are judged on revenue and pipeline, not on impressions."
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              { icon: Eye, text: "People-led thinking, not automated guesswork" },
-              { icon: Zap, text: "AI-assisted speed & precision" },
-              { icon: BarChart3, text: "Transparent performance reporting" },
-              { icon: Shield, text: "Institutional & enterprise experience" },
-              { icon: Cpu, text: "Systems-first approach to growth" },
-              { icon: Target, text: "Data that connects directly to revenue" },
-            ].map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="flex items-start gap-5 p-7 surface surface-hover h-full">
-                  <div className="icon-tile">
-                    <item.icon size={18} />
-                  </div>
-                  <p className="text-sm font-medium text-secondary-foreground leading-relaxed">{item.text}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-      <TestimonialsSection />
-      <CTASection />
-      <Footer />
-    </div>
+  .mesh-bg {
+    background-image:
+      radial-gradient(
+        ellipse 60% 50% at 15% 0%,
+        hsl(199 93% 60% / 0.10) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 50% 45% at 85% 20%,
+        hsl(226 80% 58% / 0.09) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 50% 100%,
+        hsl(199 93% 60% / 0.05) 0%,
+        transparent 60%
+      );
+  }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      hsl(0 0% 100% / 0.10),
+      hsl(0 0% 100% / 0.02) 70%,
+      transparent
+    );
+  }
+
+  .icon-tile {
+    @apply w-11 h-11 rounded-2xl flex items-center justify-center text-primary shrink-0;
+    background: linear-gradient(
+      150deg,
+      hsl(199 93% 60% / 0.16),
+      hsl(199 93% 60% / 0.04)
+    );
+    border: 1px solid hsl(199 93% 60% / 0.2);
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(
+      hsl(0 0% 100% / 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 26px 26px;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+}
+
+/* Light theme */
+@layer base {
+  html.light {
+    --background: 220 30% 97%;
+    --foreground: 225 15% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 225 15% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 8% 8%;
+
+    --primary: 199 88% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 95%;
+    --secondary-foreground: 225 15% 22%;
+
+    --muted: 220 20% 94%;
+    --muted-foreground: 225 10% 38%;
+
+    --accent: 199 88% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 220 15% 87%;
+    --input: 220 15% 86%;
+    --ring: 199 88% 42%;
+
+    --sidebar-background: 240 20% 98%;
+    --sidebar-foreground: 240 8% 15%;
+    --sidebar-primary: 199 88% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 12% 95%;
+    --sidebar-accent-foreground: 240 8% 15%;
+    --sidebar-border: 240 8% 89%;
+    --sidebar-ring: 199 88% 42%;
+  }
+}
+
+@layer base {
+  html.light body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  html.light .glass {
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 100% / 0.72),
+      hsl(220 30% 97% / 0.65)
+    );
+    border-color: hsl(225 15% 20% / 0.08);
+  }
+
+  html.light .glass-strong {
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 100% / 0.9),
+      hsl(220 30% 97% / 0.82)
+    );
+    border-color: hsl(225 15% 20% / 0.1);
+  }
+
+  html.light .glass-light {
+    background: hsl(0 0% 100% / 0.7);
+    border: 1px solid hsl(225 15% 20% / 0.07);
+  }
+
+  html.light .surface {
+    background: linear-gradient(
+      150deg,
+      hsl(0 0% 100%) 0%,
+      hsl(220 40% 99%) 100%
+    );
+    border: 1px solid hsl(225 15% 20% / 0.08);
+    box-shadow:
+      0 1px 2px hsl(225 25% 20% / 0.05),
+      0 12px 30px -22px hsl(225 25% 20% / 0.18),
+      inset 0 1px 0 0 hsl(0 0% 100%);
+  }
+
+  html.light .surface-hover:hover {
+    border-color: hsl(199 88% 42% / 0.34);
+    box-shadow:
+      0 26px 60px -28px hsl(199 88% 42% / 0.3),
+      0 10px 24px -14px hsl(225 25% 20% / 0.16);
+  }
+
+  html.light .hairline {
+    background: linear-gradient(
+      90deg,
+      hsl(225 15% 20% / 0.16),
+      hsl(225 15% 20% / 0.05) 70%,
+      transparent
+    );
+  }
+
+  html.light .dot-grid {
+    background-image: radial-gradient(
+      hsl(225 15% 20% / 0.11) 1px,
+      transparent 1px
+    );
+  }
+
+  html.light .section-texture {
+    background-image: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      hsl(199 88% 42% / 0.09) 0%,
+      transparent 60%
+    );
+  }
+
+  html.light .section-texture-alt {
+    background-image:
+      radial-gradient(
+        ellipse 60% 40% at 80% 50%,
+        hsl(199 88% 42% / 0.08) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 20% 80%,
+        hsl(265 70% 55% / 0.05) 0%,
+        transparent 45%
+      );
+  }
+
+  html.light .noise-overlay::before {
+    opacity: 0.5;
+  }
+
+  html.light .border-shimmer::before {
+    background: linear-gradient(
+      135deg,
+      hsl(199 88% 42% / 0.35),
+      transparent 40%,
+      transparent 60%,
+      hsl(265 70% 55% / 0.22)
+    );
+  }
+
+  html.light .label-mono {
+    letter-spacing: 0.14em;
+  }
+
+  html.light .grid-pattern {
+    background-image:
+      linear-gradient(
+        hsl(240 8% 20% / 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        hsl(240 8% 20% / 0.05) 1px,
+        transparent 1px
+      );
+  }
+
+  html.light .mesh-bg {
+    background-image:
+      radial-gradient(
+        ellipse 60% 50% at 15% 0%,
+        hsl(199 88% 42% / 0.12) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 50% 45% at 85% 20%,
+        hsl(226 80% 58% / 0.1) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 70% 50% at 50% 100%,
+        hsl(199 88% 42% / 0.06) 0%,
+        transparent 60%
+      );
+  }
+
+  html.light .floating-orb {
+    background: radial-gradient(
+      circle,
+      hsl(199 88% 42% / 0.14) 0%,
+      hsl(199 88% 42% / 0) 70%
+    );
+  }
+
+  html.light .text-gradient {
+    background-image: linear-gradient(
+      135deg,
+      hsl(199 88% 40%) 0%,
+      hsl(220 81% 50%) 50%,
+      hsl(210 77% 30%) 100%
+    );
+  }
+
+  html.light .eyebrow {
+    background: hsl(199 88% 42% / 0.08);
+    border: 1px solid hsl(199 88% 42% / 0.22);
+  }
+
+  html.light .icon-tile {
+    background: linear-gradient(
+      150deg,
+      hsl(199 88% 42% / 0.14),
+      hsl(199 88% 42% / 0.04)
+    );
+    border: 1px solid hsl(199 88% 42% / 0.22);
+  }
+
+  html.light .glow-accent {
+    box-shadow:
+      0 0 20px hsl(199 88% 42% / 0.18),
+      0 6px 20px -8px hsl(199 88% 42% / 0.3);
+  }
+
+  html.light .glow-accent-strong {
+    box-shadow:
+      0 0 28px hsl(199 88% 42% / 0.22),
+      0 10px 30px -10px hsl(199 88% 42% / 0.35);
+  }
+
+  html.light .divider-glow {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(199 88% 42% / 0.35) 50%,
+      transparent 100%
+    );
+  }
+
+  html.light .card-hover-lift:hover {
+    box-shadow:
+      0 24px 60px -24px hsl(199 88% 42% / 0.2),
+      0 8px 20px -10px hsl(240 10% 20% / 0.12);
+  }
+}
+
+@layer utilities {
+  html.light .hero-video {
+    filter: brightness(0.98) contrast(1.05) saturate(1.05);
+    opacity: 0.85;
+  }
+
+  html.light .hero-media {
+    filter: contrast(1.04) saturate(1.02);
+    opacity: 0.26;
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      hsl(0 0% 0% / 0.35) 65%,
+      transparent 95%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      hsl(0 0% 0% / 0.35) 65%,
+      transparent 95%
+    );
+  }
+
+  html.light .hero-veil {
+    opacity: 0.7;
+  }
+
+  html.light input,
+  html.light textarea,
+  html.light select,
+  html.light [role="combobox"] {
+    background-color: hsl(220 30% 98%);
+    border-color: hsl(220 15% 84%);
+  }
+
+  html.light input:focus,
+  html.light textarea:focus,
+  html.light select:focus {
+    background-color: hsl(0 0% 100%);
+    border-color: hsl(199 88% 42% / 0.5);
+  }
+
+  html.light input::placeholder,
+  html.light textarea::placeholder {
+    color: hsl(225 10% 50%);
+  }
+}
+
+/* Oversized footer wordmark */
+.footer-wordmark {
+  font-size: clamp(3.5rem, 19vw, 16rem);
+  background: linear-gradient(
+    180deg,
+    hsl(0 0% 95%) 0%,
+    hsl(199 93% 60%) 100%
   );
-};
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.06;
+  letter-spacing: -0.04em;
+}
 
-export default Index;
+html.light .footer-wordmark {
+  background: linear-gradient(
+    180deg,
+    hsl(225 30% 18%) 0%,
+    hsl(199 90% 45%) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.08;
+}
+
+/* =====================================================
+   DIGITAL EDITZ — BORDERLESS BRAND FILM CAROUSEL
+   ===================================================== */
+
+.reelmark-section {
+  position: relative;
+  width: 100%;
+  margin-inline: auto;
+  padding: 76px 0 96px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.reelmark-heading {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 42px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.reelmark-heading h2 {
+  margin-top: 16px;
+}
+
+/* Centered film strip with soft edge fades */
+.reelmark-viewport {
+  --scroll-zoom: 1;
+  position: relative;
+  width: 78%;
+  max-width: 1450px;
+  margin-inline: auto;
+  padding: 28px 0;
+  overflow: hidden;
+  transform: scale(var(--scroll-zoom));
+  transform-origin: center center;
+  will-change: transform;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.reelmark-track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: max-content;
+  min-width: max-content;
+  animation: reelmark-scroll 28s linear infinite;
+  animation-play-state: running !important;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: flat;
+}
+
+/* Keep the marquee moving when hovered */
+.reelmark-track:hover,
+.reelmark-viewport:hover .reelmark-track {
+  animation-play-state: running !important;
+}
+
+.reelmark-set {
+  display: flex;
+  flex: 0 0 auto;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+  padding-right: 12px;
+}
+
+/* Large, clean video cards */
+.reelmark-card,
+.reelmark-card:hover,
+.reelmark-card:focus,
+.reelmark-card:focus-visible,
+.reelmark-card:active {
+  position: relative;
+  flex: 0 0 clamp(230px, 19vw, 320px);
+  height: clamp(350px, 29vw, 440px);
+  min-width: 0;
+  overflow: hidden;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 18px;
+  transform: none !important;
+  transition: none !important;
+  filter: none !important;
+  isolation: isolate;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.reelmark-card video,
+.reelmark-card video:hover,
+.reelmark-card video:focus {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Remove labels and decorative overlays */
+.reelmark-card span,
+.reelmark-card::before,
+.reelmark-card::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Seamless horizontal animation */
+@keyframes reelmark-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .reelmark-section {
+    padding: 64px 0 78px;
+  }
+
+  .reelmark-viewport {
+    width: 86%;
+  }
+
+  .reelmark-heading {
+    margin-bottom: 32px;
+  }
+
+  .reelmark-card,
+  .reelmark-card:hover,
+  .reelmark-card:focus {
+    flex-basis: 235px;
+    height: 350px;
+  }
+
+  .reelmark-set {
+    gap: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .reelmark-section {
+    padding: 48px 0 60px;
+  }
+
+  .reelmark-heading {
+    margin-bottom: 24px;
+    padding-inline: 16px;
+  }
+
+  .reelmark-viewport {
+    width: 92%;
+    padding: 20px 0;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+  }
+
+  .reelmark-card,
+  .reelmark-card:hover,
+  .reelmark-card:focus {
+    flex: 0 0 190px;
+    height: 290px;
+    border-radius: 14px;
+  }
+
+  .reelmark-card video {
+    border-radius: inherit;
+  }
+
+  .reelmark-set {
+    gap: 8px;
+    padding-right: 8px;
+  }
+
+  .reelmark-track {
+    animation-duration: 24s;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .reelmark-viewport {
+    transform: none !important;
+  }
+
+  .reelmark-track {
+    animation-duration: 60s;
+  }
+}
+
+/* iOS Safari video control overrides */
+.reelmark-card video::-webkit-media-controls,
+.reelmark-card video::-webkit-media-controls-enclosure,
+.reelmark-card video::-webkit-media-controls-panel,
+.reelmark-card video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
