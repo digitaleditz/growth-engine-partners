@@ -139,6 +139,85 @@ const Index = () => {
     };
   }, []);
 
+  // Keep the brand-film videos muted, inline, and playing where supported (including iOS Safari).
+  useEffect(() => {
+    const viewport = reelmarkViewportRef.current;
+    if (!viewport) return;
+
+    const videos = Array.from(viewport.querySelectorAll<HTMLVideoElement>("video"));
+    const cleanups: Array<() => void> = [];
+
+    const playVideo = (video: HTMLVideoElement) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.controls = false;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      video.removeAttribute("controls");
+
+      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        const playback = video.play();
+        if (playback && typeof playback.catch === "function") playback.catch(() => {});
+      } else {
+        video.load();
+      }
+    };
+
+    videos.forEach((video) => {
+      const onReady = () => playVideo(video);
+      const onError = () => {
+        // Leave the carousel moving if a file cannot be decoded or loaded.
+      };
+      video.addEventListener("loadeddata", onReady);
+      video.addEventListener("canplay", onReady);
+      video.addEventListener("error", onError);
+      cleanups.push(() => {
+        video.removeEventListener("loadeddata", onReady);
+        video.removeEventListener("canplay", onReady);
+        video.removeEventListener("error", onError);
+      });
+      playVideo(video);
+    });
+
+    let observer: IntersectionObserver | undefined;
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            playVideo(video);
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.01 });
+      videos.forEach((video) => observer?.observe(video));
+    }
+
+    const retryVisibleVideos = () => {
+      if (document.visibilityState !== "visible") return;
+      videos.forEach((video) => {
+        const rect = video.getBoundingClientRect();
+        if (rect.right > 0 && rect.left < window.innerWidth && rect.bottom > 0 && rect.top < window.innerHeight) {
+          playVideo(video);
+        }
+      });
+    };
+
+    window.addEventListener("pageshow", retryVisibleVideos);
+    document.addEventListener("visibilitychange", retryVisibleVideos);
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("pageshow", retryVisibleVideos);
+      document.removeEventListener("visibilitychange", retryVisibleVideos);
+      cleanups.forEach((cleanup) => cleanup());
+      videos.forEach((video) => video.pause());
+    };
+  }, []);
+
   // Scroll-driven cinematic zoom for the brand-film carousel.
   useEffect(() => {
     const section = reelmarkSectionRef.current;
@@ -335,7 +414,9 @@ const Index = () => {
                       loop
                       autoPlay
                       playsInline
-                      preload="metadata"
+                      preload="auto"
+                      controls={false}
+                      disablePictureInPicture
                       aria-label={film.title}
                     />
                   </div>
