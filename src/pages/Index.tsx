@@ -112,101 +112,10 @@ const faqs = [
   },
 ];
 
-
-const brandFilms = [
-  { src: "/realestatevideo.mp4", title: "Real Estate" },
-  { src: "/skincarevideo.mp4", title: "Skincare" },
-  { src: "/burgervideo.mp4", title: "Burger Brand" },
-  { src: "/levorabagvideo.mp4", title: "Le Vora" },
-  { src: "/OATSTRONGvideo.mp4", title: "Oat Strong" },
-  { src: "/perfumevideo.mp4", title: "Fine Fragrance" },
-];
-
-const BrandFilmCarousel = () => {
-  const viewportRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-
-    let frameId = 0;
-    let previousUpdate = 0;
-
-    const updateCurve = (time: number) => {
-      // Recalculate while the track moves, so the curved perspective follows each card.
-      if (time - previousUpdate >= 24) {
-        previousUpdate = time;
-        const bounds = viewport.getBoundingClientRect();
-        const center = bounds.left + bounds.width / 2;
-        const halfWidth = Math.max(bounds.width / 2, 1);
-
-        viewport.querySelectorAll<HTMLElement>(".reelmark-card").forEach((card) => {
-          const rect = card.getBoundingClientRect();
-          const cardCenter = rect.left + rect.width / 2;
-          const distance = Math.min(1, Math.abs(cardCenter - center) / halfWidth);
-
-          // Cards are smaller near the center and grow towards the outer edges.
-          const scale = 0.82 + distance * 0.18;
-          // Gentle bowl-shaped arc: the center sits lower than the edges.
-          const lift = 20 * (1 - distance * distance);
-          // Rotate each card slightly toward the center of the viewport.
-          const direction = cardCenter < center ? -1 : 1;
-          const rotate = direction * distance * 7;
-
-          card.style.setProperty("--card-scale", scale.toFixed(3));
-          card.style.setProperty("--card-lift", `${lift.toFixed(1)}px`);
-          card.style.setProperty("--card-rotate", `${rotate.toFixed(1)}deg`);
-        });
-      }
-
-      frameId = window.requestAnimationFrame(updateCurve);
-    };
-
-    frameId = window.requestAnimationFrame(updateCurve);
-    return () => {
-      window.cancelAnimationFrame(frameId);
-    };
-  }, []);
-
-  return (
-    <section className="reelmark-section" aria-label="Featured brand films">
-      <div className="container relative z-10">
-        <div className="reelmark-heading">
-          <p className="eyebrow">Creative that moves business</p>
-          <h2 className="display-xl">
-            Ideas in Motion. <span className="text-gradient">Brands in Focus.</span>
-          </h2>
-        </div>
-      </div>
-
-      <div className="reelmark-viewport" ref={viewportRef}>
-        <div className="reelmark-track">
-          {[0, 1].map((copy) => (
-            <div className="reelmark-set" key={copy} aria-hidden={copy === 1}>
-              {brandFilms.map((film) => (
-                <article className="reelmark-card" key={`${copy}-${film.src}`}>
-                  <video
-                    src={film.src}
-                    muted
-                    loop
-                    autoPlay
-                    playsInline
-                    preload="metadata"
-                    aria-label={film.title}
-                  />
-                  <span>{film.title}</span>
-                </article>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const Index = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const reelmarkSectionRef = useRef<HTMLElement | null>(null);
+  const reelmarkViewportRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -227,6 +136,41 @@ const Index = () => {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Scroll-driven cinematic zoom for the brand-film carousel.
+  useEffect(() => {
+    const section = reelmarkSectionRef.current;
+    const viewport = reelmarkViewportRef.current;
+    if (!section || !viewport) return;
+
+    let frameId = 0;
+
+    const updateZoom = () => {
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const travel = viewportHeight + rect.height;
+      const progress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / travel));
+      // Subtle zoom as the section scrolls through view.
+      const eased = progress * progress * (3 - 2 * progress);
+      const scale = 0.94 + eased * 0.14;
+      viewport.style.setProperty("--scroll-zoom", scale.toFixed(3));
+      frameId = 0;
+    };
+
+    const scheduleUpdate = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(updateZoom);
+    };
+
+    updateZoom();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (frameId) window.cancelAnimationFrame(frameId);
     };
   }, []);
 
@@ -353,7 +297,54 @@ const Index = () => {
 
       <ClientMarquee />
       
-      <BrandFilmCarousel />
+      {/* Reelmark-inspired brand film carousel */}
+      <section ref={reelmarkSectionRef} className="reelmark-section" aria-label="Featured brand films">
+        <div className="container relative z-10">
+          <div className="reelmark-heading">
+            <p className="eyebrow">Creative that moves business</p>
+            <h2 className="display-xl">
+              Ideas in Motion.{" "}
+              <span className="text-gradient">Brands in Focus.</span>
+            </h2>
+          </div>
+        </div>
+
+        <div ref={reelmarkViewportRef} className="reelmark-viewport">
+          <div className="reelmark-track">
+            {[1, 2].map((set) => (
+              <div
+                className="reelmark-set"
+                key={set}
+                aria-hidden={set === 2}
+              >
+                {[
+                  { src: "/burgervideo.mp4", title: "Burger Brand" },
+                  { src: "/levorabagvideo.mp4", title: "Le Vora" },
+                  { src: "/OATSTRONGvideo.mp4", title: "Oat Strong" },
+                  { src: "/perfumevideo.mp4", title: "Fine Fragrance" },
+                  { src: "/realestatevideo.mp4", title: "Real Estate" },
+                  { src: "/skincarevideo.mp4", title: "Skincare" },
+                ].map((film, index) => (
+                  <div
+                    className={`reelmark-card reelmark-card-${index}`}
+                    key={film.src}
+                  >
+                    <video
+                      src={film.src}
+                      muted
+                      loop
+                      autoPlay
+                      playsInline
+                      preload="metadata"
+                      aria-label={film.title}
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <PartnersBanner />
       {/* Services */}
