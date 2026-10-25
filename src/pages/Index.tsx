@@ -403,6 +403,7 @@ const Index = () => {
                   { src: "/perfumevideo.mp4", title: "Fine Fragrance" },
                   { src: "/realestatevideo.mp4", title: "Real Estate" },
                   { src: "/skincarevideo.mp4", title: "Skincare" },
+                  { src: "/elveraringvideo.mp4", title: "Elvera Ring" },
                 ].map((film, index) => (
                   <div
                     className={`reelmark-card reelmark-card-${index}`}
