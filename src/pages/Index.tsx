@@ -380,9 +380,9 @@ const Index = () => {
       <section ref={reelmarkSectionRef} className="reelmark-section" aria-label="Featured brand films">
         <div className="container relative z-10">
           <div className="reelmark-heading">
-            <p className="eyebrow">Creative that moves business</p>
+            <p className="eyebrow">Captivate Crowds</p>
             <h2 className="display-xl">
-              Ideas in Motion.{" "}
+              With Scroll-StoppingReels.{" "}
               <span className="text-gradient">Brands in Focus.</span>
             </h2>
           </div>
