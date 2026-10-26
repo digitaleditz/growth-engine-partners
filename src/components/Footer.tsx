@@ -104,10 +104,10 @@ const Footer = () => (
     </div>
 
     {/* Oversized brand wordmark */}
-    <div className="relative z-10 w-full px-4 pb-6 pt-2 overflow-hidden select-none">
+    <div className="relative z-10 w-full px-4 pb-6 pt-2 overflow-hidden select-none flex justify-center">
       <h2
         aria-hidden="true"
-        className="footer-wordmark font-display font-bold leading-none text-center tracking-[-0.04em] whitespace-nowrap"
+        className="footer-wordmark font-display font-bold leading-none text-center tracking-[-0.045em] whitespace-nowrap"
       >
         DigitalEditz
       </h2>

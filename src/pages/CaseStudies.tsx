@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
@@ -5,7 +7,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import CountUp from "@/components/CountUp";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
-import caseStudiesHero from "@/assets/case-studies-hero.jpg";
 import vivocase from "@/assets/clients/vivo_1.png";
 import pushticase from "@/assets/clients/pushti_1.png";
 import usmanmajidcase from "@/assets/clients/usmanmajid_1.png";
@@ -25,259 +26,529 @@ import {
   TrendingUp,
   Users,
   Megaphone,
+  X,
+  Calendar,
+  MessageCircle,
+  CheckCircle2,
+  Filter,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-const caseStudies = [
+interface CaseStudy {
+  id: string;
+  tag: string;
+  category: "all" | "turf" | "realestate" | "industrial" | "tech" | "public";
+  categoryLabel: string;
+  title: string;
+  client: string;
+  problem: string;
+  strategy: string;
+  execution: string;
+  image: string;
+  icon: React.ElementType;
+  featured?: boolean;
+  kpis: { label: string; value: number; suffix?: string; prefix?: string }[];
+  deliverables: string[];
+}
+
+const caseStudies: CaseStudy[] = [
   {
-    tag: "VIVO / 2024",
-    title: "Custom Promotional Campaign Platform",
-    problem: "Reward campaign required seamless digital submission process.",
-    strategy: "Developed a custom promotional website optimized for speed, mobile experience, and easy user submission.",
-    execution: "Integrated campaign logic, structured product showcase, and streamlined verification flow.",
-    image: vivocase,
-    icon: Megaphone,
-    kpis: [
-      { label: "Sales Growth", value: 73, suffix: "%", prefix: "+" },
-      { label: "Engagement", value: 0, suffix: "", prefix: "High" },
-    ],
-  },
-  {
+    id: "pushti",
     tag: "Pushti Turf & Farms / 2025",
+    category: "turf",
+    categoryLabel: "Playground Turf",
     title: "Demand & Conversion System Launch",
-    problem: "Needed massive awareness and turnout in limited time.",
-    strategy: "Built a paid acquisition + WhatsApp conversion system with localized targeting.",
-    execution: "Creative testing, lead funnel optimization and follow-up automation.",
+    client: "Pushti Turf & Farms",
+    problem: "Needed massive local awareness and slot booking turnout in an aggressive 30-day launch window.",
+    strategy: "Built a localized paid acquisition funnel on Meta integrated directly with WhatsApp CRM slot booking.",
+    execution: "Rapid creative testing with short-form UGC video reels, hyper-local radius targeting, and 1-click automated WhatsApp booking follow-up.",
     image: pushticase,
     icon: TrendingUp,
     featured: true,
     kpis: [
-      { label: "Reach", value: 1, suffix: "M+" },
-      { label: "Leads", value: 1000, suffix: "+" },
-      { label: "ROAS", value: 700, suffix: "%", prefix: "~" },
+      { label: "Total Reach", value: 1, suffix: "M+" },
+      { label: "Verified Inbound Leads", value: 1000, suffix: "+" },
+      { label: "Peak Return on Ad Spend", value: 700, suffix: "%", prefix: "~" },
+    ],
+    deliverables: [
+      "Hyper-Local Meta Ad Acquisition",
+      "Instant WhatsApp CRM Automation",
+      "Short-Form Video & Reel Production",
+      "Daily Lead Pipeline Qualification",
     ],
   },
   {
-    tag: "Kashmir Ply Co / 2025",
-    title: "Lead Generation & Brand Awareness",
-    problem: "Needed consistent verified leads and stronger brand recall.",
-    strategy: "Built an acquisition system focused on local targeting and verified lead generation.",
-    execution: "Structured distribution with a lead qualification and follow-up system.",
-    image: kpccase,
-    icon: Target,
-    kpis: [{ label: "Lead Growth", value: 10, suffix: "X" }],
-  },
-  {
-    tag: "District Jammu Govt / 2025",
-    title: "Government Digital Campaigns",
-    problem: "Public engagement with government initiatives was low.",
-    strategy: "Creative campaigns for Jal Shakti, JAKEDA & Tourism departments.",
-    execution: "Social media campaigns with targeted content and community engagement.",
-    image: jkdistrictcase,
-    icon: Users,
-    kpis: [{ label: "Engagement Increase", value: 84, suffix: "%", prefix: "+" }],
-  },
-  {
-    tag: "Usman Majid / 2024",
-    title: "Full Digital Political Campaign",
-    problem: "Limited digital presence in a competitive political landscape.",
-    strategy: "Full digital campaign management with social media dominance strategy.",
-    execution: "Content creation, audience targeting, community building across platforms.",
-    image: usmanmajidcase,
-    icon: Megaphone,
-    kpis: [{ label: "Reach & Engagement", value: 230, suffix: "%", prefix: "+" }],
-  },
-  {
+    id: "kapahi",
     tag: "Kapahi Properties / 2023",
-    title: "Real Estate Lead Generation",
-    problem: "High cost per lead through traditional marketing channels.",
-    strategy: "A conversion system combining a listing WebApp, landing pages and paid acquisition.",
-    execution: "Built conversion-optimized landing pages with integrated lead capture and follow-up.",
+    category: "realestate",
+    categoryLabel: "Luxury Real Estate",
+    title: "Real Estate Lead Generation System",
+    client: "Kapahi Properties",
+    problem: "High cost-per-lead and low qualification rates through conventional print and legacy portals.",
+    strategy: "Engineered an end-to-end conversion system combining a custom property WebApp, luxury landing pages, and geo-targeted ads.",
+    execution: "High-net-worth demographic targeting, instant brochure delivery via WhatsApp, and automated CRM lead distribution for site visits.",
     image: jkkpcase,
     icon: TrendingUp,
-    kpis: [{ label: "Lead Growth", value: 3, suffix: "X" }],
+    kpis: [
+      { label: "Lead Growth", value: 3, suffix: "X" },
+      { label: "Qualified Pipeline", value: 45, suffix: "Cr+", prefix: "₹" },
+    ],
+    deliverables: [
+      "Custom Listing Web Application",
+      "HNW Audience Targeting & Retargeting",
+      "Automated Site-Visit Booking",
+      "Lead Quality Filtering System",
+    ],
+  },
+  {
+    id: "kpc",
+    tag: "Kashmir Ply Co / 2025",
+    category: "industrial",
+    categoryLabel: "Industrial & Timber",
+    title: "B2B Lead Generation & Brand Dominance",
+    client: "Kashmir Ply Co.",
+    problem: "Needed predictable, verified commercial contractor and dealer leads across regional territories.",
+    strategy: "Built an acquisition funnel focused on dealer-network expansion and direct contractor inquiries.",
+    execution: "High-intent Google Search and Meta B2B distribution paired with automated lead scoring and verification.",
+    image: kpccase,
+    icon: Target,
+    kpis: [
+      { label: "B2B Lead Growth", value: 10, suffix: "X" },
+      { label: "Verified Dealer Network", value: 150, suffix: "+" },
+    ],
+    deliverables: [
+      "High-Intent Search Infrastructure",
+      "B2B Contractor Lead Engine",
+      "Specification & Product Catalog Pages",
+      "Regional Territory Campaign Logic",
+    ],
+  },
+  {
+    id: "vivo",
+    tag: "VIVO / 2024",
+    category: "tech",
+    categoryLabel: "Consumer Tech",
+    title: "Custom Promotional Campaign Platform",
+    client: "VIVO",
+    problem: "Enterprise festival campaign required a high-traffic, frictionless digital submission and verification platform.",
+    strategy: "Developed an enterprise-grade responsive promotional WebApp optimized for sub-second mobile loading and high concurrency.",
+    execution: "Custom verification API flow, fraud protection logic, and real-time validation for thousands of simultaneous user claims.",
+    image: vivocase,
+    icon: Megaphone,
+    kpis: [
+      { label: "Sales Growth", value: 73, suffix: "%", prefix: "+" },
+      { label: "Concurrent Entries", value: 50, suffix: "K+" },
+    ],
+    deliverables: [
+      "Custom Promo Submission WebApp",
+      "Fraud Detection & IMEI Verification",
+      "Enterprise Scalability & CDN Setup",
+      "Live Analytics Campaign Dashboard",
+    ],
+  },
+  {
+    id: "district-jammu",
+    tag: "District Jammu Govt / 2025",
+    category: "public",
+    categoryLabel: "Public Sector & Govt",
+    title: "Government Citizen Engagement Systems",
+    client: "District Administration Jammu",
+    problem: "Citizen awareness and public participation in Jal Shakti, JAKEDA, and tourism initiatives were lagging.",
+    strategy: "Conceptualized and executed multilingual multimedia awareness campaigns with targeted localized community distribution.",
+    execution: "Short-form informational videos, regional influencer amplification, and public engagement feedback tracking.",
+    image: jkdistrictcase,
+    icon: Users,
+    kpis: [
+      { label: "Engagement Increase", value: 84, suffix: "%", prefix: "+" },
+      { label: "Citizens Reached", value: 2, suffix: "M+" },
+    ],
+    deliverables: [
+      "Citizen Awareness Social Campaigns",
+      "Infographic & Explainer Creative",
+      "Multilingual Distribution Flow",
+      "Public Sentiment Tracking",
+    ],
+  },
+  {
+    id: "usman-majid",
+    tag: "Usman Majid / 2024",
+    category: "public",
+    categoryLabel: "Political & Public Outreach",
+    title: "Full Digital Political Campaign Architecture",
+    client: "Usman Majid Campaign",
+    problem: "Fragmented digital presence and rapid information cycles in a high-stakes, competitive electoral race.",
+    strategy: "Executed round-the-clock digital campaign strategy with cross-platform community mobilization and message dominance.",
+    execution: "Real-time speech clipping, rapid response social graphics, ground-level rally live streaming, and targeted voter cohort outreach.",
+    image: usmanmajidcase,
+    icon: Megaphone,
+    kpis: [
+      { label: "Reach & Engagement", value: 230, suffix: "%", prefix: "+" },
+      { label: "Daily Video Views", value: 500, suffix: "K+" },
+    ],
+    deliverables: [
+      "Rapid Response Creative Team",
+      "Live Broadcast & Speech Clips",
+      "Voter Cohort Social Distribution",
+      "Crisis PR & Message Monitoring",
+    ],
   },
 ];
 
-const featured = caseStudies.find((c) => c.featured)!;
-const rest = caseStudies.filter((c) => !c.featured);
-
 const glanceMetrics = [
-  { value: "700%", label: "Peak ROAS" },
-  { value: "100000+", label: "Leads Generated" },
-  { value: "3X", label: "Lead Growth" },
-  { value: "230%", label: "Reach & Engagement" },
+  { value: "700%", label: "Peak ROAS Recorded" },
+  { value: "100K+", label: "Verified Inbound Leads" },
+  { value: "10X", label: "Max Lead Growth Multiplier" },
+  { value: "6+", label: "Specialized Industry Sectors" },
 ];
 
-const CaseStudies = () => (
-  <div className="min-h-screen bg-background">
-    <Navbar />
+const CATEGORIES = [
+  { id: "all", label: "All Sectors" },
+  { id: "turf", label: "Playground Turf" },
+  { id: "realestate", label: "Real Estate" },
+  { id: "industrial", label: "Industrial & Timber" },
+  { id: "tech", label: "Consumer Tech" },
+  { id: "public", label: "Public & Outreach" },
+];
 
-    <PageHero
-      eyebrow="Case Studies"
-      title={
-        <>
-          Real Results.<br />
-          <span className="text-gradient">Measurable Growth.</span>
-        </>
-      }
-      description="Every number here is earned, not estimated, a look at the campaigns, platforms and systems behind our clients' growth."
-      image={caseStudiesHero}
-      imageAlt="Case studies"
-      stats={[
-        { value: "700%", label: "Peak ROAS" },
-        { value: "100000+", label: "Leads Generated" },
-        { value: "3X", label: "Lead Growth" },
-        { value: "6+", label: "Sectors Served" },
-      ]}
-    />
+export default function CaseStudies() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [activeStudy, setActiveStudy] = useState<CaseStudy | null>(null);
 
-    {/* Results at a glance */}
-    <section className="section-pad-sm relative">
-      <div className="container">
-        <div className="surface grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-border/40">
-          {glanceMetrics.map((m, i) => (
-            <ScrollReveal key={m.label} delay={i * 0.06}>
-              <div className="p-6 md:p-8 text-center">
-                <p className="font-display text-3xl md:text-4xl font-bold text-primary">{m.value}</p>
-                <p className="label-mono text-muted-foreground mt-2">{m.label}</p>
-              </div>
-            </ScrollReveal>
-          ))}
+  const filteredStudies =
+    selectedCategory === "all"
+      ? caseStudies
+      : caseStudies.filter((c) => c.category === selectedCategory);
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+
+      <PageHero
+        eyebrow="Proven Case Studies"
+        title={
+          <>
+            Real Results.<br />
+            <span className="text-gradient">Measurable Growth.</span>
+          </>
+        }
+        description="Every number here is earned, not estimated. A transparent look at the acquisition funnels, platforms, and automated systems behind our clients' growth."
+        stats={[
+          { value: "700%", label: "Peak ROAS" },
+          { value: "100K+", label: "Leads Generated" },
+          { value: "10X", label: "Max Lead Multiplier" },
+          { value: "6+", label: "Sectors Scaled" },
+        ]}
+      />
+
+      {/* Results at a glance */}
+      <section className="section-pad-sm relative">
+        <div className="container">
+          <div className="surface grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-border/40 rounded-2xl overflow-hidden shadow-lg">
+            {glanceMetrics.map((m, i) => (
+              <ScrollReveal key={m.label} delay={i * 0.06}>
+                <div className="p-6 md:p-8 text-center">
+                  <p className="font-display text-3xl md:text-4xl font-bold text-primary">{m.value}</p>
+                  <p className="label-mono text-muted-foreground mt-2 text-xs sm:text-sm">{m.label}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Featured case study: magazine style */}
-    <section className="section-pad-sm relative">
-      <div className="container">
-        <SectionHeading eyebrow="Featured Work" title="Our flagship result" align="left" />
-        <ScrollReveal>
-          <div className="surface overflow-hidden">
-            <div className="grid lg:grid-cols-2 gap-0">
-              <div className="relative min-h-[320px] lg:min-h-full bg-gradient-to-br from-primary/10 via-card to-card">
-                <div className="absolute inset-0 dot-grid opacity-20" />
-                <img
-                  src={featured.image}
-                  alt={featured.title}
-                  className="absolute inset-0 w-full h-full object-contain p-6 md:p-10"
-                />
-              </div>
-              <div className="p-8 md:p-14 flex flex-col justify-center">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="icon-tile">
-                    <featured.icon size={18} />
-                  </div>
-                  <span className="label-mono text-primary">{featured.tag}</span>
-                </div>
-                <h3 className="display-md">{featured.title}</h3>
-                <div className="grid sm:grid-cols-3 gap-6 my-8">
-                  {[
-                    { label: "Problem", text: featured.problem },
-                    { label: "Strategy", text: featured.strategy },
-                    { label: "Execution", text: featured.execution },
-                  ].map((item) => (
-                    <div key={item.label}>
-                      <h4 className="label-mono text-primary/70 mb-2">{item.label}</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  {featured.kpis.map((kpi, j) => (
-                    <div key={j} className="surface px-6 py-4">
-                      <div className="text-primary font-display text-3xl font-bold">
-                        {kpi.prefix || ""}
-                        {kpi.value > 0 ? <CountUp end={kpi.value} suffix={kpi.suffix} /> : kpi.suffix}
-                      </div>
-                      <p className="text-xs text-muted-foreground/60 mt-1 label-mono">{kpi.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+      {/* Interactive Category Filter Bar */}
+      <section className="py-8 border-b border-border/40">
+        <div className="container">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <Filter size={15} className="text-primary" />
+              <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+                Filter by Sector ({filteredStudies.length} Cases)
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-1.5 p-1 bg-secondary/40 rounded-xl border border-border/50">
+              {CATEGORIES.map((cat) => {
+                const isActive = selectedCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 whitespace-nowrap ${
+                      isActive
+                        ? "bg-primary text-primary-foreground font-semibold shadow-md"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/70"
+                    }`}
+                  >
+                    {cat.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
-        </ScrollReveal>
-      </div>
-    </section>
+        </div>
+      </section>
 
-    {/* Bento grid of remaining cases */}
-    <section className="section-pad-sm relative">
-      <div className="container">
-        <SectionHeading eyebrow="More Work" title="Client results across sectors" align="left" />
-        <div className="grid md:grid-cols-2 gap-6">
-          {rest.map((cs, i) => (
-            <ScrollReveal key={cs.tag} delay={i * 0.08}>
-              <div className="surface surface-hover h-full overflow-hidden flex flex-col">
-                <div className="relative aspect-[4/3] bg-gradient-to-br from-primary/10 via-card to-card border-b border-border/50">
-                  <div className="absolute inset-0 dot-grid opacity-20" />
-                  <img
-                    src={cs.image}
-                    alt={cs.title}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                  />
-                  <div className="absolute top-4 left-4 icon-tile">
-                    <cs.icon size={18} />
-                  </div>
-                  <span className="absolute bottom-4 left-4 label-mono text-primary bg-background/70 backdrop-blur px-2 py-1 rounded">
-                    {cs.tag}
-                  </span>
-                </div>
-                <div className="p-7 md:p-8 flex-1 flex flex-col">
-                  <h3 className="font-display text-xl font-bold leading-snug">{cs.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-3 leading-relaxed flex-1">{cs.strategy}</p>
-                  <div className="flex flex-wrap gap-3 mt-6">
-                    {cs.kpis.map((kpi, j) => (
-                      <div key={j} className="eyebrow !text-primary">
-                        {kpi.prefix || ""}
-                        {kpi.value > 0 ? <CountUp end={kpi.value} suffix={kpi.suffix} /> : kpi.suffix}{" "}
-                        <span className="text-muted-foreground normal-case font-normal tracking-normal">
-                          {kpi.label}
+      {/* Interactive Bento Grid of Case Studies */}
+      <section className="section-pad relative">
+        <div className="container">
+          <motion.div
+            layout
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <AnimatePresence>
+              {filteredStudies.map((cs) => {
+                const Icon = cs.icon;
+                return (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                    key={cs.id}
+                    className="group"
+                  >
+                    <div
+                      onClick={() => setActiveStudy(cs)}
+                      className="surface surface-hover h-full overflow-hidden flex flex-col rounded-2xl cursor-pointer border border-border/60 hover:border-primary/50 transition-all duration-300 shadow-md hover:shadow-xl relative"
+                    >
+                      {/* Card Visual Header */}
+                      <div className="relative aspect-[16/10] bg-gradient-to-br from-card via-card/90 to-secondary/40 border-b border-border/50 flex items-center justify-center p-8 overflow-hidden">
+                        <div className="absolute inset-0 dot-grid opacity-20 pointer-events-none" />
+                        <img
+                          src={cs.image}
+                          alt={cs.client}
+                          loading="lazy"
+                          className="max-h-24 max-w-[190px] object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <div className="absolute top-4 left-4 icon-tile">
+                          <Icon size={16} />
+                        </div>
+                        <span className="absolute bottom-4 left-4 text-[11px] font-mono text-primary bg-background/80 backdrop-blur px-2.5 py-1 rounded-md border border-border/50">
+                          {cs.categoryLabel}
                         </span>
+                        <div className="absolute top-4 right-4 text-xs font-mono text-muted-foreground/80 flex items-center gap-1 group-hover:text-primary transition-colors">
+                          <span>Details</span>
+                          <ArrowUpRight size={14} />
+                        </div>
+                      </div>
+
+                      {/* Card Body */}
+                      <div className="p-6 md:p-7 flex-1 flex flex-col justify-between">
+                        <div>
+                          <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-1">
+                            {cs.tag}
+                          </p>
+                          <h3 className="font-display text-xl font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
+                            {cs.title}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-muted-foreground mt-3 leading-relaxed line-clamp-3">
+                            {cs.strategy}
+                          </p>
+                        </div>
+
+                        {/* KPI Highlights */}
+                        <div className="pt-6 mt-6 border-t border-border/40">
+                          <div className="flex flex-wrap gap-2.5">
+                            {cs.kpis.map((kpi, j) => (
+                              <div
+                                key={j}
+                                className="px-3 py-1.5 rounded-lg bg-secondary/50 border border-border/60 text-xs font-mono"
+                              >
+                                <span className="text-primary font-bold">
+                                  {kpi.prefix || ""}
+                                  {kpi.value > 0 ? (
+                                    <CountUp end={kpi.value} suffix={kpi.suffix} />
+                                  ) : (
+                                    kpi.suffix
+                                  )}{" "}
+                                </span>
+                                <span className="text-muted-foreground text-[11px]">
+                                  {kpi.label}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="mt-4 pt-3 flex items-center justify-between text-xs font-medium text-primary">
+                            <span>View Strategy Breakdown</span>
+                            <span className="group-hover:translate-x-1 transition-transform">→</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Interactive Case Study Detail Modal */}
+      <AnimatePresence>
+        {activeStudy && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md"
+            onClick={() => setActiveStudy(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 16 }}
+              transition={{ duration: 0.25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-card border border-primary/40 shadow-2xl p-6 sm:p-10 text-foreground"
+            >
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={() => setActiveStudy(null)}
+                className="absolute top-6 right-6 p-2 rounded-full bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+                aria-label="Close modal"
+              >
+                <X size={20} />
+              </button>
+
+              {/* Modal Header */}
+              <div className="flex items-center gap-4 mb-6">
+                <img
+                  src={activeStudy.image}
+                  alt={activeStudy.client}
+                  className="w-16 h-16 object-contain p-2 rounded-xl bg-secondary/50 border border-border"
+                />
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-primary">
+                    {activeStudy.categoryLabel} • {activeStudy.tag}
+                  </span>
+                  <h3 className="font-display text-2xl sm:text-3xl font-bold mt-1">
+                    {activeStudy.title}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Verified KPI Strip */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-secondary/30 border border-border/60 mb-8">
+                {activeStudy.kpis.map((kpi, idx) => (
+                  <div key={idx} className="p-3 text-center sm:text-left">
+                    <p className="font-display text-2xl sm:text-3xl font-extrabold text-primary">
+                      {kpi.prefix || ""}
+                      {kpi.value > 0 ? <CountUp end={kpi.value} suffix={kpi.suffix} /> : kpi.suffix}
+                    </p>
+                    <p className="text-xs font-mono text-muted-foreground mt-0.5">{kpi.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Deep Dive Breakdown */}
+              <div className="space-y-6 text-sm">
+                <div>
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-primary mb-2">
+                    01. The Core Growth Challenge
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed bg-secondary/20 p-4 rounded-xl border border-border/40">
+                    {activeStudy.problem}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-primary mb-2">
+                    02. Acquisition &amp; Conversion Strategy
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed bg-secondary/20 p-4 rounded-xl border border-border/40">
+                    {activeStudy.strategy}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-primary mb-2">
+                    03. Execution Architecture
+                  </h4>
+                  <p className="text-muted-foreground leading-relaxed bg-secondary/20 p-4 rounded-xl border border-border/40">
+                    {activeStudy.execution}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-primary mb-3">
+                    04. Key Deliverables Deployed
+                  </h4>
+                  <div className="grid sm:grid-cols-2 gap-2.5">
+                    {activeStudy.deliverables.map((item, i) => (
+                      <div key={i} className="flex items-center gap-2 text-xs sm:text-sm text-secondary-foreground/90 p-2.5 rounded-lg bg-secondary/30 border border-border/30">
+                        <CheckCircle2 size={15} className="text-primary shrink-0" />
+                        <span>{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-    </section>
 
-    {/* Why Us */}
-    <section className="section-pad relative overflow-hidden section-texture">
-      <div className="absolute inset-0 grid-pattern opacity-15" />
-      <div className="floating-orb w-[400px] h-[400px] bottom-0 right-0" />
-      <div className="container relative z-10">
-        <SectionHeading eyebrow="Why Us" title="Why brands choose DigitalEditz" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[
-            { icon: Eye, text: "People-led thinking, not automated guesswork" },
-            { icon: Zap, text: "AI-assisted speed & precision" },
-            { icon: BarChart3, text: "Transparent performance reporting" },
-            { icon: Shield, text: "Institutional & enterprise experience" },
-            { icon: Cpu, text: "Systems-first approach to growth" },
-            { icon: Target, text: "Data that connects directly to revenue" },
-          ].map((item, i) => (
-            <ScrollReveal key={i} delay={i * 0.08}>
-              <div className="flex items-start gap-5 p-7 surface surface-hover">
-                <div className="icon-tile">
-                  <item.icon size={18} />
-                </div>
-                <p className="text-sm font-medium text-secondary-foreground leading-relaxed">{item.text}</p>
+              {/* Conversion Action Footer */}
+              <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center gap-3">
+                <a
+                  href="https://calendly.com/digitaleditz01/free-discovery-call"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto flex-1"
+                >
+                  <Button className="w-full rounded-full glow-accent gap-2 py-5 font-semibold">
+                    <Calendar size={16} />
+                    <span>Book Discovery Call For {activeStudy.categoryLabel}</span>
+                  </Button>
+                </a>
+                <a
+                  href={`https://wa.me/918920524078?text=${encodeURIComponent(
+                    `Hi DigitalEditz, I reviewed your ${activeStudy.client} case study and want similar lead generation results for my brand.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <Button variant="outline" className="w-full rounded-full gap-2 py-5 text-emerald-400 border-border hover:bg-emerald-500/10">
+                    <MessageCircle size={16} />
+                    <span>WhatsApp Inquiry</span>
+                  </Button>
+                </a>
               </div>
-            </ScrollReveal>
-          ))}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Why Us */}
+      <section className="section-pad relative overflow-hidden section-texture">
+        <div className="absolute inset-0 grid-pattern opacity-15" />
+        <div className="floating-orb w-[400px] h-[400px] bottom-0 right-0" />
+        <div className="container relative z-10">
+          <SectionHeading eyebrow="Why Us" title="Why brands choose DigitalEditz" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { icon: Eye, text: "People-led thinking, not automated guesswork" },
+              { icon: Zap, text: "AI-assisted speed & precision" },
+              { icon: BarChart3, text: "Transparent performance reporting" },
+              { icon: Shield, text: "Institutional & enterprise experience" },
+              { icon: Cpu, text: "Systems-first approach to growth" },
+              { icon: Target, text: "Data that connects directly to revenue" },
+            ].map((item, i) => (
+              <ScrollReveal key={i} delay={i * 0.08}>
+                <div className="flex items-start gap-5 p-7 surface surface-hover">
+                  <div className="icon-tile">
+                    <item.icon size={18} />
+                  </div>
+                  <p className="text-sm font-medium text-secondary-foreground leading-relaxed">{item.text}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <TestimonialsSection />
+      <TestimonialsSection />
 
-    <CTASection />
-    <Footer />
-  </div>
-);
-
-export default CaseStudies;
+      <CTASection />
+      <Footer />
+    </div>
+  );
+}

@@ -25,13 +25,13 @@ import {
   Workflow,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import caseStudiesHero from "@/assets/case-studies-hero.jpg";
 import systemDiagram from "@/assets/services-system-diagram.jpg";
 import servicesSystems from "@/assets/services-systems.webp";
 import servicesContent from "@/assets/services-content.webp";
 import servicesAds from "@/assets/services-ads.webp";
 import SystemStack from "@/components/SystemStack";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import GrowthCalculator from "@/components/GrowthCalculator";
 
 const journey = [
   { icon: Eye, label: "Discovery" },
@@ -263,8 +263,6 @@ const Packages = () => {
           </>
         }
         description="Brand, website, content, acquisition, conversion and automation, designed as one connected system instead of disconnected services."
-        image={caseStudiesHero}
-        imageAlt="DigitalEditz digital growth system"
         stats={[
           { value: indicators[0].value, label: indicators[0].label },
           { value: indicators[1].value, label: indicators[1].label },
@@ -504,6 +502,9 @@ const Packages = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Interactive Growth Simulator */}
+      <GrowthCalculator />
 
       {/* Pricing & Plans */}
       <section className="section-pad relative overflow-hidden">

@@ -1,6 +1,3 @@
-html, body { background: #000000 !important; color: #ffffff; }
-html, body { background: #000000; background: var(--bg, #000000); color: #ffffff; color: var(--text, #ffffff); }
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -403,83 +400,81 @@ html, body { background: #000000; background: var(--bg, #000000); color: #ffffff
 /* Light theme */
 @layer base {
   html.light {
-    --background: 220 30% 97%;
-    --foreground: 225 15% 10%;
+    --background: 220 28% 97%;
+    --foreground: 224 45% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 225 15% 10%;
+    --card-foreground: 224 45% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 8% 8%;
+    --popover-foreground: 224 45% 12%;
 
-    --primary: 199 88% 42%;
+    --primary: 199 92% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 95%;
-    --secondary-foreground: 225 15% 22%;
+    --secondary: 220 20% 94%;
+    --secondary-foreground: 224 35% 18%;
 
-    --muted: 220 20% 94%;
-    --muted-foreground: 225 10% 38%;
+    --muted: 220 20% 93%;
+    --muted-foreground: 220 14% 38%;
 
-    --accent: 199 88% 42%;
+    --accent: 199 92% 42%;
     --accent-foreground: 0 0% 100%;
 
-    --border: 220 15% 87%;
-    --input: 220 15% 86%;
-    --ring: 199 88% 42%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --sidebar-background: 240 20% 98%;
-    --sidebar-foreground: 240 8% 15%;
-    --sidebar-primary: 199 88% 42%;
+    --border: 220 16% 87%;
+    --input: 220 16% 87%;
+    --ring: 199 92% 42%;
+
+    --sidebar-background: 220 25% 98%;
+    --sidebar-foreground: 224 35% 18%;
+    --sidebar-primary: 199 92% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 12% 95%;
-    --sidebar-accent-foreground: 240 8% 15%;
-    --sidebar-border: 240 8% 89%;
-    --sidebar-ring: 199 88% 42%;
+    --sidebar-accent: 220 20% 94%;
+    --sidebar-accent-foreground: 224 35% 18%;
+    --sidebar-border: 220 16% 88%;
+    --sidebar-ring: 199 92% 42%;
   }
 }
 
 @layer base {
+  html.light,
   html.light body {
-    @apply bg-background text-foreground;
+    background-color: hsl(220 28% 97%);
+    color: hsl(224 45% 12%);
   }
 }
 
 @layer utilities {
   html.light .glass {
-    background: linear-gradient(
-      135deg,
-      hsl(0 0% 100% / 0.72),
-      hsl(220 30% 97% / 0.65)
-    );
-    border-color: hsl(225 15% 20% / 0.08);
+    background: hsl(0 0% 100% / 0.85);
+    backdrop-filter: blur(24px) saturate(1.2);
+    -webkit-backdrop-filter: blur(24px) saturate(1.2);
+    border: 1px solid hsl(220 16% 86%);
+    box-shadow: 0 4px 20px -5px hsl(220 25% 20% / 0.06);
   }
 
   html.light .glass-strong {
-    background: linear-gradient(
-      135deg,
-      hsl(0 0% 100% / 0.9),
-      hsl(220 30% 97% / 0.82)
-    );
-    border-color: hsl(225 15% 20% / 0.1);
+    background: hsl(0 0% 100% / 0.95);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid hsl(220 16% 85%);
+    box-shadow: 0 10px 30px -10px hsl(220 25% 20% / 0.1);
   }
 
   html.light .glass-light {
-    background: hsl(0 0% 100% / 0.7);
-    border: 1px solid hsl(225 15% 20% / 0.07);
+    background: hsl(0 0% 100% / 0.75);
+    border: 1px solid hsl(220 16% 87%);
   }
 
   html.light .surface {
-    background: linear-gradient(
-      150deg,
-      hsl(0 0% 100%) 0%,
-      hsl(220 40% 99%) 100%
-    );
-    border: 1px solid hsl(225 15% 20% / 0.08);
+    background: hsl(0 0% 100%);
+    border: 1px solid hsl(220 16% 88%);
     box-shadow:
-      0 1px 2px hsl(225 25% 20% / 0.05),
-      0 12px 30px -22px hsl(225 25% 20% / 0.18),
-      inset 0 1px 0 0 hsl(0 0% 100%);
+      0 1px 3px hsl(220 25% 20% / 0.04),
+      0 10px 28px -12px hsl(220 25% 20% / 0.08);
   }
 
   html.light .surface-hover:hover {
@@ -686,7 +681,7 @@ html, body { background: #000000; background: var(--bg, #000000); color: #ffffff
 
 /* Oversized footer wordmark */
 .footer-wordmark {
-  font-size: clamp(3.5rem, 19vw, 16rem);
+  font-size: clamp(2.5rem, 13vw, 12.5rem);
   background: linear-gradient(
     180deg,
     hsl(0 0% 95%) 0%,
@@ -695,8 +690,10 @@ html, body { background: #000000; background: var(--bg, #000000); color: #ffffff
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  opacity: 0.06;
-  letter-spacing: -0.04em;
+  opacity: 0.07;
+  letter-spacing: -0.045em;
+  width: 100%;
+  text-align: center;
 }
 
 html.light .footer-wordmark {
@@ -708,7 +705,7 @@ html.light .footer-wordmark {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  opacity: 0.08;
+  opacity: 0.09;
 }
 
 /* =====================================================
@@ -738,30 +735,12 @@ html.light .footer-wordmark {
 
 /* Centered film strip with soft edge fades */
 .reelmark-viewport {
-  --scroll-zoom: 1;
   position: relative;
-  width: 78%;
+  width: 92%;
   max-width: 1450px;
   margin-inline: auto;
-  padding: 28px 0;
+  padding: 24px 0;
   overflow: hidden;
-  transform: scale(var(--scroll-zoom));
-  transform-origin: center center;
-  will-change: transform;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    #000 8%,
-    #000 92%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    #000 8%,
-    #000 92%,
-    transparent 100%
-  );
 }
 
 .reelmark-track {
@@ -770,20 +749,6 @@ html.light .footer-wordmark {
   align-items: center;
   width: max-content;
   min-width: max-content;
-  animation: reelmark-scroll 28s linear infinite;
-  animation-play-state: running !important;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform-style: flat;
-}
-
-/* Keep the marquee moving when hovered */
-.reelmark-track:hover,
-.reelmark-viewport:hover .reelmark-track {
-  animation-play-state: running !important;
 }
 
 .reelmark-set {
@@ -792,60 +757,70 @@ html.light .footer-wordmark {
   flex-shrink: 0;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 12px;
-  padding-right: 12px;
+  gap: 16px;
+  padding-right: 16px;
 }
 
-/* Large, clean video cards */
-.reelmark-card,
-.reelmark-card:hover,
-.reelmark-card:focus,
-.reelmark-card:focus-visible,
-.reelmark-card:active {
+/* Video cards styled as sleek mockups */
+.reelmark-card {
   position: relative;
-  flex: 0 0 clamp(230px, 19vw, 320px);
-  height: clamp(350px, 29vw, 440px);
+  flex: 0 0 clamp(210px, 18vw, 290px);
+  height: clamp(380px, 32vw, 500px);
   min-width: 0;
   overflow: hidden;
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  border-radius: 18px;
-  transform: none !important;
-  transition: none !important;
-  filter: none !important;
+  border-radius: 36px;
+  background: transparent;
   isolation: isolate;
-  -webkit-appearance: none;
-  appearance: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.reelmark-card video,
-.reelmark-card video:hover,
-.reelmark-card video:focus {
+.iphone-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+  background: #09090b;
+  border: 3.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.iphone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #000000;
+}
+
+.iphone-screen video {
   display: block;
   width: 100%;
   height: 100%;
-  max-width: none;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  background: transparent;
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
+  background: #000;
   border-radius: inherit;
-  -webkit-appearance: none;
-  appearance: none;
-  transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-/* Remove labels and decorative overlays */
-.reelmark-card span,
-.reelmark-card::before,
-.reelmark-card::after {
-  display: none !important;
-  content: none !important;
+.iphone-dynamic-island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 18px;
+  background: #000000;
+  border-radius: 12px;
+  z-index: 20;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
 }
 
 /* Seamless horizontal animation */
@@ -898,22 +873,9 @@ html.light .footer-wordmark {
   }
 
   .reelmark-viewport {
-    width: 92%;
-    padding: 20px 0;
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      #000 5%,
-      #000 95%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      #000 5%,
-      #000 95%,
-      transparent 100%
-    );
+    width: 100%;
+    max-width: 100%;
+    padding: 16px 0;
   }
 
   .reelmark-card,

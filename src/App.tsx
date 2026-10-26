@@ -16,7 +16,6 @@ import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import LoaderScreen from "./components/LoaderScreen";
-import ChatbotWidget from "./components/ChatbotWidget";
 
 const queryClient = new QueryClient();
 
@@ -44,7 +43,6 @@ const App = () => {
             <Route path="/pastwork/2526" element={<PastWork2526 />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <ChatbotWidget />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

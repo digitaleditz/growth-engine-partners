@@ -92,8 +92,6 @@ const About = () => (
         </>
       }
       description="DigitalEditz was founded with a simple belief: growth should be engineered. We combine strategic thinking with AI-driven execution to build scalable marketing infrastructure for ambitious brands."
-      image={aboutHero}
-      imageAlt="DigitalEditz team at work"
       stats={[
         { value: "7+", label: "Enterprise Brands Served" },
         { value: "24hr", label: "Avg. Response Time" },

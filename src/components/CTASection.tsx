@@ -20,22 +20,25 @@ const CTASection = () => (
         <p className="text-muted-foreground mb-12 max-w-md mx-auto text-lg">
           If you're serious about building a system that compounds revenue, we should talk.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
             href="https://calendly.com/digitaleditz01/free-discovery-call"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4"
+            className="w-full sm:w-auto"
           >
-          <Button size="lg" className="text-base font-semibold px-7 sm:px-10 py-6 sm:py-7 rounded-full glow-accent-strong group gap-2">
-            Book a Free Discovery Call
-            <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </Button>
+            <Button size="lg" className="w-full sm:w-auto text-base font-semibold px-7 sm:px-10 py-6 sm:py-7 rounded-full glow-accent-strong group gap-2">
+              Book a Free Discovery Call
+              <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Button>
           </a>
-          <Button size="lg" variant="outline" className="text-base font-semibold px-7 sm:px-10 py-6 sm:py-7 rounded-full border-border/50 hover:border-primary/30" asChild>
-            <Link to="/contact">Contact Us</Link>
+          <Button size="lg" variant="outline" className="w-full sm:w-auto text-base font-semibold px-7 sm:px-10 py-6 sm:py-7 rounded-full border-border/60 hover:border-primary/40 hover:bg-secondary/40" asChild>
+            <Link to="/contact">Get in Touch</Link>
           </Button>
         </div>
+        <p className="text-xs text-muted-foreground/60 mt-6 font-mono">
+          Fast response within 2 hours • Direct strategy consultation • No agency fluff
+        </p>
       </ScrollReveal>
     </div>
   </section>

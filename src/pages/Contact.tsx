@@ -286,7 +286,7 @@ const Contact = () => {
                       className="w-full h-12 rounded-xl bg-background/50 border border-border/50 px-3 text-sm text-foreground focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ring-offset-background appearance-none cursor-pointer"
                     >
                       {SERVICE_OPTIONS.map((s) => (
-                        <option key={s} value={s}>{s}</option>
+                        <option key={s} value={s} className="bg-card text-foreground">{s}</option>
                       ))}
                     </select>
                   </div>
@@ -301,7 +301,7 @@ const Contact = () => {
                       className="w-full h-12 rounded-xl bg-background/50 border border-border/50 px-3 text-sm text-foreground focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ring-offset-background appearance-none cursor-pointer"
                     >
                       {PACKAGE_OPTIONS.map((p) => (
-                        <option key={p} value={p}>{p}</option>
+                        <option key={p} value={p} className="bg-card text-foreground">{p}</option>
                       ))}
                     </select>
                   </div>

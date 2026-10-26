@@ -7,21 +7,28 @@ import { createServer as createViteServer } from "vite";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const isProd = process.env.NODE_ENV === "production";
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = isProd ? (Number(process.env.PORT) || 3000) : 3000;
 
 async function startServer() {
   const app = express();
   app.use(express.json());
 
-  // Initialize official Google GenAI client
-  const ai = new GoogleGenAI({
-    apiKey: process.env.GEMINI_API_KEY,
-    httpOptions: {
-      headers: {
-        "User-Agent": "aistudio-build",
-      },
-    },
-  });
+  // Initialize official Google GenAI client safely if key is available
+  let ai: GoogleGenAI | null = null;
+  if (process.env.GEMINI_API_KEY) {
+    try {
+      ai = new GoogleGenAI({
+        apiKey: process.env.GEMINI_API_KEY,
+        httpOptions: {
+          headers: {
+            "User-Agent": "aistudio-build",
+          },
+        },
+      });
+    } catch (e) {
+      console.warn("Could not initialize GoogleGenAI client:", e);
+    }
+  }
 
   const SYSTEM_INSTRUCTION = `You are EditzAI, the official intelligent digital growth consultant and assistant for DigitalEditz (digitaleditz.com).
 DigitalEditz is a premier performance and growth agency based in Gurugram, India, serving clients across the country and globally.
@@ -64,6 +71,10 @@ Sharp, consultative, energetic, data-driven, and highly professional. Keep answe
         parts: [{ text: m.text }],
       }));
 
+      if (!ai) {
+        throw new Error("Gemini API Key is not configured.");
+      }
+
       const response = await ai.models.generateContent({
         model: "gemini-3.8-flash",
         contents,
@@ -99,8 +110,7 @@ Sharp, consultative, energetic, data-driven, and highly professional. Keep answe
     const vite = await createViteServer({
       server: {
         middlewareMode: true,
-        host: "0.0.0.0",
-        port: PORT,
+        hmr: false,
       },
       appType: "spa",
     });
