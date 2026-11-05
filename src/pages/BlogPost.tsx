@@ -80,15 +80,15 @@ const BlogPost = () => {
           </div>
           <div className="container relative z-10 mt-14">
             <ScrollReveal>
-              <div className="relative overflow-hidden rounded-2xl border border-border/50 aspect-[21/9]">
+              <div className="relative overflow-hidden rounded-2xl border border-border/60 aspect-[21/9] shadow-xl group">
                 <img
                   src={getCover(post.slug)}
-                  alt=""
+                  alt={post.title}
                   width={1280}
                   height={800}
-                  className="h-full w-full object-cover opacity-80"
+                  className="h-full w-full object-cover brightness-95 group-hover:scale-[1.01] transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent pointer-events-none" />
               </div>
             </ScrollReveal>
             <div className="hairline mt-14" />

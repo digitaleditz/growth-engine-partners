@@ -53,16 +53,15 @@ const Blog = () => (
           <Link to={`/blog/${latest.slug}`} className="block group">
             <div className="surface surface-hover overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
-                <div className="relative min-h-[260px] lg:min-h-full bg-gradient-to-br from-primary/15 via-transparent to-transparent flex items-center justify-center p-6 sm:p-10">
+                <div className="relative min-h-[280px] lg:min-h-full overflow-hidden bg-card flex items-center justify-center">
                   <img
                     src={getCover(latest.slug)}
-                    alt=""
+                    alt={latest.title}
                     width={1280}
                     height={800}
-                    className="absolute inset-0 h-full w-full object-cover opacity-70"
+                    className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-95 group-hover:brightness-100"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-background via-background/40 to-transparent" />
-                  <div className="absolute inset-0 dot-grid opacity-20" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-background/90 via-background/30 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-background/80" />
                 </div>
                 <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center">
                   <span className="eyebrow w-fit mb-5">Latest article</span>
@@ -100,16 +99,16 @@ const Blog = () => (
           {others.map((post, i) => (
             <ScrollReveal key={post.slug} delay={i * 0.08}>
               <article className="h-full surface surface-hover overflow-hidden flex flex-col">
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={getCover(post.slug)}
-                    alt=""
+                    alt={post.title}
                     loading="lazy"
                     width={1280}
                     height={800}
-                    className="h-full w-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover brightness-95 transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/25 to-black/30" />
                 </div>
                 <div className="p-8 flex flex-col flex-1">
                 <span className="eyebrow w-fit mb-5">{post.category}</span>

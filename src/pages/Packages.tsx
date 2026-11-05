@@ -25,10 +25,11 @@ import {
   Workflow,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import systemDiagram from "@/assets/services-system-diagram.jpg";
-import servicesSystems from "@/assets/services-systems.webp";
-import servicesContent from "@/assets/services-content.webp";
-import servicesAds from "@/assets/services-ads.webp";
+import growthBlueprint from "@/assets/images/services_blueprint_system_1793913425956.jpg";
+import modelStrategyImg from "@/assets/images/growth_strategy_system_1793911368280.jpg";
+import modelSocialShootImg from "@/assets/images/services_social_shoot_1793913427501.jpg";
+import modelDataTradingImg from "@/assets/images/services_data_trading_1793913428365.jpg";
+import agencyTeamImg from "@/assets/images/services_workshop_collab_1793913426400.jpg";
 import SystemStack from "@/components/SystemStack";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GrowthCalculator from "@/components/GrowthCalculator";
@@ -118,7 +119,7 @@ const models = [
   },
 ];
 
-const modelImages = [servicesSystems, servicesContent, servicesAds];
+const modelImages = [modelStrategyImg, modelSocialShootImg, modelDataTradingImg];
 
 
 const directory = [
@@ -369,16 +370,20 @@ const Packages = () => {
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.12}>
-                <div className="mt-8 surface overflow-hidden relative">
+                <div className="mt-8 surface overflow-hidden relative rounded-2xl border border-border/60 group shadow-lg">
                   <img
-                    src={systemDiagram}
-                    alt="Connected nodes representing an integrated digital growth system"
+                    src={growthBlueprint}
+                    alt="Integrated Digital Growth System Blueprint & Strategy Playbook"
                     loading="lazy"
                     width={1280}
                     height={960}
-                    className="w-full h-56 md:h-72 object-cover opacity-70"
+                    className="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-background/80 backdrop-blur-md border border-border/50 text-xs">
+                    <span className="font-mono text-primary uppercase tracking-wider font-semibold">Growth System Architecture</span>
+                    <p className="text-muted-foreground mt-0.5 text-[11px]">Playbook, conversion funnels &amp; revenue analytics working as one</p>
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
@@ -438,16 +443,19 @@ const Packages = () => {
         <div className="container relative z-10">
           <ScrollReveal>
             <div className="surface overflow-hidden max-w-5xl mx-auto">
-              <div className="relative h-44 md:h-56 overflow-hidden">
+              <div className="relative h-60 md:h-72 overflow-hidden">
                 <img
-                  src={systemDiagram}
-                  alt="Layered diagram of a connected digital growth system"
+                  src={agencyTeamImg}
+                  alt="DigitalEditz Growth Strategy War Room & Execution Team"
                   loading="lazy"
                   width={1280}
                   height={960}
-                  className="w-full h-full object-cover opacity-55"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 text-white backdrop-blur-md border border-white/20 text-xs font-mono uppercase tracking-wider">
+                  Senior Growth Operators
+                </div>
               </div>
               <div className="p-8 md:p-14 pt-8 md:pt-10">
 
@@ -615,16 +623,16 @@ const Packages = () => {
           <div className="grid md:grid-cols-3 gap-5">
             {models.map((m, i) => (
               <ScrollReveal key={m.tag} delay={i * 0.08}>
-                <div className="h-full surface surface-hover flex flex-col overflow-hidden">
-                  <div className="relative h-32 overflow-hidden">
+                <div className="h-full surface surface-hover flex flex-col overflow-hidden border border-border/60 hover:border-primary/40 transition-all duration-300">
+                  <div className="relative h-44 sm:h-48 overflow-hidden">
                     <img
                       src={modelImages[i]}
-                      alt=""
+                      alt={m.title}
                       loading="lazy"
-                      className="w-full h-full object-cover opacity-40 transition-transform duration-700 hover:scale-105"
+                      className="w-full h-full object-cover brightness-95 group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
-                    <span className="label-mono text-primary absolute bottom-4 left-8">{m.tag}</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-black/30" />
+                    <span className="label-mono text-white absolute bottom-3 left-6 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-[11px] font-semibold">{m.tag}</span>
                   </div>
                   <div className="p-8 pt-6 flex flex-col flex-1">
                     <h3 className="font-display text-2xl font-bold">{m.title}</h3>

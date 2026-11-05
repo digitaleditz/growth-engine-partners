@@ -20,7 +20,7 @@ import {
   MapPin,
   Sparkles,
 } from "lucide-react";
-import aboutHero from "@/assets/about-hero.jpg";
+import aboutHero from "@/assets/images/agency_creative_geniuses_1793911349554.jpg";
 
 const philosophy = [
   {
@@ -106,12 +106,19 @@ const About = () => (
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-14 items-center">
           <ScrollReveal>
-            <div className="relative rounded-[1.75rem] overflow-hidden surface p-2">
+            <div className="relative rounded-[1.75rem] overflow-hidden surface p-2 border border-border/60 shadow-xl group">
               <img
                 src={aboutHero}
-                alt="DigitalEditz team collaborating"
-                className="w-full h-[420px] object-cover rounded-[1.5rem]"
+                alt="DigitalEditz creative marketing strategists and growth team in session"
+                className="w-full h-[450px] object-cover rounded-[1.5rem] group-hover:scale-[1.02] transition-transform duration-700"
               />
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-background/90 backdrop-blur-md border border-border/60 flex items-center justify-between gap-3 shadow-lg">
+                <div>
+                  <p className="text-xs font-mono uppercase tracking-wider text-primary font-semibold">Growth Strategy War Room</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Strategists, performance buyers &amp; creative directors collaborating live</p>
+                </div>
+                <span className="shrink-0 w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" title="Active Strategy Session" />
+              </div>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>

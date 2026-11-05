@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FaqSection from "@/components/FaqSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import PageHero from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
@@ -401,6 +402,18 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Frequently Asked Questions */}
+      <FaqSection
+        eyebrow="Client Inquiries & FAQs"
+        title={
+          <>
+            Got Questions Before Reaching Out?{" "}
+            <span className="text-gradient">We Have Answers.</span>
+          </>
+        }
+        description="Clear, transparent details on how we collaborate, our turnaround speeds, contract flexibility, and performance guarantees."
+      />
 
       <Footer />
     </div>

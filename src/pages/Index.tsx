@@ -30,94 +30,67 @@ import ClientMarquee from "@/components/ClientMarquee";
 import PartnersBanner from "@/components/PartnersBanner";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GrowthCalculator from "@/components/GrowthCalculator";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import FaqSection from "@/components/FaqSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-import servicesAds from "@/assets/services-ads.webp";
-import servicesContent from "@/assets/services-content.webp";
+import servicesVideoProd from "@/assets/images/service_video_production_1793911284694.jpg";
+import servicesSocialCreative from "@/assets/images/service_social_creative_1793911303781.jpg";
+import servicesPaidMedia from "@/assets/images/service_paid_media_1793911323579.jpg";
 
 import vivocase from "@/assets/clients/vivo_1.png";
 import pushticase from "@/assets/clients/pushti_1.png";
-import servicesUgc from "@/assets/services-ugc.webp";
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const services = [
   {
-    title: "Content Creation",
+    title: "Content & Video Engine",
     icon: Clapperboard,
-    image: servicesUgc,
+    image: servicesVideoProd,
+    tag: "Studio Production & UGC",
     items: [
-      "Reels & short-form video",
-      "UGC & creator content",
-      "Brand visuals & carousels",
-      "AI-assisted production at scale",
+      "Cinema-grade Reels & short-form video",
+      "High-converting UGC creator assets",
+      "Brand visuals & multi-slide carousels",
+      "Direct response hooks tested at scale",
     ],
-    desc: "Scroll stoppers at scale with machine assisted momentum and smart AI automation. Create Reels, UGC, and visuals built to grab attention and keep it.",
+    desc: "Thumb-stopping video and visual creative engineered for commercial conversion. Real studio sets, professional lighting, and high-frequency production that turns casual scrollers into paying customers.",
     label: "01",
   },
   {
-    title: "Social Management",
+    title: "Social & Community Engine",
     icon: Users,
-    image: servicesContent,
+    image: servicesSocialCreative,
+    tag: "Brand Positioning & Retention",
     items: [
-      "Content calendars & publishing",
-      "Community management & replies",
-      "Dynamic creative testing",
-      "Chatbot funnels & predictive audiences",
+      "Editorial content calendars & publishing",
+      "Active community replies & DM sales routing",
+      "Dynamic creative iterations & testing",
+      "Audience retargeting & intent funnels",
     ],
-    desc: "Always on, always on brand. We plan, post, and reply so your community never goes quiet. We use dynamic creatives & chatbot funnels to reach predictive audiences.",
+    desc: "Strategic social presence that commands respect. We plan, direct, and manage your brand's presence so you maintain authority while building compounding inbound demand.",
     label: "02",
   },
   {
-    title: "Paid Media",
+    title: "Paid Media & Pipeline Acquisition",
     icon: Target,
-    image: servicesAds,
+    image: servicesPaidMedia,
+    tag: "Predictable ROAS & Inbound Leads",
     items: [
-      "Meta, Google, TikTok, YouTube & LinkedIn",
-      "ROAS, CPA & LTV optimization",
-      "Landing pages & funnels",
-      "CRO & full-funnel reporting",
+      "Meta Ads, Google Search & Performance Max",
+      "YouTube & LinkedIn account-based targeting",
+      "Custom landing pages & 1-click WhatsApp funnels",
+      "Granular attribution, CRO & weekly optimization",
     ],
-    desc: "Every dollar with a job. Meta, Google Ads, TikTok, YouTube, LinkedIn optimized for ROAS, lower CPA and higher LTV. Full stack performance marketing including landing pages, funnels, and CRO.",
+    desc: "Every rupee and dollar deployed with ruthless accountability. Multi-channel paid acquisition optimized for verifiable pipeline, lower acquisition costs, and compounding return on ad spend.",
     label: "03",
   },
 ];
 
 
-const faqs = [
-  {
-    q: "How do you use AI in campaigns?",
-    a: "AI assists in creative testing, budget optimization, audience expansion, data analysis, and performance forecasting. Final strategic decisions are always human-led.",
-  },
-  {
-    q: "What industries do you work with?",
-    a: "Real estate, retail, government institutions, political campaigns, service businesses, gyms, e-commerce, and growing brands.",
-  },
-  {
-    q: "What is your minimum engagement?",
-    a: "We typically work with businesses ready to invest in consistent growth, not one-time experiments.",
-  },
-  {
-    q: "Do you offer custom software solutions?",
-    a: "Yes. From websites to CRMs and automation dashboards, we build scalable digital systems.",
-  },
-  {
-    q: "What makes you different from other growth partners?",
-    a: "We build systems that scale, not campaigns that expire.",
-  },
-  {
-    q: "Do you work with startups?",
-    a: "Yes, if they are ready to commit to a systematic growth approach and have a clear product-market direction.",
-  },
-];
+
 
 interface BrandFilm {
   src: string;
@@ -499,39 +472,51 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-5">
             {services.map((s, i) => (
               <ScrollReveal key={s.title} delay={i * 0.1}>
-                <div className="group surface surface-hover h-full flex flex-col">
-                  <div className="relative h-52 overflow-hidden">
+                <div className="group surface surface-hover h-full flex flex-col overflow-hidden border border-border/60 hover:border-primary/40 transition-all duration-300">
+                  <div className="relative h-60 sm:h-64 overflow-hidden">
                     <img
                       src={s.image}
                       alt={s.title}
                       loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out brightness-[0.92] group-hover:brightness-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-                    <span className="absolute top-5 right-6 label-mono text-muted-foreground/60">
-                      {s.label}
-                    </span>
-                  </div>
-                  <div className="p-7 -mt-9 relative">
-                    <div className="icon-tile mb-5">
-                      <s.icon size={20} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/25 to-black/30" />
+                    
+                    {/* Top Tag & Number Pill */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+                      <span className="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider uppercase font-semibold bg-black/70 text-white backdrop-blur-md border border-white/20 shadow-md">
+                        {s.tag}
+                      </span>
+                      <span className="w-7 h-7 rounded-full bg-black/70 text-primary flex items-center justify-center text-xs font-mono font-bold backdrop-blur-md border border-white/20 shadow-md">
+                        {s.label}
+                      </span>
                     </div>
-                    <h3 className="display-md">{s.title}</h3>
-                    <p className="text-muted-foreground text-sm mt-3 mb-6 leading-relaxed">
-                      {s.desc}
-                    </p>
-                    <div className="hairline mb-5" />
-                    <ul className="space-y-3">
-                      {s.items.map((item) => (
-                        <li
-                          key={item}
-                          className="text-sm text-secondary-foreground/80 flex items-start gap-3"
-                        >
-                          <Check size={14} className="text-primary mt-0.5 shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                  </div>
+
+                  <div className="p-7 flex-1 flex flex-col justify-between relative bg-card/60 backdrop-blur-sm">
+                    <div>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="icon-tile">
+                          <s.icon size={20} />
+                        </div>
+                        <h3 className="display-md text-foreground">{s.title}</h3>
+                      </div>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                        {s.desc}
+                      </p>
+                      <div className="hairline mb-5" />
+                      <ul className="space-y-3">
+                        {s.items.map((item) => (
+                          <li
+                            key={item}
+                            className="text-sm text-secondary-foreground/85 flex items-start gap-3"
+                          >
+                            <Check size={14} className="text-primary mt-0.5 shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -675,21 +660,48 @@ const Index = () => {
             title="Why Brands Choose DigitalEditz"
             description="We are judged on revenue and pipeline, not on impressions."
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { icon: Eye, text: "People-led thinking, not automated guesswork" },
-              { icon: Zap, text: "AI-assisted speed & precision" },
-              { icon: BarChart3, text: "Transparent performance reporting" },
-              { icon: Shield, text: "Institutional & enterprise experience" },
-              { icon: Cpu, text: "Systems-first approach to growth" },
-              { icon: Target, text: "Data that connects directly to revenue" },
+              {
+                icon: Eye,
+                title: "Visionary Creative Direction",
+                text: "Senior campaign strategists shape your brand narrative, hook psychology, and visual identity. Zero generic templates or recycled playbooks.",
+              },
+              {
+                icon: Zap,
+                title: "AI-Accelerated Velocity",
+                text: "We leverage proprietary AI workflows to iterate creative concepts, test video variations, and expand audience cohorts 5X faster.",
+              },
+              {
+                icon: BarChart3,
+                title: "Obsession with Pipeline Revenue",
+                text: "Every rupee and dollar spent is held accountable to qualified appointments, customer acquisition costs, and verified bottom-line return.",
+              },
+              {
+                icon: Shield,
+                title: "Enterprise Pedigree",
+                text: "Our leadership brings frontline execution experience scaling growth systems for Indigo, Urban Company, Royal Enfield, and luxury real estate.",
+              },
+              {
+                icon: Cpu,
+                title: "Interconnected Systems",
+                text: "Brand positioning, high-converting landing pages, short-form reels, CRM routing, and paid media working as a single self-reinforcing flywheel.",
+              },
+              {
+                icon: Target,
+                title: "Live Attribution Transparency",
+                text: "100% transparent attribution. Live shared dashboards tracking every lead from the first touchpoint to closed conversion.",
+              },
             ].map((item, i) => (
-              <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="flex items-start gap-5 p-7 surface surface-hover h-full">
-                  <div className="icon-tile">
-                    <item.icon size={18} />
+              <ScrollReveal key={item.title} delay={i * 0.08}>
+                <div className="surface surface-hover p-7 h-full flex flex-col justify-between border border-border/60 hover:border-primary/40 transition-all duration-300">
+                  <div>
+                    <div className="icon-tile mb-5">
+                      <item.icon size={20} />
+                    </div>
+                    <h3 className="font-display text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
                   </div>
-                  <p className="text-sm font-medium text-secondary-foreground leading-relaxed">{item.text}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -698,6 +710,7 @@ const Index = () => {
       </section>
       <TestimonialsSection />
       <CTASection />
+      <FaqSection />
       <Footer />
 
       {/* Full-Screen Video Spotlight Modal (Portaled directly to body to avoid clipping & overflow) */}
